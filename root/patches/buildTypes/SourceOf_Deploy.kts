@@ -21,6 +21,8 @@ create(RelativeId("SourceOf_MyCollection"), BuildType({
 
     vcs {
         root(RelativeId("SourceOf_MyCollection_GitGithubComK88936myCollectionGitRefsHeadsMain"))
+
+        cleanCheckout = true
     }
 
     steps {
