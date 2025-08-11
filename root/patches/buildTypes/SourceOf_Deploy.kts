@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.ui.*
 
@@ -20,6 +21,17 @@ create(RelativeId("SourceOf_MyCollection"), BuildType({
 
     vcs {
         root(RelativeId("SourceOf_MyCollection_GitGithubComK88936myCollectionGitRefsHeadsMain"))
+    }
+
+    steps {
+        script {
+            id = "simpleRunner"
+            scriptContent = """
+                git add -A
+                git commit -m"update"
+                git push --force
+            """.trimIndent()
+        }
     }
 
     triggers {
