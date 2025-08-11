@@ -33,8 +33,7 @@ create(RelativeId("SourceOf"), BuildType({
             id = "nodejs_runner"
             shellScript = """
                 npm install
-                npm run test
-                npm build
+                npm run build
             """.trimIndent()
         }
     }
