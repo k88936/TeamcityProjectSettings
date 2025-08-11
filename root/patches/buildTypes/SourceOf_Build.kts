@@ -16,6 +16,8 @@ create(RelativeId("SourceOf"), BuildType({
     id("SourceOf_Build")
     name = "Build"
 
+    artifactRules = "dist => /"
+
     params {
         password("env.SECRET_KEY", "credentialsJSON:6d9f4af1-89b3-41a3-9bcc-fde1bdd8e7f9")
         param("env.BUCKET_NAME", "software-release")
