@@ -16,6 +16,10 @@ create(RelativeId("SourceOf"), BuildType({
     id("SourceOf_Build")
     name = "Build"
 
+    params {
+        password("env.ACCESS_KEY", "credentialsJSON:e2bf46ef-fcae-472d-a934-117a88db5241")
+    }
+
     vcs {
         root(RelativeId("SourceOf_GitGithubComK88936sourceOfGitRefsHeadsMain"))
     }
