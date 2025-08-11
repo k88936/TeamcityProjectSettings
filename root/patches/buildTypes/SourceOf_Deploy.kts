@@ -16,5 +16,12 @@ create(RelativeId("SourceOf"), BuildType({
     enablePersonalBuilds = false
     type = BuildTypeSettings.Type.DEPLOYMENT
     maxRunningBuilds = 1
+
+    dependencies {
+        artifacts(RelativeId("SourceOf_Build")) {
+            buildRule = lastSuccessful()
+            artifactRules = "*"
+        }
+    }
 }))
 
