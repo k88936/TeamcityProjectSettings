@@ -3,6 +3,7 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.exec
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.*
 
@@ -25,6 +26,14 @@ create(RelativeId("SourceOf"), BuildType({
 
     vcs {
         root(RelativeId("SourceOf_GitGithubComK88936sourceOfGitRefsHeadsMain"))
+    }
+
+    steps {
+        exec {
+            id = "simpleRunner"
+            path = "npm"
+            arguments = "run build"
+        }
     }
 
     triggers {
