@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -16,6 +17,12 @@ create(RelativeId("SourceOf"), BuildType({
     enablePersonalBuilds = false
     type = BuildTypeSettings.Type.DEPLOYMENT
     maxRunningBuilds = 1
+
+    triggers {
+        finishBuildTrigger {
+            buildType = "SourceOf_Build"
+        }
+    }
 
     dependencies {
         artifacts(RelativeId("SourceOf_Build")) {
