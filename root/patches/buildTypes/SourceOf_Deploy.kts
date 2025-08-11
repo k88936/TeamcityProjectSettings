@@ -43,6 +43,7 @@ create(RelativeId("SourceOf_MyCollection"), BuildType({
     dependencies {
         artifacts(RelativeId("SourceOf_Build")) {
             buildRule = lastSuccessful()
+            cleanDestination = true
             artifactRules = "**"
         }
     }
