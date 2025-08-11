@@ -19,6 +19,7 @@ create(RelativeId("SourceOf"), BuildType({
     params {
         password("env.SECRET_KEY", "credentialsJSON:6d9f4af1-89b3-41a3-9bcc-fde1bdd8e7f9")
         param("env.BUCKET_NAME", "software-release")
+        param("env.S3_ENDPOINT", "http://10te47kl27611.vicp.fun:19000")
         param("env.AWS_REGION", "us-east-1")
         password("env.ACCESS_KEY", "credentialsJSON:e2bf46ef-fcae-472d-a934-117a88db5241")
     }
