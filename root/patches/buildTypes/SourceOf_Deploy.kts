@@ -18,6 +18,10 @@ create(RelativeId("SourceOf_MyCollection"), BuildType({
     type = BuildTypeSettings.Type.DEPLOYMENT
     maxRunningBuilds = 1
 
+    vcs {
+        root(RelativeId("SourceOf_MyCollection_GitGithubComK88936myCollectionGitRefsHeadsMain"))
+    }
+
     triggers {
         finishBuildTrigger {
             buildType = "SourceOf_Build"
