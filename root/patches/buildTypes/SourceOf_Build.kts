@@ -17,6 +17,7 @@ create(RelativeId("SourceOf"), BuildType({
     name = "Build"
 
     params {
+        password("env.SECRET_KEY", "credentialsJSON:6d9f4af1-89b3-41a3-9bcc-fde1bdd8e7f9")
         password("env.ACCESS_KEY", "credentialsJSON:e2bf46ef-fcae-472d-a934-117a88db5241")
     }
 
