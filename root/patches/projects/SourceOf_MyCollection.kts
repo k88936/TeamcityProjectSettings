@@ -11,6 +11,6 @@ in the project with id = 'SourceOf', and delete the patch script.
 */
 create(RelativeId("SourceOf"), Project({
     id("SourceOf_MyCollection")
-    name = "My Collection"
+    name = "page"
 }))
 
