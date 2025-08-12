@@ -28,7 +28,10 @@ changeBuildType(RelativeId("Gold_Build")) {
 
     requirements {
         add {
-            exists("RUST")
+            exists("RUST", "RQ_1")
         }
     }
+
+    expectDisabledSettings()
+    updateDisabledSettings("RQ_1")
 }
