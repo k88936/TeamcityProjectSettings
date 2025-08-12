@@ -1,0 +1,15 @@
+package Gold
+
+import Gold.buildTypes.*
+import Gold.vcsRoots.*
+import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.Project
+
+object Project : Project({
+    id("Gold")
+    name = "Gold"
+
+    vcsRoot(Gold_GitGithubComK88936goldGitRefsHeadsMain)
+
+    buildType(Gold_Build)
+})
