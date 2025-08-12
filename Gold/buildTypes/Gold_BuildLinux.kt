@@ -8,4 +8,8 @@ object Gold_BuildLinux : BuildType({
     vcs {
         root(Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain)
     }
+
+    requirements {
+        exists("env.PLATFORM_LINUX")
+    }
 })
