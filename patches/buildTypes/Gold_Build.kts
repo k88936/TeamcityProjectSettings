@@ -28,10 +28,7 @@ changeBuildType(RelativeId("Gold_Build")) {
 
     requirements {
         add {
-            exists("RUST", "RQ_1")
+            exists("env.WIN_PLATFORM")
         }
     }
-
-    expectDisabledSettings()
-    updateDisabledSettings("RQ_1")
 }
