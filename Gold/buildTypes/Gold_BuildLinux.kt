@@ -9,6 +9,14 @@ object Gold_BuildLinux : BuildType({
         root(Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain)
     }
 
+    steps {
+        step {
+            id = "cargo"
+            type = "cargo"
+            param("cargo-command", "build")
+        }
+    }
+
     requirements {
         exists("env.PLATFORM_LINUX")
     }
