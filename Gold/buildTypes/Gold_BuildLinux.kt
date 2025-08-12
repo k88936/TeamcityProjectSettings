@@ -14,6 +14,7 @@ object Gold_BuildLinux : BuildType({
             id = "cargo"
             type = "cargo"
             param("cargo-command", "build")
+            param("cargo-build-release", "true")
         }
     }
 
