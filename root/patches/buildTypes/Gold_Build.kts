@@ -19,6 +19,14 @@ create(RelativeId("Gold"), BuildType({
         root(RelativeId("Gold_GitGithubComK88936goldGitRefsHeadsMain"))
     }
 
+    steps {
+        step {
+            id = "cargo"
+            type = "cargo"
+            param("cargo-command", "build")
+        }
+    }
+
     triggers {
         vcs {
         }
