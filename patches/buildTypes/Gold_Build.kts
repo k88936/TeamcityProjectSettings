@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -17,6 +18,12 @@ changeBuildType(RelativeId("Gold_Build")) {
         }
     }
     steps {
-        items.removeAt(0)
+        insert(0) {
+            script {
+                id = "simpleRunner"
+                scriptContent = "cargo build --release"
+            }
+        }
+        items.removeAt(1)
     }
 }
