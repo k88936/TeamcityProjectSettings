@@ -1,7 +1,6 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -10,22 +9,6 @@ To apply the patch, change the buildType with id = 'Gold_Build'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Gold_Build")) {
-    expectSteps {
-        step {
-            id = "cargo"
-            type = "cargo"
-            param("cargo-command", "build")
-        }
-    }
-    steps {
-        insert(0) {
-            script {
-                id = "simpleRunner"
-                scriptContent = "cargo build --release"
-            }
-        }
-    }
-
     requirements {
         add {
             exists("env.WIN_PLATFORM")
