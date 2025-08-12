@@ -12,7 +12,6 @@ object LeetcodeEditor_Deploy : BuildType({
     maxRunningBuilds = 1
 
     params {
-        password("env.GITHUB_TOKEN", "credentialsJSON:9b5eb1f1-fa5c-46a2-ad86-23ba0f76364d")
     }
 
     vcs {
@@ -22,7 +21,7 @@ object LeetcodeEditor_Deploy : BuildType({
     steps {
         script {
             id = "simpleRunner"
-            scriptContent = "gh release create v%build.number% --generate-notes ghrelease/*"
+            scriptContent = "gh release create build-%build.number% --generate-notes _deploy/*"
         }
     }
 
@@ -37,7 +36,7 @@ object LeetcodeEditor_Deploy : BuildType({
         artifacts(LeetcodeEditor_Build) {
             buildRule = lastSuccessful()
             cleanDestination = true
-            artifactRules = "*.zip=>ghrelease/"
+            artifactRules = "*.zip=>_deploy/"
         }
     }
 })
