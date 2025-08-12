@@ -24,7 +24,6 @@ changeBuildType(RelativeId("Gold_Build")) {
                 scriptContent = "cargo build --release"
             }
         }
-        items.removeAt(1)
     }
 
     requirements {
