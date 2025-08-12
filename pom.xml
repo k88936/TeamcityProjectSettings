@@ -5,15 +5,11 @@
     <groupId>_Root</groupId>
     <artifactId>_Root_dsl</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <properties>
-        <kotlin.version>1.9.24</kotlin.version>
-    </properties>
     <parent>
         <groupId>org.jetbrains.teamcity</groupId>
         <artifactId>configs-dsl-kotlin-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <repositories>
         <repository>
             <id>jetbrains-all</id>
@@ -39,7 +35,7 @@
     </pluginRepositories>
 
     <build>
-        <sourceDirectory>${basedir}</sourceDirectory>
+        <sourceDirectory>root</sourceDirectory>
         <plugins>
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
