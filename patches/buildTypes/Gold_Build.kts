@@ -26,4 +26,10 @@ changeBuildType(RelativeId("Gold_Build")) {
         }
         items.removeAt(1)
     }
+
+    requirements {
+        add {
+            exists("RUST")
+        }
+    }
 }
