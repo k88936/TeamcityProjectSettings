@@ -1,20 +1,23 @@
 package Gold.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.cargo
 
 object Gold_BuildLinux : BuildType({
     name = "Build_linux"
+
+    artifactRules = "target/release/gold"
 
     vcs {
         root(Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain)
     }
 
     steps {
-        step {
+        cargo {
             id = "cargo"
-            type = "cargo"
-            param("cargo-command", "build")
-            param("cargo-build-release", "true")
+            command = build {
+                release = true
+            }
         }
     }
 
