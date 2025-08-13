@@ -18,7 +18,6 @@ object Fernflower_Build : BuildType({
         gradle {
             id = "gradle_runner"
             tasks = "clean build"
-            gradleWrapperPath = ""
         }
     }
 

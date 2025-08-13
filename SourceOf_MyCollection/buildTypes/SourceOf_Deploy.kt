@@ -7,12 +7,10 @@ import _Self.utils.DeploymentBuilders
 
 object SourceOf_Deploy : BuildType({
 
-    DeploymentBuilders.createGitPushDeployment()(this)
-
-    vcs {
-        root(SourceOf_MyCollection.vcsRoots.SourceOf_MyCollection_GitGithubComK88936myCollectionGitRefsHeadsMain)
+    DeploymentBuilders.createGitPushDeployment(
+        vcsRoot = SourceOf_MyCollection.vcsRoots.SourceOf_MyCollection_GitGithubComK88936myCollectionGitRefsHeadsMain,
         cleanCheckout = true
-    }
+    )(this)
 
     triggers {
         finishBuildTrigger {
