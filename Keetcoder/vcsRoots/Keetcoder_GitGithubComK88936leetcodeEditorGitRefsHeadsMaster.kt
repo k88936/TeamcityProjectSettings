@@ -1,8 +1,8 @@
-package LeetcodeEditor.vcsRoots
+package Keetcoder.vcsRoots
 
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
-object LeetcodeEditor_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster : GitVcsRoot({
+object Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster : GitVcsRoot({
     name = "git@github.com:k88936/leetcode-editor.git#refs/heads/master"
     url = "git@github.com:k88936/leetcode-editor.git"
     branch = "refs/heads/master"

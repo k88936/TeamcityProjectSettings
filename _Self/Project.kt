@@ -23,7 +23,7 @@ object Project : Project({
     subProject(Gold.Project)
     subProject(SourceOf.Project)
     subProject(Fernflower.Project)
-    subProject(LeetcodeEditor.Project)
+    subProject(Keetcoder.Project)
     subProject(Shotmd.Project)
     subProject(Bubble.Project)
 })
