@@ -20,7 +20,7 @@ object Gold_BuildWin : BuildType({
     }
 
     requirements {
-        exists("env.PLATFORM_LINUX")
+        exists("env.PLATFORM_WIN")
     }
 
 })
