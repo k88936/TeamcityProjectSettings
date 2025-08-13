@@ -9,6 +9,6 @@ object LeetcodeEditor_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster : GitVc
     branch = "refs/heads/master"
     branchSpec = "refs/heads/*"
     authMethod = uploadedKey {
-        uploadedKey = "k99836 github"
+        uploadedKey = "id_rsa"
     }
 })

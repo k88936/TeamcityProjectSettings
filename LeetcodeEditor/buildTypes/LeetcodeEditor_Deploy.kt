@@ -1,28 +1,18 @@
 package LeetcodeEditor.buildTypes
 
+import LeetcodeEditor.vcsRoots.LeetcodeEditor_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import _Self.utils.DeploymentBuilders
 
 object LeetcodeEditor_Deploy : BuildType({
-    name = "Deploy"
-
-    enablePersonalBuilds = false
-    type = BuildTypeSettings.Type.DEPLOYMENT
-    maxRunningBuilds = 1
-
-    params {
-    }
+    ->
+    DeploymentBuilders.createGithubReleaseDeployment(
+        assetsPath = "_deploy/*"
+    )(this)
 
     vcs {
-        root(LeetcodeEditor.vcsRoots.LeetcodeEditor_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster)
-    }
-
-    steps {
-        script {
-            id = "simpleRunner"
-            scriptContent = "gh release create build-%build.number% --generate-notes _deploy/*"
-        }
+        root(LeetcodeEditor_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster)
     }
 
     triggers {
@@ -36,7 +26,7 @@ object LeetcodeEditor_Deploy : BuildType({
         artifacts(LeetcodeEditor_Build) {
             buildRule = lastSuccessful()
             cleanDestination = true
-            artifactRules = "*.zip=>_deploy/"
+            artifactRules = "*=>_deploy/"
         }
     }
 })

@@ -9,6 +9,6 @@ object SourceOf_MyCollection_GitGithubComK88936myCollectionGitRefsHeadsMain : Gi
     branch = "refs/heads/main"
     branchSpec = "refs/heads/*"
     authMethod = uploadedKey {
-        uploadedKey = "k99836 github"
+        uploadedKey = "id_rsa"
     }
 })

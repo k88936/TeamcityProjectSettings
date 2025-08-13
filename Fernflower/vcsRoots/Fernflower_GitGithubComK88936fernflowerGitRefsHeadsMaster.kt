@@ -9,6 +9,6 @@ object Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster : GitVcsRoot({
     branch = "refs/heads/master"
     branchSpec = "refs/heads/*"
     authMethod = uploadedKey {
-        uploadedKey = "k99836 github"
+        uploadedKey = "id_rsa"
     }
 })

@@ -1,39 +1,33 @@
 package Shotmd.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import _Self.utils.DeploymentBuilders
 
 object Shotmd_Deploy : BuildType({
+    id("Shotmd_Deploy")
     name = "Deploy"
+    description = "Deploys Shotmd application via GitHub Release"
 
-    enablePersonalBuilds = false
-    type = BuildTypeSettings.Type.DEPLOYMENT
-    maxRunningBuilds = 1
 
+    DeploymentBuilders.createGithubReleaseDeployment(
+        assetsPath = "_deploy/*",
+    )(this)
+    
     vcs {
         root(Shotmd.vcsRoots.Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster)
     }
-
-    steps {
-        script {
-            name = "New build step"
-            id = "simpleRunner_1"
-            scriptContent = "gh release create v%build.number% --generate-notes ghrelease/*"
-        }
-    }
-
+    
     triggers {
         finishBuildTrigger {
             buildType = "${Shotmd_Build.id}"
             successfulOnly = true
         }
     }
-
     dependencies {
         artifacts(Shotmd_Build) {
             buildRule = lastSuccessful()
-            artifactRules = "Shotmd.zip=>ghrelease/"
+            artifactRules = "Shotmd.zip=>_deploy/"
         }
     }
 })

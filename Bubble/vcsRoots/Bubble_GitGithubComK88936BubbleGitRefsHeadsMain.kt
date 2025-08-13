@@ -10,6 +10,6 @@ object Bubble_GitGithubComK88936BubbleGitRefsHeadsMain : GitVcsRoot({
     branchSpec = "refs/heads/*"
     agentCleanFilesPolicy = GitVcsRoot.AgentCleanFilesPolicy.IGNORED_ONLY
     authMethod = uploadedKey {
-        uploadedKey = "k99836 github"
+        uploadedKey = "id_rsa"
     }
 })

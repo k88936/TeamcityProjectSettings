@@ -54,6 +54,7 @@ object Bubble_Build : BuildType({
     }
 
     requirements {
-        exists("env.UNITY_WIN_INSTALL")
+        exists("env.UNITY")
+        exists("env.PLATFORM_WIN")
     }
 })

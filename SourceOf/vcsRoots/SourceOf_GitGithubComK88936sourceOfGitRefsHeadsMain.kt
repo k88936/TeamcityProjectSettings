@@ -9,6 +9,6 @@ object SourceOf_GitGithubComK88936sourceOfGitRefsHeadsMain : GitVcsRoot({
     branch = "refs/heads/main"
     branchSpec = "refs/heads/*"
     authMethod = uploadedKey {
-        uploadedKey = "k99836 github"
+        uploadedKey = "id_rsa"
     }
 })

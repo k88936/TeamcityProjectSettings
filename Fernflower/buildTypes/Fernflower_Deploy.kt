@@ -3,25 +3,17 @@ package Fernflower.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import _Self.utils.DeploymentBuilders
 
 object Fernflower_Deploy : BuildType({
-    name = "Deploy"
-
-    enablePersonalBuilds = false
-    type = BuildTypeSettings.Type.DEPLOYMENT
-    maxRunningBuilds = 1
-
+    DeploymentBuilders.createGithubReleaseDeployment(
+        assetsPath = "_deploy/*"
+    )(this)
+    
     vcs {
         root(Fernflower.vcsRoots.Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster)
     }
-
-    steps {
-        script {
-            id = "simpleRunner"
-            scriptContent = "gh release create v%build.number% --generate-notes ghrelease/*"
-        }
-    }
-
+    
     triggers {
         finishBuildTrigger {
             buildType = "${Fernflower_Build.id}"
@@ -32,7 +24,7 @@ object Fernflower_Deploy : BuildType({
     dependencies {
         artifacts(Fernflower_Build) {
             buildRule = lastSuccessful()
-            artifactRules = "*.jar=>ghrelease/"
+            artifactRules = "*=>_deploy/"
         }
     }
 })

@@ -9,6 +9,6 @@ object Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster : GitVcsRoot({
     branch = "refs/heads/master"
     branchSpec = "refs/heads/*"
     authMethod = uploadedKey {
-        uploadedKey = "k99836 github"
+        uploadedKey = "id_rsa"
     }
 })
