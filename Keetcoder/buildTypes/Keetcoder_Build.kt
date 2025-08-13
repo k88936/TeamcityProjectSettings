@@ -18,9 +18,9 @@ object Keetcoder_Build : BuildType({
     steps {
         gradle {
             id = "gradle_runner"
-            tasks = "buildDependents"
+            tasks = "buildPlugin"
             incremental = true
-            jdkHome = "%env.JDK_21_0%"
+            jdkHome = "%env.JDK_17_0%"
         }
     }
 
