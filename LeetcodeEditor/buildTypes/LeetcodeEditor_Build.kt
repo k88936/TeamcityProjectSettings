@@ -18,8 +18,9 @@ object LeetcodeEditor_Build : BuildType({
     steps {
         gradle {
             id = "gradle_runner"
-            tasks = "clean buildPlugin"
-            jdkHome = "%env.JDK_17_0%"
+            tasks = "buildDependents"
+            incremental = true
+            jdkHome = "%env.JDK_21_0%"
         }
     }
 
