@@ -47,6 +47,6 @@ object Shotmd_Build : BuildType({
 
     requirements {
         exists("env.QT")
-        exists("env.WIN")
+        exists("env.PLATFORM_WIN")
     }
 })
