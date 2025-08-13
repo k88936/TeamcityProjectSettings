@@ -22,6 +22,7 @@ object Project : Project({
 
     subProject(Gold.Project)
     subProject(SourceOf.Project)
+    subProject(UnityProjects.Project)
     subProject(Fernflower.Project)
     subProject(LeetcodeEditor.Project)
     subProject(Shotmd.Project)
