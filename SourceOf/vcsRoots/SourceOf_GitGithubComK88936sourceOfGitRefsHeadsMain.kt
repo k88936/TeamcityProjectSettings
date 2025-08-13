@@ -1,6 +1,5 @@
 package SourceOf.vcsRoots
 
-import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 object SourceOf_GitGithubComK88936sourceOfGitRefsHeadsMain : GitVcsRoot({

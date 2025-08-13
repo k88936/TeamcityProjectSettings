@@ -39,4 +39,7 @@ object SourceOf_Build : BuildType({
         perfmon {
         }
     }
+    requirements{
+        exists("env.JS")
+    }
 })

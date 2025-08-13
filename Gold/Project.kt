@@ -2,7 +2,6 @@ package Gold
 
 import Gold.buildTypes.*
 import Gold.vcsRoots.*
-import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.Project
 
 object Project : Project({

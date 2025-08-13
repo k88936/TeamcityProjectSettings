@@ -1,6 +1,5 @@
 package Bubble.vcsRoots
 
-import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 object Bubble_GitGithubComK88936BubbleGitRefsHeadsMain : GitVcsRoot({

@@ -1,7 +1,6 @@
 package Fernflower.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import _Self.utils.DeploymentBuilders
 

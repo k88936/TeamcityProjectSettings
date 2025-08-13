@@ -1,6 +1,5 @@
 package LeetcodeEditor.vcsRoots
 
-import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 object LeetcodeEditor_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster : GitVcsRoot({

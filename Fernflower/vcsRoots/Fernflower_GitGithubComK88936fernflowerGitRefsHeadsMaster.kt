@@ -1,6 +1,5 @@
 package Fernflower.vcsRoots
 
-import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 object Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster : GitVcsRoot({
