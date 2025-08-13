@@ -7,5 +7,4 @@ object Project : Project({
     id("UnityProjects")
     name = "UnityProjects"
 
-    subProject(Bubble.Project)
 })
