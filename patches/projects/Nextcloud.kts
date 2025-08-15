@@ -2,6 +2,7 @@ package patches.projects
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.Project
+import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -12,5 +13,13 @@ in the root project, and delete the patch script.
 create(DslContext.projectId, Project({
     id("Nextcloud")
     name = "Nextcloud"
+
+    features {
+        dockerRegistry {
+            id = "PROJECT_EXT_3"
+            name = "Docker Registry"
+            url = "http://10te47kl27611.vicp.fun:5000"
+        }
+    }
 }))
 
