@@ -42,7 +42,7 @@ create(RelativeId("Nextcloud"), BuildType({
         dockerCommand {
             id = "DockerCommand_1"
             commandType = push {
-                namesAndTags = "kvtodev:nextcloud"
+                namesAndTags = "kvtodev/nextcloud:latest"
             }
         }
     }
