@@ -50,6 +50,8 @@ object SourceOf_Build : BuildType({
     }
 
     requirements {
-        exists("env.JS")
+        exists("env.JS", "RQ_1")
     }
+    
+    disableSettings("RQ_1")
 })
