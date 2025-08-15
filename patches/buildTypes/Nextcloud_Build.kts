@@ -36,7 +36,7 @@ create(RelativeId("Nextcloud"), BuildType({
                 source = file {
                     path = "31/apache/Dockerfile"
                 }
-                namesAndTags = "kvtodev:nextcloud"
+                namesAndTags = "kvtodev/nextcloud:latest"
             }
         }
         dockerCommand {
