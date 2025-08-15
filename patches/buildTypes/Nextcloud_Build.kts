@@ -39,6 +39,12 @@ create(RelativeId("Nextcloud"), BuildType({
                 namesAndTags = "kvtodev:nextcloud"
             }
         }
+        dockerCommand {
+            id = "DockerCommand_1"
+            commandType = push {
+                namesAndTags = "kvtodev:nextcloud"
+            }
+        }
     }
 
     triggers {
