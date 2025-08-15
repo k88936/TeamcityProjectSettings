@@ -25,6 +25,7 @@ object SourceOf_Build : BuildType({
     steps {
         exec {
             id = "simpleRunner"
+            enabled = false
             path = "npm"
             arguments = "run build"
         }
@@ -39,7 +40,8 @@ object SourceOf_Build : BuildType({
         perfmon {
         }
     }
-    requirements{
+
+    requirements {
         exists("env.JS")
     }
 })
