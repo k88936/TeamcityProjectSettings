@@ -43,6 +43,7 @@ create(RelativeId("Nextcloud"), BuildType({
             id = "DockerCommand_1"
             commandType = push {
                 namesAndTags = "kvtodev/nextcloud:latest"
+                removeImageAfterPush = false
             }
         }
     }
