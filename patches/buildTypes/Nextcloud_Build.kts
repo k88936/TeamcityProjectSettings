@@ -22,14 +22,6 @@ create(RelativeId("Nextcloud"), BuildType({
     }
 
     steps {
-        dockerCommand {
-            id = "DockerCommand"
-            commandType = build {
-                source = file {
-                    path = "31/apache/Dockerfile"
-                }
-            }
-        }
         script {
             id = "simpleRunner"
             scriptContent = "./generate-stackbrew-library.sh"
@@ -37,6 +29,14 @@ create(RelativeId("Nextcloud"), BuildType({
         script {
             id = "simpleRunner_1"
             scriptContent = "./update.sh"
+        }
+        dockerCommand {
+            id = "DockerCommand"
+            commandType = build {
+                source = file {
+                    path = "31/apache/Dockerfile"
+                }
+            }
         }
     }
 
