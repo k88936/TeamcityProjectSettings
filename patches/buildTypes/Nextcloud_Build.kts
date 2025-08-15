@@ -3,6 +3,8 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.*
 
@@ -17,6 +19,25 @@ create(RelativeId("Nextcloud"), BuildType({
 
     vcs {
         root(RelativeId("Nextcloud_GitGithubComK88936nextcloudGitRefsHeadsMaster"))
+    }
+
+    steps {
+        dockerCommand {
+            id = "DockerCommand"
+            commandType = build {
+                source = file {
+                    path = "31/apache/Dockerfile"
+                }
+            }
+        }
+        script {
+            id = "simpleRunner"
+            scriptContent = "./generate-stackbrew-library.sh"
+        }
+        script {
+            id = "simpleRunner_1"
+            scriptContent = "./update.sh"
+        }
     }
 
     triggers {
