@@ -32,7 +32,10 @@ object SourceOf_Build : BuildType({
         }
         nodeJS {
             id = "nodejs_runner"
-            shellScript = "npm install"
+            shellScript = """
+                npm install
+                npm run build
+            """.trimIndent()
         }
     }
 
