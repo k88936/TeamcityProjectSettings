@@ -32,10 +32,12 @@ create(RelativeId("Nextcloud"), BuildType({
         }
         dockerCommand {
             id = "DockerCommand"
-            commandType = push {
+            commandType = build {
+                source = file {
+                    path = "31/apache/Dockerfile"
+                }
                 namesAndTags = "kvtodev:nextcloud"
             }
-            param("dockerfile.path", "31/apache/Dockerfile")
         }
     }
 
