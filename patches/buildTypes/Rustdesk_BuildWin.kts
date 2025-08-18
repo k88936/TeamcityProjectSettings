@@ -26,5 +26,9 @@ create(RelativeId("Rustdesk"), BuildType({
             }
         }
     }
+
+    requirements {
+        exists("env.PLATFORM_LINUX")
+    }
 }))
 
