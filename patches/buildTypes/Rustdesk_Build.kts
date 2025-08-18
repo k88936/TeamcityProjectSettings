@@ -38,5 +38,9 @@ create(RelativeId("Rustdesk"), BuildType({
         perfmon {
         }
     }
+
+    requirements {
+        exists("env.PLATFORM_LINUX")
+    }
 }))
 
