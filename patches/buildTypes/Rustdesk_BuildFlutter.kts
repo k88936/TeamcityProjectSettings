@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -15,6 +16,13 @@ create(RelativeId("Rustdesk"), BuildType({
 
     vcs {
         root(RelativeId("Rustdesk_GitGithubComK88936rustdeskGitRefsHeadsMaster"))
+    }
+
+    steps {
+        script {
+            id = "simpleRunner"
+            scriptContent = "cd flutter && flutter build android"
+        }
     }
 }))
 
