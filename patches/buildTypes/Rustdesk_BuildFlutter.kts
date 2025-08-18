@@ -12,5 +12,9 @@ in the project with id = 'Rustdesk', and delete the patch script.
 create(RelativeId("Rustdesk"), BuildType({
     id("Rustdesk_BuildFlutter")
     name = "Build_flutter"
+
+    vcs {
+        root(RelativeId("Rustdesk_GitGithubComK88936rustdeskGitRefsHeadsMaster"))
+    }
 }))
 
