@@ -24,5 +24,9 @@ create(RelativeId("Rustdesk"), BuildType({
             scriptContent = "cd flutter && flutter build android"
         }
     }
+
+    requirements {
+        exists("env.FLUTTER")
+    }
 }))
 
