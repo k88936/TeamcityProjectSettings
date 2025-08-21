@@ -26,4 +26,6 @@ object Project : Project({
     subProject(Keetcoder.Project)
     subProject(Shotmd.Project)
     subProject(Bubble.Project)
+    subProject(GithubPage.Project)
+    subProject(Nextcloud.Project)
 })

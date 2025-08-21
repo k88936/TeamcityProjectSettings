@@ -92,6 +92,23 @@ object DeploymentBuilders {
     }
 
     /**
+     * 创建一个Git推送构建步骤
+     */
+    fun createGitPushStep(): BuildSteps.() -> Unit {
+        return {
+            script {
+                this.name = "Git Push Changes"
+                id = "git_push"
+                this.scriptContent = """
+                    git add -A
+                    git commit -m"update"
+                    git push --force
+                """.trimIndent()
+            }
+        }
+    }
+
+    /**
      * 创建一个Git推送部署构建类型
      */
     fun createGitPushDeployment(
@@ -114,15 +131,7 @@ object DeploymentBuilders {
             }
 
             steps {
-                script {
-                    this.name = "Git Push Changes"
-                    id = "git_push"
-                    this.scriptContent = """
-                        git add -A
-                        git commit -m"update"
-                        git push --force
-                    """.trimIndent()
-                }
+                createGitPushStep()(this)
             }
         }
     }
