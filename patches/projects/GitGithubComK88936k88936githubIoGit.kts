@@ -11,6 +11,6 @@ in the root project, and delete the patch script.
 */
 create(DslContext.projectId, Project({
     id("GitGithubComK88936k88936githubIoGit")
-    name = "git@github.com:k88936/k88936.github.io.git"
+    name = "GithubPage"
 }))
 
