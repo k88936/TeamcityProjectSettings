@@ -12,5 +12,9 @@ in the project with id = 'GitGithubComK88936k88936githubIoGit', and delete the p
 create(RelativeId("GitGithubComK88936k88936githubIoGit"), BuildType({
     id("GitGithubComK88936k88936githubIoGit_Build")
     name = "Build"
+
+    vcs {
+        root(RelativeId("GitGithubComK88936k88936githubIoGit_GitGithubComK88936k88936githubIoGit"))
+    }
 }))
 
