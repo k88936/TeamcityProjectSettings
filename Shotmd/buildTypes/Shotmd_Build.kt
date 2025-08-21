@@ -8,7 +8,7 @@ import _Self.utils.DeploymentBuilders
 object Shotmd_Build : BuildType({
     DeploymentBuilders.createQtWindowsBuild(
         name = "Build",
-        qtInstallPath = "C:/Qt/6.9.1/msvc2022_64",
+        qtInstallPath = "C:\\Qt\\6.9.1\\msvc2022_64",
         buildConfig = "Release",
         executableName = "Shotmd"
     )(this)
