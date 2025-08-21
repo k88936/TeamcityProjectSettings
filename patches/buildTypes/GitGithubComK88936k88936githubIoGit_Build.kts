@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -15,6 +16,13 @@ create(RelativeId("GitGithubComK88936k88936githubIoGit"), BuildType({
 
     vcs {
         root(RelativeId("GitGithubComK88936k88936githubIoGit_GitGithubComK88936k88936githubIoGit"))
+    }
+
+    steps {
+        script {
+            id = "simpleRunner"
+            scriptContent = "sh build.sh"
+        }
     }
 }))
 
