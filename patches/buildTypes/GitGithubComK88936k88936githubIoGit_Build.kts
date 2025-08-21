@@ -24,5 +24,9 @@ create(RelativeId("GitGithubComK88936k88936githubIoGit"), BuildType({
             scriptContent = "sh build.sh"
         }
     }
+
+    requirements {
+        exists("env.PLATFORM_LINUX")
+    }
 }))
 
