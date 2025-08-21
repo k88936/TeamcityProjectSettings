@@ -6,7 +6,7 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object GithubPage_Build : BuildType({
-    id("GitGithubComK88936k88936githubIoGit_Build")
+    id("GithubPage_Build")
     name = "Build"
 
     vcs {
@@ -19,7 +19,7 @@ object GithubPage_Build : BuildType({
             scriptContent = "sh build.sh"
         }
 
-        DeploymentBuilders.createGitPushStep()
+        DeploymentBuilders.createGitPushStep()(this)
     }
 
     requirements {

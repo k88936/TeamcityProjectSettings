@@ -43,12 +43,10 @@ object Nextcloud_Build : BuildType({
     }
 
     triggers {
-        vcs {
-        }
+        vcs {}
     }
 
     features {
-        perfmon {
-        }
+        perfmon {}
     }
 })

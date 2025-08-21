@@ -12,6 +12,8 @@ object Project : Project({
 
     vcsRoot(Nextcloud_GitGithubComK88936nextcloudGitRefsHeadsMaster)
 
+    buildType(Nextcloud_Build)
+
     features {
         dockerRegistry {
             id = "PROJECT_EXT_3"

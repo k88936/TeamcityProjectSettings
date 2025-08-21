@@ -2,7 +2,6 @@ package GithubPage
 
 import GithubPage.buildTypes.*
 import GithubPage.vcsRoots.*
-import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.Project
 
 object Project : Project({
