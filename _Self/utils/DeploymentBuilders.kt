@@ -55,7 +55,7 @@ object DeploymentBuilders {
      */
     fun createGithubReleaseDeployment(
         name: String = "Deploy",
-        tagPattern: String = "build-%build.number%",
+        tagPattern: String = "v%build.number%",
         generateNotes: Boolean = true,
         notes: String? = null,
         assetsPath: String = "*"
