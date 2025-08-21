@@ -32,13 +32,19 @@ object DeploymentBuilders {
                             call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
                             cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=%env.QT_INSTALL%\lib\cmake\Qt6\qt.toolchain.cmake -G Ninja 
                             cmake --build build --config $buildConfig
+                        """.trimIndent()
+                }
+                script {
+                    id = "package_qt"
+                    scriptContent = """
+                    
                             rm -r build\${executableName}
                             mkdir build\${executableName}
                             cp build\${executableName}.exe build\${executableName}
                             %env.QT_INSTALL%\bin\windeployqt.exe build\${executableName}\${executableName}.exe
                             cd build
                             7z a ${executableName}.zip ${executableName}\
-                        """.trimIndent()
+                """.trimIndent()
                 }
             }
 
