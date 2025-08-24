@@ -1,5 +1,6 @@
 package _Self
 
+import Blogs.buildTypes.Blogs_Build
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.projectFeatures.buildReportTab
 
@@ -28,4 +29,5 @@ object Project : Project({
     subProject(Bubble.Project)
     subProject(GithubPage.Project)
     subProject(Nextcloud.Project)
+    subProject(Blogs.Project)
 })

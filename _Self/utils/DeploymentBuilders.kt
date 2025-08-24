@@ -94,14 +94,14 @@ object DeploymentBuilders {
     /**
      * 创建一个Git推送构建步骤
      */
-    fun createGitPushStep(): BuildSteps.() -> Unit {
+    fun createGitPushStep(comment: String = "update"): BuildSteps.() -> Unit {
         return {
             script {
                 this.name = "Git Push Changes"
                 id = "git_push"
                 this.scriptContent = """
                     git add -A
-                    git commit -m"update"
+                    git commit -m"$comment"
                     git push --force
                 """.trimIndent()
             }
