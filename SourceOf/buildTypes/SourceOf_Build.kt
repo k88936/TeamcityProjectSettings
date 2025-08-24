@@ -5,6 +5,7 @@ import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.exec
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
+import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object SourceOf_Build : BuildType({
@@ -38,6 +39,10 @@ object SourceOf_Build : BuildType({
 
     triggers {
         vcs {
+        }
+        schedule {
+            triggerBuild = always()
+            withPendingChangesOnly = false
         }
     }
 

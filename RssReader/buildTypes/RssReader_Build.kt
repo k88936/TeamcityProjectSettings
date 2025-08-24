@@ -4,6 +4,7 @@ import _Self.utils.DeploymentBuilders
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
+import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object RssReader_Build : BuildType({
@@ -28,6 +29,10 @@ object RssReader_Build : BuildType({
 
     triggers {
         vcs {
+        }
+        schedule {
+            triggerBuild = always()
+            withPendingChangesOnly = false
         }
     }
 
