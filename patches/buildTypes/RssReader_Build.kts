@@ -19,6 +19,7 @@ changeBuildType(RelativeId("RssReader_Build")) {
         add {
             schedule {
                 triggerBuild = always()
+                withPendingChangesOnly = false
             }
         }
     }
