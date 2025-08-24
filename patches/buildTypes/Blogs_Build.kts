@@ -36,5 +36,9 @@ create(RelativeId("Blogs"), BuildType({
         perfmon {
         }
     }
+
+    requirements {
+        exists("env.JS")
+    }
 }))
 
