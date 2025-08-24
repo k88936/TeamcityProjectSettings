@@ -3,6 +3,7 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.*
 
@@ -17,6 +18,13 @@ create(RelativeId("Blogs"), BuildType({
 
     vcs {
         root(RelativeId("Blogs_GitGithubComK88936blogsGitRefsHeadsMain"))
+    }
+
+    steps {
+        nodeJS {
+            id = "nodejs_runner"
+            shellScript = "npm ci"
+        }
     }
 
     triggers {
