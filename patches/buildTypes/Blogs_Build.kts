@@ -23,7 +23,7 @@ create(RelativeId("Blogs"), BuildType({
     steps {
         nodeJS {
             id = "nodejs_runner"
-            shellScript = "npm ci"
+            shellScript = "npm run build"
         }
     }
 
