@@ -13,5 +13,4 @@ object Project : Project({
 
     buildType(SourceOf_Build)
 
-    subProject(SourceOf_MyCollection.Project)
 })

@@ -1,5 +1,6 @@
 package SourceOf.buildTypes
 
+import _Self.utils.DeploymentBuilders
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.exec
@@ -24,12 +25,6 @@ object SourceOf_Build : BuildType({
     }
 
     steps {
-        exec {
-            id = "simpleRunner"
-            enabled = false
-            path = "npm"
-            arguments = "run build"
-        }
         nodeJS {
             id = "nodejs_runner"
             shellScript = """
@@ -37,6 +32,8 @@ object SourceOf_Build : BuildType({
                 npm run build
             """.trimIndent()
         }
+        DeploymentBuilders.createGitPushStep("build")
+
     }
 
     triggers {
