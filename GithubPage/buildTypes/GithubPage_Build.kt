@@ -3,6 +3,7 @@ package GithubPage.buildTypes
 import _Self.utils.DeploymentBuilders
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object GithubPage_Build : BuildType({
@@ -14,12 +15,14 @@ object GithubPage_Build : BuildType({
     }
 
     steps {
-        script {
-            id = "simpleRunner"
-            scriptContent = "sh build.sh"
+        nodeJS {
+            id = "nodejs_runner"
+            shellScript = """
+                npm install
+                npm run build
+            """.trimIndent()
         }
-
-        DeploymentBuilders.createGitPushStep()(this)
+        DeploymentBuilders.createGitPushStep("build")(this)
     }
 
     requirements {

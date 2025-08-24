@@ -30,4 +30,5 @@ object Project : Project({
     subProject(GithubPage.Project)
     subProject(Nextcloud.Project)
     subProject(Blogs.Project)
+    subProject(RssReader.Project)
 })
