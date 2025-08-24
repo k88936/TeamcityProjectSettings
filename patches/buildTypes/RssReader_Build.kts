@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.*
 
@@ -13,6 +14,11 @@ changeBuildType(RelativeId("RssReader_Build")) {
     triggers {
         remove {
             vcs {
+            }
+        }
+        add {
+            schedule {
+                triggerBuild = always()
             }
         }
     }
