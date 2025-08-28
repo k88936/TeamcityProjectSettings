@@ -17,7 +17,7 @@ class GithubPageTemplate() : Project() {
         extraBuildConfig: (BuildType) -> Unit = {}
     ) : this() {
         fun format(name: String): String {
-            return name.replace("https?|[:/]".toRegex(), "")
+            return name.replace("https?|[^a-zA-Z0-9]".toRegex(), "")
         }
         val formatedName = format(githubRepo)
         this.name = formatedName
