@@ -1,9 +1,7 @@
 package Shotmd.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
-import _Self.utils.DeploymentBuilders
+import utils.DeploymentBuilders
 
 object Shotmd_Build : BuildType({
     DeploymentBuilders.createQtWindowsBuild(

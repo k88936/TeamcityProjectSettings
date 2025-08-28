@@ -3,7 +3,7 @@ package Keetcoder.buildTypes
 import Keetcoder.vcsRoots.Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
-import _Self.utils.DeploymentBuilders
+import utils.DeploymentBuilders
 
 object Keetcoder_Deploy : BuildType({
     ->

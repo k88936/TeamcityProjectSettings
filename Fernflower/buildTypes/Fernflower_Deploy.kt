@@ -2,7 +2,7 @@ package Fernflower.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
-import _Self.utils.DeploymentBuilders
+import utils.DeploymentBuilders
 
 object Fernflower_Deploy : BuildType({
     DeploymentBuilders.createGithubReleaseDeployment(

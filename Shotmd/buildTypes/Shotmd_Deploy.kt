@@ -2,7 +2,7 @@ package Shotmd.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
-import _Self.utils.DeploymentBuilders
+import utils.DeploymentBuilders
 
 object Shotmd_Deploy : BuildType({
     id("Shotmd_Deploy")

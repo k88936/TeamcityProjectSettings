@@ -1,7 +1,6 @@
 package Blogs.buildTypes
 
-import _Self.utils.DeploymentBuilders
-import jetbrains.buildServer.configs.kotlin.*
+import utils.DeploymentBuilders
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS

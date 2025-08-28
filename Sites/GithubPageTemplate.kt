@@ -1,0 +1,81 @@
+package Sites
+
+import utils.DeploymentBuilders
+import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.Project
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
+import jetbrains.buildServer.configs.kotlin.triggers.schedule
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
+
+class GithubPageTemplate() : Project() {
+
+    constructor(
+        githubRepo: String,
+        extraBuildCommand: String = "",
+        extraBuildConfig: (BuildType) -> Unit = {}
+    ) : this() {
+        fun format(name: String): String {
+            return name.replace("https?|[:/]".toRegex(), "")
+        }
+        val formatedName = format(githubRepo)
+        this.name = formatedName
+        id(formatedName + "_Site")
+        val root = GitVcsRoot {
+            id(formatedName + "_vcsRoot")
+            name = formatedName + "_vcsRoot"
+            url = githubRepo
+            branch = "refs/heads/main"
+            branchSpec = "refs/heads/*"
+            authMethod = uploadedKey {
+                uploadedKey = "id_rsa"
+            }
+        }
+        vcsRoot(root)
+
+        val build = BuildType {
+            id(formatedName+"_Build")
+            name = "Build"
+
+            vcs {
+                root(root)
+            }
+
+            steps {
+                nodeJS {
+                    id = "nodejs_runner"
+                    shellScript =
+                        ("""
+                                    npm install
+                                    npm run build
+                                """
+                                + extraBuildCommand)
+                            .trimIndent()
+                }
+                DeploymentBuilders.createGitPushStep("build pages")(this)
+            }
+
+            triggers {
+                vcs {
+                }
+                schedule {
+                    triggerBuild = always()
+                    withPendingChangesOnly = false
+                }
+            }
+
+            features {
+                perfmon {
+                }
+            }
+
+            requirements {
+                exists("env.JS")
+            }
+        }
+
+        extraBuildConfig(build)
+        buildType(build)
+    }
+}
