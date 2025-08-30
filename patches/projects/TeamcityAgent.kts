@@ -2,6 +2,7 @@ package patches.projects
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.Project
+import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -12,5 +13,14 @@ in the root project, and delete the patch script.
 create(DslContext.projectId, Project({
     id("TeamcityAgent")
     name = "Teamcity Agent"
+
+    features {
+        dockerRegistry {
+            id = "PROJECT_EXT_4"
+            name = "Docker Registry"
+            userName = "kvtodev"
+            password = "credentialsJSON:a43b4956-2b9e-457c-bf3c-6e04db2adc38"
+        }
+    }
 }))
 
