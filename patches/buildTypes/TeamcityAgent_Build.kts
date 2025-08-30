@@ -27,6 +27,7 @@ create(RelativeId("TeamcityAgent"), BuildType({
                 source = file {
                     path = "Dockerfile"
                 }
+                namesAndTags = "kvtodev/teamcity-agent"
             }
         }
     }
