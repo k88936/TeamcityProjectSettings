@@ -30,6 +30,12 @@ create(RelativeId("TeamcityAgent"), BuildType({
                 namesAndTags = "kvtodev/teamcity-agent"
             }
         }
+        dockerCommand {
+            id = "DockerCommand_1"
+            commandType = push {
+                namesAndTags = "kvtodev/teamcity-agent"
+            }
+        }
     }
 
     triggers {
