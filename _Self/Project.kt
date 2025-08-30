@@ -27,4 +27,5 @@ object Project : Project({
     subProject(Bubble.Project)
     subProject(Nextcloud.Project)
     subProject(Sites.Projects)
+    subProject(TeamcityAgent.Project)
 })
