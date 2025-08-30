@@ -71,7 +71,6 @@ class GithubPageTemplate() : Project() {
             }
 
             requirements {
-                exists("env.JS")
             }
         }
 
