@@ -97,6 +97,8 @@ object DeploymentBuilders {
                 this.name = "Git Push Changes"
                 id = "git_push"
                 this.scriptContent = """
+                    git config user.email "teamcity@kvto.dev"
+                    git config user.name "teamcity"
                     git add -A
                     git commit -m"$comment"
                     git push --force
