@@ -10,7 +10,7 @@ object Projects : Project({
     subProject(GithubPageTemplate("git@github.com:k88936/rss-reader", "npm run fetch-feeds"))
     subProject(GithubPageTemplate("git@github.com:k88936/k88936.github.io.git"))
     subProject(GithubPageTemplate("git@github.com:k88936/source-of.git") {
-        params {
+        it.params {
             password("env.AWS_SECRET_KEY", "credentialsJSON:6d9f4af1-89b3-41a3-9bcc-fde1bdd8e7f9")
             param("env.S3_BUCKET_NAME", "software-release")
             param("env.S3_ENDPOINT", "http://10te47kl27611.vicp.fun:19000")

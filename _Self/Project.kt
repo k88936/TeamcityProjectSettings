@@ -7,11 +7,6 @@ object Project : Project({
     description = "Contains all other projects"
 
     features {
-        buildReportTab {
-            id = "PROJECT_EXT_1"
-            title = "Code Coverage"
-            startPage = "coverage.zip!index.html"
-        }
     }
 
     cleanup {
