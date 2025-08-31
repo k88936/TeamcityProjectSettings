@@ -18,7 +18,7 @@ object Project : Project({
         dockerRegistry {
             id = "PROJECT_EXT_3"
             name = "Docker Registry"
-            url = "https://index.docker.io/v1/"
+            url = "https://index.docker.io"
             userName = "kvtodev"
             password = "credentialsJSON:a43b4956-2b9e-457c-bf3c-6e04db2adc38"
         }
