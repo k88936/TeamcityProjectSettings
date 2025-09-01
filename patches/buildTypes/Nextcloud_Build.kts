@@ -1,6 +1,8 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerRegistryConnections
+import jetbrains.buildServer.configs.kotlin.buildSteps.DockerCommandStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
@@ -40,5 +42,35 @@ changeBuildType(RelativeId("Nextcloud_Build")) {
     steps {
         items.removeAt(0)
         items.removeAt(0)
+        update<DockerCommandStep>(0) {
+            clearConditions()
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                contextDir = ""
+                platform = DockerCommandStep.ImagePlatform.Any
+                namesAndTags = "kvtodev/nextcloud:latest"
+                commandArgs = ""
+            }
+        }
+        update<DockerCommandStep>(1) {
+            clearConditions()
+            commandType = push {
+                namesAndTags = "kvtodev/nextcloud"
+                removeImageAfterPush = false
+                commandArgs = ""
+            }
+        }
+    }
+
+    features {
+        add {
+            dockerRegistryConnections {
+                loginToRegistry = on {
+                    dockerRegistryId = "PROJECT_EXT_3"
+                }
+            }
+        }
     }
 }
