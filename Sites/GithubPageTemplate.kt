@@ -4,6 +4,7 @@ import utils.DeploymentBuilders
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -19,6 +20,7 @@ class GithubPageTemplate() : Project() {
         fun format(name: String): String {
             return name.replace("https?|[^a-zA-Z0-9]".toRegex(), "")
         }
+
         val formatedName = format(githubRepo)
         this.name = formatedName
         id(formatedName + "_Site")
@@ -35,7 +37,7 @@ class GithubPageTemplate() : Project() {
         vcsRoot(root)
 
         val build = BuildType {
-            id(formatedName+"_Build")
+            id(formatedName + "_Build")
             name = "Build"
 
             vcs {
@@ -64,6 +66,11 @@ class GithubPageTemplate() : Project() {
             }
 
             features {
+                sshAgent {
+                    teamcitySshKey = "id_rsa"
+
+
+                }
                 perfmon {
                 }
             }
