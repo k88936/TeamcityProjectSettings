@@ -45,6 +45,7 @@ changeBuildType(RelativeId("gitgithubcomk88936k88936githubiogit_Build")) {
         insert(2) {
             script {
                 id = "simpleRunner"
+                enabled = false
                 scriptContent = """
                     git config --get core.sshCommand
                     echo ${'$'}GIT_SSH_COMMAND
