@@ -2,6 +2,7 @@ package TeamcityAgent.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerRegistryConnections
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -39,6 +40,11 @@ object TeamcityAgent_Build : BuildType({
 
     features {
         perfmon {
+        }
+        dockerRegistryConnections {
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_4"
+            }
         }
     }
 })
