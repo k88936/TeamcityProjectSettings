@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerRegistryConnections
 import jetbrains.buildServer.configs.kotlin.buildSteps.DockerCommandStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
@@ -59,6 +60,16 @@ changeBuildType(RelativeId("Nextcloud_Build")) {
                 namesAndTags = "kvtodev/nextcloud"
                 removeImageAfterPush = false
                 commandArgs = ""
+            }
+        }
+    }
+
+    features {
+        add {
+            dockerRegistryConnections {
+                loginToRegistry = on {
+                    dockerRegistryId = "PROJECT_EXT_3"
+                }
             }
         }
     }
