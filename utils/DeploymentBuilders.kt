@@ -1,6 +1,8 @@
 package utils
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object DeploymentBuilders {
@@ -99,6 +101,7 @@ object DeploymentBuilders {
                 this.scriptContent = """
                     git config user.email "teamcity@kvto.dev"
                     git config user.name "teamcity"
+                    git config --unset core.sshCommand
                     git add -A
                     git commit -m"$comment"
                     git push --force
@@ -131,6 +134,13 @@ object DeploymentBuilders {
 
             steps {
                 createGitPushStep()(this)
+            }
+            features {
+                sshAgent {
+                    teamcitySshKey = "id_rsa"
+                }
+                perfmon {
+                }
             }
         }
     }
