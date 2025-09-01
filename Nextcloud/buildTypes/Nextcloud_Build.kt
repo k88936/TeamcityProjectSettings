@@ -2,6 +2,7 @@ package Nextcloud.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerRegistryConnections
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
@@ -16,28 +17,24 @@ object Nextcloud_Build : BuildType({
     }
 
     steps {
-        script {
-            id = "simpleRunner"
-            scriptContent = "./generate-stackbrew-library.sh"
-        }
-        script {
-            id = "simpleRunner_1"
-            scriptContent = "./update.sh"
-        }
         dockerCommand {
             id = "DockerCommand"
             commandType = build {
                 source = file {
-                    path = "31/apache/Dockerfile"
+                    path = "Dockerfile"
                 }
-                namesAndTags = "kvtodev/nextcloud:latest"
+                contextDir = ""
+                platform = jetbrains.buildServer.configs.kotlin.buildSteps.DockerCommandStep.ImagePlatform.Any
+                namesAndTags = "kvtodev/nextcloud"
+                commandArgs = ""
             }
         }
         dockerCommand {
             id = "DockerCommand_1"
             commandType = push {
-                namesAndTags = "kvtodev/nextcloud:latest"
+                namesAndTags = "kvtodev/nextcloud"
                 removeImageAfterPush = false
+                commandArgs = ""
             }
         }
     }
@@ -48,5 +45,10 @@ object Nextcloud_Build : BuildType({
 
     features {
         perfmon {}
+        dockerRegistryConnections {
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_3"
+            }
+        }
     }
 })

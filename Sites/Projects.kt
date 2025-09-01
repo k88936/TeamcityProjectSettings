@@ -11,11 +11,11 @@ object Projects : Project({
     subProject(GithubPageTemplate("git@github.com:k88936/k88936.github.io.git"))
     subProject(GithubPageTemplate("git@github.com:k88936/source-of.git") {
         it.params {
-            password("env.S3_SECRET_KEY", "credentialsJSON:6d9f4af1-89b3-41a3-9bcc-fde1bdd8e7f9")
+            password("env.S3_SECRET_KEY", "credentialsJSON:486eb30c-545f-49f3-b1b8-e4a07c95456a")
             param("env.S3_BUCKET_NAME", "software-release")
             param("env.S3_ENDPOINT", "http://10te47kl27611.vicp.fun:19000")
             param("env.AWS_REGION", "us-east-1")
-            password("env.S3_ACCESS_KEY", "credentialsJSON:e2bf46ef-fcae-472d-a934-117a88db5241")
+            password("env.S3_ACCESS_KEY", "credentialsJSON:23688bbb-1b91-46ba-b441-09702c979512")
         }
     })
 })
