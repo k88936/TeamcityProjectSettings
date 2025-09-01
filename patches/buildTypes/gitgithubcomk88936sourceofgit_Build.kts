@@ -16,5 +16,11 @@ changeBuildType(RelativeId("gitgithubcomk88936sourceofgit_Build")) {
         update {
             password("env.S3_ACCESS_KEY", "credentialsJSON:23688bbb-1b91-46ba-b441-09702c979512")
         }
+        expect {
+            password("env.S3_SECRET_KEY", "credentialsJSON:6d9f4af1-89b3-41a3-9bcc-fde1bdd8e7f9")
+        }
+        update {
+            password("env.S3_SECRET_KEY", "credentialsJSON:486eb30c-545f-49f3-b1b8-e4a07c95456a")
+        }
     }
 }
