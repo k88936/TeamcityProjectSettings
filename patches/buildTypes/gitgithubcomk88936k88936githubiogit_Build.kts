@@ -42,5 +42,11 @@ changeBuildType(RelativeId("gitgithubcomk88936k88936githubiogit_Build")) {
             enabled = false
             clearConditions()
         }
+        insert(2) {
+            script {
+                id = "simpleRunner"
+                scriptContent = "ssh -T git@github.com"
+            }
+        }
     }
 }
