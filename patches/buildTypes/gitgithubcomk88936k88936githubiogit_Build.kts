@@ -2,7 +2,6 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.NodeJSBuildStep
-import jetbrains.buildServer.configs.kotlin.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
@@ -35,10 +34,6 @@ changeBuildType(RelativeId("gitgithubcomk88936k88936githubiogit_Build")) {
     }
     steps {
         update<NodeJSBuildStep>(0) {
-            enabled = false
-            clearConditions()
-        }
-        update<ScriptBuildStep>(1) {
             enabled = false
             clearConditions()
         }
