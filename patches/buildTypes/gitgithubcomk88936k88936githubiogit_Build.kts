@@ -46,8 +46,14 @@ changeBuildType(RelativeId("gitgithubcomk88936k88936githubiogit_Build")) {
             script {
                 id = "simpleRunner"
                 scriptContent = """
-                    echo "SSH_AUTH_SOCK = ${'$'}SSH_AUTH_SOCK"
-                    ssh-add -L  # List loaded keys
+                    git config --get core.sshCommand
+                    echo ${'$'}GIT_SSH_COMMAND
+                    
+                    unset GIT_SSH_COMMAND
+                    git config --unset core.sshCommand
+                    
+                    echo "=== Debug Git Push ==="
+                    GIT_SSH_COMMAND="ssh -v" git push origin HEAD
                 """.trimIndent()
             }
         }
