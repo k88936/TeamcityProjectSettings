@@ -53,5 +53,13 @@ changeBuildType(RelativeId("Nextcloud_Build")) {
                 commandArgs = ""
             }
         }
+        update<DockerCommandStep>(1) {
+            clearConditions()
+            commandType = push {
+                namesAndTags = "kvtodev/nextcloud"
+                removeImageAfterPush = false
+                commandArgs = ""
+            }
+        }
     }
 }
