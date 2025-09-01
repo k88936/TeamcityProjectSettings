@@ -52,8 +52,7 @@ changeBuildType(RelativeId("gitgithubcomk88936k88936githubiogit_Build")) {
                     unset GIT_SSH_COMMAND
                     git config --unset core.sshCommand
                     
-                    echo "=== Debug Git Push ==="
-                    GIT_SSH_COMMAND="ssh -v" git push origin HEAD
+                    git pull
                 """.trimIndent()
             }
         }
