@@ -57,8 +57,6 @@ class GithubPageTemplate() : Project() {
             }
 
             triggers {
-                vcs {
-                }
                 schedule {
                     triggerBuild = always()
                     withPendingChangesOnly = false
