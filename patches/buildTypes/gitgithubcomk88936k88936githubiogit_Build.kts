@@ -45,7 +45,10 @@ changeBuildType(RelativeId("gitgithubcomk88936k88936githubiogit_Build")) {
         insert(2) {
             script {
                 id = "simpleRunner"
-                scriptContent = "ssh -T git@github.com"
+                scriptContent = """
+                    echo "SSH_AUTH_SOCK = ${'$'}SSH_AUTH_SOCK"
+                    ssh-add -L  # List loaded keys
+                """.trimIndent()
             }
         }
     }
