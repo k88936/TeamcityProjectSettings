@@ -51,5 +51,17 @@ changeBuildType(RelativeId("Shotmd_Build")) {
             """.trimIndent()
             param("teamcity.kubernetes.executor.pull.policy", "")
         }
+        update<ScriptBuildStep>(1) {
+            clearConditions()
+            scriptContent = """
+                rm -r build\Shotmd
+                mkdir build\Shotmd
+                cp build\Shotmd.exe build\Shotmd
+                %QT_INSTALL%\bin\windeployqt.exe build\Shotmd\Shotmd.exe
+                cd build
+                7z a Shotmd.zip Shotmd\
+            """.trimIndent()
+            param("teamcity.kubernetes.executor.pull.policy", "")
+        }
     }
 }
