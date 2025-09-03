@@ -1,6 +1,8 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -15,6 +17,39 @@ changeBuildType(RelativeId("Shotmd_Build")) {
         }
         add {
             text("QT_INSTALL", """C:\Qt\6.9.1\msvc2022_64""")
+        }
+    }
+
+    expectSteps {
+        script {
+            id = "build_qt"
+            scriptContent = """
+                call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
+                cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=%env.QT_INSTALL%\lib\cmake\Qt6\qt.toolchain.cmake -G Ninja 
+                cmake --build build --config Release
+            """.trimIndent()
+        }
+        script {
+            id = "package_qt"
+            scriptContent = """
+                rm -r build\Shotmd
+                mkdir build\Shotmd
+                cp build\Shotmd.exe build\Shotmd
+                %env.QT_INSTALL%\bin\windeployqt.exe build\Shotmd\Shotmd.exe
+                cd build
+                7z a Shotmd.zip Shotmd\
+            """.trimIndent()
+        }
+    }
+    steps {
+        update<ScriptBuildStep>(0) {
+            clearConditions()
+            scriptContent = """
+                call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
+                cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=%QT_INSTALL%\lib\cmake\Qt6\qt.toolchain.cmake -G Ninja 
+                cmake --build build --config Release
+            """.trimIndent()
+            param("teamcity.kubernetes.executor.pull.policy", "")
         }
     }
 }
