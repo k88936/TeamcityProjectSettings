@@ -38,5 +38,9 @@ create(RelativeId("OllamaProxy"), BuildType({
         perfmon {
         }
     }
+
+    requirements {
+        exists("env.PLATFORM_LINUX")
+    }
 }))
 
