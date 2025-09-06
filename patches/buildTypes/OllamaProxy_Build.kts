@@ -24,6 +24,7 @@ create(RelativeId("OllamaProxy"), BuildType({
         cargo {
             id = "cargo"
             command = build {
+                release = true
             }
         }
     }
