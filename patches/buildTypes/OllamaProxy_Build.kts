@@ -14,7 +14,7 @@ in the project with id = 'OllamaProxy', and delete the patch script.
 */
 create(RelativeId("OllamaProxy"), BuildType({
     id("OllamaProxy_Build")
-    name = "Build"
+    name = "Build_linux"
 
     vcs {
         root(RelativeId("OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain"))
