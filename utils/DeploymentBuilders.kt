@@ -72,6 +72,7 @@ object DeploymentBuilders {
             this.maxRunningBuilds = 1
 
             val scriptContent = buildString {
+                append("gh auth login\n")
                 append("gh release create $tagPattern")
                 if (notes != null) {
                     append(" --notes \"$notes\"")
@@ -88,7 +89,7 @@ object DeploymentBuilders {
                     this.scriptContent = scriptContent
                 }
             }
-            params{
+            params {
                 password("env.GITHUB_TOKEN", "credentialsJSON:04d96fb0-dbf8-457b-be29-2327ab11dd68")
             }
         }

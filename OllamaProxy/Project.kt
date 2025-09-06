@@ -10,4 +10,5 @@ object Project : Project({
     vcsRoot(OllamaProxy.vcsRoots.OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain)
     buildType(OllamaProxy.buildTypes.OllamaProxy_BuildLinux)
     buildType(OllamaProxy_BuildWin)
+    buildType(OllamaProxy.buildTypes.OllamaProxy_Deploy)
 })
