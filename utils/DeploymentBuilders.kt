@@ -72,7 +72,6 @@ object DeploymentBuilders {
             this.maxRunningBuilds = 1
 
             val scriptContent = buildString {
-                append("gh auth login\n")
                 append("gh release create $tagPattern")
                 if (notes != null) {
                     append(" --notes \"$notes\"")
@@ -90,7 +89,7 @@ object DeploymentBuilders {
                 }
             }
             params {
-                password("env.GITHUB_TOKEN", "credentialsJSON:04d96fb0-dbf8-457b-be29-2327ab11dd68")
+                password("env.GH_TOKEN", "credentialsJSON:04d96fb0-dbf8-457b-be29-2327ab11dd68")
             }
         }
     }
@@ -106,8 +105,7 @@ object DeploymentBuilders {
                 this.scriptContent = """
                     git config user.email "teamcity@kvto.dev"
                     git config user.name "teamcity"
-                    git config --unset core.sshCommand
-                    unset GIT_SSH_COMMAND
+                    export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
                     git add -A
                     git commit -m"$comment"
                     git push --force
@@ -137,7 +135,6 @@ object DeploymentBuilders {
                     this.cleanCheckout = cleanCheckout
                 }
             }
-
             steps {
                 createGitPushStep()(this)
             }
