@@ -9,6 +9,8 @@ object OllamaProxy_BuildLinux : BuildType({
     id("OllamaProxy_BuildLinux")
     name = "Build_Linux"
 
+    artifactRules = "target/release/ollama-proxy"
+
     vcs {
         root(OllamaProxy.vcsRoots.OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain)
     }
