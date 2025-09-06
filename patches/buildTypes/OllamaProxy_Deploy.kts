@@ -17,5 +17,11 @@ changeBuildType(RelativeId("OllamaProxy_Deploy")) {
                 successfulOnly = true
             }
         }
+        add {
+            finishBuildTrigger {
+                buildType = "OllamaProxy_BuildWin"
+                successfulOnly = true
+            }
+        }
     }
 }
