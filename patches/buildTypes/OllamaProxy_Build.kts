@@ -3,6 +3,7 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.cargo
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.*
 
@@ -17,6 +18,14 @@ create(RelativeId("OllamaProxy"), BuildType({
 
     vcs {
         root(RelativeId("OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain"))
+    }
+
+    steps {
+        cargo {
+            id = "cargo"
+            command = build {
+            }
+        }
     }
 
     triggers {
