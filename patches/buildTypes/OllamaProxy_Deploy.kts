@@ -24,4 +24,14 @@ changeBuildType(RelativeId("OllamaProxy_Deploy")) {
             }
         }
     }
+
+    dependencies {
+        add(RelativeId("OllamaProxy_BuildWin")) {
+            artifacts {
+                buildRule = lastSuccessful()
+                artifactRules = "*=>_deploy/"
+            }
+        }
+
+    }
 }
