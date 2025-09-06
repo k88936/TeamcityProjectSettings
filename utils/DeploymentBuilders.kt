@@ -102,6 +102,7 @@ object DeploymentBuilders {
                     git config user.email "teamcity@kvto.dev"
                     git config user.name "teamcity"
                     git config --unset core.sshCommand
+                    unset GIT_SSH_COMMAND
                     git add -A
                     git commit -m"$comment"
                     git push --force
