@@ -23,4 +23,5 @@ object Project : Project({
     subProject(Nextcloud.Project)
     subProject(Sites.Projects)
     subProject(TeamcityAgent.Project)
+    subProject(OllamaProxy.Project)
 })

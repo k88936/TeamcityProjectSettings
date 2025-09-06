@@ -3,6 +3,7 @@ package Gold.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 
 object Gold_BuildLinux : BuildType({
+    id("Gold_BuildLinux")
     name = "Build_Linux"
 
     vcs {

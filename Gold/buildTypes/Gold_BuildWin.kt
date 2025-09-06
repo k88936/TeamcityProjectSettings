@@ -3,6 +3,7 @@ package Gold.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 
 object Gold_BuildWin : BuildType({
+    id("Gold_BuildWin")
     name = "Build_Win"
 
     vcs {
