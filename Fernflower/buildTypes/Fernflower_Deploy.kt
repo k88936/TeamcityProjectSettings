@@ -26,7 +26,5 @@ object Fernflower_Deploy : BuildType({
             artifactRules = "*=>_deploy/"
         }
     }
-    params{
-        password("env.GITHUB_TOKEN", "credentialsJSON:04d96fb0-dbf8-457b-be29-2327ab11dd68")
-    }
+
 })

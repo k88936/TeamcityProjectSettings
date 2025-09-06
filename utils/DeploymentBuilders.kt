@@ -1,5 +1,6 @@
 package utils
 
+import Fernflower.buildTypes.Fernflower_Deploy.params
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
@@ -86,6 +87,9 @@ object DeploymentBuilders {
                     id = "github_release"
                     this.scriptContent = scriptContent
                 }
+            }
+            params{
+                password("env.GITHUB_TOKEN", "credentialsJSON:04d96fb0-dbf8-457b-be29-2327ab11dd68")
             }
         }
     }

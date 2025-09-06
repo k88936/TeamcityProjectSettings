@@ -1,6 +1,7 @@
 package Shotmd.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import utils.DeploymentBuilders
 
 object Shotmd_Build : BuildType({
@@ -13,5 +14,8 @@ object Shotmd_Build : BuildType({
     
     vcs {
         root(Shotmd.vcsRoots.Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster)
+    }
+    features{
+        perfmon {  }
     }
 })

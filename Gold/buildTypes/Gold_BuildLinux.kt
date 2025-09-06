@@ -1,6 +1,7 @@
 package Gold.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 
 object Gold_BuildLinux : BuildType({
     id("Gold_BuildLinux")
@@ -21,5 +22,8 @@ object Gold_BuildLinux : BuildType({
 
     requirements {
         exists("env.PLATFORM_LINUX")
+    }
+    features{
+        perfmon {  }
     }
 })

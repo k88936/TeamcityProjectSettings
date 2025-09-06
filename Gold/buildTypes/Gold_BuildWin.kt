@@ -1,6 +1,7 @@
 package Gold.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 
 object Gold_BuildWin : BuildType({
     id("Gold_BuildWin")
@@ -24,4 +25,7 @@ object Gold_BuildWin : BuildType({
         exists("env.PLATFORM_WIN")
     }
 
+    features{
+        perfmon {  }
+    }
 })

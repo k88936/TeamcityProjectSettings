@@ -1,6 +1,8 @@
 package Shotmd.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import utils.DeploymentBuilders
 
@@ -23,6 +25,9 @@ object Shotmd_Deploy : BuildType({
             buildType = "${Shotmd_Build.id}"
             successfulOnly = true
         }
+    }
+    features{
+        perfmon {  }
     }
     dependencies {
         artifacts(Shotmd_Build) {
