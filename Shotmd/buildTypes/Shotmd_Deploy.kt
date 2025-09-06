@@ -10,13 +10,6 @@ import utils.DeploymentBuilders
 object Shotmd_Deploy : BuildType({
     id("Shotmd_Deploy")
     name = "Deploy"
-    description = "Deploys Shotmd application via GitHub Release"
-
-
-    DeploymentBuilders.createGithubReleaseDeployment(
-        vcsRoot = Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster,
-        assetsPath = "_deploy/*",
-    )(this)
 
     triggers {
         finishBuildTrigger {
@@ -33,4 +26,9 @@ object Shotmd_Deploy : BuildType({
             artifactRules = "Shotmd.zip=>_deploy/"
         }
     }
+    DeploymentBuilders.createGithubReleaseDeployment(
+        vcsRoot = Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster,
+        assetsPath = "_deploy/*",
+    )(this)
+
 })
