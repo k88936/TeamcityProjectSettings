@@ -1,5 +1,6 @@
 package OllamaProxy.buildTypes
 
+import OllamaProxy.vcsRoots.OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import utils.DeploymentBuilders
@@ -33,9 +34,7 @@ object OllamaProxy_Deploy : BuildType({
     }
 
     DeploymentBuilders.createGithubReleaseDeployment(
-        tagPattern = "v%build.number%",
-        generateNotes = true,
-        notes = "Deploying OllamaProxy application via GitHub Release",
+        vcsRoot = OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain,
         assetsPath = "_deploy/*"
     )(this)
 

@@ -8,12 +8,9 @@ import utils.DeploymentBuilders
 object Keetcoder_Deploy : BuildType({
     ->
     DeploymentBuilders.createGithubReleaseDeployment(
+        vcsRoot = Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster,
         assetsPath = "_deploy/*"
     )(this)
-
-    vcs {
-        root(Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster)
-    }
 
     triggers {
         finishBuildTrigger {

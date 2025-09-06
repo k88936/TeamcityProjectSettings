@@ -61,8 +61,8 @@ object DeploymentBuilders {
     fun createGithubReleaseDeployment(
         name: String = "Deploy",
         tagPattern: String = "v%build.number%",
-        generateNotes: Boolean = true,
         notes: String? = null,
+        vcsRoot: VcsRoot,
         assetsPath: String = "*"
     ): BuildType.() -> Unit {
         return {
@@ -75,12 +75,15 @@ object DeploymentBuilders {
                 append("gh release create $tagPattern")
                 if (notes != null) {
                     append(" --notes \"$notes\"")
-                } else if (generateNotes) {
+                } else{
                     append(" --generate-notes")
                 }
                 append(" $assetsPath")
             }
 
+            vcs{
+                root(vcsRoot)
+            }
             steps {
                 script {
                     this.name = "Create GitHub Release"

@@ -6,13 +6,11 @@ import utils.DeploymentBuilders
 
 object Fernflower_Deploy : BuildType({
     DeploymentBuilders.createGithubReleaseDeployment(
+        vcsRoot = Fernflower.vcsRoots.Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster,
         assetsPath = "_deploy/*"
     )(this)
     
-    vcs {
-        root(Fernflower.vcsRoots.Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster)
-    }
-    
+
     triggers {
         finishBuildTrigger {
             buildType = "${Fernflower_Build.id}"

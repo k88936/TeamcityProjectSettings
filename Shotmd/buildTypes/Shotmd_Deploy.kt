@@ -1,5 +1,6 @@
 package Shotmd.buildTypes
 
+import Shotmd.vcsRoots.Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
@@ -13,13 +14,10 @@ object Shotmd_Deploy : BuildType({
 
 
     DeploymentBuilders.createGithubReleaseDeployment(
+        vcsRoot = Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster,
         assetsPath = "_deploy/*",
     )(this)
-    
-    vcs {
-        root(Shotmd.vcsRoots.Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster)
-    }
-    
+
     triggers {
         finishBuildTrigger {
             buildType = "${Shotmd_Build.id}"
