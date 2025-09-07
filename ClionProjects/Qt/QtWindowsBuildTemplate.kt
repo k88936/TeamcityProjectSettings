@@ -1,6 +1,6 @@
-package Utils
+package ClionProjects.Qt
 
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object QtWindowsBuildTemplate {
@@ -10,7 +10,7 @@ object QtWindowsBuildTemplate {
      */
     fun createQtWindowsBuild(
         name: String = "Build",
-        qtInstallPath: String = "C:\\Qt\\6.9.1\\msvc2022_64",
+        QtInstallPath: String = "C:\\Qt\\6.9.1\\msvc2022_64",
         buildConfig: String = "Release",
         executableName: String = "Application"
     ): BuildType.() -> Unit {
@@ -19,7 +19,7 @@ object QtWindowsBuildTemplate {
             this.artifactRules = "build/${executableName}.zip"
 
             params {
-                text("QT_INSTALL", qtInstallPath)
+                text("QT_INSTALL", QtInstallPath)
             }
 
             steps {
