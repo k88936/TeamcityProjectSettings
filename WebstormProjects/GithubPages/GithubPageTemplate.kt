@@ -67,8 +67,6 @@ class GithubPageTemplate() : Project() {
             features {
                 sshAgent {
                     teamcitySshKey = "id_rsa"
-
-
                 }
                 perfmon {
                 }

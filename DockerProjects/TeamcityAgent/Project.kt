@@ -12,12 +12,5 @@ object Project : Project({
     vcsRoot(TeamcityAgent_GitGithubComK88936teamcityAgentGitRefsHeadsMain)
 
     buildType(TeamcityAgent_Build)
-    features {
-        dockerRegistry {
-            id = "PROJECT_EXT_4"
-            name = "Docker Registry"
-            userName = "kvtodev"
-            password = "credentialsJSON:a43b4956-2b9e-457c-bf3c-6e04db2adc38"
-        }
-    }
+
 })

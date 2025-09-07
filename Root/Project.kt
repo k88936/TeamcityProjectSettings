@@ -1,6 +1,6 @@
-package _Self
+package Root
 
-import WebstormProjects.GithubPages.Projects
+import jetbrains.buildServer.configs.kotlin.ParameterDisplay
 import jetbrains.buildServer.configs.kotlin.Project
 
 object Project : Project({
@@ -21,4 +21,5 @@ object Project : Project({
     subProject(DockerProjects.Project)
     subProject(WebstormProjects.Project)
     subProject(RustroverProjects.Project)
+
 })

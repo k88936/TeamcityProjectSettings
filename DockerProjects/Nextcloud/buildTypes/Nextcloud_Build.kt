@@ -1,52 +1,19 @@
 package DockerProjects.Nextcloud.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.BuildType
-import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerRegistryConnections
-import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import DockerProjects.DockerBuildTemplate
 
 object Nextcloud_Build : BuildType({
     id("Nextcloud_Build")
-    name = "Build"
+
+    // Use the common Docker build template
+    DockerBuildTemplate.createDockerBuild(
+        name = "Build",
+        dockerfilePath = "Dockerfile",
+        imageName = "kvtodev/nextcloud"
+    )(this)
 
     vcs {
         root(DockerProjects.Nextcloud.vcsRoots.Nextcloud_GitGithubComK88936nextcloudGitRefsHeadsMaster)
-    }
-
-    steps {
-        dockerCommand {
-            id = "DockerCommand"
-            commandType = build {
-                source = file {
-                    path = "Dockerfile"
-                }
-                contextDir = ""
-                platform = jetbrains.buildServer.configs.kotlin.buildSteps.DockerCommandStep.ImagePlatform.Any
-                namesAndTags = "kvtodev/nextcloud"
-                commandArgs = ""
-            }
-        }
-        dockerCommand {
-            id = "DockerCommand_1"
-            commandType = push {
-                namesAndTags = "kvtodev/nextcloud"
-                removeImageAfterPush = false
-                commandArgs = ""
-            }
-        }
-    }
-
-    triggers {
-        vcs {}
-    }
-
-    features {
-        perfmon {}
-        dockerRegistryConnections {
-            loginToRegistry = on {
-                dockerRegistryId = "PROJECT_EXT_3"
-            }
-        }
     }
 })

@@ -30,4 +30,4 @@ the 'Debug' option is available in the context menu for the task.
 */
 
 version = "2025.07"
-project(_Self.Project)
+project(Root.Project)
