@@ -4,6 +4,6 @@ import jetbrains.buildServer.configs.kotlin.Project
 
 object Project : Project({
     id("ClionProjects")
-    name = "Qt Projects"
+    name = "Clion Projects"
     subProject(ClionProjects.Qt.Shotmd.Project)
 })
