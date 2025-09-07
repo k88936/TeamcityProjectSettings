@@ -1,0 +1,31 @@
+package RustroverProjects.Gold.buildTypes
+
+import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+
+object Gold_BuildWin : BuildType({
+    id("Gold_BuildWin")
+    name = "Build_Win"
+
+    vcs {
+        root(RustroverProjects.Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain)
+    }
+
+
+    steps {
+        step {
+            id = "cargo"
+            type = "cargo"
+            param("cargo-command", "build")
+            param("cargo-build-release", "true")
+        }
+    }
+
+    requirements {
+        exists("env.PLATFORM_WIN")
+    }
+
+    features{
+        perfmon {  }
+    }
+})
