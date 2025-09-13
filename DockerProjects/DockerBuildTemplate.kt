@@ -13,8 +13,7 @@ object DockerBuildTemplate {
     fun createDockerBuild(
         name: String = "Build",
         dockerfilePath: String = "Dockerfile",
-        imageName: String = "kvtodev/image-name",
-        contextDir: String = "",
+        imageName: String,
     ): BuildType.() -> Unit {
         return {
             this.name = name

@@ -4,13 +4,14 @@ import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 
 
-object Project: Project({
+object Project : Project({
 
     name = "Docker Projects"
     id("DockerProjects")
 
     subProject(DockerProjects.TeamcityAgent.Project)
     subProject(DockerProjects.Nextcloud.Project)
+    subProject(DockerProjects.CiContainers.Project)
     features {
         dockerRegistry {
             id = "DOCKER_REGISTRY_CONNECTION"
