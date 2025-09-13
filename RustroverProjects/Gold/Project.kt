@@ -10,5 +10,5 @@ object Project : Project({
 
     vcsRoot(Gold_GitGithubComK88936goldGitRefsHeadsMain)
 
-    buildType(Gold_BuildWin)
+    buildType(Gold_Build)
 })

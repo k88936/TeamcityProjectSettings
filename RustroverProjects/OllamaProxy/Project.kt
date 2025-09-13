@@ -1,6 +1,6 @@
 package RustroverProjects.OllamaProxy
 
-import RustroverProjects.OllamaProxy.buildTypes.OllamaProxy_BuildWin
+import RustroverProjects.OllamaProxy.buildTypes.OllamaProxy_Build
 import jetbrains.buildServer.configs.kotlin.Project
 
 object Project : Project({
@@ -8,6 +8,6 @@ object Project : Project({
     name = "Ollama Proxy"
 
     vcsRoot(RustroverProjects.OllamaProxy.vcsRoots.OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain)
-    buildType(OllamaProxy_BuildWin)
+    buildType(OllamaProxy_Build)
     buildType(RustroverProjects.OllamaProxy.buildTypes.OllamaProxy_Deploy)
 })

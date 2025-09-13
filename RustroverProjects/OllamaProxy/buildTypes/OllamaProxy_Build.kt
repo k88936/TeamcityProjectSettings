@@ -6,9 +6,9 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.cargo
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
-object OllamaProxy_BuildWin : BuildType({
-    id("OllamaProxy_BuildWin")
-    name = "Build_Win"
+object OllamaProxy_Build : BuildType({
+    id("OllamaProxy_Build")
+    name = "Build"
 
     artifactRules = """target\release\ollama-proxy.exe"""
 

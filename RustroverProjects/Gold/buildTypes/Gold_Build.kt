@@ -3,9 +3,9 @@ package RustroverProjects.Gold.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 
-object Gold_BuildWin : BuildType({
-    id("Gold_BuildWin")
-    name = "Build_Win"
+object Gold_Build : BuildType({
+    id("Gold_Build")
+    name = "Build"
 
     vcs {
         root(RustroverProjects.Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain)
