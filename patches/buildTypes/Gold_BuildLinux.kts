@@ -29,7 +29,7 @@ changeBuildType(RelativeId("Gold_BuildLinux")) {
             script {
                 id = "simpleRunner"
                 scriptContent = "cargo build --release"
-                dockerImage = "rustlang/rust"
+                dockerImage = "kvtodev/ci-containers:rust"
             }
         }
     }
