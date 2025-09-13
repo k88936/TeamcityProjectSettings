@@ -20,8 +20,8 @@ fun build(dockerfilePath: String, imageName: String): BuildType {
     val formatted = "CiContainers_Build_" + imageName.replace("[^0-9a-zA-Z]".toRegex(), "_")
     return BuildType({
         id(formatted)
-        name = formatted
         DockerBuildTemplate.createDockerBuild(
+            name = formatted,
             dockerfilePath = dockerfilePath,
             imageName = imageName
         )(this)
