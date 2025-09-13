@@ -12,20 +12,12 @@ object OllamaProxy_Deploy : BuildType({
     
     triggers {
         finishBuildTrigger {
-            buildType = "OllamaProxy_BuildLinux"
-            successfulOnly = true
-        }
-        finishBuildTrigger {
             buildType = "OllamaProxy_BuildWin"
             successfulOnly = true
         }
     }
 
     dependencies {
-        artifacts(OllamaProxy_BuildLinux) {
-            buildRule = lastSuccessful()
-            artifactRules = "*=>_deploy/"
-        }
 
         artifacts(OllamaProxy_BuildWin) {
             buildRule = lastSuccessful()

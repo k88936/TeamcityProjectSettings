@@ -8,7 +8,6 @@ object Project : Project({
     name = "Ollama Proxy"
 
     vcsRoot(RustroverProjects.OllamaProxy.vcsRoots.OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain)
-    buildType(RustroverProjects.OllamaProxy.buildTypes.OllamaProxy_BuildLinux)
     buildType(OllamaProxy_BuildWin)
     buildType(RustroverProjects.OllamaProxy.buildTypes.OllamaProxy_Deploy)
 })
