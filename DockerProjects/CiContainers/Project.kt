@@ -16,12 +16,14 @@ object Project : Project({
     vcsRoot(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
 })
 
-fun build(dockerfilePath: String, imagename: String): BuildType {
+fun build(dockerfilePath: String, imageName: String): BuildType {
+    val formatted = "CiContainers_Build_" + imageName.replace("[^0-9a-zA-Z]".toRegex(), "_")
     return BuildType({
-        id("CiContainers_build" + imagename.replace("[^0-9a-zA-Z]".toRegex(), "_"))
+        id(formatted)
+        name = formatted
         DockerBuildTemplate.createDockerBuild(
             dockerfilePath = dockerfilePath,
-            imageName = imagename
+            imageName = imageName
         )(this)
         vcs {
             root(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
