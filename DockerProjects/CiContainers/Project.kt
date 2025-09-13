@@ -2,7 +2,6 @@ package DockerProjects.CiContainers
 
 import DockerProjects.CiContainers.vcsRoots.*
 import DockerProjects.DockerBuildTemplate
-import jdk.internal.vm.ThreadContainers.root
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
 
