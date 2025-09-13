@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.CargoBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.cargo
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
@@ -20,6 +21,10 @@ changeBuildType(RelativeId("Gold_BuildLinux")) {
         }
     }
     steps {
+        update<CargoBuildStep>(0) {
+            enabled = false
+            clearConditions()
+        }
         insert(1) {
             script {
                 id = "simpleRunner"
