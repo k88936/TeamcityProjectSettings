@@ -13,7 +13,7 @@ object Shotmd_Build : BuildType({
     )(this)
     
     vcs {
-        root(ClionProjects.Qt.Shotmd.vcsRoots.Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster)
+        root(ClionProjects.Qt.Shotmd.vcsRoots.Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster)
     }
     features{
         perfmon {  }

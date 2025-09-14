@@ -1,6 +1,6 @@
 package ClionProjects.Qt.Shotmd.buildTypes
 
-import ClionProjects.Qt.Shotmd.vcsRoots.Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster
+import ClionProjects.Qt.Shotmd.vcsRoots.Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
@@ -26,7 +26,7 @@ object Shotmd_Deploy : BuildType({
         }
     }
     createGithubReleaseDeployment(
-        vcsRoot = Shotmd_GitGithubComK88936ShotmdGitRefsHeadsMaster,
+        vcsRoot = Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster,
         assetsPath = "_deploy/*",
     )(this)
 
