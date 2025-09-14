@@ -22,7 +22,7 @@ object Shotmd_Deploy : BuildType({
     dependencies {
         artifacts(Shotmd_Build) {
             buildRule = lastSuccessful()
-            artifactRules = "Shotmd.zip=>_deploy/"
+            artifactRules = "*=>_deploy/"
         }
     }
     createGithubReleaseDeployment(
