@@ -9,7 +9,7 @@ object Shotmd_Build : BuildType({
         name = "Build",
         QtInstallPath = "C:\\Qt\\6.9.1\\msvc2022_64",
         buildConfig = "Release",
-        executableName = "Shotmd"
+        executableName = "shotmd"
     )(this)
     
     vcs {
