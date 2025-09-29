@@ -7,6 +7,7 @@ object Projects : Project({
     id("GithubPages")
     subProject(GithubPageTemplate("git@github.com:k88936/rss-reader", "npm run fetch-feeds"))
     subProject(GithubPageTemplate("git@github.com:k88936/k88936.github.io.git"))
+    subProject(GithubPageTemplate("git@github.com:k88936/blogs.git"))
     subProject(GithubPageTemplate("git@github.com:k88936/source-of.git") {
         it.params {
             password("env.S3_SECRET_KEY", "credentialsJSON:486eb30c-545f-49f3-b1b8-e4a07c95456a")
