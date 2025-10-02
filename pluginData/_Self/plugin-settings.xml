@@ -3,6 +3,7 @@
   <tools>
     <default-versions>
       <tool-version tool-type="kotlin.compiler" id="kotlin.compiler.2.2.20" />
+      <tool-version tool-type="TeamCity.csi" id="TeamCity.csi.1.0.7" />
       <tool-version tool-type="intellij" id="intellij.ideaIU-2025.1.3" />
     </default-versions>
   </tools>
