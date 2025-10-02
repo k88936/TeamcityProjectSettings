@@ -25,9 +25,9 @@ object Shotmd_Deploy : BuildType({
             artifactRules = "*=>_deploy/"
         }
     }
+
     createGithubReleaseDeployment(
         vcsRoot = Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster,
         assetsPath = "_deploy/*",
     )(this)
-
 })
