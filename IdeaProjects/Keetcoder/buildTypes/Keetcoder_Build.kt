@@ -19,6 +19,7 @@ object Keetcoder_Build : BuildType({
         gradle {
             id = "gradle_runner"
             tasks = "buildPlugin"
+            jdkHome = "%env.JDK_21_0_x64%"
         }
     }
 
