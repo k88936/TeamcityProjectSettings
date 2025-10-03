@@ -11,7 +11,8 @@ object Project : Project({
 
     buildType(build("base/yay/Dockerfile", "kvtodev/ci-containers:builder-base"))
     buildType(build("build/rust/Dockerfile", "kvtodev/ci-containers:rust"))
-//    buildType(build("build/flutter/Dockerfile", "kvtodev/ci-containers:flutter"))
+    buildType(build("build/java/Dockerfile", "kvtodev/ci-containers:java"))
+    buildType(build("build/flutter/Dockerfile", "kvtodev/ci-containers:flutter"))
 
     vcsRoot(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
 })
