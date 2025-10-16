@@ -12,7 +12,7 @@ object Projects : Project({
         it.params {
             password("env.S3_SECRET_KEY", "credentialsJSON:486eb30c-545f-49f3-b1b8-e4a07c95456a")
             param("env.S3_BUCKET_NAME", "software-release")
-            param("env.S3_ENDPOINT", "http://10te47kl27611.vicp.fun:19000")
+            param("env.S3_ENDPOINT", "https://rustfs.k88936.top")
             param("env.AWS_REGION", "us-east-1")
             password("env.S3_ACCESS_KEY", "credentialsJSON:23688bbb-1b91-46ba-b441-09702c979512")
         }
