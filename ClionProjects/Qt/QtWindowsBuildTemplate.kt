@@ -10,7 +10,7 @@ object QtWindowsBuildTemplate {
      */
     fun createQtWindowsBuild(
         name: String = "Build",
-        QtInstallPath: String = "C:\\Qt\\6.9.1\\msvc2022_64",
+        installPath: String = "C:\\Qt\\6.9.1\\msvc2022_64",
         buildConfig: String = "Release",
         executableName: String = "Application"
     ): BuildType.() -> Unit {
@@ -19,7 +19,7 @@ object QtWindowsBuildTemplate {
             this.artifactRules = "build/${executableName}.zip"
 
             params {
-                text("QT_INSTALL", QtInstallPath)
+                text("QT_INSTALL", installPath)
             }
 
             steps {
