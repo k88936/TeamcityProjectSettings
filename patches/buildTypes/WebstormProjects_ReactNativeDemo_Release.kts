@@ -11,7 +11,7 @@ in the project with id = 'WebstormProjects_ReactNativeDemo', and delete the patc
 */
 create(RelativeId("WebstormProjects_ReactNativeDemo"), BuildType({
     id("WebstormProjects_ReactNativeDemo_Release")
-    name = "release"
+    name = "Release"
 
     enablePersonalBuilds = false
     type = BuildTypeSettings.Type.DEPLOYMENT
