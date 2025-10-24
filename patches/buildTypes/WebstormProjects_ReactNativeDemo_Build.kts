@@ -3,6 +3,7 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.*
 
@@ -17,6 +18,19 @@ create(RelativeId("WebstormProjects_ReactNativeDemo"), BuildType({
 
     vcs {
         root(RelativeId("WebstormProjects_ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain"))
+    }
+
+    steps {
+        script {
+            id = "simpleRunner"
+            scriptContent = """
+                npm ci
+                npx expo prebuild
+                npx react-native build-android --tasks assembleRelease
+            """.trimIndent()
+            dockerImage = "kvtodev/ci-containers:react-native"
+            dockerRunParameters = "--rm"
+        }
     }
 
     triggers {
