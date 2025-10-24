@@ -1,4 +1,4 @@
-package WebstormProjects.GithubPages
+package WebstormProjects.ReactNative
 
 import Utils.GitPushStepTemplate.createGitPushStep
 import jetbrains.buildServer.configs.kotlin.BuildType
@@ -9,7 +9,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
-class GithubPageTemplate() : Project() {
+class ReactNativeTemplate() : Project() {
 
     constructor(
         githubRepo: String,
@@ -50,10 +50,10 @@ class GithubPageTemplate() : Project() {
                         ("""
                                     npm install
                                     npm run build
-                                """
+                        """
                                 + extraBuildCommand)
                             .trimIndent()
-                    dockerImage = "kvtodev/ci-containers:js"
+                    dockerRunParameters = "--rm v ~/.m2:/root/.m2"
                 }
                 createGitPushStep("build pages")(this)
             }
