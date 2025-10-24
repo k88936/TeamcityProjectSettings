@@ -15,7 +15,8 @@ object ReactNativeBuildTemplate {
                         source /etc/profile
                         npm install
                         npx expo prebuild
-                        npx react-native build-android --tasks assembleRelease
+                        cd android
+                        ./gradlew assembleRelease --no-daemon --parallel   
                     """.trimIndent()
                 dockerRunParameters = "--rm -v /root/.m2:/root/.m2 -v /root/.gradle:/root/.gradle/"
                 dockerImage = "kvtodev/ci-containers:react-native"
