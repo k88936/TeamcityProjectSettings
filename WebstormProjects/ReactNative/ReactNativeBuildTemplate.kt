@@ -19,6 +19,7 @@ object ReactNativeBuildTemplate {
                     """.trimIndent()
                 dockerRunParameters = "--rm -v /root/.m2:/root/.m2"
                 dockerImage = "kvtodev/ci-containers:react-native"
+                dockerPull = true
             }
         }
     }

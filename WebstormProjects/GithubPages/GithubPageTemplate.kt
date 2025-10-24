@@ -53,6 +53,7 @@ class GithubPageTemplate() : Project() {
                         npm run build
                         """.trimIndent() + extraBuildCommand.trimIndent()
                     dockerImage = "kvtodev/ci-containers:js"
+                    dockerPull = true
                 }
                 createGitPushStep("build pages")(this)
             }
