@@ -13,7 +13,7 @@ object Fernflower_Deploy : BuildType({
 
     triggers {
         finishBuildTrigger {
-            buildType = "${Fernflower_Build.id}"
+            buildType = Fernflower_Build.id?.value
             successfulOnly = true
         }
     }

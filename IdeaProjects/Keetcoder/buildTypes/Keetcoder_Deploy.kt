@@ -13,7 +13,7 @@ object Keetcoder_Deploy : BuildType({
 
     triggers {
         finishBuildTrigger {
-            buildType = "${Keetcoder_Build.id}"
+            buildType = Keetcoder_Build.id?.value
             successfulOnly = true
         }
     }

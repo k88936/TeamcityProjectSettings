@@ -12,7 +12,7 @@ object OllamaProxy_Deploy : BuildType({
     
     triggers {
         finishBuildTrigger {
-            buildType = "OllamaProxy_BuildWin"
+            buildType = OllamaProxy_Build.id?.value
             successfulOnly = true
         }
     }

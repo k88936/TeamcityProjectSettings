@@ -12,7 +12,7 @@ object Shotmd_Deploy : BuildType({
 
     triggers {
         finishBuildTrigger {
-            buildType = "${Shotmd_Build.id}"
+            buildType = Shotmd_Build.id?.value
             successfulOnly = true
         }
     }
