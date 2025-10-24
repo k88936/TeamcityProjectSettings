@@ -16,5 +16,12 @@ create(RelativeId("WebstormProjects_ReactNativeDemo"), BuildType({
     enablePersonalBuilds = false
     type = BuildTypeSettings.Type.DEPLOYMENT
     maxRunningBuilds = 1
+
+    dependencies {
+        artifacts(RelativeId("WebstormProjects_ReactNativeDemo_Build")) {
+            buildRule = lastSuccessful()
+            artifactRules = "*"
+        }
+    }
 }))
 
