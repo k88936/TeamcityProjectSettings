@@ -13,6 +13,7 @@ object Project : Project({
     buildType(build("build/rust/Dockerfile", "kvtodev/ci-containers:rust"))
     buildType(build("build/java/Dockerfile", "kvtodev/ci-containers:java"))
     buildType(build("build/android/Dockerfile", "kvtodev/ci-containers:android"))
+    buildType(build("build/js/Dockerfile", "kvtodev/ci-containers:js"))
 
     vcsRoot(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
 })
