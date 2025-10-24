@@ -51,7 +51,7 @@ class GithubPageTemplate() : Project() {
                         source /etc/profile
                         npm install
                         npm run build
-                        """.trimIndent() + extraBuildCommand.trimIndent()
+                        """.trimIndent() + '\n' + extraBuildCommand.trimIndent()
                     dockerImage = "kvtodev/ci-containers:js"
                     dockerPull = true
                 }
