@@ -1,0 +1,13 @@
+package WebstormProjects.ReactNative.ReactNativeDemo
+
+import WebstormProjects.ReactNative.ReactNativeDemo.buildTypes.ReactNativeDemo_Build
+import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
+import jetbrains.buildServer.configs.kotlin.Project
+
+object Project : Project({
+    id("WebstormProjects_ReactNativeDemo")
+    name = "React Native Demo"
+
+    buildType(ReactNativeDemo_Build)
+    vcsRoot(ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain)
+})

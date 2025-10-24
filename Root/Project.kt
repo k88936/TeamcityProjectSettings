@@ -1,6 +1,5 @@
 package Root
 
-import jetbrains.buildServer.configs.kotlin.ParameterDisplay
 import jetbrains.buildServer.configs.kotlin.Project
 
 object Project : Project({
