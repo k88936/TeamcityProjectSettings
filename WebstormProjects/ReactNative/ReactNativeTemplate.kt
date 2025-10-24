@@ -56,7 +56,6 @@ class ReactNativeTemplate() : Project() {
                     dockerRunParameters = "--rm v ~/.m2:/root/.m2"
                     dockerImage = "kvtodev/ci-containers:react-native"
                 }
-                createGitPushStep("build pages")(this)
             }
 
             triggers {
