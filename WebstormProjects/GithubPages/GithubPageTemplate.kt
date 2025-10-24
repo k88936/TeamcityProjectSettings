@@ -47,12 +47,11 @@ class GithubPageTemplate() : Project() {
                 nodeJS {
                     id = "nodejs_runner"
                     shellScript =
-                        ("""
-                                    npm install
-                                    npm run build
-                                """
-                                + extraBuildCommand)
-                            .trimIndent()
+                        """
+                        source /etc/profile
+                        npm install
+                        npm run build
+                        """.trimIndent() + extraBuildCommand.trimIndent()
                     dockerImage = "kvtodev/ci-containers:js"
                 }
                 createGitPushStep("build pages")(this)
