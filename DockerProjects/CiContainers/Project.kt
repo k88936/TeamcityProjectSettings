@@ -9,10 +9,9 @@ object Project : Project({
     id("CiContainers")
     name = "ci-containers"
 
-    buildType(build("base/Dockerfile", "kvtodev/ci-containers:builder-base"))
+    buildType(build("base/Dockerfile", "kvtodev/ci-containers:base"))
     buildType(build("build/rust/Dockerfile", "kvtodev/ci-containers:rust"))
     buildType(build("build/java/Dockerfile", "kvtodev/ci-containers:java"))
-    buildType(build("build/android/Dockerfile", "kvtodev/ci-containers:android"))
     buildType(build("build/js/Dockerfile", "kvtodev/ci-containers:js"))
     buildType(build("build/react-native/Dockerfile", "kvtodev/ci-containers:react-native"))
 
