@@ -17,7 +17,7 @@ object ReactNativeBuildTemplate {
                         npx expo prebuild
                         npx react-native build-android --tasks assembleRelease
                     """.trimIndent()
-                dockerRunParameters = "--rm v ~/.m2:/root/.m2"
+                dockerRunParameters = "--rm -v /root/.m2:/root/.m2"
                 dockerImage = "kvtodev/ci-containers:react-native"
             }
         }
