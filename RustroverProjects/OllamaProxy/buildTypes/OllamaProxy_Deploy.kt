@@ -19,7 +19,6 @@ object OllamaProxy_Deploy : BuildType({
     }
 
     dependencies {
-
         artifacts(OllamaProxy_Build) {
             buildRule = lastSuccessful()
             artifactRules = "*=>_deploy/"
