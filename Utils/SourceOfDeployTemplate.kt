@@ -76,8 +76,8 @@ object SourceOfDeployTemplate {
                 exists("env.PLATFORM_LINUX")
             }
             params{
-                password("env.S3_SECRET_KEY", "credentialsJSON:486eb30c-545f-49f3-b1b8-e4a07c95456a")
-                password("env.S3_ACCESS_KEY", "credentialsJSON:23688bbb-1b91-46ba-b441-09702c979512")
+                password("env.S3_ACCESS_KEY", "credentialsJSON:b15e9090-d3a1-49c5-9122-2af653fcd372")
+                password("env.S3_SECRET_KEY", "credentialsJSON:12b9893f-0fa3-4daf-9b11-63751aaa96a0")
                 param("env.S3_BUCKET_NAME", "software-release")
                 param("env.S3_ENDPOINT", "https://rustfs.k88936.top")
                 param("env.AWS_REGION", "us-east-1")
