@@ -3,6 +3,7 @@ package RustroverProjects.Gold.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object Gold_Build : BuildType({
     id("Gold_Build")
@@ -12,8 +13,12 @@ object Gold_Build : BuildType({
         root(RustroverProjects.Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain)
     }
 
-    artifactRules="""target/release/gold"""
+    artifactRules = """target/release/gold"""
 
+    triggers {
+        vcs {
+        }
+    }
     steps {
         script {
             name = "Build"
@@ -22,7 +27,7 @@ object Gold_Build : BuildType({
                 rustup default stable
                 cargo build --release
             """.trimIndent()
-            dockerImage= "kvtodev/ci-containers:rust"
+            dockerImage = "kvtodev/ci-containers:rust"
 
         }
     }
