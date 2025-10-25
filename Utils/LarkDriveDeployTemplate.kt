@@ -38,13 +38,26 @@ feishu_upload_file() {
     local size
     size="$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file")"
 
-    curl --location --request POST 'https://open.feishu.cn/open-apis/drive/v1/files/upload_all' \
+    local response
+    response=$(curl --location --request POST 'https://open.feishu.cn/open-apis/drive/v1/files/upload_all' \
         --header "Authorization: Bearer %env.FEISHU_ACCESS_TOKEN%" \
-        --form "file_name=\"${'$'}file_name\"" \
+        --form 'file_name="'"${'$'}file_name"'"' \
         --form 'parent_type="explorer"' \
-        --form "parent_node=\"$parentNode\"" \
-        --form "size=\"${'$'}size\"" \
-        --form "file=@\"$file\""
+        --form 'parent_node="'"$parentNode"'"' \
+        --form 'size="'"${'$'}size"'"' \
+        --form 'file=@"'"$file"'"')
+
+    echo "${'$'}response"
+
+    # Check if response code is 0
+    local code
+    code=$(echo "${'$'}response" | grep -o '"code":[0-9]*' | grep -o '[0-9]*')
+
+    if [ "${'$'}code" != "0" ]; then
+        echo "Error: Upload failed with code ${'$'}code" >&2
+        echo "Response: ${'$'}response" >&2
+        return 1
+    fi
 }            
 feishu_upload_file
 
