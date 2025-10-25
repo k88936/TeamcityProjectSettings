@@ -1,5 +1,6 @@
 package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
 
+import Utils.SourceOfDeployTemplate
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.*
@@ -19,7 +20,6 @@ object ReactNativeDemo_Build : BuildType({
         root(ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain)
     }
 
-    ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
 
     triggers {
         vcs {
@@ -30,4 +30,10 @@ object ReactNativeDemo_Build : BuildType({
         perfmon {
         }
     }
+
+    SourceOfDeployTemplate.createSourceOfDeployment(
+        name = "react-native-demo",
+        tagPattern = "v%build.number%",
+    )
+    ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
 })
