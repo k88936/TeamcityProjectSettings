@@ -29,6 +29,7 @@ object Gold_Deploy : BuildType({
 
     SourceOfDeployTemplate.createSourceOfDeployment(
         name = "gold",
+        tagPattern = "v1.0.0",
         assets = "_deploy/gold"
     )(this)
 
