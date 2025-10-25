@@ -11,6 +11,12 @@ accordingly, and delete the patch script.
 changeBuildType(RelativeId("gitgithubcomk88936sourceofgit_Build")) {
     params {
         expect {
+            password("env.S3_ACCESS_KEY", "credentialsJSON:23688bbb-1b91-46ba-b441-09702c979512")
+        }
+        update {
+            password("env.S3_ACCESS_KEY", "credentialsJSON:1b2416b2-6e73-4b71-84f0-8a658310e714")
+        }
+        expect {
             password("env.S3_SECRET_KEY", "credentialsJSON:486eb30c-545f-49f3-b1b8-e4a07c95456a")
         }
         update {
