@@ -33,6 +33,11 @@ object ReactNativeDemo_Deploy : BuildType({
         name = "react-native-demo",
         assets = "_deploy/*"
     )(this)
+    SourceOfDeployTemplate.createSourceOfDeployment(
+        name = "react-native-demo",
+        tagPattern = "latest",
+        assets = "_deploy/*"
+    )(this)
     createGithubReleaseDeployment(
         vcsRoot = ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain,
         assetsPath = "_deploy/*",
