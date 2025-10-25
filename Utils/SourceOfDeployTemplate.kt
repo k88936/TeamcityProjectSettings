@@ -49,13 +49,14 @@ object SourceOfDeployTemplate {
                exit 1
            }
            ensure_binary $executable $url
+           
        """.trimIndent()
     }
 
     fun createSourceOfDeployment(
-        file: String,
-        parentNode: String,
-        rename: String = "%build.number%",
+        name: String,
+        tagPattern: String = "v%build.number%",
+        assets: String = "*"
     ): BuildType.() -> Unit {
         return {
 
@@ -69,7 +70,8 @@ object SourceOfDeployTemplate {
                     this.scriptContent =
                         """
                             ${ensureBinary("gold","https://rustfs.k88936.top/software-release/gold/v1.0.0/gold")}
-                        
+                            gold upload "$name" "$tagPattern" "$assets"
+                            
                     """.trimIndent()
                 }
             }

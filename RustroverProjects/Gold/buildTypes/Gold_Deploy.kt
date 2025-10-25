@@ -10,12 +10,6 @@ object Gold_Deploy : BuildType({
     type = Type.DEPLOYMENT
 
     steps {
-        step {
-            id = "cargo"
-            type = "cargo"
-            param("cargo-command", "build")
-            param("cargo-build-release", "true")
-        }
     }
 
     requirements {
