@@ -22,7 +22,7 @@ object Gold_Build : BuildType({
     }
 
     requirements {
-        exists("env.PLATFORM_WIN")
+        exists("env.PLATFORM_LINUX")
     }
 
     features{
