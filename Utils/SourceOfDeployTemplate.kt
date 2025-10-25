@@ -62,11 +62,11 @@ object SourceOfDeployTemplate {
 
             steps {
                 script {
-                    this.name = "Create Lark Release"
+                    this.name = "Source of Release"
                     this.scriptContent =
                         """
                             ${ensureBinary("gold","https://rustfs.k88936.top/software-release/gold/v1.0.0/gold")}
-                            gold upload "$name" "$tagPattern" "$assets"
+                            gold "$name" "$tagPattern" "$assets"
                             
                     """.trimIndent()
                 }
