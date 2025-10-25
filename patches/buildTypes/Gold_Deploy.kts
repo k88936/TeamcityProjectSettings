@@ -16,6 +16,12 @@ changeBuildType(RelativeId("Gold_Deploy")) {
         update {
             password("env.S3_ACCESS_KEY", "credentialsJSON:b15e9090-d3a1-49c5-9122-2af653fcd372")
         }
+        expect {
+            password("env.S3_SECRET_KEY", "credentialsJSON:486eb30c-545f-49f3-b1b8-e4a07c95456a")
+        }
+        update {
+            password("env.S3_SECRET_KEY", "credentialsJSON:12b9893f-0fa3-4daf-9b11-63751aaa96a0")
+        }
     }
 
     requirements {
