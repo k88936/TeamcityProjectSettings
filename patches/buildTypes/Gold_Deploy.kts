@@ -9,6 +9,15 @@ To apply the patch, change the buildType with id = 'Gold_Deploy'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Gold_Deploy")) {
+    params {
+        expect {
+            password("env.S3_ACCESS_KEY", "credentialsJSON:23688bbb-1b91-46ba-b441-09702c979512")
+        }
+        update {
+            password("env.S3_ACCESS_KEY", "credentialsJSON:b15e9090-d3a1-49c5-9122-2af653fcd372")
+        }
+    }
+
     requirements {
         remove {
             exists("env.PLATFORM_LINUX")
