@@ -56,7 +56,7 @@ object SourceOfDeployTemplate {
     fun createSourceOfDeployment(
         name: String,
         tagPattern: String = "v%build.number%",
-        assets: String = "*"
+        assets: String = "_deploy/*",
     ): BuildType.() -> Unit {
         return {
 
@@ -66,7 +66,7 @@ object SourceOfDeployTemplate {
                     this.scriptContent =
                         """
                             ${ensureBinary("gold","https://rustfs.k88936.top/software-release/gold/v1.0.0/gold")}
-                            gold "$name" "$tagPattern" "$assets"
+                            ./gold upload "$name" "$tagPattern" "$assets"
                             
                     """.trimIndent()
                 }

@@ -12,7 +12,7 @@ object GithubReleaseDeployTemplate {
         tagPattern: String = "v%build.number%",
         notes: String? = null,
         vcsRoot: VcsRoot,
-        assetsPath: String = "*"
+        assetsPath: String = "_deploy/*",
     ): BuildType.() -> Unit {
         return {
 
