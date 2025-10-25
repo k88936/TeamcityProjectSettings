@@ -53,6 +53,7 @@ feishu_upload_file
     }
 
     fun createLarkDriveDeployment(
+        token: String="",
         file: String,
         parentNode: String,
         rename: String = "%build.number%",
@@ -70,7 +71,7 @@ feishu_upload_file
                 }
             }
             params {
-                password("env.FEISHU_ACCESS_TOKEN", "")
+                password("env.FEISHU_ACCESS_TOKEN", token)
             }
             requirements{
                 exists("env.GH_CLI")

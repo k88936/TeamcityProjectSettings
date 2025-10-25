@@ -29,6 +29,7 @@ object ReactNativeDemo_Deploy : BuildType({
     )(this)
 
     LarkDriveDeployTemplate.createLarkDriveDeployment(
+        token = "",
         file = "_deploy/app-release.apk",
         parentNode = "EgwcfU39olEhT1dtX3fcWRF0nig",
         rename = "build-%build.number%.apk"
