@@ -8,6 +8,7 @@ import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
 object ReactNativeDemo_Deploy : BuildType({
     name = "Deploy"
+    type= Type.DEPLOYMENT
 
     triggers {
         finishBuildTrigger {

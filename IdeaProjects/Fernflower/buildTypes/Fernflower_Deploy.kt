@@ -7,6 +7,8 @@ import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 object Fernflower_Deploy : BuildType({
     name = "Deploy"
     id("Fernflower_Deploy")
+    type = Type.DEPLOYMENT
+
     createGithubReleaseDeployment(
         vcsRoot = IdeaProjects.Fernflower.vcsRoots.Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster,
         assetsPath = "_deploy/*"

@@ -10,7 +10,7 @@ object OllamaProxy_Build : BuildType({
     id("OllamaProxy_Build")
     name = "Build"
 
-    artifactRules = """target\release\ollama-proxy.exe"""
+    artifactRules = "target/release/ollama-proxy"
 
     vcs {
         root(OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain)

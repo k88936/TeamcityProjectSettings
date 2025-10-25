@@ -7,9 +7,10 @@ import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 
 
 object OllamaProxy_Deploy : BuildType({
-    id ("OllamaProxy_Deploy")
-    name ="Deploy"
-    
+    id("OllamaProxy_Deploy")
+    name = "Deploy"
+    type = Type.DEPLOYMENT
+
     triggers {
         finishBuildTrigger {
             buildType = OllamaProxy_Build.id?.value
@@ -25,7 +26,7 @@ object OllamaProxy_Deploy : BuildType({
         }
     }
 
-   createGithubReleaseDeployment(
+    createGithubReleaseDeployment(
         vcsRoot = OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain,
         assetsPath = "_deploy/*"
     )(this)

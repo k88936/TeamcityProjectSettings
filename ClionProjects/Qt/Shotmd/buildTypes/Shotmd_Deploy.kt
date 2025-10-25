@@ -9,6 +9,7 @@ import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 object Shotmd_Deploy : BuildType({
     id("Shotmd_Deploy")
     name = "Deploy"
+    type = Type.DEPLOYMENT
 
     triggers {
         finishBuildTrigger {
