@@ -11,7 +11,7 @@ import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 object ReactNativeDemo_Deploy : BuildType({
     name = "Deploy"
 
-    var root =
+    val root =
         WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
     vcs {
         root(root)
@@ -34,4 +34,6 @@ object ReactNativeDemo_Deploy : BuildType({
         vcsRoot = root,
         assetsPath = "_deploy/*",
     )(this)
+
+
 })

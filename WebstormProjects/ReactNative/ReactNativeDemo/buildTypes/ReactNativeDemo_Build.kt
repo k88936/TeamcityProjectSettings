@@ -19,9 +19,7 @@ object ReactNativeDemo_Build : BuildType({
         root(ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain)
     }
 
-    steps {
-        ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
-    }
+    ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
 
     triggers {
         vcs {
