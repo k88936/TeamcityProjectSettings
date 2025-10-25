@@ -29,7 +29,7 @@ object ReactNativeDemo_Deploy : BuildType({
     )(this)
 
     params {
-        password("env.FEISHU_ACCESS_TOKEN", "credentialsJSON:81365cbb-42af-4197-a1bc-10e8a14b6fa0")
+        password("env.FEISHU_ACCESS_TOKEN", "credentialsJSON:27470558-ab85-4fba-b4ff-10f7f5a54767")
     }
     LarkDriveDeployTemplate.createLarkDriveDeployment(
         file = "_deploy/app-release.apk",
