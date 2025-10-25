@@ -14,7 +14,7 @@ object GitPushStepTemplate {
                 this.name = "Git Push Changes"
                 id = "git_push"
                 this.scriptContent = """
-                    git config user.email "teamcity@kvto.dev"
+                    git config user.email "teamcity@k88936.top"
                     git config user.name "teamcity"
                     export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
                     git add -A
