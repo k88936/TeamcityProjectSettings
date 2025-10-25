@@ -41,11 +41,11 @@ feishu_upload_file() {
     local response
     response=$(curl --location --request POST 'https://open.feishu.cn/open-apis/drive/v1/files/upload_all' \
         --header "Authorization: Bearer %env.FEISHU_ACCESS_TOKEN%" \
-        --form 'file_name="'"${'$'}file_name"'"' \
+        --form 'file_name="${'$'}file_name"' \
         --form 'parent_type="explorer"' \
-        --form 'parent_node="'"$parentNode"'"' \
-        --form 'size="'"${'$'}size"'"' \
-        --form 'file=@"'"$file"'"')
+        --form 'parent_node="$parentNode"' \
+        --form 'size="${'$'}size"' \
+        --form 'file=@"$file"')
 
     echo "${'$'}response"
 
