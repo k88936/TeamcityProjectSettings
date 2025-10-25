@@ -23,19 +23,15 @@ object ReactNativeDemo_Deploy : BuildType({
         }
     }
 
+    params {
+        password("env.FEISHU_ACCESS_TOKEN", "credentialsJSON:27470558-ab85-4fba-b4ff-10f7f5a54767")
+    }
+
     createGithubReleaseDeployment(
         vcsRoot = ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain,
         assetsPath = "_deploy/*",
     )(this)
 
-    params {
-        password("env.FEISHU_ACCESS_TOKEN", "credentialsJSON:27470558-ab85-4fba-b4ff-10f7f5a54767")
-    }
-    LarkDriveDeployTemplate.createLarkDriveDeployment(
-        file = "_deploy/app-release.apk",
-        parentNode = "EgwcfU39olEhT1dtX3fcWRF0nig",
-        rename = "build-%build.number%.apk"
-    )(this)
 
 
 })
