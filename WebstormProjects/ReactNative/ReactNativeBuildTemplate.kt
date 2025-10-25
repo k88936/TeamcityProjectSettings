@@ -12,7 +12,7 @@ object ReactNativeBuildTemplate {
                     id = "build apk"
                     scriptContent = """
                         source /etc/profile
-                        npm install
+                        npm ci
                         npx expo prebuild
                         cd android
                         ./gradlew assembleRelease --no-daemon --parallel   
