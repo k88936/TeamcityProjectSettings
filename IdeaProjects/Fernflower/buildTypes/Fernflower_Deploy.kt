@@ -5,11 +5,13 @@ import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 
 object Fernflower_Deploy : BuildType({
+    name = "Deploy"
+    id("Fernflower_Deploy")
     createGithubReleaseDeployment(
         vcsRoot = IdeaProjects.Fernflower.vcsRoots.Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster,
         assetsPath = "_deploy/*"
     )(this)
-    
+
 
     triggers {
         finishBuildTrigger {

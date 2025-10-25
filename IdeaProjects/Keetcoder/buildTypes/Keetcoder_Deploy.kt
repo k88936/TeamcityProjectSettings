@@ -6,6 +6,8 @@ import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
 object Keetcoder_Deploy : BuildType({
+    id("Keetcoder_Deploy")
+    name = "Deploy"
     createGithubReleaseDeployment(
         vcsRoot = Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster,
         assetsPath = "_deploy/*"

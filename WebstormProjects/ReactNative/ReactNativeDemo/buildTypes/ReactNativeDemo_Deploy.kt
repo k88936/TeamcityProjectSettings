@@ -1,21 +1,14 @@
 package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
 
-import ClionProjects.Qt.Shotmd.vcsRoots.Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster
-import IdeaProjects.Fernflower.buildTypes.Fernflower_Build
-import Utils.GithubReleaseDeployTemplate
 import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
+import Utils.LarkDriveDeployTemplate
+import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
 object ReactNativeDemo_Deploy : BuildType({
     name = "Deploy"
 
-    val root =
-        WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
-    vcs {
-        root(root)
-    }
     triggers {
         finishBuildTrigger {
             buildType = ReactNativeDemo_Build.id?.value
@@ -31,8 +24,14 @@ object ReactNativeDemo_Deploy : BuildType({
     }
 
     createGithubReleaseDeployment(
-        vcsRoot = root,
+        vcsRoot = ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain,
         assetsPath = "_deploy/*",
+    )(this)
+
+    LarkDriveDeployTemplate.createLarkDriveDeployment(
+        file = "_deploy/app-release.apk",
+        parentNode = "EgwcfU39olEhT1dtX3fcWRF0nig",
+        rename = "build-%build.number%.apk"
     )(this)
 
 

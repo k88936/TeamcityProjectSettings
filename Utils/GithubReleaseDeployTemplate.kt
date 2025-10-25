@@ -9,17 +9,12 @@ object GithubReleaseDeployTemplate {
      * 创建一个GitHub Release部署构建类型
      */
     fun createGithubReleaseDeployment(
-        name: String = "Deploy",
         tagPattern: String = "v%build.number%",
         notes: String? = null,
         vcsRoot: VcsRoot,
         assetsPath: String = "*"
     ): BuildType.() -> Unit {
         return {
-            this.name = name
-            this.enablePersonalBuilds = false
-            this.type = BuildTypeSettings.Type.DEPLOYMENT
-            this.maxRunningBuilds = 1
 
             val scriptContent = buildString {
                 append("gh release create $tagPattern")
@@ -37,7 +32,6 @@ object GithubReleaseDeployTemplate {
             steps {
                 script {
                     this.name = "Create GitHub Release"
-                    id = "github_release"
                     this.scriptContent = scriptContent
                 }
             }
