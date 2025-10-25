@@ -2,6 +2,7 @@ package RustroverProjects.Gold.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object Gold_Build : BuildType({
     id("Gold_Build")
@@ -11,21 +12,21 @@ object Gold_Build : BuildType({
         root(RustroverProjects.Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain)
     }
 
+    artifactRules="""target/release/gold"""
 
     steps {
-        step {
-            id = "cargo"
-            type = "cargo"
-            param("cargo-command", "build")
-            param("cargo-build-release", "true")
+        script {
+            name = "Build"
+            scriptContent = """
+                 cargo build --release
+            """.trimIndent()
+            dockerImage= "kvtodev/ci-containers:rust"
+
         }
     }
 
-    requirements {
-        exists("env.PLATFORM_LINUX")
-    }
 
-    features{
-        perfmon {  }
+    features {
+        perfmon { }
     }
 })
