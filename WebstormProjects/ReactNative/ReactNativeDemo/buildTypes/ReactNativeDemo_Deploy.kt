@@ -28,8 +28,10 @@ object ReactNativeDemo_Deploy : BuildType({
         assetsPath = "_deploy/*",
     )(this)
 
+    params {
+        password("env.FEISHU_ACCESS_TOKEN", "credentialsJSON:81365cbb-42af-4197-a1bc-10e8a14b6fa0")
+    }
     LarkDriveDeployTemplate.createLarkDriveDeployment(
-        token = "",
         file = "_deploy/app-release.apk",
         parentNode = "EgwcfU39olEhT1dtX3fcWRF0nig",
         rename = "build-%build.number%.apk"

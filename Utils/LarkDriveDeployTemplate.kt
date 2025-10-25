@@ -5,9 +5,9 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 
 object LarkDriveDeployTemplate {
-    private fun larkUpload( file: String,parentNode: String,rename: String): String {
+    private fun larkUpload(file: String, parentNode: String, rename: String): String {
 
-        return         """
+        return """
 feishu_upload_file() {
     # Validate inputs
     if [ -z "$file" ] || [ -z "$parentNode" ]; then
@@ -49,31 +49,32 @@ feishu_upload_file() {
 feishu_upload_file
 
 """.trimIndent()
-       
+
     }
 
     fun createLarkDriveDeployment(
-        token: String="",
         file: String,
         parentNode: String,
         rename: String = "%build.number%",
     ): BuildType.() -> Unit {
         return {
 
+            require(this.params.hasParam("env.FEISHU_ACCESS_TOKEN")) {
+                "FEISHU_ACCESS_TOKEN environment variable is not set."
+            }
+
             steps {
                 script {
                     this.name = "Create Lark Release"
-                    this.scriptContent = 
+                    this.scriptContent =
                         """
                         ${larkUpload(file, parentNode, rename)}
                         
-                    """.trimIndent() 
+                    """.trimIndent()
                 }
             }
-            params {
-                password("env.FEISHU_ACCESS_TOKEN", token)
-            }
-            requirements{
+
+            requirements {
                 exists("env.GH_CLI")
             }
         }
