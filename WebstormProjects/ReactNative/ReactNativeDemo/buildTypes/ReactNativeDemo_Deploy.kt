@@ -31,7 +31,6 @@ object ReactNativeDemo_Deploy : BuildType({
 
     SourceOfDeployTemplate.createSourceOfDeployment(
         name = "react-native-demo",
-        tagPattern = "v%build.number",
         assets = "_deploy/*"
     )(this)
     createGithubReleaseDeployment(

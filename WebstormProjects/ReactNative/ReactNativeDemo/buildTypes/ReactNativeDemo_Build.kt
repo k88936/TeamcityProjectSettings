@@ -31,9 +31,5 @@ object ReactNativeDemo_Build : BuildType({
         }
     }
 
-    SourceOfDeployTemplate.createSourceOfDeployment(
-        name = "react-native-demo",
-        tagPattern = "v%build.number%",
-    )
     ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
 })
