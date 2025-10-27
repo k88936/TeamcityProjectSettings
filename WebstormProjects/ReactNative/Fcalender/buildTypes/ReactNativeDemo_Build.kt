@@ -1,4 +1,4 @@
-package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
+package WebstormProjects.ReactNative.Fcalender.buildTypes
 
 import Utils.SourceOfDeployTemplate
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
@@ -31,5 +31,5 @@ object ReactNativeDemo_Build : BuildType({
         }
     }
 
-    ReactNativeBuildTemplate.createReactNativeAndroidBuild("frontend")(this)
+    ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
 })

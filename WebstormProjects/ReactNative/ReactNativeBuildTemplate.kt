@@ -5,12 +5,15 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 
 object ReactNativeBuildTemplate {
-    fun createReactNativeAndroidBuild(): BuildType.() -> Unit {
+    fun createReactNativeAndroidBuild(
+        dir: String = "."
+    ): BuildType.() -> Unit {
         return {
             steps {
                 script {
                     id = "build apk"
                     scriptContent = """
+                        cd $dir
                         source /etc/profile
                         npm ci
                         npx expo prebuild
