@@ -1,5 +1,6 @@
 package WebstormProjects.ReactNative.Fcalender.buildTypes
 
+import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.*
@@ -9,14 +10,14 @@ import jetbrains.buildServer.configs.kotlin.triggers.vcs
 object Fcalender_Build : BuildType({
     name = "Build"
 
-    artifactRules = "android/app/build/outputs/apk/release/app-release.apk"
+    artifactRules = "frontend/android/app/build/outputs/apk/release/app-release.apk"
 
     params {
         param("env.NODE_OPTIONS", "--max_old_space_size=4096")
     }
 
     vcs {
-        root(ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain)
+        root(FcalenderMain)
     }
 
 
@@ -30,5 +31,5 @@ object Fcalender_Build : BuildType({
         }
     }
 
-    ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
+    ReactNativeBuildTemplate.createReactNativeAndroidBuild("frontend")(this)
 })

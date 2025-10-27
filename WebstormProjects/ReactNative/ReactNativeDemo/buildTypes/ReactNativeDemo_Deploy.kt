@@ -25,10 +25,6 @@ object ReactNativeDemo_Deploy : BuildType({
         }
     }
 
-    params {
-        password("env.FEISHU_ACCESS_TOKEN", "credentialsJSON:27470558-ab85-4fba-b4ff-10f7f5a54767")
-    }
-
     SourceOfDeployTemplate.createSourceOfDeployment(
         name = "react-native-demo",
         assets = "_deploy/*"

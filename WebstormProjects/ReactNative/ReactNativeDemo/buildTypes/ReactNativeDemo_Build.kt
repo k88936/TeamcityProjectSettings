@@ -31,5 +31,5 @@ object ReactNativeDemo_Build : BuildType({
         }
     }
 
-    ReactNativeBuildTemplate.createReactNativeAndroidBuild("frontend")(this)
+    ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
 })
