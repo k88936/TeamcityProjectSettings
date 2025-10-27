@@ -1,25 +1,24 @@
 package WebstormProjects.ReactNative.Fcalender.buildTypes
 
 import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
-import Utils.LarkDriveDeployTemplate
 import Utils.SourceOfDeployTemplate
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
-object ReactNativeDemo_Deploy : BuildType({
+object Fcalender_Deploy : BuildType({
     name = "Deploy"
     type= Type.DEPLOYMENT
 
     triggers {
         finishBuildTrigger {
-            buildType = ReactNativeDemo_Build.id?.value
+            buildType = Fcalender_Build.id?.value
             successfulOnly = true
         }
     }
 
     dependencies {
-        artifacts(ReactNativeDemo_Build) {
+        artifacts(Fcalender_Build) {
             buildRule = lastSuccessful()
             artifactRules = "*=>_deploy/"
         }
