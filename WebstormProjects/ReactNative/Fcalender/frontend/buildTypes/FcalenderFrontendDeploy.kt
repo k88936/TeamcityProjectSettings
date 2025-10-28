@@ -1,7 +1,7 @@
 package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
 
-import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
-import Utils.SourceOfDeployTemplate
+import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
+import Utils.Deploy.SourceOfDeployTemplate
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger

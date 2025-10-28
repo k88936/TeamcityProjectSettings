@@ -3,7 +3,7 @@ package RustroverProjects.OllamaProxy.buildTypes
 import RustroverProjects.OllamaProxy.vcsRoots.OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
-import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
+import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 
 
 object OllamaProxy_Deploy : BuildType({

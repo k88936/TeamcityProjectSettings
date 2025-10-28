@@ -1,8 +1,6 @@
 package RustroverProjects.Gold.buildTypes
 
-import RustroverProjects.Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain
-import RustroverProjects.OllamaProxy.buildTypes.OllamaProxy_Build
-import Utils.SourceOfDeployTemplate
+import Utils.Deploy.SourceOfDeployTemplate
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger

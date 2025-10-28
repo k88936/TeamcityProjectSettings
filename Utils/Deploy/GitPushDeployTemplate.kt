@@ -1,5 +1,6 @@
-package Utils
+package Utils.Deploy
 
+import Utils.GitPushStepTemplate
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent

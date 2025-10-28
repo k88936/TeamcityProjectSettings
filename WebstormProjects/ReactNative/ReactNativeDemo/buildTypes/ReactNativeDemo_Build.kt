@@ -1,6 +1,5 @@
 package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
 
-import Utils.SourceOfDeployTemplate
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.*

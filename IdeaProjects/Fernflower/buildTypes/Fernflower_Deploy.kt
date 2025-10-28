@@ -2,7 +2,7 @@ package IdeaProjects.Fernflower.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
-import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
+import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 
 object Fernflower_Deploy : BuildType({
     name = "Deploy"

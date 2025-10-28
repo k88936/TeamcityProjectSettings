@@ -1,8 +1,8 @@
-package Utils
+package Utils.Deploy
 
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.VcsRoot
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
-
 
 object GithubReleaseDeployTemplate {
     /**

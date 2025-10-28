@@ -1,8 +1,7 @@
 package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
 
-import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
-import Utils.LarkDriveDeployTemplate
-import Utils.SourceOfDeployTemplate
+import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
+import Utils.Deploy.SourceOfDeployTemplate
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger

@@ -1,4 +1,4 @@
-package Utils
+package Utils.Deploy
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.script

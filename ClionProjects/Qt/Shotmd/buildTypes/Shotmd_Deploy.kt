@@ -4,7 +4,7 @@ import ClionProjects.Qt.Shotmd.vcsRoots.Shotmd_GitGithubComK88936shotmdGitRefsHe
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
-import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
+import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 
 object Shotmd_Deploy : BuildType({
     id("Shotmd_Deploy")

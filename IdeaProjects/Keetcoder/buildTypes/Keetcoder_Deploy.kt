@@ -1,7 +1,7 @@
 package IdeaProjects.Keetcoder.buildTypes
 
 import IdeaProjects.Keetcoder.vcsRoots.Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster
-import Utils.GithubReleaseDeployTemplate.createGithubReleaseDeployment
+import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
