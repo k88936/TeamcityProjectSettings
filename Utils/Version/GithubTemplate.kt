@@ -45,7 +45,7 @@ object GithubTemplate {
                             echo "Unstaged changes detected."
 
                             # Create a new branch with a timestamp-based name
-                            branch_name="$branchName-$(date +%Y%m%d-%H%M%S)"
+                            branch_name="$branchName-$(%build.number%)"
                             git checkout -b "${'$'}branch_name"
 
                             # Stage and commit all changes
