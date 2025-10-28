@@ -34,7 +34,7 @@ object FcalenderFrontendDeploy : BuildType({
         assets = "_deploy/*"
     )(this)
     createGithubReleaseDeployment(
-        tagPattern = "build-%build.number%",
+        tagPattern = "frontend-build-%build.number%",
         vcsRoot = FcalenderMain,
         assetsPath = "_deploy/*",
     )(this)
