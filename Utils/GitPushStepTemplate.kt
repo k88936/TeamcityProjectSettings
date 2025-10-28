@@ -1,6 +1,6 @@
 package Utils
 
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildSteps
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object GitPushStepTemplate {
@@ -18,7 +18,7 @@ object GitPushStepTemplate {
                     git config user.name "teamcity"
                     export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
                     git add -A
-                    git commit -m"$comment"
+                    git commit -m"[CI] $comment"
                     git push --force
                 """.trimIndent()
             }

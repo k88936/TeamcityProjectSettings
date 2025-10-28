@@ -1,14 +1,13 @@
 package WebstormProjects.GithubPages
 
 import Utils.GitPushStepTemplate.createGitPushStep
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import Utils.Trigger.TriggerTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
-import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
 class GithubPageTemplate() : Project() {
@@ -60,14 +59,10 @@ class GithubPageTemplate() : Project() {
                     dockerImage = "kvtodev/ci-containers:js"
                     dockerPull = true
                 }
-                createGitPushStep("[CI] Teamcity build pages")(this)
+                createGitPushStep("Teamcity build pages")(this)
             }
 
-            triggers {
-                vcs {
-                    triggerRules = """-:comment=\[CI\]:**"""
-                }
-            }
+            TriggerTemplate.excludeCI()(this)
 
             features {
                 sshAgent {

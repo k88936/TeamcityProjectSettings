@@ -1,11 +1,12 @@
 package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
 
 import Utils.AI.ContinueAITemplate
+import Utils.GitPushStepTemplate
+import Utils.Trigger.TriggerTemplate
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object ReactNativeDemo_Build : BuildType({
     name = "Build"
@@ -20,16 +21,14 @@ object ReactNativeDemo_Build : BuildType({
         root(ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain)
     }
 
-    triggers {
-        vcs {
-        }
-    }
 
+    TriggerTemplate.excludeCI()(this)
     features {
         perfmon {
         }
     }
 
-    ContinueAITemplate.createStep("say hello")(this)
+    ContinueAITemplate.createStep("check if the newest commit fully support i18n .if not, patch it")(this)
+    GitPushStepTemplate.createGitPushStep("ensure i18n")
     ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
 })
