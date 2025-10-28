@@ -1,6 +1,6 @@
 package Utils.Deploy
 
-import Utils.Repo.GithubTemplate
+import Utils.Version.GithubTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.BuildTypeSettings
 import jetbrains.buildServer.configs.kotlin.VcsRoot

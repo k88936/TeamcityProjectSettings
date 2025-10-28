@@ -1,15 +1,15 @@
 package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
 
+import Utils.AI.ContinueAITemplate
 import Utils.Trigger.TriggerTemplate
-import WebstormProjects.ReactNative.ReactNativeBuildTemplate
+import Utils.Version.GithubTemplate
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 
-object ReactNativeDemo_Build : BuildType({
-    name = "Build"
+object ReactNativeDemo_i18Check : BuildType({
+    name = "i18nCheck"
 
-    artifactRules = "android/app/build/outputs/apk/release/app-release.apk"
 
     vcs {
         root(ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain)
@@ -22,5 +22,6 @@ object ReactNativeDemo_Build : BuildType({
         }
     }
 
-    ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
+    ContinueAITemplate.createStep("check if the newest commit fully support i18n(ch and en). if not, patch it")(this)
+    GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
 })
