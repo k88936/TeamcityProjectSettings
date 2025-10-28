@@ -30,7 +30,7 @@ object ContinueAITemplate {
                 param("env.CONTINUE_MODEL_NAME", "Qwen3-Coder-Plus")
                 param("env.CONTINUE_CONTEXT_LENGTH", "1000000")
                 param("env.CONTINUE_PROJECT_NAME", "%env.TEAMCITY_PROJECT_NAME%")
-                param("env.CONTINUE_PROJECT_VERSION", "%build.number%")
+                param("env.CONTINUE_PROJECT_VERSION", "build-%build.number%")
             }
         }
     }
