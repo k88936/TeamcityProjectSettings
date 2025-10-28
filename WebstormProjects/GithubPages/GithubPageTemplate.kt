@@ -1,6 +1,7 @@
 package WebstormProjects.GithubPages
 
 import Utils.GitPushStepTemplate.createGitPushStep
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
@@ -63,9 +64,7 @@ class GithubPageTemplate() : Project() {
             }
 
             triggers {
-                schedule {
-                    triggerBuild = always()
-                    withPendingChangesOnly = false
+                vcs {
                 }
             }
 
