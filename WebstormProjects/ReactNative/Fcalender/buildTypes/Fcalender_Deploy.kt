@@ -26,15 +26,16 @@ object Fcalender_Deploy : BuildType({
     }
 
     SourceOfDeployTemplate.createSourceOfDeployment(
-        name = "react-native-demo",
+        name = "Fcalender",
         assets = "_deploy/*"
     )(this)
     SourceOfDeployTemplate.createSourceOfDeployment(
-        name = "react-native-demo",
+        name = "Fcalender",
         tagPattern = "latest",
         assets = "_deploy/*"
     )(this)
     createGithubReleaseDeployment(
+        tagPattern = "build-%build.number%",
         vcsRoot = FcalenderMain,
         assetsPath = "_deploy/*",
     )(this)
