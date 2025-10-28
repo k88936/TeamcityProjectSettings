@@ -1,13 +1,12 @@
-package WebstormProjects.ReactNative.Fcalender.buildTypes
+package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
 
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
-import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
-object Fcalender_Build : BuildType({
+object FcalenderFrontendBuild : BuildType({
     name = "Build"
 
     artifactRules = "frontend/android/app/build/outputs/apk/release/app-release.apk"
