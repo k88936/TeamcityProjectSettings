@@ -1,5 +1,6 @@
 package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
 
+import Utils.AI.ContinueAITemplate
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.*
@@ -19,7 +20,6 @@ object ReactNativeDemo_Build : BuildType({
         root(ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain)
     }
 
-
     triggers {
         vcs {
         }
@@ -30,5 +30,6 @@ object ReactNativeDemo_Build : BuildType({
         }
     }
 
+    ContinueAITemplate.createStep("say hello")(this)
     ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
 })
