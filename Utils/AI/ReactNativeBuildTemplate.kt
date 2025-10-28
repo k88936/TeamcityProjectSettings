@@ -15,8 +15,9 @@ object ContinueAITemplate {
                     id = "continue"
                     scriptContent = """
                         source /etc/profile
+                        envsubst < /root/config.yaml > /tmp/config.yaml
                         cd $workdir
-                        cn --config /root/config.yaml --verbose --auto -p "$prompt"
+                        cn --config /tmp/config.yaml --verbose --auto -p "$prompt"
                     """.trimIndent()
                     dockerRunParameters = "--rm -v /root/.continue:/root/.continue"
                     dockerImage = "kvtodev/ci-containers:continue"
@@ -28,6 +29,8 @@ object ContinueAITemplate {
                 param("env.CONTINUE_API_BASE", "https://llmapi.paratera.com/v1")
                 param("env.CONTINUE_MODEL_NAME", "Qwen3-Coder-Plus")
                 param("env.CONTINUE_CONTEXT_LENGTH", "1000000")
+                param("env.CONTINUE_PROJECT_NAME", "%env.TEAMCITY_PROJECT_NAME%")
+                param("env.CONTINUE_PROJECT_VERSION", "%build.number%")
             }
         }
     }
