@@ -24,7 +24,7 @@ object ContinueAITemplate {
                 }
             }
             params {
-                password("env.CONTINUE_API_KEY", "")
+                password("env.CONTINUE_API_KEY", "credentialsJSON:0af0457d-0ac1-4e56-83e7-6e93306effa7")
                 param("env.CONTINUE_API_BASE", "https://llmapi.paratera.com/v1")
                 param("env.CONTINUE_MODEL_NAME", "Qwen3-Coder-Plus")
                 param("env.CONTINUE_CONTEXT_LENGTH", "1000000")
