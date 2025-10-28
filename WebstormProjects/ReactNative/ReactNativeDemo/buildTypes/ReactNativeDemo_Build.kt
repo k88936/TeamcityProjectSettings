@@ -1,7 +1,7 @@
 package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
 
 import Utils.AI.ContinueAITemplate
-import Utils.GitPushStepTemplate
+import Utils.Repo.GithubTemplate
 import Utils.Trigger.TriggerTemplate
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
@@ -29,6 +29,6 @@ object ReactNativeDemo_Build : BuildType({
     }
 
     ContinueAITemplate.createStep("check if the newest commit fully support i18n .if not, patch it")(this)
-    GitPushStepTemplate.createGitPushStep("ensure i18n")
+    GithubTemplate.createGitPushStep("ensure i18n")
     ReactNativeBuildTemplate.createReactNativeAndroidBuild()(this)
 })

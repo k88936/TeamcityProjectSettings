@@ -1,9 +1,9 @@
-package Utils
+package Utils.Repo
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
-object GitPushStepTemplate {
+object GithubTemplate {
 
     /**
      * 创建一个Git推送构建步骤

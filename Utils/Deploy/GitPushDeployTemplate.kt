@@ -1,6 +1,6 @@
 package Utils.Deploy
 
-import Utils.GitPushStepTemplate
+import Utils.Repo.GithubTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.BuildTypeSettings
 import jetbrains.buildServer.configs.kotlin.VcsRoot
@@ -30,7 +30,7 @@ object GitPushDeployTemplate {
                     this.cleanCheckout = cleanCheckout
                 }
             }
-            GitPushStepTemplate.createGitPushStep()(this)
+            GithubTemplate.createGitPushStep()(this)
             features {
                 sshAgent {
                     teamcitySshKey = "id_rsa"
