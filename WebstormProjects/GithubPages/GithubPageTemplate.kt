@@ -59,8 +59,8 @@ class GithubPageTemplate() : Project() {
                     dockerImage = "kvtodev/ci-containers:js"
                     dockerPull = true
                 }
-                createGitPushStep("Teamcity build pages")(this)
             }
+            createGitPushStep("Teamcity build pages")(this)
 
             TriggerTemplate.excludeCI()(this)
 
