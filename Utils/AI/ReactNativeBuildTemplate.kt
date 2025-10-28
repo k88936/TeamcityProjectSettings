@@ -16,7 +16,7 @@ object ContinueAITemplate {
                     scriptContent = """
                         source /etc/profile
                         cd $workdir
-                        cn --verbose --auto -p "$prompt"
+                        cn --config /root/config.yaml --verbose --auto -p "$prompt"
                     """.trimIndent()
                     dockerRunParameters = "--rm -v /root/.continue:/root/.continue"
                     dockerImage = "kvtodev/ci-containers:continue"
