@@ -65,6 +65,7 @@ class GithubPageTemplate() : Project() {
 
             triggers {
                 vcs {
+                    triggerRules = """-:comment=\[CI\]:**"""
                 }
             }
 
