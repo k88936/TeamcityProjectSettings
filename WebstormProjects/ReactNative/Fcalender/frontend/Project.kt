@@ -7,6 +7,7 @@ import jetbrains.buildServer.configs.kotlin.Project
 
 object Project : Project({
     name = "Fcalender Frontend"
+    id("FcalenderFrontend")
 
     buildType(FcalenderFrontendBuild)
     buildType(FcalenderFrontendDeploy)
