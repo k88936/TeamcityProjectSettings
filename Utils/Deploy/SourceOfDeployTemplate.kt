@@ -1,6 +1,6 @@
 package Utils.Deploy
 
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 
@@ -17,14 +17,7 @@ object SourceOfDeployTemplate {
                    echo "Error: ensure_binary requires two arguments: binary_name and download_url" >&2
                    exit 1
                fi
-
-               # Check if already exists and executable
-               if [ -x "./${'$'}{binary_name}" ]; then
-                   return 0  # Already exists, return immediately
-               fi
-
-               echo "Executable './${'$'}{binary_name}' not found, downloading from ${'$'}{download_url}..."
-
+               
                local retry=0
                while [ ${'$'}retry -lt ${'$'}max_retries ]; do
                    if curl -fsSL -o "${'$'}{binary_name}" "${'$'}{download_url}"; then
