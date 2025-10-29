@@ -1,7 +1,6 @@
 package Utils.Deploy
 
 import jetbrains.buildServer.configs.kotlin.BuildType
-import jetbrains.buildServer.configs.kotlin.VcsRoot
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object GithubReleaseDeployTemplate {
@@ -11,13 +10,12 @@ object GithubReleaseDeployTemplate {
     fun createGithubReleaseDeployment(
         tagPattern: String = "v%build.number%",
         notes: String? = null,
-        vcsRoot: VcsRoot,
         assetsPath: String = "_deploy/*",
     ): BuildType.() -> Unit {
         return {
 
             val scriptContent = buildString {
-                append("gh release create $tagPattern")
+                append("gh release create --target %teamcity.build.branch% $tagPattern")
                 if (notes != null) {
                     append(" --notes \"$notes\"")
                 } else {
@@ -26,9 +24,7 @@ object GithubReleaseDeployTemplate {
                 append(" $assetsPath")
             }
 
-            vcs {
-                root(vcsRoot)
-            }
+            require(!this.vcs.entries.isEmpty())
             steps {
                 script {
                     this.name = "Create GitHub Release"
@@ -38,7 +34,7 @@ object GithubReleaseDeployTemplate {
             params {
                 password("env.GH_TOKEN", "credentialsJSON:04d96fb0-dbf8-457b-be29-2327ab11dd68")
             }
-            requirements{
+            requirements {
                 exists("env.GH_CLI")
             }
         }
