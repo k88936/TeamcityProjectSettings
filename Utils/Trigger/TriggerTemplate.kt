@@ -20,7 +20,7 @@ object TriggerTemplate {
     }
 
     fun excludeCI(): BuildType.() -> Unit {
-        return addVcsTriggerRule("""-:comment=\[CI\]:**""")
+        return addVcsTriggerRule("-:comment=\\[CI\\]:**")
     }
 
     fun excludeUser(name: String): BuildType.() -> Unit {
