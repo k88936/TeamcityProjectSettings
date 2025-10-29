@@ -48,14 +48,11 @@ object GithubTemplate {
 if git status --porcelain --branch | grep -q "ahead"; then
     echo "Local commits detected ahead of remote."
 
-    # Create a new branch with the given name template
-    branch_name="$branchName-%build_number%"
+    branch_name="$branchName-%build.number%"
     git checkout -b "${'$'}branch_name"
 
-    # Push the new branch to remote
     git push -u origin "${'$'}branch_name"
 
-    # Create a pull request
     gh pr create --title "$title" --body "$body"
 
     echo "PR created from branch: ${'$'}branch_name"
