@@ -1,9 +1,10 @@
 package RustroverProjects.OllamaProxy.buildTypes
 
 import RustroverProjects.OllamaProxy.vcsRoots.OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain
+import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
+import Utils.Deploy.SourceOfDeployTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
-import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 
 
 object OllamaProxy_Deploy : BuildType({
@@ -25,6 +26,7 @@ object OllamaProxy_Deploy : BuildType({
         }
     }
 
+    SourceOfDeployTemplate.createSourceOfDeployment("ollama-proxy")(this)
     createGithubReleaseDeployment(
         vcsRoot = OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain,
         assetsPath = "_deploy/*"
