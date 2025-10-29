@@ -2,8 +2,9 @@ package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
 
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object FcalenderFrontendBuild : BuildType({
@@ -30,5 +31,22 @@ object FcalenderFrontendBuild : BuildType({
         }
     }
 
+
+
+
+    steps {
+        script {
+            id = "jest"
+            scriptContent = """
+                        source /etc/profile
+                        
+                        cd frontend
+                        npm ci
+                        npm run test
+                    """.trimIndent()
+            dockerImage = "kvtodev/ci-containers:react-native"
+            dockerPull = true
+        }
+    }
     ReactNativeBuildTemplate.createReactNativeAndroidBuild("frontend")(this)
 })
