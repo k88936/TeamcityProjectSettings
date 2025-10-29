@@ -13,6 +13,7 @@ object FcalenderFrontendDeploy : BuildType({
     triggers {
         finishBuildTrigger {
             buildType = FcalenderFrontendBuild.id?.value
+            branchFilter = "+:frontend*"
             successfulOnly = true
         }
     }

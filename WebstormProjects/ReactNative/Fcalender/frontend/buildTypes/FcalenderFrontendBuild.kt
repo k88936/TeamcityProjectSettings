@@ -23,6 +23,7 @@ object FcalenderFrontendBuild : BuildType({
 
     triggers {
         vcs {
+            branchFilter = "+:frontend*"
         }
     }
 

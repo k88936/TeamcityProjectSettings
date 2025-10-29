@@ -17,7 +17,7 @@ object FcalenderFrontendi18nCheck : BuildType({
     }
     triggers {
         vcs {
-            branchFilter = "+:<default>"
+            branchFilter = "+:frontend*"
         }
     }
 
