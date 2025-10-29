@@ -9,8 +9,10 @@ object Keetcoder_Deploy : BuildType({
     id("Keetcoder_Deploy")
     name = "Deploy"
     type = Type.DEPLOYMENT
+    vcs {
+        root(Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster)
+    }
     createGithubReleaseDeployment(
-        vcsRoot = Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster,
         assetsPath = "_deploy/*"
     )(this)
 

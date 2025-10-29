@@ -27,8 +27,11 @@ object Shotmd_Deploy : BuildType({
         }
     }
 
+
+    vcs {
+        root(Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster)
+    }
     createGithubReleaseDeployment(
-        vcsRoot = Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster,
         assetsPath = "_deploy/*",
     )(this)
 })

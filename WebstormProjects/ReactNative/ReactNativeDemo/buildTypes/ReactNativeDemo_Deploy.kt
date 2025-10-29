@@ -8,7 +8,7 @@ import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
 object ReactNativeDemo_Deploy : BuildType({
     name = "Deploy"
-    type= Type.DEPLOYMENT
+    type = Type.DEPLOYMENT
 
     triggers {
         finishBuildTrigger {
@@ -17,6 +17,9 @@ object ReactNativeDemo_Deploy : BuildType({
         }
     }
 
+    vcs {
+        root(ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain)
+    }
     dependencies {
         artifacts(ReactNativeDemo_Build) {
             buildRule = lastSuccessful()
@@ -34,10 +37,8 @@ object ReactNativeDemo_Deploy : BuildType({
         assets = "_deploy/*"
     )(this)
     createGithubReleaseDeployment(
-        vcsRoot = ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain,
         assetsPath = "_deploy/*",
     )(this)
-
 
 
 })

@@ -60,7 +60,6 @@ object FcalenderFrontendBuild : BuildType({
     )(this)
     createGithubReleaseDeployment(
         tagPattern = "%teamcity.build.branch%-build-%build.number%",
-        vcsRoot = FcalenderMain,
         assetsPath = artifactRules,
     )(this)
 })

@@ -9,8 +9,10 @@ object Fernflower_Deploy : BuildType({
     id("Fernflower_Deploy")
     type = Type.DEPLOYMENT
 
+    vcs {
+        root(IdeaProjects.Fernflower.vcsRoots.Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster)
+    }
     createGithubReleaseDeployment(
-        vcsRoot = IdeaProjects.Fernflower.vcsRoots.Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster,
         assetsPath = "_deploy/*"
     )(this)
 

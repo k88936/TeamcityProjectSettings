@@ -26,9 +26,11 @@ object OllamaProxy_Deploy : BuildType({
         }
     }
 
+    vcs{
+        root(OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain)
+    }
     SourceOfDeployTemplate.createSourceOfDeployment("ollama-proxy")(this)
     createGithubReleaseDeployment(
-        vcsRoot = OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain,
         assetsPath = "_deploy/*"
     )(this)
 
