@@ -1,6 +1,6 @@
 package DockerProjects
 
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerRegistryConnections
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
@@ -26,6 +26,7 @@ object DockerBuildTemplate {
                             path = dockerfilePath
                         }
                         namesAndTags = imageName
+                        commandArgs = "--progress=plain"
                     }
                 }
                 dockerCommand {
