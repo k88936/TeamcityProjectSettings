@@ -16,7 +16,7 @@ object ReactNativeBuildTemplate {
                         cd $dir
                         source /etc/profile
                         npm ci
-                        npx expo prebuild --android
+                        npx expo prebuild --platform android
                         cd android
                         ./gradlew assembleRelease --no-daemon --parallel   
                     """.trimIndent()
