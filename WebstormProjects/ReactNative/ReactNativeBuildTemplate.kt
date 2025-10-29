@@ -20,7 +20,7 @@ object ReactNativeBuildTemplate {
                         
                         cd android
                         yes | sdkmanager --licenses
-                        ./gradlew clean assembleRelease --no-daemon --parallel --warning-mode all
+                        ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
                     """.trimIndent()
                     dockerRunParameters =
                         "--rm -v /root/.m2:/root/.m2 -v /root/.gradle:/root/.gradle/ -v /opt/android-sdk:/opt/android-sdk"
