@@ -6,6 +6,7 @@ import Utils.Version.GithubTemplate
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object ReactNativeDemo_i18Check : BuildType({
     name = "i18nCheck"
@@ -13,6 +14,11 @@ object ReactNativeDemo_i18Check : BuildType({
 
     vcs {
         root(ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain)
+    }
+    triggers {
+        vcs {
+            branchFilter = "+:+:<default>"
+        }
     }
 
 
@@ -33,8 +39,6 @@ object ReactNativeDemo_i18Check : BuildType({
         Try to avoid scan the whole workspace.
         If there is something to improve, patch it and create a new commit with proper message.
     """.trimMargin()
-    )(
-        this
-    )
+    )(this)
     GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
 })
