@@ -20,7 +20,8 @@ object ReactNativeBuildTemplate {
                         cd android
                         ./gradlew clean assembleRelease --no-daemon --parallel --warning-mode all
                     """.trimIndent()
-                    dockerRunParameters = "--rm -v /root/.m2:/root/.m2 -v /root/.gradle:/root/.gradle/"
+                    dockerRunParameters =
+                        "--rm -v /root/.m2:/root/.m2 -v /root/.gradle:/root/.gradle/ -v /opt/android-sdk:/opt/android-sdk"
                     dockerImage = "kvtodev/ci-containers:react-native"
                     dockerPull = true
                 }
