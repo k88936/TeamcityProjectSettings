@@ -41,6 +41,14 @@ To work more efficiently, you should: firstly check the new commit message(or di
 Try to avoid scan the whole workspace as possible.
 If there is something to improve, patch it and create a new commit with proper message.
 
+  ```
+
+    """.trimMargin().replace('"', ' '),
+        workdir = "frontend"
+    )(this)
+    GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
+
+    """
 ## i18n Integration Guide
 
 ### Page Titles (Stack Headers)
@@ -93,10 +101,5 @@ If there is something to improve, patch it and create a new commit with proper m
     PasswordNotMatchError: '两次输入的密码不一致',
     // ... other errors
   }
-  ```
-
-    """.trimMargin().replace('"',' '),
-        workdir = "frontend"
-    )(this)
-    GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
+"""
 })
