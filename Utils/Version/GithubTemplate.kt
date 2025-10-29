@@ -57,7 +57,7 @@ object GithubTemplate {
                             $BYPASS_SSH_KEY_CHECK
                             git push -u origin "${'$'}branch_name"
 
-                            gh pr create --title "$title" --body "$body"
+                            gh pr create --title "$title" --body "$body" --base %teamcity.build.branch%
 
                             echo "PR created from branch: ${'$'}branch_name"
                         else
