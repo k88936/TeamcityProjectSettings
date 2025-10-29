@@ -22,6 +22,8 @@ object ReactNativeDemo_i18Check : BuildType({
         }
     }
 
-    ContinueAITemplate.createStep("check if the newest commit fully support i18n(ch and en). if not, patch it")(this)
+    ContinueAITemplate.createStep("check if the newest commit fully support i18n(zh and en). if not, patch it and create a new commit with proper message")(
+        this
+    )
     GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
 })

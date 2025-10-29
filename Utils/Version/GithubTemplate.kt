@@ -35,8 +35,8 @@ object GithubTemplate {
 
     fun createPRStep(
         branchName: String,
-        comment: String,
-        prMessage: String,
+        body: String,
+        title: String,
     ): BuildType.() -> Unit {
         return {
             steps {
@@ -44,28 +44,25 @@ object GithubTemplate {
                     name = "PR Step"
                     id = "github_pr"
                     scriptContent = """
-                        #!/bin/bash
-                        # Exit if no unstaged changes
-                        if ! git diff --quiet; then
-                            echo "Unstaged changes detected."
+#!/bin/bash
+if git status --porcelain --branch | grep -q "ahead"; then
+    echo "Local commits detected ahead of remote."
 
-                            # Create a new branch with a timestamp-based name
-                            branch_name="$branchName-%build.number%"
-                            git checkout -b "${'$'}branch_name"
+    # Create a new branch with the given name template
+    branch_name="$branchName-%build_number%"
+    git checkout -b "${'$'}branch_name"
 
-                            # Stage and commit all changes
-                            git add .
-                            git commit -m "[CI] $comment by Teamcity"
+    # Push the new branch to remote
+    git push -u origin "${'$'}branch_name"
 
-                            # Push to remote and create PR
-                            git push -u origin "${'$'}branch_name"
-                            gh pr create --title "$prMessage" --fill
+    # Create a pull request
+    gh pr create --title "$title" --body "$body"
 
-                            echo "PR created from branch: ${'$'}branch_name"
-                        else
-                            echo "No unstaged changes. Exiting."
-                            exit 0
-                        fi
+    echo "PR created from branch: ${'$'}branch_name"
+else
+    echo "No local commits ahead of remote. Exiting."
+    exit 0
+fi
                     """.trimIndent()
                 }
             }
