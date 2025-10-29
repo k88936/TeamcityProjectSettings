@@ -4,7 +4,7 @@ import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object FcalenderFrontendBuild : BuildType({
@@ -32,17 +32,15 @@ object FcalenderFrontendBuild : BuildType({
     }
 
 
-
-
     steps {
-        script {
+        nodeJS {
             id = "jest"
-            scriptContent = """
-                        source /etc/profile
-                        cd frontend
-                        npm ci
-                        npm run test
-                    """.trimIndent()
+            shellScript = """
+                source /etc/profile
+                cd frontend
+                npm ci
+                npm run test
+            """.trimIndent()
             dockerImage = "kvtodev/ci-containers:js"
             dockerPull = true
         }
