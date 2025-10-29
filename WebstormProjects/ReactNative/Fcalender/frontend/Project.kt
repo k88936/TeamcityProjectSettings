@@ -1,7 +1,6 @@
 package WebstormProjects.ReactNative.Fcalender.frontend
 
 import WebstormProjects.ReactNative.Fcalender.frontend.buildTypes.FcalenderFrontendBuild
-import WebstormProjects.ReactNative.Fcalender.frontend.buildTypes.FcalenderFrontendDeploy
 import WebstormProjects.ReactNative.Fcalender.frontend.buildTypes.FcalenderFrontendi18nCheck
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
 import jetbrains.buildServer.configs.kotlin.Project
@@ -11,7 +10,6 @@ object Project : Project({
     id("FcalenderFrontend")
 
     buildType(FcalenderFrontendBuild)
-    buildType(FcalenderFrontendDeploy)
     buildType(FcalenderFrontendi18nCheck)
     vcsRoot(FcalenderMain)
 })

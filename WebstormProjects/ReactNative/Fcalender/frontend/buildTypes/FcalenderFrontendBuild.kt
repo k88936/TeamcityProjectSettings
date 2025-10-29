@@ -1,5 +1,7 @@
 package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
 
+import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
+import Utils.Deploy.SourceOfDeployTemplate
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
@@ -46,4 +48,19 @@ object FcalenderFrontendBuild : BuildType({
         }
     }
     ReactNativeBuildTemplate.createReactNativeAndroidBuild("frontend")(this)
+
+    SourceOfDeployTemplate.createSourceOfDeployment(
+        name = "Fcalender",
+        assets = artifactRules
+    )(this)
+    SourceOfDeployTemplate.createSourceOfDeployment(
+        name = "Fcalender",
+        tagPattern = "latest",
+        assets = artifactRules
+    )(this)
+    createGithubReleaseDeployment(
+        tagPattern = "%teamcity.build.branch%-build-%build.number%",
+        vcsRoot = FcalenderMain,
+        assetsPath = artifactRules,
+    )(this)
 })

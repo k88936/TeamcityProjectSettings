@@ -5,15 +5,17 @@ import jetbrains.buildServer.configs.kotlin.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object TriggerTemplate {
+
     private fun addVcsTriggerRule(rule: String): BuildType.() -> Unit {
         return {
-            (triggers.items.find { it is VcsTrigger } as? VcsTrigger)?.apply {
-                triggerRules += "\n$rule"
-            } ?: run {
-                triggers {
-                    vcs {
-                        triggerRules = rule
-                    }
+            (triggers.items.find { it is VcsTrigger } as? VcsTrigger)?.let { vcsTrigger ->
+                vcsTrigger.triggerRules = when {
+                    vcsTrigger.triggerRules.isNullOrBlank() -> rule
+                    else -> "${vcsTrigger.triggerRules}\n$rule"
+                }
+            } ?: triggers {
+                vcs {
+                    triggerRules = rule
                 }
             }
         }
