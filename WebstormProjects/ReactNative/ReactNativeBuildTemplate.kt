@@ -18,6 +18,7 @@ object ReactNativeBuildTemplate {
                         npm ci
                         npx expo prebuild --platform android
                         cd android
+                        yes | sdkmanager --licenses
                         ./gradlew clean assembleRelease --no-daemon --parallel --warning-mode all
                     """.trimIndent()
                     dockerRunParameters =
