@@ -1,19 +1,19 @@
-package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
+package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
 
 import Utils.AI.ContinueAITemplate
 import Utils.Trigger.TriggerTemplate
 import Utils.Version.GithubTemplate
-import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
+import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
-object ReactNativeDemo_i18Check : BuildType({
+object FcalenderFrontendi18nCheck : BuildType({
     name = "i18nCheck"
 
 
     vcs {
-        root(ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain)
+        root(FcalenderMain)
     }
     triggers {
         vcs {
@@ -38,7 +38,8 @@ object ReactNativeDemo_i18Check : BuildType({
         To work more efficiently, you should: firstly check the new commit message(or diff if needed) to see if it is about frontend UI, if not, end this task.
         Try to avoid scan the whole workspace as possible.
         If there is something to improve, patch it and create a new commit with proper message.
-    """.trimMargin()
+    """.trimMargin(),
+        workdir = "frontend"
     )(this)
     GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
 })

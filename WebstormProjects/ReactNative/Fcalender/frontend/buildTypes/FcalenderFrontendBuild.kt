@@ -39,12 +39,11 @@ object FcalenderFrontendBuild : BuildType({
             id = "jest"
             scriptContent = """
                         source /etc/profile
-                        
                         cd frontend
                         npm ci
                         npm run test
                     """.trimIndent()
-            dockerImage = "kvtodev/ci-containers:react-native"
+            dockerImage = "kvtodev/ci-containers:js"
             dockerPull = true
         }
     }
