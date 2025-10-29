@@ -25,16 +25,13 @@ object FcalenderFrontendBuild : BuildType({
         vcs {
             branchFilter = """
                 +:frontend*
-            """.trimMargin()
+            """.trimIndent()
         }
     }
 
     features {
-        perfmon {
-        }
+        perfmon {}
     }
-
-
     steps {
         nodeJS {
             id = "jest"

@@ -15,7 +15,7 @@ object FcalenderFrontendDeploy : BuildType({
             buildType = FcalenderFrontendBuild.id?.value
             branchFilter = """
                 +:frontend*
-            """.trimMargin()
+            """.trimIndent()
             successfulOnly = true
         }
     }

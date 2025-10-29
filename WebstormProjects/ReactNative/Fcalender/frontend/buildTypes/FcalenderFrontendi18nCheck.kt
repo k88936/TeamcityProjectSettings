@@ -19,7 +19,7 @@ object FcalenderFrontendi18nCheck : BuildType({
         vcs {
             branchFilter = """
                 +:frontend*
-            """.trimMargin()
+            """.trimIndent()
         }
     }
 
