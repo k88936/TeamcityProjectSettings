@@ -6,8 +6,8 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object GithubTemplate {
     const val BYPASS_SSH_KEY_CHECK =
-        "export GIT_SSH_COMMAND=\"ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no\"\n"
-    const val USER_INFO = "git config user.email \"Teamcity@k88936.top\" && git config user.name \"Teamcity\"\n"
+        "export GIT_SSH_COMMAND=\"ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no\""
+    const val USER_INFO = "git config user.email \"Teamcity@k88936.top\" && git config user.name \"Teamcity\""
 
 
     /**
