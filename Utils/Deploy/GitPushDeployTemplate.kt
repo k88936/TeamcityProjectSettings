@@ -22,7 +22,6 @@ object GitPushDeployTemplate {
             this.type = BuildTypeSettings.Type.DEPLOYMENT
             this.maxRunningBuilds = 1
 
-            // 如果提供了 vcsRoot，则配置 VCS 设置
             if (vcsRoot != null) {
                 vcs {
                     root(vcsRoot)

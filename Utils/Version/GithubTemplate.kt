@@ -5,6 +5,8 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object GithubTemplate {
+    const val BYPASS_SSH_KEY_CHECK =
+        "export GIT_SSH_COMMAND=\"ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no\"\n"
 
     /**
      * 创建一个Git推送构建步骤
@@ -18,8 +20,8 @@ object GithubTemplate {
                     this.scriptContent = """
                         git config user.email "teamcity@k88936.top"
                         git config user.name "teamcity"
-                        export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
                         git add -A
+                        $BYPASS_SSH_KEY_CHECK
                         git commit -m"[CI] $comment"
                         git push --force
                     """.trimIndent()
@@ -44,22 +46,23 @@ object GithubTemplate {
                     name = "PR Step"
                     id = "github_pr"
                     scriptContent = """
-#!/bin/bash
-if git status --porcelain --branch | grep -q "ahead"; then
-    echo "Local commits detected ahead of remote."
+                        #!/bin/bash
+                        if git status --porcelain --branch | grep -q "ahead"; then
+                            echo "Local commits detected ahead of remote."
 
-    branch_name="$branchName-%build.number%"
-    git checkout -b "${'$'}branch_name"
+                            branch_name="$branchName-%build.number%"
+                            git checkout -b "${'$'}branch_name"
+                            
+                            $BYPASS_SSH_KEY_CHECK
+                            git push -u origin "${'$'}branch_name"
 
-    git push -u origin "${'$'}branch_name"
+                            gh pr create --title "$title" --body "$body"
 
-    gh pr create --title "$title" --body "$body"
-
-    echo "PR created from branch: ${'$'}branch_name"
-else
-    echo "No local commits ahead of remote. Exiting."
-    exit 0
-fi
+                            echo "PR created from branch: ${'$'}branch_name"
+                        else
+                            echo "No local commits ahead of remote. Exiting."
+                            exit 0
+                        fi
                     """.trimIndent()
                 }
             }
