@@ -17,6 +17,7 @@ object ReactNativeBuildTemplate {
                         source /etc/profile
                         npm ci
                         npx expo prebuild --platform android
+                        
                         cd android
                         yes | sdkmanager --licenses
                         ./gradlew clean assembleRelease --no-daemon --parallel --warning-mode all
