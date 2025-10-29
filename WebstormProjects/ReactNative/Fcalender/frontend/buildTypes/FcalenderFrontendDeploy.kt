@@ -3,7 +3,7 @@ package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
 import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 import Utils.Deploy.SourceOfDeployTemplate
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
 object FcalenderFrontendDeploy : BuildType({
@@ -34,7 +34,7 @@ object FcalenderFrontendDeploy : BuildType({
         assets = "_deploy/*"
     )(this)
     createGithubReleaseDeployment(
-        tagPattern = "frontend-build-%build.number%",
+        tagPattern = "frontend-%teamcity.build.branch%-build-%build.number%",
         vcsRoot = FcalenderMain,
         assetsPath = "_deploy/*",
     )(this)
