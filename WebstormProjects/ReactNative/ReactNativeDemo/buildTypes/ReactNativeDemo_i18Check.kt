@@ -17,12 +17,20 @@ object ReactNativeDemo_i18Check : BuildType({
 
 
     TriggerTemplate.excludeCI()(this)
+    TriggerTemplate.excludeAI()(this)
     features {
         perfmon {
         }
     }
 
-    ContinueAITemplate.createStep("check if the newest commit fully support i18n(zh and en). if not, patch it and create a new commit with proper message")(
+    ContinueAITemplate.createStep(
+        """
+        Check if the new commit fully support i18n(zh and en).
+        To work more efficiently, you should: firstly check the new commit message(or diff if needed) to see if it is about frontend UI, if not, end this task.
+        Try to avoid scan the whole workspace.
+        If there is something to improve, patch it and create a new commit with proper message.
+    """.trimMargin()
+    )(
         this
     )
     GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)

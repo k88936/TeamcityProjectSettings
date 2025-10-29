@@ -1,5 +1,6 @@
 package Utils.AI
 
+import Utils.Version.GithubTemplate.USER_INFO
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
@@ -18,7 +19,7 @@ object ContinueAITemplate {
                     id = "continue"
                     scriptContent = """
                         source /etc/profile
-                        
+                        $USER_INFO
                         cat > /tmp/config.yaml << EOF
                         name: %env.TEAMCITY_PROJECT_NAME%
                         version: build-%build.number%
@@ -33,13 +34,15 @@ object ContinueAITemplate {
                               - tool_use
                             defaultCompletionOptions:
                               contextLength: $contextLength
-                        
+                              
+                        rules: 
+                            - ALWAYS use the preset git user info.
                         context:
                           - provider: diff
                           - provider: file
                           - provider: code
                           - provider: terminal
-                        
+                          
                         mcpServers:
                           - name: Memory
                             command: npx

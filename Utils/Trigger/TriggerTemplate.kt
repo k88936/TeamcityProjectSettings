@@ -8,10 +8,26 @@ object TriggerTemplate {
         return {
             triggers {
                 vcs {
-                    triggerRules = """-:comment=\[CI\]:**"""
+                    triggerRules += """-:comment=\[CI\]:**"""
                 }
             }
         }
+    }
 
+    fun excludeUser(name: String): BuildType.() -> Unit {
+        return {
+            triggers {
+                vcs {
+                    triggerRules += """-:user=$name:**"""
+                }
+            }
+        }
+    }
+
+    fun excludeAI(): BuildType.() -> Unit {
+        return {
+            excludeUser("Continue Dev")(this)
+            excludeUser("Teamcity")(this)
+        }
     }
 }

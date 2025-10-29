@@ -7,6 +7,8 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 object GithubTemplate {
     const val BYPASS_SSH_KEY_CHECK =
         "export GIT_SSH_COMMAND=\"ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no\"\n"
+    const val USER_INFO = "git config user.email \"Teamcity@k88936.top\" && git config user.name \"Teamcity\"\n"
+
 
     /**
      * 创建一个Git推送构建步骤
@@ -18,10 +20,9 @@ object GithubTemplate {
                     this.name = "Git Push Changes"
                     id = "git_push"
                     this.scriptContent = """
-                        git config user.email "teamcity@k88936.top"
-                        git config user.name "teamcity"
-                        git add -A
+                        $USER_INFO
                         $BYPASS_SSH_KEY_CHECK
+                        git add -A
                         git commit -m"[CI] $comment"
                         git push --force
                     """.trimIndent()
