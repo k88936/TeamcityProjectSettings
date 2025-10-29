@@ -37,6 +37,7 @@ object ContinueAITemplate {
                               
                         rules: 
                             - ALWAYS use the preset git user info.
+                            - ALWAYS add a '[CI]' tag in your git commit message.
                         context:
                           - provider: diff
                           - provider: file
