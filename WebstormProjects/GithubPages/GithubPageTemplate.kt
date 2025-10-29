@@ -5,7 +5,6 @@ import Utils.Version.GithubTemplate.createGitPushStep
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
@@ -65,9 +64,6 @@ class GithubPageTemplate() : Project() {
             TriggerTemplate.excludeCI()(this)
 
             features {
-                sshAgent {
-                    teamcitySshKey = "id_rsa"
-                }
                 perfmon {
                 }
             }

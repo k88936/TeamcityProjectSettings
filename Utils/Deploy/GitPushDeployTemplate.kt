@@ -5,7 +5,6 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.BuildTypeSettings
 import jetbrains.buildServer.configs.kotlin.VcsRoot
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 
 object GitPushDeployTemplate {
 
@@ -32,9 +31,6 @@ object GitPushDeployTemplate {
             }
             GithubTemplate.createGitPushStep()(this)
             features {
-                sshAgent {
-                    teamcitySshKey = "id_rsa"
-                }
                 perfmon {
                 }
             }

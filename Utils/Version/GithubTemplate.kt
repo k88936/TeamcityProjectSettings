@@ -1,6 +1,7 @@
 package Utils.Version
 
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object GithubTemplate {
@@ -10,7 +11,6 @@ object GithubTemplate {
      */
     fun createGitPushStep(comment: String = "update"): BuildType.() -> Unit {
         return {
-
             steps {
                 script {
                     this.name = "Git Push Changes"
@@ -23,6 +23,11 @@ object GithubTemplate {
                         git commit -m"[CI] $comment"
                         git push --force
                     """.trimIndent()
+                }
+            }
+            features {
+                sshAgent {
+                    teamcitySshKey = "id_rsa"
                 }
             }
         }
@@ -45,7 +50,7 @@ object GithubTemplate {
                             echo "Unstaged changes detected."
 
                             # Create a new branch with a timestamp-based name
-                            branch_name="$branchName-$(%build.number%)"
+                            branch_name="$branchName-%build.number%"
                             git checkout -b "${'$'}branch_name"
 
                             # Stage and commit all changes
@@ -70,6 +75,11 @@ object GithubTemplate {
             }
             requirements {
                 exists("env.GH_CLI")
+            }
+            features {
+                sshAgent {
+                    teamcitySshKey = "id_rsa"
+                }
             }
         }
     }
