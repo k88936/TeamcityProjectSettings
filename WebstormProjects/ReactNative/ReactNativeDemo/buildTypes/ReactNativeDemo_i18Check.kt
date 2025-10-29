@@ -22,6 +22,9 @@ object ReactNativeDemo_i18Check : BuildType({
         perfmon {
         }
     }
+    failureConditions {
+        executionTimeoutMin = 10
+    }
 
     ContinueAITemplate.createStep(
         """
