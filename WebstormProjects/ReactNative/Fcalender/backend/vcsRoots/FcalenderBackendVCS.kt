@@ -7,6 +7,7 @@ object FcalenderBackendVCS : GitVcsRoot({
     url = "git@github.com:tangerinesodayeah/Fcalendar.git"
     branch = "refs/heads/main"
     branchSpec = """
+        +:refs/heads/backend
         +:refs/heads/backend*
         +:refs/heads/zyc
         +:refs/heads/zwr
