@@ -1,6 +1,6 @@
 package RustroverProjects.TunetRust.buildTypes
 
-import RustroverProjects.TunetRust.vcsRoots.TunetRust_GitGithubComK88936tunetRustGitRefsHeadsMain
+import RustroverProjects.TunetRust.vcsRoots.TunetRust_GitGithubComK88936tunetRustGitRefsHeadsMaster
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.cargo
@@ -13,7 +13,7 @@ object TunetRust_Build : BuildType({
     artifactRules = "target/release/tunet-rust.exe"
 
     vcs {
-        root(TunetRust_GitGithubComK88936tunetRustGitRefsHeadsMain)
+        root(TunetRust_GitGithubComK88936tunetRustGitRefsHeadsMaster)
     }
 
     steps {

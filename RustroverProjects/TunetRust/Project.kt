@@ -7,7 +7,7 @@ object Project : Project({
     id("TunetRust")
     name = "Tunet Rust"
 
-    vcsRoot(RustroverProjects.TunetRust.vcsRoots.TunetRust_GitGithubComK88936tunetRustGitRefsHeadsMain)
+    vcsRoot(RustroverProjects.TunetRust.vcsRoots.TunetRust_GitGithubComK88936tunetRustGitRefsHeadsMaster)
     buildType(TunetRust_Build)
     buildType(RustroverProjects.TunetRust.buildTypes.TunetRust_Deploy)
 })
