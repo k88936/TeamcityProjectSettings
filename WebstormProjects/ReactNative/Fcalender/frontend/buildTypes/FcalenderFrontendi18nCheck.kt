@@ -9,7 +9,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object FcalenderFrontendi18nCheck : BuildType({
-    name = "i18nCheck"
+    name = "i18n check"
 
 
     vcs {
