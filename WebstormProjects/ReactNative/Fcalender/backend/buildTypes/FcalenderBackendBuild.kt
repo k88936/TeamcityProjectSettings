@@ -29,5 +29,5 @@ object FcalenderBackendBuild : BuildType({
         imageName = "ghcr.io/k88936/FcalendarBackend",
         dockerfilePath = "backend/Dockerfile",
         connection = "GH_CONNECTION",
-    )
+    )(this)
 })
