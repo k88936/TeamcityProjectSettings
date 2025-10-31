@@ -18,10 +18,17 @@ object TunetRust_Build : BuildType({
 
     steps {
         cargo {
-            id = "cargo"
+            id = "tunet"
             command = build {
                 release = true
-                buildPackage = "tunet tunet-service"
+                buildPackage = "tunet"
+            }
+        }
+        cargo {
+            id = "tunet-service"
+            command = build {
+                release = true
+                buildPackage = "tunet-service"
             }
         }
     }
