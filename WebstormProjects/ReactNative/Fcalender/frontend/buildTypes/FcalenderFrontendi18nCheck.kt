@@ -4,14 +4,9 @@ import Utils.AI.ContinueAITemplate
 import Utils.Trigger.TriggerTemplate
 import Utils.Version.GithubTemplate
 import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
-import jdk.internal.net.http.common.Log.errors
-import jdk.javadoc.internal.doclets.formats.html.markup.HtmlStyles
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
-import sun.security.jgss.GSSUtil.login
-import java.util.random.RandomGeneratorFactory.all
-import javax.management.Query.and
 
 object FcalenderFrontendi18nCheck : BuildType({
     name = "i18nCheck"
