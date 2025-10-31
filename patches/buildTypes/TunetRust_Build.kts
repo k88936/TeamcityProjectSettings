@@ -30,7 +30,7 @@ changeBuildType(RelativeId("TunetRust_Build")) {
                 release = true
                 features = ""
                 defaultFeatures = true
-                target = "tunet tunet-service"
+                target = ""
                 manifest = ""
                 parallelJobsNumber = ""
             }
