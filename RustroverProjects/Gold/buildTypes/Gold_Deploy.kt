@@ -1,7 +1,9 @@
 package RustroverProjects.Gold.buildTypes
 
+import RustroverProjects.Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain
+import Utils.Deploy.GithubReleaseDeployTemplate
 import Utils.Deploy.SourceOfDeployTemplate
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
@@ -10,6 +12,9 @@ object Gold_Deploy : BuildType({
     name = "Deploy"
     type = Type.DEPLOYMENT
 
+    vcs {
+        root(Gold_GitGithubComK88936goldGitRefsHeadsMain)
+    }
 
     triggers {
         finishBuildTrigger {
@@ -30,9 +35,12 @@ object Gold_Deploy : BuildType({
         tagPattern = "v1.0.0",
         assets = "_deploy/gold"
     )(this)
+    GithubReleaseDeployTemplate.createGithubReleaseDeployment(
+        assetsPath = "_deploy/gold",
+    )(this)
 
 
-    features{
-        perfmon {  }
+    features {
+        perfmon { }
     }
 })
