@@ -38,61 +38,61 @@ object FcalenderFrontendi18nCheck : BuildType({
 
     ContinueAITemplate.createStep(
         """
-Check if the new commit fully support i18n(zh and en, configured in i18n/index.ts)
-To work more efficiently, you should: firstly check the new commit message(or diff if needed) to see if it is about frontend UI, if not, end this task.
-Try to avoid scan the whole workspace as possible.
-If there is something to improve, patch it and create a new commit with proper message.
-besides, you should check for:
-## i18n Integration Guide
+        Task: check if the new commit fully support i18n(zh and en, configured in i18n/ HtmlStyles.index.ts)
+        To work more efficiently, you should: firstly check the new commit message(or diff if needed) to see if it is about frontend UI, if not, end this task.
+        Try to avoid scan the whole workspace as possible.
+        If there is something to improve, patch it and create a new commit with proper message.
+        besides, you should check for:
+        ## i18n Integration Guide
 
-### Page Titles (Stack Headers)
+        ### Page Titles (Stack Headers)
 
-- **In `app/_layout.tsx`:**  
-  Use translation keys for titles:
-  ```tsx
-    HtmlStyles.title: t('auth.login.headerTitle')
-    HtmlStyles.title: t('auth.signup.headerTitle')
-  ```
+        - **In `app/_layout.tsx`:**  
+          Use translation keys for titles:
+          ```tsx
+            HtmlStyles.title: t('auth.login.headerTitle')
+            HtmlStyles.title: t('auth.signup.headerTitle')
+          ```
 
-- **In `i18n/index.ts`:**  
-  Define clear, stable keys per screen under appropriate namespaces:
-  ```ts
-  auth: {
-    login: { headerTitle: 'Log In' },
-    signup: { headerTitle: 'Sign Up' }
-  }
-  ```
+        - **In `i18n/index.ts`:**  
+          Define clear, stable keys per screen under appropriate namespaces:
+          ```ts
+          auth: {
+            login: { headerTitle: 'Log In' },
+            signup: { headerTitle: 'Sign Up' }
+          }
+          ```
 
----
+        ---
 
-### Error Messages
+        ### Error Messages
 
-- **Throw errors using i18n keys as messages:**  
-  
+        - **Throw errors using i18n keys as messages:**  
+          
 
-  ```ts
-  ```
+          ```ts
+          ```
 
-  > **Note:** When adding new errors, ensure all `throw` statements use i18n keys.
+          > **Note:** When adding new errors, ensure all `throw` statements use i18n keys.
 
-- **Add keys to `i18n/index.ts` for all supported languages:**  
-  Include entries under the `errors` namespace for both English and Chinese:
+        - **Add keys to `i18n/index.ts` for all supported languages:**  
+          Include entries under the `errors` namespace for both English and Chinese:
 
-  ```ts
-  // English
-  errors: {
-    PasswordNotMatchError: 'Passwords do not match',
-    // ... other errors
-  }
+          ```ts
+          // English
+          errors: {
+            PasswordNotMatchError: 'Passwords do not match',
+            // ... other errors
+          }
 
-  // Chinese (zh)
-  errors: {
-    PasswordNotMatchError: '两次输入的密码不一致',
-    // ... other errors
-  }
-  especially pay attention to the validation related and api related Error
-  ```
-    """.trimMargin(),
+          // Chinese (zh)
+          errors: {
+            PasswordNotMatchError: '两次输入的密码不一致',
+            // ... other errors
+          }
+          especially pay attention to the validation related and api related Error
+          ```
+    """.trimIndent(),
         workdir = "frontend"
     )(this)
     GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
