@@ -91,6 +91,7 @@ besides, you should check for:
     PasswordNotMatchError: '两次输入的密码不一致',
     // ... other errors
   }
+  especially pay attention to the validation related and api related Error
   ```
     """.trimMargin(),
         workdir = "frontend"
