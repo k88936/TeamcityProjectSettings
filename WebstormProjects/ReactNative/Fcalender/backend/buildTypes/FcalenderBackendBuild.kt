@@ -20,7 +20,7 @@ object FcalenderBackendBuild : BuildType({
     TriggerTemplate.excludeAI()(this)
 
     DockerBuildTemplate.createDockerBuild(
-        imageName = "ghcr.io/k88936/FcalendarBackend",
+        imageName = "ghcr.io/k88936/fcalender-backend",
         dockerfilePath = "backend/Dockerfile",
         connection = "GH_CONNECTION",
     )(this)
