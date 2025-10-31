@@ -1,7 +1,6 @@
 package WebstormProjects.ReactNative.Fcalender.backend
 
-import WebstormProjects.ReactNative.Fcalender.frontend.buildTypes.FcalenderFrontendBuild
-import WebstormProjects.ReactNative.Fcalender.frontend.buildTypes.FcalenderFrontendi18nCheck
+import WebstormProjects.ReactNative.Fcalender.backend.buildTypes.FcalenderBackendBuild
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
@@ -12,9 +11,12 @@ object Project : Project({
 
     vcsRoot(FcalenderMain)
 
+    val dockerConnection = "GH_CONNECTION"
+
+    buildType(FcalenderBackendBuild)
     features {
         dockerRegistry {
-            id = "PROJECT_EXT_4"
+            id = dockerConnection
             name = "Docker Registry"
             url = "https://ghcr.io"
             userName = "k88936"

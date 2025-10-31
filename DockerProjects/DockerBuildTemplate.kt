@@ -11,10 +11,12 @@ object DockerBuildTemplate {
      * 创建一个标准的Docker构建类型
      */
     fun createDockerBuild(
-        name: String = "Build",
-        dockerfilePath: String = "Dockerfile",
         imageName: String,
-    ): BuildType.() -> Unit {
+        dockerfilePath: String = "Dockerfile",
+        name: String = "Build",
+        connection: String = "DOCKER_REGISTRY_CONNECTION",
+
+        ): BuildType.() -> Unit {
         return {
             this.name = name
 
@@ -46,7 +48,7 @@ object DockerBuildTemplate {
                 perfmon {}
                 dockerRegistryConnections {
                     loginToRegistry = on {
-                        dockerRegistryId = "DOCKER_REGISTRY_CONNECTION"
+                        dockerRegistryId = connection
                     }
                 }
             }

@@ -1,6 +1,6 @@
 package DockerProjects.CiContainers
 
-import DockerProjects.CiContainers.vcsRoots.*
+import DockerProjects.CiContainers.vcsRoots.CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain
 import DockerProjects.DockerBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
@@ -24,9 +24,9 @@ fun build(dockerfilePath: String, imageName: String): BuildType {
     return BuildType({
         id(formatted)
         DockerBuildTemplate.createDockerBuild(
-            name = formatted,
+            imageName = imageName,
             dockerfilePath = dockerfilePath,
-            imageName = imageName
+            name = formatted,
         )(this)
         vcs {
             root(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
