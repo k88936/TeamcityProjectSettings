@@ -14,6 +14,12 @@ object FcalenderBackendBuild : BuildType({
 
     triggers {
         vcs {
+            triggerRules = """
+               +:<default>
+               +:backend*
+               +:zwr
+               +:zyc
+           """.trimIndent()
         }
     }
     TriggerTemplate.excludeCI()(this)

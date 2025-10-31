@@ -22,6 +22,12 @@ object FcalenderFrontendBuild : BuildType({
 
     triggers {
         vcs {
+            branchFilter = """
+                +:<default>
+                +:frontend*
+                +:wdy
+                +:shq
+            """.trimIndent()
         }
     }
     TriggerTemplate.excludeCI()(this)
