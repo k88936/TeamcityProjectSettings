@@ -9,6 +9,7 @@ import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object FcalenderBackendBuild : BuildType({
     id("FcalenderBackendBuild")
+    name = "FcalenderBackendBuild"
     vcs {
         root(FcalenderBackendVCS)
     }

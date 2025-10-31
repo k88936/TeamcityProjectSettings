@@ -4,7 +4,6 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerRegistryConnections
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object DockerBuildTemplate {
     /**
@@ -13,12 +12,9 @@ object DockerBuildTemplate {
     fun createDockerBuild(
         imageName: String,
         dockerfilePath: String = "Dockerfile",
-        name: String = "Build",
         connection: String = "DOCKER_REGISTRY_CONNECTION",
-
         ): BuildType.() -> Unit {
         return {
-            this.name = name
 
             steps {
                 dockerCommand {
@@ -38,10 +34,6 @@ object DockerBuildTemplate {
                         removeImageAfterPush = false
                     }
                 }
-            }
-
-            triggers {
-                vcs {}
             }
 
             features {
