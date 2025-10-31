@@ -10,7 +10,10 @@ object TunetRust_Build : BuildType({
     id("TunetRust_Build")
     name = "Build"
 
-    artifactRules = "target/release/tunet-rust.exe"
+    artifactRules = """
+        target/release/tunet.exe
+        target/release/tunet-service.exe
+    """.trimIndent()
 
     vcs {
         root(TunetRust_GitGithubComK88936tunetRustGitRefsHeadsMaster)
