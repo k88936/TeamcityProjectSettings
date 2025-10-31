@@ -7,9 +7,9 @@ object FcalenderFrontendVCS : GitVcsRoot({
     url = "git@github.com:tangerinesodayeah/Fcalendar.git"
     branch = "refs/heads/main"
     branchSpec = """
-        +:frontend*
-        +:shq
-        +:wdy
+        +:refs/heads/frontend*
+        +:refs/heads/shq
+        +:refs/heads/wdy
     """.trimIndent()
     authMethod = uploadedKey {
         uploadedKey = "id_rsa"
