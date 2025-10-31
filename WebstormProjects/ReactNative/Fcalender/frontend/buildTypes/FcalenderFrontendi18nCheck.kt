@@ -3,7 +3,7 @@ package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
 import Utils.AI.ContinueAITemplate
 import Utils.Trigger.TriggerTemplate
 import Utils.Version.GithubTemplate
-import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
+import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -13,13 +13,10 @@ object FcalenderFrontendi18nCheck : BuildType({
 
 
     vcs {
-        root(FcalenderMain)
+        root(FcalenderFrontendVCS)
     }
     triggers {
         vcs {
-            branchFilter = """
-                +:frontend*
-            """.trimIndent()
         }
     }
 

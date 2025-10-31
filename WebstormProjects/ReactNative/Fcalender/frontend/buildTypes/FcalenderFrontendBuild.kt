@@ -3,7 +3,7 @@ package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
 import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 import Utils.Deploy.SourceOfDeployTemplate
 import Utils.Trigger.TriggerTemplate
-import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderMain
+import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
@@ -16,18 +16,12 @@ object FcalenderFrontendBuild : BuildType({
     artifactRules = "frontend/android/app/build/outputs/apk/release/app-release.apk"
 
     vcs {
-        root(FcalenderMain)
+        root(FcalenderFrontendVCS)
     }
 
 
     triggers {
         vcs {
-            branchFilter = """
-                +:<default>
-                +:frontend*
-                +:wdy
-                +:shq
-            """.trimIndent()
         }
     }
     TriggerTemplate.excludeCI()(this)
