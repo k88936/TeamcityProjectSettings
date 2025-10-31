@@ -1,5 +1,6 @@
 package Utils.Deploy
 
+import Utils.Env
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
@@ -15,7 +16,7 @@ object GithubReleaseDeployTemplate {
         return {
 
             val scriptContent = buildString {
-                append("gh release create --target %teamcity.build.branch% $tagPattern")
+                append("gh release create --target ${Env.BUILD_BRANCH} $tagPattern")
                 if (notes != null) {
                     append(" --notes \"$notes\"")
                 } else {
