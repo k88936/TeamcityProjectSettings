@@ -33,11 +33,19 @@ object FcalenderFrontendi18nCheck : BuildType({
 
     ContinueAITemplate.createStep(
         """
-Check if the new commit fully support i18n(zh and en).
+Check if the new commit fully support i18n(zh and en, configured in i18n/index.ts)
 To work more efficiently, you should: firstly check the new commit message(or diff if needed) to see if it is about frontend UI, if not, end this task.
 Try to avoid scan the whole workspace as possible.
 If there is something to improve, patch it and create a new commit with proper message.
-    """.trimMargin().replace('"', ' '),
+besides, you should check for:
+- app/_layout.tsx: screen title
+- Error Messages: The error message string must be a translation key, not plain text.
+    example:
+    // Incorrect
+    throw new PasswordNotMatchError("the two password inputted not match")
+    // Correct
+    throw new PasswordNotMatchError("errors.PasswordNotMatchError")
+    """.trimMargin().replace('"', '\''),
         workdir = "frontend"
     )(this)
     GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
@@ -68,14 +76,9 @@ If there is something to improve, patch it and create a new commit with proper m
 ### Error Messages
 
 - **Throw errors using i18n keys as messages:**  
-  The error message string must be a translation key, not plain text.
+  
 
   ```ts
-  // Incorrect
-  throw new PasswordNotMatchError("the two password inputted not match")
-
-  // Correct
-  throw new PasswordNotMatchError("errors.PasswordNotMatchError")
   ```
 
   > **Note:** When adding new errors, ensure all `throw` statements use i18n keys.

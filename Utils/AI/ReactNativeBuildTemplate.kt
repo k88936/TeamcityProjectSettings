@@ -62,7 +62,10 @@ object ContinueAITemplate {
                         |EOF
                         |
                         |cd $workdir
-                        |cn --config /tmp/config.yaml --verbose --auto -p "$prompt"
+                        |read -r -d '' prompt <<'EOF'
+                        |$prompt
+                        |EOF
+                        |cn --config /tmp/config.yaml --verbose --auto -p "${'$'}prompt"
                     """.trimMargin()
                     dockerRunParameters = "--rm -v /root/.continue:/root/.continue"
                     dockerImage = "kvtodev/ci-containers:continue"
