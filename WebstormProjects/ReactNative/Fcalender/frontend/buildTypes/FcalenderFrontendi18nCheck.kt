@@ -95,6 +95,10 @@ object FcalenderFrontendi18nCheck : BuildType({
     """.trimIndent(),
         workdir = "frontend"
     )(this)
-    GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
+    GithubTemplate.createPRStep(
+        "teamcity-i18n-support-check",
+        "check and improve i18n support",
+        "improve frontend i18n support"
+    )(this)
 
 })
