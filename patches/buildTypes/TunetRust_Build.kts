@@ -24,7 +24,7 @@ changeBuildType(RelativeId("TunetRust_Build")) {
         update<CargoBuildStep>(0) {
             clearConditions()
             command = build {
-                buildPackage = ""
+                buildPackage = "tunet,tunet-service"
                 type = CargoBuildStep.BuildType.Auto
                 typeName = ""
                 release = true
