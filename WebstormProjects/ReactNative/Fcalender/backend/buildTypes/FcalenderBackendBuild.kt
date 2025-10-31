@@ -16,6 +16,7 @@ object FcalenderBackendBuild : BuildType({
         vcs {
             branchFilter = """
                 +:<default>
+                +:backend*
                 +:zwr
                 +:zyc
             """.trimIndent()
