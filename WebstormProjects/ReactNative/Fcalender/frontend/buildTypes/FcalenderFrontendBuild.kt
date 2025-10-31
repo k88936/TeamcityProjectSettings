@@ -6,6 +6,7 @@ import Utils.Trigger.TriggerTemplate
 import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildFeatures.notifications
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -35,6 +36,12 @@ object FcalenderFrontendBuild : BuildType({
 
     features {
         perfmon {}
+        notifications {
+            notifierSettings = emailNotifier {
+                email = "k88936@qq.com"
+            }
+            buildFailed = true
+        }
     }
     steps {
         nodeJS {
