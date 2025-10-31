@@ -4,9 +4,14 @@ import Utils.AI.ContinueAITemplate
 import Utils.Trigger.TriggerTemplate
 import Utils.Version.GithubTemplate
 import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
+import jdk.internal.net.http.common.Log.errors
+import jdk.javadoc.internal.doclets.formats.html.markup.HtmlStyles
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import sun.security.jgss.GSSUtil.login
+import java.util.random.RandomGeneratorFactory.all
+import javax.management.Query.and
 
 object FcalenderFrontendi18nCheck : BuildType({
     name = "i18nCheck"
@@ -38,19 +43,6 @@ To work more efficiently, you should: firstly check the new commit message(or di
 Try to avoid scan the whole workspace as possible.
 If there is something to improve, patch it and create a new commit with proper message.
 besides, you should check for:
-- app/_layout.tsx: screen title
-- Error Messages: The error message string must be a translation key, not plain text.
-    example:
-    // Incorrect
-    throw new PasswordNotMatchError("the two password inputted not match")
-    // Correct
-    throw new PasswordNotMatchError("errors.PasswordNotMatchError")
-    """.trimMargin().replace('"', '\''),
-        workdir = "frontend"
-    )(this)
-    GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
-
-"""
 ## i18n Integration Guide
 
 ### Page Titles (Stack Headers)
@@ -58,8 +50,8 @@ besides, you should check for:
 - **In `app/_layout.tsx`:**  
   Use translation keys for titles:
   ```tsx
-  title: t('auth.login.headerTitle')
-  title: t('auth.signup.headerTitle')
+    HtmlStyles.title: t('auth.login.headerTitle')
+    HtmlStyles.title: t('auth.signup.headerTitle')
   ```
 
 - **In `i18n/index.ts`:**  
@@ -99,5 +91,9 @@ besides, you should check for:
     // ... other errors
   }
   ```
-"""
+    """.trimMargin(),
+        workdir = "frontend"
+    )(this)
+    GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
+
 })
