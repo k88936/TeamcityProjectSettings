@@ -7,7 +7,7 @@ import ClionProjects.Qt.QtWindowsBuildTemplate
 object Shotmd_Build : BuildType({
     QtWindowsBuildTemplate.createQtWindowsBuild(
         name = "Build",
-        installPath = "C:\\Qt\\6.9.3\\msvc2022_64",
+        installPath = "C:\\Qt\\6.10.0\\msvc2022_64",
         buildConfig = "Release",
         executableName = "shotmd"
     )(this)
