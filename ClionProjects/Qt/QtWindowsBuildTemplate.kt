@@ -34,7 +34,6 @@ object QtWindowsBuildTemplate {
                 script {
                     id = "package_qt"
                     scriptContent = """
-
                             rm -r build\${executableName}
                             mkdir build\${executableName}
                             cp build\${executableName}.exe build\${executableName}
