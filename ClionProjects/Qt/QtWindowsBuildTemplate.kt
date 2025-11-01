@@ -10,7 +10,7 @@ object QtWindowsBuildTemplate {
      */
     fun createQtWindowsBuild(
         name: String = "Build",
-        installPath: String = "C:\\Qt\\6.9.1\\msvc2022_64",
+        installPath: String = "C:\\Qt\\6.10.0\\msvc2022_64",
         buildConfig: String = "Release",
         executableName: String = "Application"
     ): BuildType.() -> Unit {
