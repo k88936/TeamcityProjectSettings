@@ -4,7 +4,6 @@ import Utils.AI.ContinueAITemplate
 import Utils.Trigger.TriggerTemplate
 import Utils.Version.GithubTemplate
 import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
-import jdk.internal.vm.ThreadContainers.root
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
