@@ -28,9 +28,7 @@ object FcalenderFrontendBuild : BuildType({
                 +:frontend
                 +:frontend*
                 +:wdy
-                +:wdy*
                 +:shq
-                +:shq*
             """.trimIndent()
         }
     }
