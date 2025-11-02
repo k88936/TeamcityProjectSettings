@@ -7,6 +7,7 @@ import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFronten
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 
 object FcalenderFrontendApiCheck : BuildType({
     name = "api check"
@@ -59,6 +60,7 @@ object FcalenderFrontendApiCheck : BuildType({
     """.trimIndent(),
         workdir = "frontend"
     )(this)
+
 
     steps {
         nodeJS {

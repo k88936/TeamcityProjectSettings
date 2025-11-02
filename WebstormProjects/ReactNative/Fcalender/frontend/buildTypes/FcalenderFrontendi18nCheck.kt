@@ -7,6 +7,7 @@ import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFronten
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 
 object FcalenderFrontendi18nCheck : BuildType({
     name = "i18n check"
