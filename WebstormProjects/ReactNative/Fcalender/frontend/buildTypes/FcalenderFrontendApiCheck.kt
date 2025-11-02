@@ -43,7 +43,6 @@ object FcalenderFrontendApiCheck : BuildType({
         frontend api implementation related:
         - api/
         - types/errors.ts
-        - __test__/api/
 
         api documentation:
         - https://s.apifox.cn/19523199-9712-47ee-8765-ebf35d9912ff/llms.txt
