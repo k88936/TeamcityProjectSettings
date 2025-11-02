@@ -4,6 +4,7 @@ import Utils.AI.ContinueAITemplate
 import Utils.Trigger.TriggerTemplate
 import Utils.Version.GithubTemplate
 import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
+import jdk.internal.vm.ThreadContainers.root
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -59,6 +60,20 @@ object FcalenderFrontendApiCheck : BuildType({
     """.trimIndent(),
         workdir = "frontend"
     )(this)
+
+    steps {
+        nodeJS {
+            id = "jest"
+            shellScript = """
+                source /etc/profile
+                cd frontend
+                npm ci
+                npm run test
+            """.trimIndent()
+            dockerImage = "kvtodev/ci-containers:js"
+            dockerPull = true
+        }
+    }
     GithubTemplate.createPRStep("teamcity-api-check", "check and fix api issue", "improve frontend api client code")(
         this
     )

@@ -4,6 +4,7 @@ import Utils.AI.ContinueAITemplate
 import Utils.Trigger.TriggerTemplate
 import Utils.Version.GithubTemplate
 import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
+import jdk.internal.vm.ThreadContainers.root
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -95,6 +96,20 @@ object FcalenderFrontendi18nCheck : BuildType({
     """.trimIndent(),
         workdir = "frontend"
     )(this)
+
+    steps {
+        nodeJS {
+            id = "jest"
+            shellScript = """
+                source /etc/profile
+                cd frontend
+                npm ci
+                npm run test
+            """.trimIndent()
+            dockerImage = "kvtodev/ci-containers:js"
+            dockerPull = true
+        }
+    }
     GithubTemplate.createPRStep(
         "teamcity-i18n-support-check",
         "check and improve i18n support",
