@@ -36,7 +36,7 @@ object ContinueAITemplate {
                         |      contextLength: $contextLength
                         |      
                         |rules: 
-                        |  - ALWAYS use the preset git user info.
+                        |  - ALWAYS use Teamcity as user name and teamcity@k88936.top as email.
                         |  - ALWAYS add a '[CI]' tag in your git commit message.
                         |context:
                         |  - provider: diff
