@@ -8,4 +8,5 @@ object Project : Project({
     subProject(RustroverProjects.OllamaProxy.Project)
     subProject(RustroverProjects.TunetRust.Project)
     subProject(RustroverProjects.Gold.Project)
+    subProject(RustroverProjects.Rustdesk.Project)
 })
