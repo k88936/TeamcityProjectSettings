@@ -25,9 +25,12 @@ object FcalenderFrontendBuild : BuildType({
         vcs {
             branchFilter = """
                 +:<default>
+                +:frontend
                 +:frontend*
                 +:wdy
+                +:wdy*
                 +:shq
+                +:shq*
             """.trimIndent()
         }
     }
