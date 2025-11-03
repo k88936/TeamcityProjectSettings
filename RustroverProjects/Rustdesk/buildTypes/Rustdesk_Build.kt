@@ -11,7 +11,7 @@ object Rustdesk_Build : BuildType({
     id("Rustdesk_Build")
     name = "Build"
 
-    artifactRules = "target/release/rustdesk.exe"
+    artifactRules = "target/release/rustdesk"
 
     vcs {
         root(Rustdesk_GitGithubComK88936rustdeskGitRefsHeadsMaster)
@@ -30,7 +30,7 @@ object Rustdesk_Build : BuildType({
         }
         script {
             scriptContent = """
-                sh -l entrypoint.sh
+                sh -l entrypoint.sh --release
             """.trimIndent()
             dockerImage = "rustdesk-builder"
             dockerRunParameters =
