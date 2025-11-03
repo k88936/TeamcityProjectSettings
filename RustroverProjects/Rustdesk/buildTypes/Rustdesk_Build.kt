@@ -30,7 +30,7 @@ object Rustdesk_Build : BuildType({
         }
         script {
             scriptContent = """
-                sh -l -c entrypoint.sh
+                sh -l entrypoint.sh
             """.trimIndent()
             dockerImage = "rustdesk-builder"
             dockerRunParameters =
@@ -49,6 +49,5 @@ object Rustdesk_Build : BuildType({
     }
 
     requirements {
-        exists("env.PLATFORM_WIN")
     }
 })
