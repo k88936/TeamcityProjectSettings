@@ -6,13 +6,8 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 object ReactNativeBuildTemplate {
     fun createReactNativeAndroidBuild(
-        dir: String = "."
-    ): BuildType.() -> Unit {
-        return {
-            steps {
-                script {
-                    id = "build apk"
-                    scriptContent = """
+        dir: String = ".",
+        script: String = """
                         cd $dir
                         source /etc/profile
                         npm ci
@@ -22,6 +17,12 @@ object ReactNativeBuildTemplate {
                         yes | sdkmanager --licenses
                         ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
                     """.trimIndent()
+    ): BuildType.() -> Unit {
+        return {
+            steps {
+                script {
+                    id = "build apk"
+                    scriptContent = script
                     dockerRunParameters =
                         "--rm -v /root/.m2:/root/.m2 -v /root/.gradle:/root/.gradle/ -v /opt/android-sdk:/opt/android-sdk"
                     dockerImage = "kvtodev/ci-containers:react-native"
