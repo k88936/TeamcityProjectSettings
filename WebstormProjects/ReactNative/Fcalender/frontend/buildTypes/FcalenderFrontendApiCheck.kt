@@ -6,8 +6,8 @@ import Utils.Version.GithubTemplate
 import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object FcalenderFrontendApiCheck : BuildType({
     name = "api check"
@@ -20,7 +20,6 @@ object FcalenderFrontendApiCheck : BuildType({
         vcs {
             branchFilter = """
                 +:<default>
-                +:frontend*
                 +:frontend
             """.trimIndent()
         }
