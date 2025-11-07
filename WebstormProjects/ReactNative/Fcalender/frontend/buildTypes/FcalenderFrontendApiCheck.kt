@@ -21,6 +21,8 @@ object FcalenderFrontendApiCheck : BuildType({
             branchFilter = """
                 +:<default>
                 +:frontend
+                +:wdy
+                +:shq
             """.trimIndent()
         }
     }
