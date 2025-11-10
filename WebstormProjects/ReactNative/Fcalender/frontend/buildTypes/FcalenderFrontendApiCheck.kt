@@ -57,7 +57,8 @@ object FcalenderFrontendApiCheck : BuildType({
         the api check work flow:
         - firstly check the new commit message(or diff if needed) to see if it is about api change/add, if not, end this task.(to work more efficiently)
         - you should focus more on the new commit related modification.(to avoid repleated check)
-        - if there is something to improve, patch it and create a new commit with proper message.
+        - if there is something to improve, patch it and and test using `npm run lint` `npm run test`
+        - create a new commit with proper message.
     """.trimIndent(),
         workdir = "frontend"
     )(this)
@@ -70,6 +71,7 @@ object FcalenderFrontendApiCheck : BuildType({
                 source /etc/profile
                 cd frontend
                 npm ci
+                npm run lint
                 npm run test
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:js"
