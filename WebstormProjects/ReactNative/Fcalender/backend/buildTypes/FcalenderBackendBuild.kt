@@ -1,5 +1,7 @@
 package WebstormProjects.ReactNative.Fcalender.backend.buildTypes
 
+import DockerProjects.DockerBuildTemplate
+import Utils.Env
 import WebstormProjects.ReactNative.Fcalender.backend.vcsRoots.FcalenderBackendVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
@@ -24,11 +26,19 @@ object FcalenderBackendBuild : BuildType({
 //    TriggerTemplate.excludeCI()(this)
 //    TriggerTemplate.excludeAI()(this)
 
+    DockerBuildTemplate.createDockerBuild(
+        imageName = "kvtodev/fcalender:${Env.BUILD_BRANCH}",
+        dockerfilePath = "backend/Dockerfile",
+        connection = "DOCKER_REGISTRY_CONNECTION",
+    )(this)
     steps {
 
         sshExec {
             id = "deploy_dev"
-            commands = "echo hello world"
+            commands = """
+               cd dev
+               sudo docker-compose pull && docker-compose up -d --force-recreate 
+            """.trimIndent()
             targetUrl = "fcalender.k88936.top"
             authMethod = sshAgent {
                 username = "ubuntu"

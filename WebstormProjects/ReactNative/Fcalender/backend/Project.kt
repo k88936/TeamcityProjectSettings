@@ -11,16 +11,21 @@ object Project : Project({
 
     vcsRoot(FcalenderBackendVCS)
 
-    val dockerConnection = "GH_CONNECTION"
 
     buildType(FcalenderBackendBuild)
     features {
         dockerRegistry {
-            id = dockerConnection
+            id = "DOCKER_REGISTRY_CONNECTION"
             name = "Docker Registry"
-            url = "https://ghcr.io"
-            userName = "k88936"
-            password = "credentialsJSON:87641c9a-897e-4143-b113-ffdc84599188"
+            userName = "kvtodev"
+            password = "credentialsJSON:a43b4956-2b9e-457c-bf3c-6e04db2adc38"
         }
+//        dockerRegistry {
+//            id = dockerConnection
+//            name = "Docker Registry"
+//            url = "https://ghcr.io"
+//            userName = "k88936"
+//            password = "credentialsJSON:87641c9a-897e-4143-b113-ffdc84599188"
+//        }
     }
 })
