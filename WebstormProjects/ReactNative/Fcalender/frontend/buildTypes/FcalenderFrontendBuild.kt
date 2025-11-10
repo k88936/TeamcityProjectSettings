@@ -26,9 +26,6 @@ object FcalenderFrontendBuild : BuildType({
             branchFilter = """
                 +:<default>
                 +:frontend
-                +:frontend*
-                +:wdy
-                +:shq
             """.trimIndent()
         }
     }
