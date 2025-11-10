@@ -27,7 +27,7 @@ object FcalenderBackendBuild : BuildType({
 //    TriggerTemplate.excludeAI()(this)
 
     DockerBuildTemplate.createDockerBuild(
-        imageName = "kvtodev/fcalender:${Env.BUILD_BRANCH}",
+        imageName = "kvtodev/fcalendar:${Env.BUILD_BRANCH}",
         dockerfilePath = "backend/Dockerfile",
         connection = "DOCKER_REGISTRY_CONNECTION",
     )(this)
