@@ -40,7 +40,7 @@ object FcalenderBackendBuild : BuildType({
                sudo docker-compose pull
                sudo docker-compose up -d --force-recreate 
             """.trimIndent()
-            targetUrl = "fcalender.k88936.top"
+            targetUrl = "fcalendar.k88936.top"
             authMethod = sshAgent {
                 username = "ubuntu"
             }
