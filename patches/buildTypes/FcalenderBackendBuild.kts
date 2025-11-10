@@ -2,6 +2,8 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
+import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
+import jetbrains.buildServer.configs.kotlin.buildSteps.sshExec
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -10,6 +12,38 @@ To apply the patch, change the buildType with id = 'FcalenderBackendBuild'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("FcalenderBackendBuild")) {
+    expectSteps {
+        dockerCommand {
+            id = "build"
+            commandType = build {
+                source = file {
+                    path = "backend/Dockerfile"
+                }
+                namesAndTags = "ghcr.io/k88936/fcalender-backend:%teamcity.build.branch%"
+                commandArgs = "--progress=plain"
+            }
+        }
+        dockerCommand {
+            id = "push"
+            commandType = push {
+                namesAndTags = "ghcr.io/k88936/fcalender-backend:%teamcity.build.branch%"
+                removeImageAfterPush = false
+            }
+        }
+    }
+    steps {
+        insert(2) {
+            sshExec {
+                id = "ssh_exec_runner"
+                commands = "echo hello world"
+                targetUrl = "fcalender.k88936.top"
+                authMethod = sshAgent {
+                    username = "ubuntu"
+                }
+            }
+        }
+    }
+
     features {
         add {
             sshAgent {
