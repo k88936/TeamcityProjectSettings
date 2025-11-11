@@ -43,7 +43,7 @@ object FcalenderFrontendi18nCheck : BuildType({
         Task: check if the new commit fully support i18n(zh and en, configured in i18n/ HtmlStyles.index.ts)
         To work more efficiently, you should: firstly check the new commit message(or diff if needed) to see if it is about frontend UI, if not, end this task.
         Try to avoid scan the whole workspace as possible.
-        If there is something to improve, patch it and create a new commit with proper message.
+        If there is something(ONLY i18n related) to improve, patch it and create a new commit with proper message.
         besides, you should check for:
         ## i18n Integration Guide
 
