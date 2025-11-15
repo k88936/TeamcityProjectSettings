@@ -42,12 +42,14 @@ object FcalenderFrontendApiCheck : BuildType({
         """
         Task: check if the new commit fully fit the api doc.
 
-        frontend api implementation related:
-        - api/
-        - types/errors.ts
-
         api documentation:
         - https://s.apifox.cn/19523199-9712-47ee-8765-ebf35d9912ff/llms.txt
+        
+        frontend api implementation related:
+        - api/
+        - types/
+        - types/errors.ts
+
 
         check and fix on these aspect:
         - if the client api encapsule has covered the docs completely
