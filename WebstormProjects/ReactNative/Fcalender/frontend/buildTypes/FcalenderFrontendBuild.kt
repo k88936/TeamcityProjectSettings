@@ -61,7 +61,10 @@ object FcalenderFrontendBuild : BuildType({
             source /etc/profile
             
             npm ci
-            npx expo prebuild --platform android
+            
+            if [ ! -d "android" ]; then
+                npx expo prebuild --platform android
+            fi
             
             sh patch.sh
             
