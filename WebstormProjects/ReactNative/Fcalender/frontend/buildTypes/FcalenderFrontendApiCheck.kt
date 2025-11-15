@@ -50,7 +50,7 @@ object FcalenderFrontendApiCheck : BuildType({
         - https://s.apifox.cn/19523199-9712-47ee-8765-ebf35d9912ff/llms.txt
 
         check and fix on these aspect:
-        - if the api encapsule is covered completely
+        - if the client api encapsule has covered the docs completely
         - if the error code handle is covered completely.
         - if the mocked offline test for api is covered completely
 
