@@ -71,7 +71,7 @@ object FcalenderFrontendApiCheck : BuildType({
             shellScript = """
                 source /etc/profile
                 cd frontend
-                npm ci
+                npm install
                 npm run test
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:js"
