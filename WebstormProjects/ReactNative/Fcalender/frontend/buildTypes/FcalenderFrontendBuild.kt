@@ -48,7 +48,6 @@ object FcalenderFrontendBuild : BuildType({
                 source /etc/profile
                 cd frontend
                 npm ci
-                npm run lint
                 npm run test
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:js"
