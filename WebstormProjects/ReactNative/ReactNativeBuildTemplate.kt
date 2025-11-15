@@ -10,7 +10,7 @@ object ReactNativeBuildTemplate {
         script: String = """
                         cd $dir
                         source /etc/profile
-                        npm ci
+                        npm install
                         
                         if [ ! -d "android" ]; then
                             npx expo prebuild --platform android

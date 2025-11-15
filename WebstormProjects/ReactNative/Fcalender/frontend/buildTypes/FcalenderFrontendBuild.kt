@@ -60,7 +60,7 @@ object FcalenderFrontendBuild : BuildType({
             cd frontend
             source /etc/profile
             
-            npm ci
+            npm install
             
             if [ ! -d "android" ]; then
                 npx expo prebuild --platform android
