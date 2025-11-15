@@ -11,10 +11,13 @@ object ReactNativeBuildTemplate {
                         cd $dir
                         source /etc/profile
                         npm ci
-                        npx expo prebuild --platform android
+                        
+                        if [ ! -d "android" ]; then
+                            npx expo prebuild --platform android
+                            yes | sdkmanager --licenses
+                        fi
                         
                         cd android
-                        yes | sdkmanager --licenses
                         ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
                     """.trimIndent()
     ): BuildType.() -> Unit {
