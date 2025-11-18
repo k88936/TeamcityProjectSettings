@@ -52,7 +52,7 @@ class GithubPageTemplate() : Project() {
                     shellScript =
                         """
                         source /etc/profile
-                        npm ci
+                        npm install
                         npm run build
                         """.trimIndent() + '\n' + extraBuildCommand.trimIndent()
                     dockerImage = "kvtodev/ci-containers:js"
