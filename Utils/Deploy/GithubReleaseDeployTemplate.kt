@@ -16,7 +16,7 @@ object GithubReleaseDeployTemplate {
         return {
 
             val scriptContent = buildString {
-                append("gh release create --target ${Env.BUILD_BRANCH} $tagPattern")
+                append("gh release create --prerelease --target ${Env.BUILD_BRANCH} $tagPattern")
                 if (notes != null) {
                     append(" --notes \"$notes\"")
                 } else {

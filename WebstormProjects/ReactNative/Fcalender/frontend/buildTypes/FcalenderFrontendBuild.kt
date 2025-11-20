@@ -83,7 +83,7 @@ object FcalenderFrontendBuild : BuildType({
         assets = artifactRules
     )(this)
     createGithubReleaseDeployment(
-        tagPattern = "%teamcity.build.branch%-build-%build.number%",
+        tagPattern = "build-%build.number%",
         assetsPath = artifactRules,
     )(this)
 })
