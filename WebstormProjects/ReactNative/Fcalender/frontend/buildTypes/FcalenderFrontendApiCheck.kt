@@ -20,9 +20,8 @@ object FcalenderFrontendApiCheck : BuildType({
         vcs {
             branchFilter = """
                 +:<default>
-                +:frontend
-                +:wdy
-                +:shq
+                +:dev
+                +:*frontend*
             """.trimIndent()
         }
     }

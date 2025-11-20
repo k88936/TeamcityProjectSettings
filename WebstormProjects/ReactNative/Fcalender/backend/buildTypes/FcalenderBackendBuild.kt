@@ -19,7 +19,7 @@ object FcalenderBackendBuild : BuildType({
         vcs {
             triggerRules = """
                +:<default>
-               +:backend
+               +:dev
            """.trimIndent()
         }
     }
