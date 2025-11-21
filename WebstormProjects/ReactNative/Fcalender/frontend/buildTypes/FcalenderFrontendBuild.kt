@@ -24,6 +24,7 @@ object FcalenderFrontendBuild : BuildType({
         vcs {
             branchFilter = """
                 +:<default>
+                +:frontend-playground
                 +:dev
             """.trimIndent()
         }
