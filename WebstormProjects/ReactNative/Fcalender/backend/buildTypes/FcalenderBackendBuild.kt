@@ -17,7 +17,7 @@ object FcalenderBackendBuild : BuildType({
 
     triggers {
         vcs {
-            triggerRules = """
+            branchFilter = """
                +:<default>
                +:playground
                +:dev
