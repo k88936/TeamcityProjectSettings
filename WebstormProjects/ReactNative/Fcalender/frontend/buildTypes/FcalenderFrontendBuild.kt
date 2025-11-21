@@ -2,7 +2,6 @@ package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
 
 import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 import Utils.Deploy.SourceOfDeployTemplate
-import Utils.Trigger.TriggerTemplate
 import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
@@ -29,8 +28,6 @@ object FcalenderFrontendBuild : BuildType({
             """.trimIndent()
         }
     }
-    TriggerTemplate.excludeCI()(this)
-    TriggerTemplate.excludeAI()(this)
 
     features {
         perfmon {}
@@ -45,8 +42,8 @@ object FcalenderFrontendBuild : BuildType({
         nodeJS {
             id = "jest"
             shellScript = """
-                source /etc/profile
                 cd frontend
+                source /etc/profile
                 npm install
                 npm run test
             """.trimIndent()
