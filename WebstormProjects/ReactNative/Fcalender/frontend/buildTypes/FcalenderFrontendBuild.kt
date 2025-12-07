@@ -61,10 +61,9 @@ object FcalenderFrontendBuild : BuildType({
             
             if [ ! -d "android" ]; then
                 npx expo prebuild --platform android
-                sh patch.sh
                 yes | sdkmanager --licenses
             fi
-            
+            sh patch.sh    
             
             cd android
             ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
