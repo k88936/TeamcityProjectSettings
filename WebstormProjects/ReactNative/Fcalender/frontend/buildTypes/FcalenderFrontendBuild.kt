@@ -5,6 +5,7 @@ import Utils.Deploy.SourceOfDeployTemplate
 import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildFeatures.buildCache
 import jetbrains.buildServer.configs.kotlin.buildFeatures.notifications
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
@@ -37,6 +38,13 @@ object FcalenderFrontendBuild : BuildType({
                 email = "k88936@qq.com"
             }
             buildFailed = true
+        }
+        buildCache {
+            name = "fcalendar-frontend"
+            rules = """
+                    frontend/android
+                    frontend/node_modules
+                """.trimIndent()
         }
     }
     steps {
