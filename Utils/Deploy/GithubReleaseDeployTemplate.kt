@@ -12,11 +12,16 @@ object GithubReleaseDeployTemplate {
         tagPattern: String = "v%build.number%",
         notes: String? = null,
         assetsPath: String = "_deploy/*",
+        prerelease: Boolean = false
     ): BuildType.() -> Unit {
         return {
 
+            var extra_param = ""
+            if (prerelease) {
+                extra_param += "--release"
+            }
             val scriptContent = buildString {
-                append("gh release create --prerelease --target ${Env.BUILD_BRANCH} $tagPattern")
+                append("gh release create $extra_param --target ${Env.BUILD_BRANCH} $tagPattern")
                 if (notes != null) {
                     append(" --notes \"$notes\"")
                 } else {
