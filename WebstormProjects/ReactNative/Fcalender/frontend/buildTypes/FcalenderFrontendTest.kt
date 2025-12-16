@@ -54,7 +54,7 @@ object FcalenderFrontendTest : BuildType({
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:detox"
             dockerRunParameters =
-                "--rm -v /cache/.m2:/root/.m2 -v /cache/.gradle:/root/.gradle/ -v /cache/android-sdk:/android-sdk -v /cache/avd:/avd"
+                "--rm -v /cache/.m2:/root/.m2 -v /cache/.gradle:/root/.gradle/ -v /cache/android-sdk:/android-sdk -v /cache/avd:/avd --device /dev/kvm"
             dockerPull = true
         }
     }
