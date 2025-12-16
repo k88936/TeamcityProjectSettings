@@ -48,8 +48,8 @@ object FcalenderFrontendTest : BuildType({
                 /opt/android-sdk/cmdline-tools/latest/bin/avdmanager create avd --name "pixel_9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
                 avd start-server
                 
-                npx detox build -c android.emu.release
-                npx detox test -c android.emu.release.ci --headless 
+                detox build --configuration android.emu.release
+                detox test --configuration android.emu.release --headless 
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:detox"
             dockerPull = true
