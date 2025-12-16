@@ -53,7 +53,7 @@ object FcalenderFrontendBuild : BuildType({
             dockerPull = true
         }
     }
-    ReactNativeBuildTemplate.createReactNativeAndroidBuild(dir = "android")(this)
+    ReactNativeBuildTemplate.createReactNativeAndroidBuild(dir = "frontend")(this)
 
     SourceOfDeployTemplate.createSourceOfDeployment(
         name = "Fcalender",
