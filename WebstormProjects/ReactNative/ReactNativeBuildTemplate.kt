@@ -24,7 +24,7 @@ object ReactNativeBuildTemplate {
                     id = "build apk"
                     scriptContent = script
                     dockerRunParameters =
-                        "--rm -v /root/.m2:/root/.m2 -v /root/.gradle:/root/.gradle/ -v /opt/android-sdk:/opt/android-sdk"
+                        "--rm -v /cache/.m2:/root/.m2 -v /cache/.gradle:/root/.gradle/ -v /cache/android-sdk:/android-sdk"
                     dockerImage = "kvtodev/ci-containers:react-native"
                     dockerPull = true
                 }

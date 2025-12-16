@@ -44,16 +44,17 @@ object FcalenderFrontendTest : BuildType({
                 npm install
                 sdkmanager "cmdline-tools;latest"
                 sdkmanager "platform-tools" "emulator"
-                /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager "system-images;android-35;default;x86_64"
-                /opt/android-sdk/cmdline-tools/latest/bin/avdmanager create avd --name "pixel9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
-                /opt/android-sdk/platform-tools/adb start-server
+                
+                ${"$"}ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-35;default;x86_64"
+                ${"$"}ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --name "pixel9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
+                ${"$"}ANDROID_HOME/platform-tools/adb start-server
                 
                 detox build --configuration android.emu.release
                 detox test --configuration android.emu.release --headless 
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:detox"
             dockerRunParameters =
-                "--rm -v /root/.m2:/root/.m2 -v /root/.gradle:/root/.gradle/ -v /opt/android-sdk:/opt/android-sdk"
+                "--rm -v /cache/.m2:/root/.m2 -v /cache/.gradle:/root/.gradle/ -v /cache/android-sdk:/android-sdk -v /cache/avd:/avd"
             dockerPull = true
         }
     }
