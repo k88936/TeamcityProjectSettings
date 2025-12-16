@@ -11,6 +11,7 @@ object FcalenderFrontendTest : BuildType({
     name = "Test"
 
 
+    artifactRules = "frontend/artifacts/*"
     vcs {
         root(FcalenderFrontendVCS)
     }
@@ -44,12 +45,12 @@ object FcalenderFrontendTest : BuildType({
                 npm install
                 sdkmanager "cmdline-tools;latest"
                 sdkmanager "platform-tools" "emulator"
-                
                 ${"$"}ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-35;default;x86_64"
                 ${"$"}ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --name "pixel9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
                 ${"$"}ANDROID_HOME/platform-tools/adb start-server
                 
                 detox build --configuration android.emu.release
+                rm artifacts -rf
                 detox test --configuration android.emu.release --headless --record-logs all --take-screenshots all
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:detox"
