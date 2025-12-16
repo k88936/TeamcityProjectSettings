@@ -11,7 +11,7 @@ object FcalenderFrontendTest : BuildType({
     name = "Test"
 
 
-    artifactRules = "frontend/artifacts/*"
+    artifactRules = "frontend/artifacts/*/ => /logs/"
     vcs {
         root(FcalenderFrontendVCS)
     }
