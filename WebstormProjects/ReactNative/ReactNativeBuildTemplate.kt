@@ -9,18 +9,13 @@ object ReactNativeBuildTemplate {
         dir: String = ".",
         script: String = """
                         cd $dir
-                        set -e
                         source /etc/profile
+                        set -e
+                        
                         npm install
                         
-                        
-                        if [ ! -d "android" ]; then
-                            npx expo prebuild --platform android
-                            yes | sdkmanager --licenses
-                        fi
-                        
                         cd android
-                        ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
+                        sh ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
                     """.trimIndent()
     ): BuildType.() -> Unit {
         return {

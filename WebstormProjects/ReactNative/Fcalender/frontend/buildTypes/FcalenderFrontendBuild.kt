@@ -60,24 +60,7 @@ object FcalenderFrontendBuild : BuildType({
             dockerPull = true
         }
     }
-    ReactNativeBuildTemplate.createReactNativeAndroidBuild(
-        script = """
-            cd frontend
-            source /etc/profile
-            set -e
-            
-            npm install
-            
-            if [ ! -d "android" ]; then
-                npx expo prebuild --platform android
-                yes | sdkmanager --licenses
-            fi
-            sh patch.sh    
-            
-            cd android
-            ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
-        """.trimIndent()
-    )(this)
+    ReactNativeBuildTemplate.createReactNativeAndroidBuild(dir = "android")(this)
 
     SourceOfDeployTemplate.createSourceOfDeployment(
         name = "Fcalender",
