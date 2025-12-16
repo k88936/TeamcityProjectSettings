@@ -51,7 +51,7 @@ object FcalenderFrontendTest : BuildType({
                 
                 detox build --configuration android.emu.release
                 rm artifacts -rf
-                detox test --configuration android.emu.release --headless --record-logs all --take-screenshots all
+                detox test --configuration android.emu.release --headless --record-logs all --take-screenshots all --record-videos all
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:detox"
             dockerRunParameters =
