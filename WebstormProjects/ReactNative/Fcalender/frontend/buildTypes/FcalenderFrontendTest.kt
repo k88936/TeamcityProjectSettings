@@ -52,6 +52,8 @@ object FcalenderFrontendTest : BuildType({
                 detox test --configuration android.emu.release --headless 
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:detox"
+            dockerRunParameters =
+                "--rm -v /root/.m2:/root/.m2 -v /root/.gradle:/root/.gradle/ -v /opt/android-sdk:/opt/android-sdk"
             dockerPull = true
         }
     }
