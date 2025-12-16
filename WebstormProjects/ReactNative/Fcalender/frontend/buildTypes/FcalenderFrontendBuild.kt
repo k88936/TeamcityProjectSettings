@@ -38,13 +38,6 @@ object FcalenderFrontendBuild : BuildType({
             }
             buildFailed = true
         }
-//        buildCache {
-//            name = "fcalendar-frontend"
-//            rules = """
-//                    frontend/android
-//                    frontend/node_modules
-//                """.trimIndent()
-//        }
     }
     steps {
         nodeJS {
