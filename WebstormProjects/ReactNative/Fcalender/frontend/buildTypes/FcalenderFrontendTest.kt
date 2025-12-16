@@ -4,7 +4,7 @@ import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFronten
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.notifications
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object FcalenderFrontendTest : BuildType({
@@ -36,9 +36,9 @@ object FcalenderFrontendTest : BuildType({
         }
     }
     steps {
-        nodeJS {
+        script {
             id = "jest"
-            shellScript = $$"""
+            scriptContent = $$"""
                 cd frontend
                 source /etc/profile
                 npm install
