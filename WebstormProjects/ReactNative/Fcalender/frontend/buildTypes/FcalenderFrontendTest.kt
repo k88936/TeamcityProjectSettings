@@ -37,15 +37,15 @@ object FcalenderFrontendTest : BuildType({
     }
     steps {
         script {
-            id = "jest"
-            scriptContent = $$"""
+            id = "detox"
+            scriptContent = """
                 cd frontend
                 source /etc/profile
                 npm install
                 sdkmanager "platform-tools"
                 sdkmanager "cmdline-tools;latest"
                 sdkmanager "system-images;android-35;default;x86_64" "emulator"
-                $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --name "pixel_9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
+                /opt/android-sdk/cmdline-tools/latest/bin/avdmanager create avd --name "pixel_9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
                 avd start-server
                 
                 npx detox build -c android.emu.release
