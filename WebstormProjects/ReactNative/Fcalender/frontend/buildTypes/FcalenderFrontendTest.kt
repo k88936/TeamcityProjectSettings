@@ -46,7 +46,7 @@ object FcalenderFrontendTest : BuildType({
                 sdkmanager "platform-tools" "emulator"
                 /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager "system-images;android-35;default;x86_64"
                 /opt/android-sdk/cmdline-tools/latest/bin/avdmanager create avd --name "pixel9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
-                avd start-server
+                adb start-server
                 
                 detox build --configuration android.emu.release
                 detox test --configuration android.emu.release --headless 
