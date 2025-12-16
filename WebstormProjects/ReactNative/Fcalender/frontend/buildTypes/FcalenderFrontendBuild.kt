@@ -52,6 +52,7 @@ object FcalenderFrontendBuild : BuildType({
             shellScript = """
                 cd frontend
                 source /etc/profile
+                set -e
                 npm install
                 npm test
             """.trimIndent()
@@ -63,6 +64,7 @@ object FcalenderFrontendBuild : BuildType({
         script = """
             cd frontend
             source /etc/profile
+            set -e
             
             npm install
             
