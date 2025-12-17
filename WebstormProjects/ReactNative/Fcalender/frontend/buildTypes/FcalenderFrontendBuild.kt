@@ -13,12 +13,14 @@ import jetbrains.buildServer.configs.kotlin.triggers.vcs
 object FcalenderFrontendBuild : BuildType({
     name = "Build"
 
-    artifactRules = "frontend/android/app/build/outputs/apk/release/app-release.apk"
+    artifactRules = """
+        frontend/android/app/build/outputs/apk/release/app-release.apk
+        frontend/artifacts/ => /logs/
+    """.trimIndent()
 
     vcs {
         root(FcalenderFrontendVCS)
     }
-
 
     triggers {
         vcs {
@@ -53,7 +55,32 @@ object FcalenderFrontendBuild : BuildType({
             dockerPull = true
         }
     }
+
     ReactNativeBuildTemplate.createReactNativeAndroidBuild(dir = "frontend")(this)
+
+    steps {
+        nodeJS {
+            id = "detox"
+            shellScript = """
+                cd frontend
+                source /etc/profile
+                rm artifacts -rf
+                set -e
+                
+                sdkmanager "cmdline-tools;latest"
+                sdkmanager "platform-tools" "emulator"
+                sdkmanager "system-images;android-35;default;x86_64"
+                avdmanager create avd --name "pixel9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
+                adb start-server
+                
+                npm run e2e-test
+            """.trimIndent()
+            dockerImage = "kvtodev/ci-containers:detox"
+            dockerRunParameters =
+                "--rm -v /cache/.m2:/root/.m2 -v /cache/.gradle:/root/.gradle/ -v /cache/android-sdk:/android-sdk -v /cache/avd:/avd --device /dev/kvm"
+            dockerPull = true
+        }
+    }
 
     SourceOfDeployTemplate.createSourceOfDeployment(
         name = "Fcalender",
