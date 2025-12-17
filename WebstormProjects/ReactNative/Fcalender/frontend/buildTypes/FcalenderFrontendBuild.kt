@@ -12,8 +12,9 @@ import jetbrains.buildServer.configs.kotlin.triggers.vcs
 object FcalenderFrontendBuild : BuildType({
     name = "Build"
 
+    val apk_location = "frontend/android/app/build/outputs/apk/release/app-release.apk"
     artifactRules = """
-        frontend/android/app/build/outputs/apk/release/app-release.apk
+        $apk_location 
         frontend/artifacts/ => /logs/
     """.trimIndent()
 
@@ -80,16 +81,14 @@ object FcalenderFrontendBuild : BuildType({
     }
 
     SourceOfDeployTemplate.createSourceOfDeployment(
-        name = "Fcalender",
-        assets = artifactRules
+        name = "Fcalender", assets = apk_location
     )(this)
     SourceOfDeployTemplate.createSourceOfDeployment(
         name = "Fcalender",
-        tagPattern = "latest",
-        assets = artifactRules
+        tagPattern = "latest", assets = apk_location
     )(this)
     createGithubReleaseDeployment(
         tagPattern = "build-%build.number%",
-        assetsPath = artifactRules,
+        assetsPath = apk_location,
     )(this)
 })
