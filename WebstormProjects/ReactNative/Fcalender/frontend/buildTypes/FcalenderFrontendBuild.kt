@@ -15,7 +15,7 @@ object FcalenderFrontendBuild : BuildType({
     val apk_location = "frontend/android/app/build/outputs/apk/release/app-release.apk"
     artifactRules = """
         $apk_location 
-        frontend/artifacts/ => /logs/
+        frontend/artifacts/ => /e2e-test/
     """.trimIndent()
 
     vcs {
