@@ -91,4 +91,6 @@ object FcalenderFrontendBuild : BuildType({
         tagPattern = "build-%build.number%",
         assetsPath = apk_location,
     )(this)
+
+    maxRunningBuilds = 1
 })
