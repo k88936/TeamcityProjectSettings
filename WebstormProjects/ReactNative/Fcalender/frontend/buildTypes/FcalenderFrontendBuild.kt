@@ -67,7 +67,7 @@ object FcalenderFrontendBuild : BuildType({
                 sdkmanager "cmdline-tools;latest"
                 sdkmanager "platform-tools" "emulator"
                 sdkmanager "system-images;android-35;default;x86_64"
-                avdmanager create avd --name "pixel9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
+                avdmanager create avd --name "pixel9_api35" --device "pixel_9" --package "system-images;android-35;google_apis;x86_64" --force
                 adb start-server
                 
                 npm run e2e-test
