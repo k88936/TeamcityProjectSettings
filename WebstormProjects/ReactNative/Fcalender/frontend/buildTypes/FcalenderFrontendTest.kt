@@ -50,7 +50,7 @@ object FcalenderFrontendTest : BuildType({
                 ${"$"}ANDROID_HOME/platform-tools/adb start-server
                 
                 rm artifacts -rf
-                npm e2e-test
+                npm run e2e-test
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:detox"
             dockerRunParameters =
