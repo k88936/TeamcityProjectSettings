@@ -3,7 +3,6 @@ package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
 import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 import Utils.Deploy.SourceOfDeployTemplate
 import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
-import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.notifications
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
@@ -55,8 +54,6 @@ object FcalenderFrontendBuild : BuildType({
             dockerPull = true
         }
     }
-
-    ReactNativeBuildTemplate.createReactNativeAndroidBuild(dir = "frontend")(this)
 
     steps {
         nodeJS {
