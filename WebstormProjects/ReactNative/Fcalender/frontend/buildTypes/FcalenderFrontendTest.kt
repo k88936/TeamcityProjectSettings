@@ -45,9 +45,9 @@ object FcalenderFrontendTest : BuildType({
                 npm install
                 sdkmanager "cmdline-tools;latest"
                 sdkmanager "platform-tools" "emulator"
-                ${"$"}ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-35;default;x86_64"
-                ${"$"}ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --name "pixel9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
-                ${"$"}ANDROID_HOME/platform-tools/adb start-server
+                sdkmanager "system-images;android-35;default;x86_64"
+                avdmanager create avd --name "pixel9_api35" --device "pixel_9" --package "system-images;android-35;default;x86_64" --force
+                adb start-server
                 
                 rm artifacts -rf
                 npm run e2e-test
