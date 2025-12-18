@@ -1,10 +1,17 @@
 package WebstormProjects.ReactNative.Fcalender
 
+import WebstormProjects.ReactNative.Fcalender.buildTypes.FcalenderBackendBuild
+import WebstormProjects.ReactNative.Fcalender.buildTypes.FcalenderFrontendBuild
+import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import jetbrains.buildServer.configs.kotlin.Project
 
 object Project : Project({
     name = "Fcalender"
     id("Fcalender")
-    subProject(WebstormProjects.ReactNative.Fcalender.frontend.Project)
-    subProject(WebstormProjects.ReactNative.Fcalender.backend.Project)
+
+    buildType(FcalenderBackendBuild)
+    buildType(FcalenderFrontendBuild)
+//    buildType(FcalenderFrontendApiCheck)
+//    buildType(FcalenderFrontendi18nCheck)
+    vcsRoot(FcalenderVCS)
 })

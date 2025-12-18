@@ -1,8 +1,8 @@
-package WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots
+package WebstormProjects.ReactNative.Fcalender.vcsRoots
 
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 
-object FcalenderFrontendVCS : GitVcsRoot({
+object FcalenderVCS : GitVcsRoot({
     name = "git@github.com:tangerinesodayeah/Fcalendar.git#refs/heads/main"
     url = "git@github.com:tangerinesodayeah/Fcalendar.git"
     branch = "refs/heads/main"

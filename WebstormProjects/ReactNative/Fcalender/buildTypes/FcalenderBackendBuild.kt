@@ -1,7 +1,7 @@
-package WebstormProjects.ReactNative.Fcalender.backend.buildTypes
+package WebstormProjects.ReactNative.Fcalender.buildTypes
 
 import DockerProjects.DockerBuildTemplate
-import WebstormProjects.ReactNative.Fcalender.backend.vcsRoots.FcalenderBackendVCS
+import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.sshExec
@@ -11,7 +11,7 @@ object FcalenderBackendBuild : BuildType({
     id("FcalenderBackendBuild")
     name = "FcalenderBackendBuild"
     vcs {
-        root(FcalenderBackendVCS)
+        root(FcalenderVCS)
     }
 
     triggers {

@@ -1,9 +1,9 @@
-package WebstormProjects.ReactNative.Fcalender.frontend.buildTypes
+package WebstormProjects.ReactNative.Fcalender.buildTypes
 
 import Utils.AI.ContinueAITemplate
 import Utils.Trigger.TriggerTemplate
 import Utils.Version.GithubTemplate
-import WebstormProjects.ReactNative.Fcalender.frontend.vcsRoots.FcalenderFrontendVCS
+import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
@@ -14,7 +14,7 @@ object FcalenderFrontendApiCheck : BuildType({
 
 
     vcs {
-        root(FcalenderFrontendVCS)
+        root(FcalenderVCS)
     }
     triggers {
         vcs {
