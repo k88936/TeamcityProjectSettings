@@ -19,7 +19,8 @@ object FcalenderFrontendBuild : BuildType({
 
 
     artifactRules = """
-        $apk_location 
+        $apk_location
+
     """.trimIndent()
 
     vcs {
