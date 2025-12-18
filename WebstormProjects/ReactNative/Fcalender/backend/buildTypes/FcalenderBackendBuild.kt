@@ -53,4 +53,5 @@ object FcalenderBackendBuild : BuildType({
             teamcitySshKey = "id_rsa"
         }
     }
+    maxRunningBuilds = 1
 })
