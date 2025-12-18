@@ -1,7 +1,6 @@
 package WebstormProjects.ReactNative.Fcalender.backend.buildTypes
 
 import DockerProjects.DockerBuildTemplate
-import Utils.Env
 import WebstormProjects.ReactNative.Fcalender.backend.vcsRoots.FcalenderBackendVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
@@ -28,7 +27,7 @@ object FcalenderBackendBuild : BuildType({
 //    TriggerTemplate.excludeAI()(this)
 
     DockerBuildTemplate.createDockerBuild(
-        imageName = "kvtodev/fcalendar:${Env.BUILD_BRANCH}",
+        imageName = "kvtodev/fcalendar:dev",
         dockerfilePath = "backend/Dockerfile",
         connection = "DOCKER_REGISTRY_CONNECTION",
     )(this)
