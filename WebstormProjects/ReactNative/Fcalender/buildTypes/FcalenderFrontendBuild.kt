@@ -124,11 +124,7 @@ object FcalenderFrontendBuild : BuildType({
 
     SourceOfDeployTemplate.createSourceOfDeployment(
         name = "Fcalender",
-        tagPattern = "latest", assets = """
-            $apk_location
-            version.json
-            README.md
-            """.trimIndent()
+        tagPattern = "latest", assets = "$apk_location version.json README.md"
     )(this)
     createGithubReleaseDeployment(
         tagPattern = "build-%build.number%",
