@@ -93,9 +93,6 @@ object FcalenderFrontendBuild : BuildType({
             id = "version tag"
             scriptContent = """
                 
-                source /etc/profile
-                set -e
-                
                 cat <<'EOF' > version.json
                 {
                     "major": 1,
