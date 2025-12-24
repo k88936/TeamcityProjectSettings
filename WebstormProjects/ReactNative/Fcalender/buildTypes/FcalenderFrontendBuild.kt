@@ -92,6 +92,10 @@ object FcalenderFrontendBuild : BuildType({
         script {
             id = "version tag"
             scriptContent = """
+                
+                source /etc/profile
+                set -e
+                
                 cat <<'EOF' > version.json
                 {
                     "major": 1,
@@ -107,10 +111,11 @@ object FcalenderFrontendBuild : BuildType({
                     "patch": %build.number%
                 }
                 EOF
+                
             """.trimIndent()
         }
     }
-    
+
     ReactNativeBuildTemplate.createReactNativeAndroidBuild(dir = "frontend")(this)
 
     SourceOfDeployTemplate.createSourceOfDeployment(
