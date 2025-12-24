@@ -8,6 +8,7 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.notifications
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object FcalenderFrontendBuild : BuildType({
@@ -46,6 +47,7 @@ object FcalenderFrontendBuild : BuildType({
             buildFailed = true
         }
     }
+
     steps {
         nodeJS {
             id = "jest"
@@ -86,13 +88,42 @@ object FcalenderFrontendBuild : BuildType({
 //    }
 //
 
+    steps {
+        script {
+            id = "version tag"
+            scriptContent = """
+                cat <<'EOF' > version.json
+                {
+                    "major": 1,
+                    "minor": 0,
+                    "patch": %build.number%
+                }
+                EOF
+                
+                cat <<'EOF' > frontend/version.js
+                export const version = {
+                    "major": 1,
+                    "minor": 0,
+                    "patch": %build.number%
+                }
+                EOF
+            """.trimIndent()
+        }
+    }
+    
     ReactNativeBuildTemplate.createReactNativeAndroidBuild(dir = "frontend")(this)
+
     SourceOfDeployTemplate.createSourceOfDeployment(
         name = "Fcalender", assets = apk_location
     )(this)
+
     SourceOfDeployTemplate.createSourceOfDeployment(
         name = "Fcalender",
-        tagPattern = "latest", assets = apk_location
+        tagPattern = "latest", assets = """
+            $apk_location
+            version.json
+            README.md
+            """.trimIndent()
     )(this)
     createGithubReleaseDeployment(
         tagPattern = "build-%build.number%",

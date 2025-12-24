@@ -11,7 +11,7 @@
           </option>
           <option name="goals">
             <list>
-              <option value="org.jetbrains.teamcity:teamcity-configs-maven-plugin:2025.07:generate" />
+              <option value="org.jetbrains.teamcity:teamcity-configs-maven-plugin:2025.11:generate" />
             </list>
           </option>
           <option name="multimoduleDir" />
