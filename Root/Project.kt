@@ -22,6 +22,7 @@ object Project : Project({
     subProject(WebstormProjects.Project)
     subProject(RustroverProjects.Project)
     subProject(GolandProjects.Project)
+    subProject(ScoopBucket.Project)
 
     features {
         githubAppConnection {
