@@ -13,6 +13,7 @@ object Project : Project({
     buildType(build("base/Dockerfile", "kvtodev/ci-containers:base"))
     buildType(build("build/rust/Dockerfile", "kvtodev/ci-containers:rust"))
     buildType(build("build/java/Dockerfile", "kvtodev/ci-containers:java"))
+    buildType(build("build/go/Dockerfile", "kvtodev/ci-containers:go"))
     buildType(build("build/js/Dockerfile", "kvtodev/ci-containers:js"))
     buildType(build("build/react-native/Dockerfile", "kvtodev/ci-containers:react-native"))
     buildType(build("ai/continue/Dockerfile", "kvtodev/ci-containers:continue"))
