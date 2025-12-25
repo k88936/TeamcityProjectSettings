@@ -3,8 +3,6 @@ package ClionProjects.Qt.Shotmd
 import ClionProjects.Qt.Shotmd.buildTypes.Shotmd_Build
 import ClionProjects.Qt.Shotmd.buildTypes.Shotmd_Deploy
 import ClionProjects.Qt.Shotmd.vcsRoots.Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster
-import ClionProjects.Qt.shotmd.buildTypes.Shotmd_Scoop
-import Utils.Deploy.Version.ScoopBucketVCS
 import jetbrains.buildServer.configs.kotlin.Project
 
 object Project : Project({
@@ -12,9 +10,7 @@ object Project : Project({
     name = "Shotmd"
 
     vcsRoot(Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster)
-    vcsRoot(ScoopBucketVCS)
 
     buildType(Shotmd_Build)
     buildType(Shotmd_Deploy)
-    buildType(Shotmd_Scoop)
 })
