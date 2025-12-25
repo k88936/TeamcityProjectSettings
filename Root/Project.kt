@@ -21,6 +21,7 @@ object Project : Project({
     subProject(DockerProjects.Project)
     subProject(WebstormProjects.Project)
     subProject(RustroverProjects.Project)
+    subProject(GolandProjects.Project)
 
     features {
         githubAppConnection {
