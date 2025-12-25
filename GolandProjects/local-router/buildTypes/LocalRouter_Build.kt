@@ -16,13 +16,26 @@ object LocalRouter_Build : BuildType({
     artifactRules = """
         bin/local-router.exe
         bin/local-router
-    """.trimMargin()
+    """.trimIndent()
 
     triggers {
         vcs {
         }
     }
     steps {
+        script {
+            name = "Download Dependencies"
+            scriptContent = """
+                source /etc/profile
+                go mod download
+                go mod verify
+            """.trimIndent()
+            dockerImage = "kvtodev/ci-containers:go"
+            dockerRunParameters =
+                "--rm -v /cache/go:/go"
+            dockerPull = true
+        }
+
         script {
             name = "Build"
             scriptContent = """
@@ -31,7 +44,9 @@ object LocalRouter_Build : BuildType({
                 go build -o bin/local-router.exe
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
-
+            dockerRunParameters =
+                "--rm -v /cache/go:/go"
+            dockerPull = true
         }
     }
 
