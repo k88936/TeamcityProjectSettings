@@ -38,7 +38,7 @@ object ScoopBucketDeployTemplate {
                     """.trimMargin()
                 }
             }
-            GithubTemplate.createGitPushStep("update ${manifests.appName}")
+            GithubTemplate.createGitPushStep("update ${manifests.appName}")(this)
         }
     }
 }
