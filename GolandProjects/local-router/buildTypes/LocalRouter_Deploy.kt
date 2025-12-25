@@ -1,6 +1,6 @@
 package GolandProjects.LocalRouter.buildTypes
 
-import GolandProjects.LocalRouter.vcsRoots.LocalRouter_GitGithubComK88936localRouterGitRefsHeadsMaster
+import GolandProjects.LocalRouter.vcsRoots.LocalRouter_GitGithubComK88936localRouterGitRefsHeadsMain
 import Utils.Deploy.GithubReleaseDeployTemplate
 import Utils.Deploy.SourceOfDeployTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
@@ -13,7 +13,7 @@ object LocalRouter_Deploy : BuildType({
     type = Type.DEPLOYMENT
 
     vcs {
-        root(LocalRouter_GitGithubComK88936localRouterGitRefsHeadsMaster)
+        root(LocalRouter_GitGithubComK88936localRouterGitRefsHeadsMain)
     }
 
     triggers {

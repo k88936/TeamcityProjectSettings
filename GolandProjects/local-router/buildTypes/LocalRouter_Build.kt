@@ -10,7 +10,7 @@ object LocalRouter_Build : BuildType({
     name = "Build"
 
     vcs {
-        root(GolandProjects.LocalRouter.vcsRoots.LocalRouter_GitGithubComK88936localRouterGitRefsHeadsMaster)
+        root(GolandProjects.LocalRouter.vcsRoots.LocalRouter_GitGithubComK88936localRouterGitRefsHeadsMain)
     }
 
     artifactRules = """
