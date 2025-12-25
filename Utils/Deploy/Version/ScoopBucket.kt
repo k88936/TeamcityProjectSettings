@@ -23,7 +23,7 @@ object ScoopBucketVCS : GitVcsRoot({
 object ScoopBucketDeployTemplate {
     fun createDeployTemplate(manifests: AppManifests): BuildType.() -> Unit {
         return {
-            name = "Scoop"
+            this.name = "Scoop"
             vcs {
                 root(ScoopBucketVCS)
             }
