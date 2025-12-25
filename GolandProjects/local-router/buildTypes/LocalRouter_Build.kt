@@ -41,7 +41,7 @@ object LocalRouter_Build : BuildType({
             scriptContent = """
                 source /etc/profile
                 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o bin/local-router.exe
-                go build -o bin/local-router.exe
+                go build -o bin/local-router
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
             dockerRunParameters =
