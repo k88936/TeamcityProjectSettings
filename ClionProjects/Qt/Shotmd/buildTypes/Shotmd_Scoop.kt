@@ -24,15 +24,15 @@ object Shotmd_Scoop : BuildType(
                 synchronizeRevisions = false
             }
         }
-        "%dep.Shotmd_Deploy.build.number%"
+        val version = "build-%dep.Shotmd_Deploy.build.number%"
         val scoopManifests = AppManifests(
             "shotmd", """
            {
-                "version": "",
+                "version": "$version",
                 "description": "shotmd is a small and handy tool to screenshot and convert to base64 code in order to insert image to markdown.",
                 "license": "MIT",
                 "homepage": "https://github.com/k88936/shotmd",
-                "url": "https://github.com/k88936/shotmd/releases/download/v50/shotmd.zip",
+                "url": "https://github.com/k88936/shotmd/releases/download/$version/shotmd.zip",
                 "extract_dir": "shotmd",
                 "bin": "shotmd.exe",
                 "shortcuts": [
