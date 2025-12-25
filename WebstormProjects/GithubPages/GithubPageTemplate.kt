@@ -1,7 +1,7 @@
 package WebstormProjects.GithubPages
 
 import Utils.Trigger.TriggerTemplate
-import Utils.Version.GithubTemplate.createGitPushStep
+import Utils.VCS.GithubTemplate.createGitPushStep
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon

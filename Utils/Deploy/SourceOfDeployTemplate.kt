@@ -60,8 +60,8 @@ object SourceOfDeployTemplate {
                         """
                             ${ensureBinary("gold","https://rustfs.k88936.top/software-release/gold/v1.0.0/gold")}
                             
-                            ./gold upload "$name" "$tagPattern" $assets
-                    """.trimIndent()
+                            |./gold upload "$name" "$tagPattern" $assets
+                    """.trimMargin()
                 }
             }
 

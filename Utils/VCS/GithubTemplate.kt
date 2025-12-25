@@ -1,4 +1,4 @@
-package Utils.Version
+package Utils.VCS
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent

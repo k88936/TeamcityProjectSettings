@@ -2,7 +2,7 @@ package WebstormProjects.ReactNative.Fcalender.buildTypes
 
 import Utils.AI.ContinueAITemplate
 import Utils.Trigger.TriggerTemplate
-import Utils.Version.GithubTemplate
+import Utils.VCS.GithubTemplate
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon

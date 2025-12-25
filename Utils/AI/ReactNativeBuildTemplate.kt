@@ -1,6 +1,6 @@
 package Utils.AI
 
-import Utils.Version.GithubTemplate.USER_INFO
+import Utils.VCS.GithubTemplate.USER_INFO
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
