@@ -18,7 +18,7 @@ object GithubReleaseDeployTemplate {
 
             var extra_param = ""
             if (prerelease) {
-                extra_param += "--release"
+                extra_param += "--prerelease"
             }
             val scriptContent = buildString {
                 append("gh release create $extra_param --target ${Env.BUILD_BRANCH} $tagPattern")
