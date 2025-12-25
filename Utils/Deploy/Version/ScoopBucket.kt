@@ -32,7 +32,7 @@ object ScoopBucketDeployTemplate {
                     id = "Deploy"
                     scriptContent = """
                         |cat <<'EOF' > bucket/${manifests.appName}.json
-                        ${manifests.content}
+                        |${manifests.content}
                         |EOF
                         |
                     """.trimMargin()
