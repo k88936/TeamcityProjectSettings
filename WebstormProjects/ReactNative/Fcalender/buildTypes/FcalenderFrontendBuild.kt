@@ -1,7 +1,7 @@
 package WebstormProjects.ReactNative.Fcalender.buildTypes
 
-import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
-import Utils.Deploy.SourceOfDeployTemplate
+import Utils.Deploy.applyGithubReleaseDeployment
+import Utils.Deploy.applySourceOfDeployment
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
@@ -115,18 +115,18 @@ object FcalenderFrontendBuild : BuildType({
 
     ReactNativeBuildTemplate.createReactNativeAndroidBuild(dir = "frontend")(this)
 
-    SourceOfDeployTemplate.createSourceOfDeployment(
+    applySourceOfDeployment(
         name = "Fcalender", assets = apk_location
-    )(this)
+    )
 
-    SourceOfDeployTemplate.createSourceOfDeployment(
+    applySourceOfDeployment(
         name = "Fcalender",
         tagPattern = "latest", assets = "$apk_location version.json README.md"
-    )(this)
-    createGithubReleaseDeployment(
+    )
+    applyGithubReleaseDeployment(
         tagPattern = "build-%build.number%",
         assetsPath = apk_location,
-    )(this)
+    )
 
     maxRunningBuilds = 1
 })

@@ -1,8 +1,9 @@
 package WebstormProjects.ReactNative.Fcalender.buildTypes
 
-import Utils.AI.ContinueAITemplate
-import Utils.Trigger.TriggerTemplate
-import Utils.VCS.GithubTemplate
+import Utils.AI.applyContinueAIStep
+import Utils.Trigger.excludeAI
+import Utils.Trigger.excludeCI
+import Utils.VCS.applyPRStep
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
@@ -26,8 +27,8 @@ object FcalenderFrontendApiCheck : BuildType({
     }
 
 
-    TriggerTemplate.excludeCI()(this)
-    TriggerTemplate.excludeAI()(this)
+    excludeCI()
+    excludeAI()
     features {
         perfmon {
         }
@@ -36,7 +37,7 @@ object FcalenderFrontendApiCheck : BuildType({
         executionTimeoutMin = 10
     }
 
-    ContinueAITemplate.createStep(
+    applyContinueAIStep(
         """
         Task: check if the new commit fully fit the api doc.
 
@@ -60,7 +61,7 @@ object FcalenderFrontendApiCheck : BuildType({
         - if there is something(ONLY API related) to improve, patch it and create a new commit with proper message.
     """.trimIndent(),
         workdir = "frontend"
-    )(this)
+    )
 
 
     steps {
@@ -76,8 +77,6 @@ object FcalenderFrontendApiCheck : BuildType({
             dockerPull = true
         }
     }
-    GithubTemplate.createPRStep("teamcity-api-check", "check and fix api issue", "improve frontend api client code")(
-        this
-    )
+    applyPRStep("teamcity-api-check", "check and fix api issue", "improve frontend api client code")
 
 })

@@ -1,8 +1,8 @@
 package RustroverProjects.TunetRust.buildTypes
 
 import RustroverProjects.TunetRust.vcsRoots.TunetRust_GitGithubComK88936tunetRustGitRefsHeadsMaster
-import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
-import Utils.Deploy.SourceOfDeployTemplate
+import Utils.Deploy.applyGithubReleaseDeployment
+import Utils.Deploy.applySourceOfDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
@@ -29,10 +29,10 @@ object TunetRust_Deploy : BuildType({
     vcs {
         root(TunetRust_GitGithubComK88936tunetRustGitRefsHeadsMaster)
     }
-    SourceOfDeployTemplate.createSourceOfDeployment("tunet-rust")(this)
-    createGithubReleaseDeployment(
+    applySourceOfDeployment("tunet-rust")
+    applyGithubReleaseDeployment(
         assetsPath = "_deploy/*"
-    )(this)
+    )
 
 
 })

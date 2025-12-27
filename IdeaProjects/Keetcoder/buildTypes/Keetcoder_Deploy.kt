@@ -1,8 +1,8 @@
 package IdeaProjects.Keetcoder.buildTypes
 
 import IdeaProjects.Keetcoder.vcsRoots.Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster
-import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
-import jetbrains.buildServer.configs.kotlin.*
+import Utils.Deploy.applyGithubReleaseDeployment
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
 object Keetcoder_Deploy : BuildType({
@@ -12,9 +12,9 @@ object Keetcoder_Deploy : BuildType({
     vcs {
         root(Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster)
     }
-    createGithubReleaseDeployment(
+    applyGithubReleaseDeployment(
         assetsPath = "_deploy/*"
-    )(this)
+    )
 
     triggers {
         finishBuildTrigger {

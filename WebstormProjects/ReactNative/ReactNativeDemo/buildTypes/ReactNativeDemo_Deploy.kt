@@ -1,9 +1,9 @@
 package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
 
-import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
-import Utils.Deploy.SourceOfDeployTemplate
+import Utils.Deploy.applyGithubReleaseDeployment
+import Utils.Deploy.applySourceOfDeployment
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 
 object ReactNativeDemo_Deploy : BuildType({
@@ -27,18 +27,18 @@ object ReactNativeDemo_Deploy : BuildType({
         }
     }
 
-    SourceOfDeployTemplate.createSourceOfDeployment(
+    applySourceOfDeployment(
         name = "react-native-demo",
         assets = "_deploy/*"
-    )(this)
-    SourceOfDeployTemplate.createSourceOfDeployment(
+    )
+    applySourceOfDeployment(
         name = "react-native-demo",
         tagPattern = "latest",
         assets = "_deploy/*"
-    )(this)
-    createGithubReleaseDeployment(
+    )
+    applyGithubReleaseDeployment(
         assetsPath = "_deploy/*",
-    )(this)
+    )
 
 
 })

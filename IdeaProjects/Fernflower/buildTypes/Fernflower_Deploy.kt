@@ -1,8 +1,8 @@
 package IdeaProjects.Fernflower.buildTypes
 
-import jetbrains.buildServer.configs.kotlin.*
+import Utils.Deploy.applyGithubReleaseDeployment
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
-import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 
 object Fernflower_Deploy : BuildType({
     name = "Deploy"
@@ -12,9 +12,9 @@ object Fernflower_Deploy : BuildType({
     vcs {
         root(IdeaProjects.Fernflower.vcsRoots.Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster)
     }
-    createGithubReleaseDeployment(
+    applyGithubReleaseDeployment(
         assetsPath = "_deploy/*"
-    )(this)
+    )
 
 
     triggers {

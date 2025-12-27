@@ -1,8 +1,9 @@
 package WebstormProjects.ReactNative.Fcalender.buildTypes
 
-import Utils.AI.ContinueAITemplate
-import Utils.Trigger.TriggerTemplate
-import Utils.VCS.GithubTemplate
+import Utils.AI.applyContinueAIStep
+import Utils.Trigger.excludeAI
+import Utils.Trigger.excludeCI
+import Utils.VCS.applyPRStep
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
@@ -26,8 +27,8 @@ object FcalenderFrontendi18nCheck : BuildType({
     }
 
 
-    TriggerTemplate.excludeCI()(this)
-    TriggerTemplate.excludeAI()(this)
+    excludeCI()
+    excludeAI()
     features {
         perfmon {
         }
@@ -36,7 +37,7 @@ object FcalenderFrontendi18nCheck : BuildType({
         executionTimeoutMin = 10
     }
 
-    ContinueAITemplate.createStep(
+    applyContinueAIStep(
         """
         Task: check if the new commit fully support i18n(zh and en, configured in i18n/ HtmlStyles.index.ts)
         To work more efficiently, you should: firstly check the new commit message(or diff if needed) to see if it is about frontend UI, if not, end this task.
@@ -94,7 +95,7 @@ object FcalenderFrontendi18nCheck : BuildType({
           ```
     """.trimIndent(),
         workdir = "frontend"
-    )(this)
+    )
 
     steps {
         nodeJS {
@@ -109,10 +110,10 @@ object FcalenderFrontendi18nCheck : BuildType({
             dockerPull = true
         }
     }
-    GithubTemplate.createPRStep(
+    applyPRStep(
         "teamcity-i18n-support-check",
         "check and improve i18n support",
         "improve frontend i18n support"
-    )(this)
+    )
 
 })

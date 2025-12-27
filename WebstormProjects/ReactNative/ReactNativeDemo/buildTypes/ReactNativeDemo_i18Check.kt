@@ -1,8 +1,9 @@
 package WebstormProjects.ReactNative.ReactNativeDemo.buildTypes
 
-import Utils.AI.ContinueAITemplate
-import Utils.Trigger.TriggerTemplate
-import Utils.VCS.GithubTemplate
+import Utils.AI.applyContinueAIStep
+import Utils.Trigger.excludeAI
+import Utils.Trigger.excludeCI
+import Utils.VCS.applyPRStep
 import WebstormProjects.ReactNative.ReactNativeDemo.vcsRoots.ReactNativeDemo_GitGithubComK88936reactNativeDemoGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
@@ -22,8 +23,8 @@ object ReactNativeDemo_i18Check : BuildType({
     }
 
 
-    TriggerTemplate.excludeCI()(this)
-    TriggerTemplate.excludeAI()(this)
+    excludeCI()
+    excludeAI()
     features {
         perfmon {
         }
@@ -32,13 +33,13 @@ object ReactNativeDemo_i18Check : BuildType({
         executionTimeoutMin = 10
     }
 
-    ContinueAITemplate.createStep(
+    applyContinueAIStep(
         """
         Check if the new commit fully support i18n(zh and en).
         To work more efficiently, you should: firstly check the new commit message(or diff if needed) to see if it is about frontend UI, if not, end this task.
         Try to avoid scan the whole workspace as possible.
         If there is something to improve, patch it and create a new commit with proper message.
     """.trimMargin()
-    )(this)
-    GithubTemplate.createPRStep("i18nCheck", "check and fix i18n", "improve i18n support")(this)
+    )
+    applyPRStep("i18nCheck", "check and fix i18n", "improve i18n support")
 })

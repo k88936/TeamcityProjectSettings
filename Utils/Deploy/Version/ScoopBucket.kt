@@ -1,6 +1,6 @@
 package Utils.Deploy.Version
 
-import Utils.VCS.GithubTemplate
+import Utils.VCS.applyGitPushStep
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
@@ -20,25 +20,23 @@ object ScoopBucketVCS : GitVcsRoot({
     }
 })
 
-object ScoopBucketDeployTemplate {
-    fun createDeployTemplate(manifests: AppManifests): BuildType.() -> Unit {
-        return {
-            name = "${manifests.appName}_Scoop"
-            vcs {
-                root(ScoopBucketVCS)
-            }
-            steps {
-                script {
-                    id = "Deploy"
-                    scriptContent = """
-                        |cat <<'EOF' > bucket/${manifests.appName}.json
-                        |${manifests.content}
-                        |EOF
-                        |
-                    """.trimMargin()
-                }
-            }
-            GithubTemplate.createGitPushStep("update ${manifests.appName}")(this)
+object ScoopBucketDeployTemplate
+
+fun BuildType.applyScoopBucketDeployment(manifests: AppManifests) {
+    name = "${manifests.appName}_Scoop"
+    vcs {
+        root(ScoopBucketVCS)
+    }
+    steps {
+        script {
+            id = "Deploy"
+            scriptContent = """
+                |cat <<'EOF' > bucket/${manifests.appName}.json
+                |${manifests.content}
+                |EOF
+                |
+            """.trimMargin()
         }
     }
+    applyGitPushStep("update ${manifests.appName}")
 }

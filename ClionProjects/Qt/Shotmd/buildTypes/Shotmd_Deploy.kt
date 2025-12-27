@@ -1,10 +1,10 @@
 package ClionProjects.Qt.Shotmd.buildTypes
 
 import ClionProjects.Qt.Shotmd.vcsRoots.Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster
-import jetbrains.buildServer.configs.kotlin.*
+import Utils.Deploy.applyGithubReleaseDeployment
+import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
-import Utils.Deploy.GithubReleaseDeployTemplate.createGithubReleaseDeployment
 
 object Shotmd_Deploy : BuildType({
     id("Shotmd_Deploy")
@@ -31,7 +31,7 @@ object Shotmd_Deploy : BuildType({
     vcs {
         root(Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster)
     }
-    createGithubReleaseDeployment(
+    applyGithubReleaseDeployment(
         assetsPath = "_deploy/*",
-    )(this)
+    )
 })

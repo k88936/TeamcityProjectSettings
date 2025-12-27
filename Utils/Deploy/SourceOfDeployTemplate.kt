@@ -38,7 +38,7 @@ object SourceOfDeployTemplate {
                    fi
                done
 
-               echo "Failed to download '${'$'}{binary_name}' after ${'$'}{max_retries} attempts, aborting." >&2
+               echo "Failed to download '${'$'}{binary_name}' after ${'$'}max_retries attempts, aborting." >&2
                exit 1
            }
            ensure_binary $executable $url
@@ -46,36 +46,38 @@ object SourceOfDeployTemplate {
        """.trimIndent()
     }
 
-    fun createSourceOfDeployment(
-        name: String,
-        tagPattern: String = "v%build.number%",
-        assets: String = "_deploy/*",
-    ): BuildType.() -> Unit {
-        return {
+}
 
-            steps {
-                script {
-                    this.name = "Source of Release"
-                    this.scriptContent =
-                        """
-                            ${ensureBinary("gold","https://rustfs.k88936.top/software-release/gold/v1.0.0/gold")}
-                            
-                            |./gold upload "$name" "$tagPattern" $assets
-                    """.trimMargin()
+fun BuildType.applySourceOfDeployment(
+    name: String,
+    tagPattern: String = "v%build.number%",
+    assets: String = "_deploy/*",
+) {
+    steps {
+        script {
+            this.name = "Source of Release"
+            this.scriptContent =
+                """
+                    ${
+                    SourceOfDeployTemplate.ensureBinary(
+                        "gold",
+                        "https://rustfs.k88936.top/software-release/gold/v1.0.0/gold"
+                    )
                 }
-            }
-
-            requirements {
-                exists("env.PLATFORM_LINUX")
-            }
-            params{
-                password("env.S3_ACCESS_KEY", "credentialsJSON:b15e9090-d3a1-49c5-9122-2af653fcd372")
-                password("env.S3_SECRET_KEY", "credentialsJSON:12b9893f-0fa3-4daf-9b11-63751aaa96a0")
-                param("env.S3_BUCKET_NAME", "software-release")
-                param("env.S3_ENDPOINT", "https://rustfs.k88936.top")
-                param("env.AWS_REGION", "us-east-1")
-            }
+                    
+                    |./gold upload "$name" "$tagPattern" $assets
+            """.trimMargin()
         }
     }
 
+    requirements {
+        exists("env.PLATFORM_LINUX")
+    }
+    params {
+        password("env.S3_ACCESS_KEY", "credentialsJSON:b15e9090-d3a1-49c5-9122-2af653fcd372")
+        password("env.S3_SECRET_KEY", "credentialsJSON:12b9893f-0fa3-4daf-9b11-63751aaa96a0")
+        param("env.S3_BUCKET_NAME", "software-release")
+        param("env.S3_ENDPOINT", "https://rustfs.k88936.top")
+        param("env.AWS_REGION", "us-east-1")
+    }
 }

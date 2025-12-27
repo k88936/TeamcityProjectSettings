@@ -1,8 +1,8 @@
 package GolandProjects.LocalRouter.buildTypes
 
 import GolandProjects.LocalRouter.vcsRoots.LocalRouter_GitGithubComK88936localRouterGitRefsHeadsMain
-import Utils.Deploy.GithubReleaseDeployTemplate
-import Utils.Deploy.SourceOfDeployTemplate
+import Utils.Deploy.applyGithubReleaseDeployment
+import Utils.Deploy.applySourceOfDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
@@ -33,15 +33,15 @@ object LocalRouter_Deploy : BuildType({
         }
     }
 
-    SourceOfDeployTemplate.createSourceOfDeployment(
+    applySourceOfDeployment(
         name = "local-router",
         assets = "_deploy/local-router.exe"
-    )(this)
+    )
 
-    GithubReleaseDeployTemplate.createGithubReleaseDeployment(
+    applyGithubReleaseDeployment(
         assetsPath = "_deploy/local-router _deploy/local-router.exe",
         prerelease = true
-    )(this)
+    )
 
 
     features {

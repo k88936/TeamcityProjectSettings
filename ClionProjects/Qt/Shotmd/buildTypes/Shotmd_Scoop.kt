@@ -2,7 +2,7 @@ package ClionProjects.Qt.shotmd.buildTypes
 
 import ClionProjects.Qt.Shotmd.buildTypes.Shotmd_Deploy
 import Utils.Deploy.Version.AppManifests
-import Utils.Deploy.Version.ScoopBucketDeployTemplate
+import Utils.Deploy.Version.applyScoopBucketDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.FailureAction
 import jetbrains.buildServer.configs.kotlin.ReuseBuilds
@@ -44,6 +44,6 @@ object Shotmd_Scoop : BuildType(
            } 
         """.trimIndent()
         )
-        ScoopBucketDeployTemplate.createDeployTemplate(scoopManifests)(this)
+        applyScoopBucketDeployment(scoopManifests)
     }
 )

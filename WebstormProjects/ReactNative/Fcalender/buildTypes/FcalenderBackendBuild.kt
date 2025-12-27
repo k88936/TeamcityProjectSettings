@@ -23,8 +23,8 @@ object FcalenderBackendBuild : BuildType({
            """.trimIndent()
         }
     }
-//    TriggerTemplate.excludeCI()(this)
-//    TriggerTemplate.excludeAI()(this)
+//    excludeCI()
+//    excludeAI()
 
     DockerBuildTemplate.createDockerBuild(
         imageName = "kvtodev/fcalendar:dev",

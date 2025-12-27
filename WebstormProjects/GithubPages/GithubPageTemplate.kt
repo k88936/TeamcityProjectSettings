@@ -1,7 +1,7 @@
 package WebstormProjects.GithubPages
 
-import Utils.Trigger.TriggerTemplate
-import Utils.VCS.GithubTemplate.createGitPushStep
+import Utils.Trigger.excludeCI
+import Utils.VCS.applyGitPushStep
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
@@ -59,9 +59,9 @@ class GithubPageTemplate() : Project() {
                     dockerPull = true
                 }
             }
-            createGitPushStep("Teamcity build pages")(this)
+            applyGitPushStep("Teamcity build pages")
 
-            TriggerTemplate.excludeCI()(this)
+            excludeCI()
 
             features {
                 perfmon {
