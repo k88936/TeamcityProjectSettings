@@ -31,8 +31,19 @@ object LocalRouter_Scoop : BuildType(
                 "description": "local-router is a simple proxy to OpenAI compatible endpoint",
                 "license": "MIT",
                 "homepage": "https://github.com/k88936/local-router",
-                "url": "https://github.com/k88936/local-router/releases/download/$version/local-router.exe",
+                "url": [
+                    "https://github.com/k88936/local-router/releases/download/$version/local-router.exe" 
+                    "https://raw.githubusercontent.com/k88936/local-router/refs/heads/main/script/install.ps1",
+                    "https://raw.githubusercontent.com/k88936/local-router/refs/heads/main/script/uninstall.ps1"
+                ],
                 "bin": "local-router.exe",
+                "depends": "nssm",
+                "installer": {
+                    "file": "install.ps1"
+                },
+                "uninstaller": {
+                    "file": "uninstall.ps1"
+                },
                 "shortcuts": [
                     [
                         "local-router.exe",
