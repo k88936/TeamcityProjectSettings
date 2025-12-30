@@ -128,9 +128,9 @@ object FcalenderFrontendBuild : BuildType({
         assetsPath = apk_location,
     )
     params {
-        param("env.ANDROID_KEYSTORE_PASSWORD", "fcalendar")
-        param("env.ANDROID_KEY_ALIAS", "release")
-        param("env.ANDROID_KEY_PASSWORD", "fcalendar")
+        password("env.ANDROID_KEYSTORE_PASSWORD", "credentialsJSON:4fb0aac1-ef07-4299-9d16-76bc76f4879f")
+        password("env.ANDROID_KEY_ALIAS", "credentialsJSON:35065075-71ae-4db5-9966-cfe20a462105")
+        password("env.ANDROID_KEY_PASSWORD", "credentialsJSON:4fb0aac1-ef07-4299-9d16-76bc76f4879f")
     }
 
     maxRunningBuilds = 1
