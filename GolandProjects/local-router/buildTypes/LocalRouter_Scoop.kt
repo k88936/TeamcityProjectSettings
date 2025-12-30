@@ -32,7 +32,7 @@ object LocalRouter_Scoop : BuildType(
                 "license": "MIT",
                 "homepage": "https://github.com/k88936/local-router",
                 "url": [
-                    "https://github.com/k88936/local-router/releases/download/$version/local-router.exe" 
+                    "https://github.com/k88936/local-router/releases/download/$version/local-router.exe",
                     "https://raw.githubusercontent.com/k88936/local-router/refs/heads/main/script/install.ps1",
                     "https://raw.githubusercontent.com/k88936/local-router/refs/heads/main/script/uninstall.ps1"
                 ],
