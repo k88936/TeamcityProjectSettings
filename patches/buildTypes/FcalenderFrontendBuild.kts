@@ -11,6 +11,12 @@ accordingly, and delete the patch script.
 changeBuildType(RelativeId("FcalenderFrontendBuild")) {
     params {
         expect {
+            param("env.ANDROID_KEYSTORE_PASSWORD", "fcalendar")
+        }
+        update {
+            password("env.ANDROID_KEYSTORE_PASSWORD", "credentialsJSON:4fb0aac1-ef07-4299-9d16-76bc76f4879f")
+        }
+        expect {
             param("env.ANDROID_KEY_ALIAS", "release")
         }
         update {
