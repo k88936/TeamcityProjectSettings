@@ -16,5 +16,11 @@ changeBuildType(RelativeId("FcalenderFrontendBuild")) {
         update {
             password("env.ANDROID_KEY_ALIAS", "credentialsJSON:35065075-71ae-4db5-9966-cfe20a462105")
         }
+        expect {
+            param("env.ANDROID_KEY_PASSWORD", "fcalendar")
+        }
+        update {
+            password("env.ANDROID_KEY_PASSWORD", "credentialsJSON:4fb0aac1-ef07-4299-9d16-76bc76f4879f")
+        }
     }
 }
