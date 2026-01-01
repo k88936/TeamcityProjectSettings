@@ -1,10 +1,9 @@
 package DockerProjects.CiContainers
 
 import DockerProjects.CiContainers.vcsRoots.CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain
-import DockerProjects.applyDockerBuild
+import DockerProjects.DockerBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object Project : Project({
     id("CiContainers")
@@ -24,16 +23,11 @@ object Project : Project({
 
 fun build(dockerfilePath: String, imageName: String): BuildType {
     val formatted = "CiContainers_Build_" + imageName.replace("[^0-9a-zA-Z]".toRegex(), "_")
-    return BuildType({
-        id(formatted)
-        name = formatted
-        triggers {
-            vcs { }
-        }
-        applyDockerBuild(imageName, dockerfilePath)
-        vcs {
-            root(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
-        }
-    })
-
+    return DockerBuildTemplate(
+        name = formatted,
+        imageName = imageName,
+        dockerfilePath = dockerfilePath,
+        vcsRoot = CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain,
+        enableVcsTrigger = true
+    )
 }

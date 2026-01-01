@@ -1,9 +1,8 @@
 package DockerProjects.Nextcloud
 
-import DockerProjects.Nextcloud.buildTypes.*
-import DockerProjects.Nextcloud.vcsRoots.*
+import DockerProjects.DockerBuildTemplate
+import DockerProjects.Nextcloud.vcsRoots.Nextcloud_GitGithubComK88936nextcloudGitRefsHeadsMaster
 import jetbrains.buildServer.configs.kotlin.Project
-import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 
 object Project : Project({
     id("Nextcloud")
@@ -11,6 +10,13 @@ object Project : Project({
 
     vcsRoot(Nextcloud_GitGithubComK88936nextcloudGitRefsHeadsMaster)
 
-    buildType(Nextcloud_Build)
+    buildType(
+        DockerBuildTemplate(
+            name = "Nextcloud",
+            imageName = "kvtodev/nextcloud",
+            vcsRoot = Nextcloud_GitGithubComK88936nextcloudGitRefsHeadsMaster,
+            enableVcsTrigger = true
+        )
+    )
 
 })

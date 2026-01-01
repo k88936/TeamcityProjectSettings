@@ -1,9 +1,9 @@
 package WebstormProjects.ReactNative.Fcalender.buildTypes
 
-import DockerProjects.applyDockerBuild
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
+import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.sshExec
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
@@ -26,11 +26,28 @@ object FcalenderBackendBuild : BuildType({
 //    excludeCI()
 //    excludeAI()
 
-    applyDockerBuild(
-        imageName = "kvtodev/fcalendar:dev",
-        dockerfilePath = "backend/Dockerfile",
-        connection = "DOCKER_REGISTRY_CONNECTION",
-    )
+    val imageName = "kvtodev/fcalendar:dev"
+    val dockerfilePath = "backend/Dockerfile"
+    "DOCKER_REGISTRY_CONNECTION"
+    steps {
+        dockerCommand {
+            id = "build"
+            commandType = build {
+                source = file {
+                    path = dockerfilePath
+                }
+                namesAndTags = imageName
+                commandArgs = "--progress=plain"
+            }
+        }
+        dockerCommand {
+            id = "push"
+            commandType = push {
+                namesAndTags = imageName
+                removeImageAfterPush = false
+            }
+        }
+    }
     steps {
 
         sshExec {

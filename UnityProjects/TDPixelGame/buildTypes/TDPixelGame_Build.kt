@@ -8,7 +8,7 @@ object TDPixelGame_Build : BuildType({
     name = "Build"
 
     artifactRules = """
-        Build\Windows\*
+        Build\Windows\=>\
         -:Build\Windows\DemoGame_BackUpThisFolder_ButDontShipItWithYourGame
         -:Build\Windows\world simulator_BurstDebugInformation_DoNotShip
     """.trimIndent()

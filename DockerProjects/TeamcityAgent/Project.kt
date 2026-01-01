@@ -1,7 +1,7 @@
 package DockerProjects.TeamcityAgent
 
-import DockerProjects.TeamcityAgent.buildTypes.*
-import DockerProjects.TeamcityAgent.vcsRoots.*
+import DockerProjects.DockerBuildTemplate
+import DockerProjects.TeamcityAgent.vcsRoots.TeamcityAgent_GitGithubComK88936teamcityAgentGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.Project
 
 object Project : Project({
@@ -10,6 +10,13 @@ object Project : Project({
 
     vcsRoot(TeamcityAgent_GitGithubComK88936teamcityAgentGitRefsHeadsMain)
 
-    buildType(TeamcityAgent_Build)
+    buildType(
+        DockerBuildTemplate(
+            name = "Teamcity Agent Build",
+            imageName = "kvtodev/teamcity-agent",
+            vcsRoot = TeamcityAgent_GitGithubComK88936teamcityAgentGitRefsHeadsMain,
+            enableVcsTrigger = true
+        )
+    )
 
 })

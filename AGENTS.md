@@ -79,6 +79,7 @@ This way lacks flexibility, since should only be used on simple one, like: docke
 fun DockerBuildTemplate(
     name: String,
     imageName: String,
+    vcsRoot: vcsRoot,
     dockerfilePath: String = "Dockerfile",
     connection: String = "DOCKER_REGISTRY_CONNECTION"
 ): BuildType {
@@ -88,6 +89,16 @@ fun DockerBuildTemplate(
         // ... build configuration
     })
 }
+
+// usage (directly instead of create another kotlin object)
+buildType(
+    DockerBuildTemplate(
+        name = "Nextcloud",
+        imageName = "kvtodev/nextcloud",
+        vcsRoot = Nextcloud_GitGithubComK88936nextcloudGitRefsHeadsMaster,
+        enableVcsTrigger = true
+    )
+)
 ```
 
 ## Common Patterns

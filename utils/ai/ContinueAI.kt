@@ -2,7 +2,7 @@ package utils.ai
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
-import utils.vcs.GithubUtils.USER_INFO
+import utils.vcs.USER_INFO
 
 
 object ContinueAIConfig {
