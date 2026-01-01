@@ -1,6 +1,6 @@
 package DockerProjects.TeamcityAgent.buildTypes
 
-import DockerProjects.DockerBuildTemplate
+import DockerProjects.applyDockerBuild
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
@@ -8,10 +8,7 @@ object TeamcityAgent_Build : BuildType({
     id("TeamcityAgent_Build")
     name = "Teamcity Agent Build"
 
-    // Use the common Docker build template
-    DockerBuildTemplate.createDockerBuild(
-        imageName = "kvtodev/teamcity-agent",
-    )(this)
+    applyDockerBuild(imageName = "kvtodev/teamcity-agent")
 
     triggers {
         vcs { }

@@ -1,7 +1,7 @@
 package DockerProjects.CiContainers
 
 import DockerProjects.CiContainers.vcsRoots.CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain
-import DockerProjects.DockerBuildTemplate
+import DockerProjects.applyDockerBuild
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -30,10 +30,7 @@ fun build(dockerfilePath: String, imageName: String): BuildType {
         triggers {
             vcs { }
         }
-        DockerBuildTemplate.createDockerBuild(
-            imageName = imageName,
-            dockerfilePath = dockerfilePath,
-        )(this)
+        applyDockerBuild(imageName, dockerfilePath)
         vcs {
             root(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
         }
