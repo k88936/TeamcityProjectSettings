@@ -19,6 +19,15 @@ create(RelativeId("UnityProjects_2dPixelGame"), BuildType({
         root(RelativeId("UnityProjects_2dPixelGame_GitGithubCom20220120802dPixelGameGitRefsHeadsMain"))
     }
 
+    steps {
+        step {
+            id = "unity"
+            type = "unity"
+            param("unityVersion", "6000.0.49")
+            param("projectPath", "")
+        }
+    }
+
     triggers {
         vcs {
         }
