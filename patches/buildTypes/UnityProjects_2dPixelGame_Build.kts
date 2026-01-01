@@ -23,8 +23,11 @@ create(RelativeId("UnityProjects_2dPixelGame"), BuildType({
         step {
             id = "unity"
             type = "unity"
+            param("executeMethod", "BuildScript.PerformBuild_Windows")
             param("unityVersion", "6000.0.49")
-            param("projectPath", "")
+            param("silentCrashes", "true")
+            param("noGraphics", "true")
+            param("buildTarget", "StandaloneWindows64")
         }
     }
 
