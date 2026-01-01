@@ -15,6 +15,12 @@ create(RelativeId("UnityProjects_2dPixelGame"), BuildType({
     id("UnityProjects_2dPixelGame_Build")
     name = "Build"
 
+    artifactRules = """
+        Build\Windows => Build\Windows
+        -:Build\Windows\DemoGame_BackUpThisFolder_ButDontShipItWithYourGame
+        -:Build\Windows\world simulator_BurstDebugInformation_DoNotShip
+    """.trimIndent()
+
     vcs {
         root(RelativeId("UnityProjects_2dPixelGame_GitGithubCom20220120802dPixelGameGitRefsHeadsMain"))
     }
