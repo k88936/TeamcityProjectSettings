@@ -1,15 +1,15 @@
 package GolandProjects.LocalRouter.buildTypes
 
 import GolandProjects.LocalRouter.vcsRoots.LocalRouter_GitGithubComK88936localRouterGitRefsHeadsMain
-import Utils.Deploy.applyGithubReleaseDeployment
-import Utils.Deploy.applySourceOfDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.deploy.applyGithubReleaseDeployment
+import utils.deploy.applySourceOfDeployment
 
 object LocalRouter_Deploy : BuildType({
     id("LocalRouter_Deploy")
-    name = "Deploy"
+    name = "deploy"
     type = Type.DEPLOYMENT
 
     vcs {

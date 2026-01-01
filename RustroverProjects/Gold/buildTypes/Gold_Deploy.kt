@@ -1,15 +1,15 @@
 package RustroverProjects.Gold.buildTypes
 
 import RustroverProjects.Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain
-import Utils.Deploy.applyGithubReleaseDeployment
-import Utils.Deploy.applySourceOfDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.deploy.applyGithubReleaseDeployment
+import utils.deploy.applySourceOfDeployment
 
 object Gold_Deploy : BuildType({
     id("Gold_Deploy")
-    name = "Deploy"
+    name = "deploy"
     type = Type.DEPLOYMENT
 
     vcs {

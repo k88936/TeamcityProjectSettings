@@ -25,6 +25,7 @@ mvn clean compile test-compile
 - **Build Types**: `{Project}_{Action}` (e.g., `Fernflower_Build`, `Fernflower_Deploy`)
 - **VCS Roots**: `{Project}_{Type}_{Url}_{Branch}` (e.g., `Fernflower_GitGithubComK88936fernflowerGitRefsHeadsMaster`)
 - **Extension Functions**: `fun BuildType.apply{Feature}(...)`
+- **Template Functions**: `fun {Feature}Template(...): BuildType`
 
 ### File Structure
 
@@ -37,17 +38,18 @@ mvn clean compile test-compile
 │   │   └── {Project}_Deploy.kt
 │   └── vcsRoots/           # VCS root definitions
 │       └── {Project}_Git...kt
-└── Utils/                  # Shared templates and utilities
+└── utils/                  # Shared templates and utilities
     ├── Deploy/
     ├── Trigger/
     ├── VCS/
     └── Env.kt
 ```
 
-## Utilities
+## Reusable Config
 
 ### Extension Functions
 
+thanks to kotlin's extension func, we can extend teamcity dsl like:
 ```kotlin
 // Create reusable extension functions
 fun BuildType.applyGitPushStep(comment: String = "update") {
@@ -67,10 +69,31 @@ fun BuildType.applyGitPushStep(comment: String = "update") {
 }
 ```
 
+### Template Builder
+
+Template functions should return a BuildType directly and follow the naming convention `{Feature}Template`:
+This way lacks flexibility, since should only be used on simple one, like: docker, static web page
+
+```kotlin
+// Example: DockerBuildTemplate
+fun DockerBuildTemplate(
+    name: String,
+    imageName: String,
+    dockerfilePath: String = "Dockerfile",
+    connection: String = "DOCKER_REGISTRY_CONNECTION"
+): BuildType {
+    return BuildType({
+        id(name)
+        this.name = name
+        // ... build configuration
+    })
+}
+```
+
 ## Common Patterns
 
 ### Environment Variables
 
-- Use centralized `Utils.Env` for shared constants
+- Use centralized `utils.Env` for shared constants
 - Reference environment variables with `%env.VAR_NAME%` syntax
 - Use JDK version variables: `%env.JDK_21_0_x64%`

@@ -1,7 +1,5 @@
 package WebstormProjects.ReactNative.Fcalender.buildTypes
 
-import Utils.Deploy.applyGithubReleaseDeployment
-import Utils.Deploy.applySourceOfDeployment
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
 import jetbrains.buildServer.configs.kotlin.BuildType
@@ -10,6 +8,8 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import utils.deploy.applyGithubReleaseDeployment
+import utils.deploy.applySourceOfDeployment
 
 object FcalenderFrontendBuild : BuildType({
     id("FcalenderFrontendBuild")

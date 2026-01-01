@@ -1,15 +1,15 @@
 package RustroverProjects.TunetRust.buildTypes
 
 import RustroverProjects.TunetRust.vcsRoots.TunetRust_GitGithubComK88936tunetRustGitRefsHeadsMaster
-import Utils.Deploy.applyGithubReleaseDeployment
-import Utils.Deploy.applySourceOfDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.deploy.applyGithubReleaseDeployment
+import utils.deploy.applySourceOfDeployment
 
 
 object TunetRust_Deploy : BuildType({
     id("TunetRust_Deploy")
-    name = "Deploy"
+    name = "deploy"
     type = Type.DEPLOYMENT
 
     triggers {

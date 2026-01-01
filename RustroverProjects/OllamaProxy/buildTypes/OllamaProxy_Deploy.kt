@@ -1,15 +1,15 @@
 package RustroverProjects.OllamaProxy.buildTypes
 
 import RustroverProjects.OllamaProxy.vcsRoots.OllamaProxy_GitGithubComK88936ollamaProxyGitRefsHeadsMain
-import Utils.Deploy.applyGithubReleaseDeployment
-import Utils.Deploy.applySourceOfDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.deploy.applyGithubReleaseDeployment
+import utils.deploy.applySourceOfDeployment
 
 
 object OllamaProxy_Deploy : BuildType({
     id("OllamaProxy_Deploy")
-    name = "Deploy"
+    name = "deploy"
     type = Type.DEPLOYMENT
 
     triggers {

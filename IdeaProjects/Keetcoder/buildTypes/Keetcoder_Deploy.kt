@@ -1,13 +1,13 @@
 package IdeaProjects.Keetcoder.buildTypes
 
 import IdeaProjects.Keetcoder.vcsRoots.Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster
-import Utils.Deploy.applyGithubReleaseDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.deploy.applyGithubReleaseDeployment
 
 object Keetcoder_Deploy : BuildType({
     id("Keetcoder_Deploy")
-    name = "Deploy"
+    name = "deploy"
     type = Type.DEPLOYMENT
     vcs {
         root(Keetcoder_GitGithubComK88936leetcodeEditorGitRefsHeadsMaster)

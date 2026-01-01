@@ -1,14 +1,14 @@
 package ClionProjects.Qt.Shotmd.buildTypes
 
 import ClionProjects.Qt.Shotmd.vcsRoots.Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster
-import Utils.Deploy.applyGithubReleaseDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.deploy.applyGithubReleaseDeployment
 
 object Shotmd_Deploy : BuildType({
     id("Shotmd_Deploy")
-    name = "Deploy"
+    name = "deploy"
     type = Type.DEPLOYMENT
 
     triggers {

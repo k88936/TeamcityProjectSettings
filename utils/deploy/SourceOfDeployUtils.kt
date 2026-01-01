@@ -1,13 +1,16 @@
-package Utils.Deploy
+package utils.deploy
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 
-object SourceOfDeployTemplate {
-
+fun BuildType.applySourceOfDeployment(
+    name: String,
+    tagPattern: String = "v%build.number%",
+    assets: String = "_deploy/*",
+) {
     fun ensureBinary(executable: String, url: String): String {
-       return """
+        return """
            ensure_binary() {
                local binary_name="$1"
                local download_url="$2"
@@ -45,21 +48,13 @@ object SourceOfDeployTemplate {
            
        """.trimIndent()
     }
-
-}
-
-fun BuildType.applySourceOfDeployment(
-    name: String,
-    tagPattern: String = "v%build.number%",
-    assets: String = "_deploy/*",
-) {
     steps {
         script {
             this.name = "Source of Release"
             this.scriptContent =
                 """
                     ${
-                    SourceOfDeployTemplate.ensureBinary(
+                    ensureBinary(
                         "gold",
                         "https://rustfs.k88936.top/software-release/gold/v1.0.0/gold"
                     )

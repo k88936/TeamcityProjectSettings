@@ -1,11 +1,11 @@
 package IdeaProjects.Fernflower.buildTypes
 
-import Utils.Deploy.applyGithubReleaseDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.deploy.applyGithubReleaseDeployment
 
 object Fernflower_Deploy : BuildType({
-    name = "Deploy"
+    name = "deploy"
     id("Fernflower_Deploy")
     type = Type.DEPLOYMENT
 

@@ -1,8 +1,8 @@
-package Utils.AI
+package utils.ai
 
-import Utils.VCS.GithubTemplate.USER_INFO
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import utils.vcs.GithubUtils.USER_INFO
 
 
 object ContinueAIConfig {

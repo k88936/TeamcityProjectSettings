@@ -1,4 +1,4 @@
-package Utils.Trigger
+package utils.trigger
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.triggers.VcsTrigger

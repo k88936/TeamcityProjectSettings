@@ -1,9 +1,9 @@
-package Utils.Deploy.Version
+package utils.deploy.version
 
-import Utils.VCS.applyGitPushStep
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
+import utils.vcs.applyGitPushStep
 
 data class AppManifests(
     val appName: String,
@@ -29,7 +29,7 @@ fun BuildType.applyScoopBucketDeployment(manifests: AppManifests) {
     }
     steps {
         script {
-            id = "Deploy"
+            id = "deploy"
             scriptContent = """
                 |cat <<'EOF' > bucket/${manifests.appName}.json
                 |${manifests.content}

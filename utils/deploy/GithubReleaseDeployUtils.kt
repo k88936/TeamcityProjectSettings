@@ -1,8 +1,8 @@
-package Utils.Deploy
+package utils.deploy
 
-import Utils.Env
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import utils.Env
 
 fun BuildType.applyGithubReleaseDeployment(
     tagPattern: String = "v%build.number%",

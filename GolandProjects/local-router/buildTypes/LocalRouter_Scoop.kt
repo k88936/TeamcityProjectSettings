@@ -1,11 +1,11 @@
 package GolandProjects.LocalRouter.buildTypes
 
-import Utils.Deploy.Version.AppManifests
-import Utils.Deploy.Version.applyScoopBucketDeployment
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.FailureAction
 import jetbrains.buildServer.configs.kotlin.ReuseBuilds
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.deploy.version.AppManifests
+import utils.deploy.version.applyScoopBucketDeployment
 
 object LocalRouter_Scoop : BuildType(
     {

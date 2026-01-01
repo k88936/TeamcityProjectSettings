@@ -1,14 +1,14 @@
 package WebstormProjects.ReactNative.Fcalender.buildTypes
 
-import Utils.AI.applyContinueAIStep
-import Utils.Trigger.excludeAI
-import Utils.Trigger.excludeCI
-import Utils.VCS.applyPRStep
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import utils.ai.applyContinueAIStep
+import utils.trigger.excludeAI
+import utils.trigger.excludeCI
+import utils.vcs.applyPRStep
 
 object FcalenderFrontendi18nCheck : BuildType({
     name = "i18n check"

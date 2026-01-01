@@ -1,13 +1,13 @@
 package WebstormProjects.GithubPages
 
-import Utils.Trigger.excludeCI
-import Utils.VCS.applyGitPushStep
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
+import utils.trigger.excludeCI
+import utils.vcs.applyGitPushStep
 
 class GithubPageTemplate() : Project() {
 
@@ -82,7 +82,7 @@ class GithubPageTemplate() : Project() {
                             mkdir -p .github/workflows
                             cat > .github/workflows/static.yaml << 'EOF'
                             # Simple workflow for deploying static content to GitHub Pages
-                            name: Deploy static content to Pages
+                            name: deploy static content to Pages
 
                             on:
                               # Runs on pushes targeting the default branch
@@ -121,7 +121,7 @@ class GithubPageTemplate() : Project() {
                                     with:
                                       # Upload entire repository
                                       path: './dist/'
-                                  - name: Deploy to GitHub Pages
+                                  - name: deploy to GitHub Pages
                                     id: deployment
                                     uses: actions/deploy-pages@v4
                             EOF
