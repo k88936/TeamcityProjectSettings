@@ -12,7 +12,7 @@ object Project : Project({
 
     buildType(
         DockerBuildTemplate(
-            name = "Teamcity Agent Build",
+            name = "TeamcityAgentBuild",
             imageName = "kvtodev/teamcity-agent",
             vcsRoot = TeamcityAgent_GitGithubComK88936teamcityAgentGitRefsHeadsMain,
             enableVcsTrigger = true
