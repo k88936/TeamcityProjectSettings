@@ -24,7 +24,9 @@ object Shotmd_Deploy : BuildType({
     dependencies {
         artifacts(Shotmd_Build) {
             buildRule = lastSuccessful()
-            artifactRules = "/=>_deploy/shotmd/"
+            artifactRules = """
+                *=>_deploy/
+            """.trimIndent()
             cleanDestination = true
         }
     }
@@ -34,7 +36,7 @@ object Shotmd_Deploy : BuildType({
             name = "Create zip archive with 7z"
             scriptContent = """
                 cd _deploy/
-                7z a -r "shotmd.zip" shotmd/
+                7z a -r "shotmd.zip" build/
             """.trimIndent()
         }
     }

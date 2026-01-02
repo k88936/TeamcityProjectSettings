@@ -23,7 +23,7 @@ object LocalRouter_Scoop : BuildType(
                 synchronizeRevisions = false
             }
         }
-        val version = "v%dep.LocalRouter_Deploy.build.number%"
+        val version = "build-%dep.LocalRouter_Deploy.build.number%"
         val scoopManifests = AppManifests(
             "local-router", """
             {

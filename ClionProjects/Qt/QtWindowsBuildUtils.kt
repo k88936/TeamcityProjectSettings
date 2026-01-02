@@ -11,7 +11,7 @@ fun BuildType.applyQtWindowsBuild(
 ) {
     this.name = name
     artifactRules = """
-        build/${executableName}=>/
+        _build/=>/build/
     """.trimIndent()
     params {
         text("QT_INSTALL", installPath)
@@ -21,17 +21,16 @@ fun BuildType.applyQtWindowsBuild(
             id = "build_qt"
             scriptContent = """
                             call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
-                            cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=%QT_INSTALL%\lib\cmake\Qt6\qt.toolchain.cmake -G Ninja 
+                            cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=%QT_INSTALL%\lib\cmake\Qt6\qt.toolchain.cmake - Option.G Ninja 
                             cmake --build build --config $buildConfig
                         """.trimIndent()
         }
         script {
             id = "package_qt"
             scriptContent = """
-                            rm -r build\${executableName}
-                            mkdir build\${executableName}
-                            cp build\${executableName}.exe build\${executableName}
-                            %QT_INSTALL%\bin\windeployqt.exe build\${executableName}\${executableName}.exe
+                            mkdir _build\
+                            cp build\${executableName}.exe _build\
+                            %QT_INSTALL%\bin\windeployqt.exe _build\${executableName}.exe
                 """.trimIndent()
         }
     }

@@ -4,6 +4,7 @@ import GolandProjects.LocalRouter.vcsRoots.LocalRouter_GitGithubComK88936localRo
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.Env
 import utils.deploy.applyGithubReleaseDeployment
 import utils.deploy.applySourceOfDeployment
 
@@ -27,19 +28,19 @@ object LocalRouter_Deploy : BuildType({
         artifacts(LocalRouter_Build) {
             buildRule = lastSuccessful()
             artifactRules = """
-                local-router=>_deploy/
-                local-router.exe=>_deploy/
+                *=>_deploy/
             """.trimIndent()
         }
     }
 
     applySourceOfDeployment(
         name = "local-router",
-        assets = "_deploy/local-router.exe"
+        assets = "_deploy/build/local-router.exe"
     )
 
     applyGithubReleaseDeployment(
-        assetsPath = "_deploy/local-router _deploy/local-router.exe",
+        tagPattern = "build-${Env.BUILD_NUMBER}",
+        assetsPath = "_deploy/build/local-router _deploy/build/local-router.exe",
         prerelease = true
     )
 
