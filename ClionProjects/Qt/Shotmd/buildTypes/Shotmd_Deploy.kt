@@ -24,7 +24,7 @@ object Shotmd_Deploy : BuildType({
     dependencies {
         artifacts(Shotmd_Build) {
             buildRule = lastSuccessful()
-            artifactRules = "*=>_deploy/shotmd/"
+            artifactRules = "/=>_deploy/shotmd/"
             cleanDestination = true
         }
     }

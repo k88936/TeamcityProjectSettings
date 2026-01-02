@@ -24,7 +24,7 @@ object TDPixelGame_Deploy : BuildType({
     dependencies {
         artifacts(TDPixelGame_Build) {
             buildRule = lastSuccessful()
-            artifactRules = "*=>_deploy/build/"
+            artifactRules = "**/*=>_deploy/build/"
             cleanDestination = true
         }
     }
