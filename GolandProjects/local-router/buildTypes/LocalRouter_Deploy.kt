@@ -28,7 +28,7 @@ object LocalRouter_Deploy : BuildType({
         artifacts(LocalRouter_Build) {
             buildRule = lastSuccessful()
             artifactRules = """
-                *=>_deploy/
+                build/=>_deploy/build/
             """.trimIndent()
         }
     }

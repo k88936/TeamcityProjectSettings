@@ -25,7 +25,7 @@ object Shotmd_Deploy : BuildType({
         artifacts(Shotmd_Build) {
             buildRule = lastSuccessful()
             artifactRules = """
-                *=>_deploy/
+                build/=>_deploy/build
             """.trimIndent()
             cleanDestination = true
         }
