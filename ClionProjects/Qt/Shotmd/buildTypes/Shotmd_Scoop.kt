@@ -33,7 +33,7 @@ object Shotmd_Scoop : BuildType(
                 "license": "MIT",
                 "homepage": "https://github.com/k88936/shotmd",
                 "url": "https://github.com/k88936/shotmd/releases/download/$version/shotmd.zip",
-                "extract_dir": "shotmd",
+                "extract_dir": "build",
                 "bin": "shotmd.exe",
                 "shortcuts": [
                     [
