@@ -2,6 +2,8 @@ package WebstormProjects.ReactNative.Fcalender.buildTypes
 
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerRegistryConnections
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.sshExec
@@ -28,7 +30,6 @@ object FcalenderBackendBuild : BuildType({
 
     val imageName = "kvtodev/fcalendar:dev"
     val dockerfilePath = "backend/Dockerfile"
-    "DOCKER_REGISTRY_CONNECTION"
     steps {
         dockerCommand {
             id = "build"
@@ -61,6 +62,14 @@ object FcalenderBackendBuild : BuildType({
             targetUrl = "fcalendar.k88936.top"
             authMethod = sshAgent {
                 username = "ubuntu"
+            }
+        }
+    }
+    features {
+        perfmon {}
+        dockerRegistryConnections {
+            loginToRegistry = on {
+                dockerRegistryId = "DOCKER_REGISTRY_CONNECTION"
             }
         }
     }

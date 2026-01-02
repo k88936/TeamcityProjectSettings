@@ -12,8 +12,6 @@ object Project : Project({
 
     buildType(FcalenderBackendBuild)
     buildType(FcalenderFrontendBuild)
-//    buildType(FcalenderFrontendApiCheck)
-//    buildType(FcalenderFrontendi18nCheck)
     vcsRoot(FcalenderVCS)
     features {
         dockerRegistry {
