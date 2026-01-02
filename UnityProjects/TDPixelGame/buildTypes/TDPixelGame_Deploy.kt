@@ -25,7 +25,7 @@ object TDPixelGame_Deploy : BuildType({
         artifacts(TDPixelGame_Build) {
             buildRule = lastSuccessful()
             artifactRules = """
-                *=>_deploy/"
+                *=>_deploy/
             """.trimIndent()
             cleanDestination = true
         }
