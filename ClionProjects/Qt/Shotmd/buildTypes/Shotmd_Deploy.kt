@@ -24,7 +24,7 @@ object Shotmd_Deploy : BuildType({
     dependencies {
         artifacts(Shotmd_Build) {
             buildRule = lastSuccessful()
-            artifactRules = "*=>_deploy/"
+            artifactRules = "*=>_deploy/shotmd/"
             cleanDestination = true
         }
     }
@@ -33,8 +33,8 @@ object Shotmd_Deploy : BuildType({
             id = "zip_with_7z"
             name = "Create zip archive with 7z"
             scriptContent = """
-                cd _deploy
-                7z a -r "shotmd.zip" *
+                cd _deploy/
+                7z a -r "shotmd.zip" _deploy/shotmd/
             """.trimIndent()
         }
     }
@@ -44,6 +44,7 @@ object Shotmd_Deploy : BuildType({
         root(Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster)
     }
     applyGithubReleaseDeployment(
+        tagPattern = "build-%dep.Shotmd_Deploy.build.number%",
         assetsPath = "_deploy/shotmd.zip",
     )
 })

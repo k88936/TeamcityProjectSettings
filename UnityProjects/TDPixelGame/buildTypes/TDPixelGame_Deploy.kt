@@ -24,7 +24,7 @@ object TDPixelGame_Deploy : BuildType({
     dependencies {
         artifacts(TDPixelGame_Build) {
             buildRule = lastSuccessful()
-            artifactRules = "*=>_deploy/"
+            artifactRules = "*=>_deploy/build/"
             cleanDestination = true
         }
     }
@@ -34,8 +34,8 @@ object TDPixelGame_Deploy : BuildType({
             id = "zip_with_7z"
             name = "Create zip archive with 7z"
             scriptContent = """
-                cd _deploy
-                7z a -r "TDPixelGame_%build.number%.zip" *
+                cd _deploy/
+                7z a -r "TDPixelGame_%build.number%.zip" build/
             """.trimIndent()
         }
     }

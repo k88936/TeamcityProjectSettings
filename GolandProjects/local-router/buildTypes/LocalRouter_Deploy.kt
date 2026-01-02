@@ -45,6 +45,8 @@ object LocalRouter_Deploy : BuildType({
 
 
     features {
-        perfmon { }
+        perfmon {
+
+        }
     }
 })
