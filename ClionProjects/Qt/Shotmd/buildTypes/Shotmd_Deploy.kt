@@ -34,7 +34,7 @@ object Shotmd_Deploy : BuildType({
             name = "Create zip archive with 7z"
             scriptContent = """
                 cd _deploy/
-                7z a -r "shotmd.zip" _deploy/shotmd/
+                7z a -r "shotmd.zip" shotmd/
             """.trimIndent()
         }
     }
