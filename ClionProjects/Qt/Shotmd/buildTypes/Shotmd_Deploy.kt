@@ -44,7 +44,7 @@ object Shotmd_Deploy : BuildType({
         root(Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster)
     }
     applyGithubReleaseDeployment(
-        tagPattern = "build-%dep.Shotmd_Deploy.build.number%",
+        tagPattern = "build-%build.number%",
         assetsPath = "_deploy/shotmd.zip",
     )
 })

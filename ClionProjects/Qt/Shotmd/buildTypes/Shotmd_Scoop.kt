@@ -24,7 +24,7 @@ object Shotmd_Scoop : BuildType(
                 synchronizeRevisions = false
             }
         }
-        val version = "v%dep.Shotmd_Deploy.build.number%"
+        val version = "build-%dep.Shotmd_Deploy.build.number%"
         val scoopManifests = AppManifests(
             "shotmd", """
            {
