@@ -45,5 +45,7 @@ object TDPixelGame_Deploy : BuildType({
     }
     applyGithubReleaseDeployment(
         assetsPath = "_deploy/TDPixelGame_%build.number%.zip",
+        tagPattern = "build-%build.number%",
+        prerelease = true,
     )
 })
