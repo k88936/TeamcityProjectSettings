@@ -28,7 +28,7 @@ object FcalenderBackendBuild : BuildType({
 //    excludeCI()
 //    excludeAI()
 
-    val imageName = "kvtodev/fcalendar:dev"
+    val imageName = "kvtodev/fcalendar:main"
     val dockerfilePath = "backend/Dockerfile"
     steps {
         dockerCommand {
