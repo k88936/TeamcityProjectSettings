@@ -25,13 +25,13 @@ object TDPixelGame_Deploy : BuildType({
         artifacts(TDPixelGame_Build) {
             buildRule = lastSuccessful()
             artifactRules = "*=>_deploy/"
+            cleanDestination = true
         }
     }
 
     steps {
         script {
             id = "zip_with_7z"
-            type = "simpleRunner"
             name = "Create zip archive with 7z"
             scriptContent = """
                 cd _deploy

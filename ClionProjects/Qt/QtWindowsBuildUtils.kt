@@ -10,7 +10,9 @@ fun BuildType.applyQtWindowsBuild(
     executableName: String = "Application"
 ) {
     this.name = name
-    artifactRules = "build/${executableName}.zip"
+    artifactRules = """
+        build/${executableName}=>/
+    """.trimIndent()
     params {
         text("QT_INSTALL", installPath)
     }
@@ -30,8 +32,6 @@ fun BuildType.applyQtWindowsBuild(
                             mkdir build\${executableName}
                             cp build\${executableName}.exe build\${executableName}
                             %QT_INSTALL%\bin\windeployqt.exe build\${executableName}\${executableName}.exe
-                            cd build
-                            7z a ${executableName}.zip ${executableName}\
                 """.trimIndent()
         }
     }
