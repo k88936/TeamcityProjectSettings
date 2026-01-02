@@ -1,6 +1,7 @@
 package UnityProjects.TDPixelGame
 
 import UnityProjects.TDPixelGame.buildTypes.TDPixelGame_Build
+import UnityProjects.TDPixelGame.buildTypes.TDPixelGame_Deploy
 import UnityProjects.TDPixelGame.vcsRoots.TDPixelGame_GitGithubCom20220120802dPixelGameGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.Project
 
@@ -11,4 +12,5 @@ object Project : Project({
     vcsRoot(TDPixelGame_GitGithubCom20220120802dPixelGameGitRefsHeadsMain)
 
     buildType(TDPixelGame_Build)
+    buildType(TDPixelGame_Deploy)
 })
