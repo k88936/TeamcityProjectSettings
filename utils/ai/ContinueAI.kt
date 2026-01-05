@@ -2,6 +2,7 @@ package utils.ai
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import utils.Env
 import utils.vcs.USER_INFO
 
 
@@ -23,7 +24,7 @@ fun BuildType.applyContinueAIStep(
                 |$USER_INFO
                 |cat > /tmp/config.yaml << EOF
                 |name: %env.TEAMCITY_PROJECT_NAME%
-                |version: build-%build.number%
+                |version: build-${Env.BUILD_NUMBER}
                 |schema: v1
                 |models:
                 |  - name: ai

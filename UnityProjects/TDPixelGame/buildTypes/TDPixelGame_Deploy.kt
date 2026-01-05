@@ -1,6 +1,8 @@
 package UnityProjects.TDPixelGame.buildTypes
 
 import UnityProjects.TDPixelGame.vcsRoots.TDPixelGame_GitGithubCom20220120802dPixelGameGitRefsHeadsMain
+import jdk.nashorn.internal.objects.NativeJava.type
+import jdk.nashorn.internal.runtime.Debug.id
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
@@ -37,7 +39,7 @@ object TDPixelGame_Deploy : BuildType({
             name = "Create zip archive with 7z"
             scriptContent = """
                 cd _deploy/
-                7z a -r "TDPixelGame_%build.number%.zip" build/
+                7z a -r "TDPixelGame_${utils.Env.BUILD_NUMBER}.zip" build/
             """.trimIndent()
         }
     }
@@ -46,8 +48,8 @@ object TDPixelGame_Deploy : BuildType({
         root(TDPixelGame_GitGithubCom20220120802dPixelGameGitRefsHeadsMain)
     }
     applyGithubReleaseDeployment(
-        assetsPath = "_deploy/TDPixelGame_%build.number%.zip",
-        tagPattern = "build-%build.number%",
+        assetsPath = "_deploy/TDPixelGame_${utils.Env.BUILD_NUMBER}.zip",
+        tagPattern = "build-${utils.Env.BUILD_NUMBER}",
         prerelease = true,
     )
 })

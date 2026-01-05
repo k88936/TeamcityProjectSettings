@@ -3,6 +3,7 @@ package utils.vcs
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import utils.Env
 
 object GithubUtils
 
@@ -48,13 +49,13 @@ fun BuildType.applyPRStep(
                 if git status --porcelain --branch | grep -q "ahead"; then
                     echo "Local commits detected ahead of remote."
 
-                    branch_name="$branchName-%build.number%"
+                    branch_name="$branchName-${Env.BUILD_NUMBER}"
                     git checkout -b "${'$'}branch_name"
                     
                     $BYPASS_SSH_KEY_CHECK
                     git push -u origin "${'$'}branch_name"
 
-                    gh pr create --title "$title" --body "$body" --base %teamcity.build.branch%
+                    gh pr create --title "$title" --body "$body" --base ${Env.BUILD_BRANCH}
 
                     echo "PR created from branch: ${'$'}branch_name"
                 else

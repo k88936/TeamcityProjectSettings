@@ -5,7 +5,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import utils.Env
 
 fun BuildType.applyGithubReleaseDeployment(
-    tagPattern: String = "v%build.number%",
+    tagPattern: String = "v${Env.BUILD_NUMBER}",
     notes: String? = null,
     assetsPath: String = "_deploy/*",
     prerelease: Boolean = false

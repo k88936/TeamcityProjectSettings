@@ -6,7 +6,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 fun BuildType.applySourceOfDeployment(
     name: String,
-    tagPattern: String = "v%build.number%",
+    tagPattern: String = "v${utils.Env.BUILD_NUMBER}",
     assets: String = "_deploy/*",
 ) {
     fun ensureBinary(executable: String, url: String): String {

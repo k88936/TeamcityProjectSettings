@@ -2,6 +2,7 @@ package WebstormProjects.ReactNative.Fcalender.buildTypes
 
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
+import jdk.nashorn.internal.runtime.Debug.id
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.notifications
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
@@ -97,7 +98,7 @@ object FcalenderFrontendBuild : BuildType({
                 {
                     "major": 1,
                     "minor": 0,
-                    "patch": %build.number%
+                    "patch": ${utils.Env.BUILD_NUMBER}
                 }
                 EOF
                 
@@ -105,7 +106,7 @@ object FcalenderFrontendBuild : BuildType({
                 export const version = {
                     "major": 1,
                     "minor": 0,
-                    "patch": %build.number%
+                    "patch": ${utils.Env.BUILD_NUMBER}
                 }
                 EOF
                 
@@ -124,7 +125,7 @@ object FcalenderFrontendBuild : BuildType({
         tagPattern = "latest", assets = "$apk_location version.json README.md"
     )
     applyGithubReleaseDeployment(
-        tagPattern = "build-%build.number%",
+        tagPattern = "build-${utils.Env.BUILD_NUMBER}",
         assetsPath = apk_location,
     )
     params {
