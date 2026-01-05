@@ -9,9 +9,6 @@ This document provides essential guidelines for agentic coding agents working wi
 ```bash
 # Generate TeamCity configurations
 mvn org.jetbrains.teamcity:teamcity-configs-maven-plugin:generate
-
-# Standard Maven lifecycle
-mvn clean compile test-compile
 ```
 
 ### Testing and Validation
@@ -27,6 +24,36 @@ mvn clean compile test-compile
 - **Extension Functions**: `fun BuildType.apply{Feature}(...)`
 - **Template Functions**: `fun {Feature}Template(...): BuildType`
 
+### Kotlin DSL Patterns
+
+```kotlin
+// Object declaration with configuration block
+object BuildName : BuildType({
+    name = "Display Name"
+    id("BuildName")
+
+    vcs {
+        root(ProjectName_GitUrl)
+    }
+
+    steps {
+        gradle {
+            id = "gradle_runner"
+            tasks = "clean build"
+            jdkHome = "%env.JDK_21_0_x64%"
+        }
+    }
+
+    triggers {
+        vcs { }
+    }
+
+    features {
+        perfmon { }
+    }
+})
+```
+
 ### File Structure
 
 ```
@@ -39,72 +66,117 @@ mvn clean compile test-compile
 │   └── vcsRoots/           # VCS root definitions
 │       └── {Project}_Git...kt
 └── utils/                  # Shared templates and utilities
-    ├── Deploy/
-    ├── Trigger/
-    ├── VCS/
+    ├── deploy/
+    ├── trigger/
+    ├── vcs/
     └── Env.kt
 ```
 
-## Reusable Config
+## Extension Functions and Templates
 
 ### Extension Functions
 
-thanks to kotlin's extension func, we can extend teamcity dsl like:
+Use Kotlin's extension functions to create reusable DSL components:
+
 ```kotlin
-// Create reusable extension functions
 fun BuildType.applyGitPushStep(comment: String = "update") {
     steps {
         script {
             name = "Git Push Changes"
             id = "git_push"
             scriptContent = """
-                ${GithubTemplate.USER_INFO}
-                ${GithubTemplate.BYPASS_SSH_KEY_CHECK}
+                ${GithubUtils.USER_INFO}
+                ${GithubUtils.BYPASS_SSH_KEY_CHECK}
                 git add -A
                 git commit -m"[CI] $comment"
                 git push --force
             """.trimIndent()
         }
     }
+    features {
+        sshAgent {
+            teamcitySshKey = "id_rsa"
+        }
+    }
 }
 ```
 
-### Template Builder
+### Template Functions
 
-Template functions should return a BuildType directly and follow the naming convention `{Feature}Template`:
-This way lacks flexibility, since should only be used on simple one, like: docker, static web page
+Template functions should return BuildType and be used for simple configurations:
 
 ```kotlin
-// Example: DockerBuildTemplate
 fun DockerBuildTemplate(
     name: String,
     imageName: String,
-    vcsRoot: vcsRoot,
     dockerfilePath: String = "Dockerfile",
-    connection: String = "DOCKER_REGISTRY_CONNECTION"
+    connection: String = "DOCKER_REGISTRY_CONNECTION",
+    vcsRoot: GitVcsRoot? = null,
+    enableVcsTrigger: Boolean = true
 ): BuildType {
     return BuildType({
         id(name)
         this.name = name
-        // ... build configuration
+
+        steps {
+            dockerCommand {
+                id = "build"
+                commandType = build {
+                    source = file { path = dockerfilePath }
+                    namesAndTags = imageName
+                }
+            }
+        }
+
+        vcsRoot?.let { root ->
+            vcs { root(root) }
+        }
+
+        if (enableVcsTrigger) {
+            triggers { vcs { } }
+        }
     })
 }
-
-// usage (directly instead of create another kotlin object)
-buildType(
-    DockerBuildTemplate(
-        name = "Nextcloud",
-        imageName = "kvtodev/nextcloud",
-        vcsRoot = Nextcloud_GitGithubComK88936nextcloudGitRefsHeadsMaster,
-        enableVcsTrigger = true
-    )
-)
 ```
 
-## Common Patterns
+## Common Patterns and Best Practices
 
 ### Environment Variables
 
 - Use centralized `utils.Env` for shared constants
 - Reference environment variables with `%env.VAR_NAME%` syntax
 - Use JDK version variables: `%env.JDK_21_0_x64%`
+- TeamCity system variables: `%build.number%`, `%teamcity.build.branch%`
+
+### VCS Integration
+
+- VCS roots follow strict naming: `{Project}_{Type}_{Url}_{Branch}`
+- Use `vcsRoot?.let { ... }` for optional VCS configuration
+- Import VCS roots in project files: `import ProjectName.vcsRoots.*`
+
+### Build Steps
+
+- Always assign unique IDs: `id = "step_name"`
+- Use descriptive step names: `name = "Display Name"`
+- Group related steps logically
+- Use extension functions for common step patterns
+
+### Error Handling
+
+- Check for null VCS roots before assignment
+- Use safe calls (`?.`) and let blocks for optional configuration
+- Validate template parameters where necessary
+
+### Code Organization
+
+- Keep project definitions in separate Project.kt files
+- Group build types by project in subdirectories
+- Store reusable utilities in utils package
+- Follow consistent import ordering
+
+### Security
+
+- Never commit secrets directly to configuration
+- Use TeamCity credentials: `credentialsJSON:uuid`
+- Reference secure parameters in build configurations
+- Use SSH agent features for Git operations
