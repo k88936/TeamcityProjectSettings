@@ -2,7 +2,6 @@ package WebstormProjects.ReactNative.Fcalender.buildTypes
 
 import WebstormProjects.ReactNative.Fcalender.vcsRoots.FcalenderVCS
 import WebstormProjects.ReactNative.ReactNativeBuildTemplate
-import jdk.nashorn.internal.runtime.Debug.id
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.notifications
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon

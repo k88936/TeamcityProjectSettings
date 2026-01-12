@@ -1,8 +1,6 @@
 package UnityProjects.TDPixelGame.buildTypes
 
 import UnityProjects.TDPixelGame.vcsRoots.TDPixelGame_GitGithubCom20220120802dPixelGameGitRefsHeadsMain
-import jdk.nashorn.internal.objects.NativeJava.type
-import jdk.nashorn.internal.runtime.Debug.id
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script

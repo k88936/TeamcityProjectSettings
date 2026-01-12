@@ -1,8 +1,6 @@
 package ClionProjects.Qt.Shotmd.buildTypes
 
 import ClionProjects.Qt.Shotmd.vcsRoots.Shotmd_GitGithubComK88936shotmdGitRefsHeadsMaster
-import jdk.nashorn.internal.objects.NativeJava.type
-import jdk.nashorn.internal.runtime.Debug.id
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
