@@ -1,10 +1,12 @@
 package UnityProjects.TDPixelGame.buildTypes
 
+import UnityProjects.TDPixelGame.vcsRoot
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 object TDPixelGame_Build : BuildType({
+    id("TDPixelGame_Build")
     name = "Build"
 
     artifactRules = """
@@ -14,7 +16,7 @@ object TDPixelGame_Build : BuildType({
     """.trimIndent()
 
     vcs {
-        root(UnityProjects.TDPixelGame.vcsRoots.TDPixelGame_GitGithubCom20220120802dPixelGameGitRefsHeadsMain)
+        root(vcsRoot)
     }
 
     steps {

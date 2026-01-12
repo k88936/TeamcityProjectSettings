@@ -1,6 +1,6 @@
 package UnityProjects.TDPixelGame.buildTypes
 
-import UnityProjects.TDPixelGame.vcsRoots.TDPixelGame_GitGithubCom20220120802dPixelGameGitRefsHeadsMain
+import UnityProjects.TDPixelGame.vcsRoot
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
@@ -43,7 +43,7 @@ object TDPixelGame_Deploy : BuildType({
     }
 
     vcs {
-        root(TDPixelGame_GitGithubCom20220120802dPixelGameGitRefsHeadsMain)
+        root(vcsRoot)
     }
     applyGithubReleaseDeployment(
         assetsPath = "_deploy/TDPixelGame_${utils.Env.BUILD_NUMBER}.zip",
