@@ -11,7 +11,7 @@ fun GitVcsRootTemplate(
     cleanPolicy: AgentCleanFilesPolicy = AgentCleanFilesPolicy.IGNORED_ONLY
 ): GitVcsRoot {
     return GitVcsRoot({
-        id("${url.replace(':', '#')}#$branch")
+        id("${url}#$branch".replace(Regex("[^0-9a-zA-Z]"), ""))
         this.name = "$url#$branch"
         this.url = url
         this.branch = branch
