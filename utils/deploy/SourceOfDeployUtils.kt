@@ -56,7 +56,7 @@ fun BuildType.applySourceOfDeployment(
                     ${
                     ensureBinary(
                         "gold",
-                        "https://rustfs.k88936.top/software-release/gold/v1.0.0/gold"
+                        "https://rustfs.k88936.top/software-release/gold/latest/gold"
                     )
                 }
                     
