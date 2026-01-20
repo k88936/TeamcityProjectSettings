@@ -23,25 +23,25 @@ fun BuildType.applySourceOfDeployment(
                
                local retry=0
                while [ ${'$'}retry -lt ${'$'}max_retries ]; do
-                   if curl -fsSL -o "${'$'}{binary_name}" "${'$'}{download_url}"; then
-                       chmod +x "${'$'}{binary_name}"
-                       if [ $? -eq 0 ]; then
-                           echo "'${'$'}{binary_name}' downloaded and permissions set successfully."
-                           return 0
-                       else
-                           echo "Failed to make '${'$'}{binary_name}' executable." >&2
-                           exit 1
-                       fi
-                   else
-                       echo "Download attempt $((retry + 1)) failed." >&2
-                       retry=$((retry + 1))
-                       if [ ${'$'}retry -lt ${'$'}max_retries ]; then
-                           sleep 2
-                       fi
-                   fi
+                if curl -fsSL -o "/usr/bin/${'$'}{binary_name}" "${'$'}{download_url}"; then
+                    chmod +x "/usr/bin/${'$'}{binary_name}"
+                    if [ $? -eq 0 ]; then
+                        echo "'${'$'}{binary_name}' downloaded and installed to /usr/bin successfully."
+                        return 0
+                    else
+                        echo "Failed to make '/usr/bin/${'$'}{binary_name}' executable." >&2
+                        exit 1
+                    fi
+                else
+                    echo "Download attempt $((retry + 1)) failed." >&2
+                    retry=$((retry + 1))
+                    if [ ${'$'}retry -lt ${'$'}max_retries ]; then
+                        sleep 2
+                    fi
+                fi
                done
 
-               echo "Failed to download '${'$'}{binary_name}' after ${'$'}max_retries attempts, aborting." >&2
+               echo "Failed to download '${'$'}{binary_name}' to /usr/bin after ${'$'}max_retries attempts, aborting." >&2
                exit 1
            }
            ensure_binary $executable $url
@@ -60,7 +60,7 @@ fun BuildType.applySourceOfDeployment(
                     )
                 }
                     
-                    |./gold upload "$name" "$tagPattern" $assets
+                    |gold upload "$name" "$tagPattern" $assets
             """.trimMargin()
         }
     }
@@ -73,6 +73,5 @@ fun BuildType.applySourceOfDeployment(
         password("env.S3_SECRET_KEY", "credentialsJSON:12b9893f-0fa3-4daf-9b11-63751aaa96a0")
         param("env.S3_BUCKET_NAME", "software-release")
         param("env.S3_ENDPOINT", "https://rustfs.k88936.top")
-        param("env.AWS_REGION", "us-east-1")
     }
 }
