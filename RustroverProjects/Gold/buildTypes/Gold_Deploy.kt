@@ -4,7 +4,6 @@ import RustroverProjects.Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMa
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
-import utils.deploy.applyGithubReleaseDeployment
 import utils.deploy.applySourceOfDeployment
 
 object Gold_Deploy : BuildType({
@@ -32,13 +31,9 @@ object Gold_Deploy : BuildType({
 
     applySourceOfDeployment(
         name = "gold",
-        tagPattern = "v1.0.0",
+        tagPattern = "latest",
         assets = "_deploy/gold"
     )
-    applyGithubReleaseDeployment(
-        assetsPath = "_deploy/gold",
-    )
-
 
     features {
         perfmon { }
