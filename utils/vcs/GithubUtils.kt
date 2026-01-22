@@ -67,7 +67,7 @@ fun BuildType.applyPRStep(
     }
 
     params {
-        password("env.GH_TOKEN", "credentialsJSON:04d96fb0-dbf8-457b-be29-2327ab11dd68")
+        password("env.GH_TOKEN", "%KVTO_GH_TOKEN%")
     }
     requirements {
         exists("env.GH_CLI")

@@ -69,8 +69,8 @@ fun BuildType.applySourceOfDeployment(
         exists("env.PLATFORM_LINUX")
     }
     params {
-        password("env.S3_ACCESS_KEY", "credentialsJSON:b15e9090-d3a1-49c5-9122-2af653fcd372")
-        password("env.S3_SECRET_KEY", "credentialsJSON:12b9893f-0fa3-4daf-9b11-63751aaa96a0")
+        password("env.S3_ACCESS_KEY", "%KVTO_RUSTFS_ACCESS_KEY%")
+        password("env.S3_SECRET_KEY", "%KVTO_RUSTFS_SECRET_KEY%")
         param("env.S3_BUCKET_NAME", "software-release")
         param("env.S3_ENDPOINT", "https://rustfs.k88936.top")
     }
