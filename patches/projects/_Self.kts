@@ -3,6 +3,7 @@ package patches.projects
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.projectFeatures.GitHubAppConnection
+import jetbrains.buildServer.configs.kotlin.projectFeatures.activeStorage
 import jetbrains.buildServer.configs.kotlin.projectFeatures.githubAppConnection
 import jetbrains.buildServer.configs.kotlin.projectFeatures.s3CompatibleStorage
 import jetbrains.buildServer.configs.kotlin.ui.*
@@ -37,6 +38,12 @@ changeProject(DslContext.projectId) {
                 endpoint = "https://rustfs.k88936.top"
                 bucketName = "teamcity-artifact"
                 forceVirtualHostAddressing = true
+            }
+        }
+        add {
+            activeStorage {
+                id = "PROJECT_EXT_5"
+                activeStorageID = "PROJECT_EXT_3"
             }
         }
     }
