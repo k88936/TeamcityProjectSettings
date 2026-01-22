@@ -58,6 +58,9 @@ object Project : Project({
             endpoint = "https://rustfs.k88936.top"
             bucketName = "teamcity-artifact"
             forceVirtualHostAddressing = true
+            param("aws.region.name", "")
+            param("aws.use.default.credential.provider.chain", "")
+            param("storage.s3.forceVirtualHostAddressing", "")
         }
         activeStorage {
             id = "PROJECT_EXT_5"
