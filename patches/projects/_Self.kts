@@ -40,6 +40,7 @@ changeProject(DslContext.projectId) {
         feature2.apply {
             param("aws.region.name", "")
             param("aws.use.default.credential.provider.chain", "")
+            param("storage.s3.forceVirtualHostAddressing", "")
         }
         val feature3 = find<GitHubAppConnection> {
             githubAppConnection {
