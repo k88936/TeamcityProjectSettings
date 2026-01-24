@@ -15,7 +15,6 @@ object Project : Project({
             name = "Nextcloud",
             imageName = "kvtodev/nextcloud",
             vcsRoot = Nextcloud_GitGithubComK88936nextcloudGitRefsHeadsMaster,
-            enableVcsTrigger = true
         )
     )
 

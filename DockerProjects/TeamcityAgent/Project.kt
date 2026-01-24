@@ -15,7 +15,6 @@ object Project : Project({
             name = "TeamcityAgentBuild",
             imageName = "kvtodev/teamcity-agent",
             vcsRoot = TeamcityAgent_GitGithubComK88936teamcityAgentGitRefsHeadsMain,
-            enableVcsTrigger = true
         )
     )
 

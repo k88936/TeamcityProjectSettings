@@ -72,9 +72,9 @@ object BuildName : BuildType({
     └── Env.kt
 ```
 
-## Extension Functions and Templates
+## Util Functions and Templates
 
-### Extension Functions
+### Util Functions
 
 Use Kotlin's extension functions to create reusable DSL components:
 

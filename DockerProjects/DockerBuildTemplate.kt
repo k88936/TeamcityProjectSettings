@@ -1,62 +1,25 @@
 package DockerProjects
 
 import jetbrains.buildServer.configs.kotlin.BuildType
-import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerRegistryConnections
-import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
-
+import utils.docker.applyDockerBuildSteps
 
 fun DockerBuildTemplate(
     name: String,
     imageName: String,
     dockerfilePath: String = "Dockerfile",
-    connection: String = "DOCKER_REGISTRY_CONNECTION",
-    vcsRoot: jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot? = null,
-    enableVcsTrigger: Boolean = true
+    vcsRoot: jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot,
 ): BuildType {
     return BuildType({
         id(name)
         this.name = name
 
-        steps {
-            dockerCommand {
-                id = "build"
-                commandType = build {
-                    source = file {
-                        path = dockerfilePath
-                    }
-                    namesAndTags = imageName
-                    commandArgs = "--progress=plain"
-                }
-            }
-            dockerCommand {
-                id = "push"
-                commandType = push {
-                    namesAndTags = imageName
-                    removeImageAfterPush = false
-                }
-            }
+        applyDockerBuildSteps(imageName, dockerfilePath)
+        vcs {
+            root(vcsRoot)
         }
-        features {
-            perfmon {}
-            dockerRegistryConnections {
-                loginToRegistry = on {
-                    dockerRegistryId = connection
-                }
-            }
-        }
-
-        vcsRoot?.let { root ->
-            vcs {
-                root(root)
-            }
-        }
-
-        if (enableVcsTrigger) {
-            triggers {
-                vcs { }
-            }
+        triggers {
+            vcs { }
         }
     })
 }

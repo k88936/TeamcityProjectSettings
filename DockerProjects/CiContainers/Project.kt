@@ -27,6 +27,5 @@ fun build(dockerfilePath: String, imageName: String): BuildType {
         imageName = imageName,
         dockerfilePath = dockerfilePath,
         vcsRoot = CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain,
-        enableVcsTrigger = true
     )
 }
