@@ -29,7 +29,7 @@ object Wallence_Build_container : BuildType({
         artifacts(Wallence_Build_config_gen) {
             buildRule = lastSuccessful()
             artifactRules = """
-                build/=>build/
+                build/config-gen=>docker/config-gen
             """.trimIndent()
         }
     }
