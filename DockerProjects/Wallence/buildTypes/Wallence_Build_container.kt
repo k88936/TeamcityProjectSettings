@@ -8,8 +8,8 @@ import utils.docker.applyDockerBuildSteps
 
 object Wallence_Build_container : BuildType({
 
-    id("BuildWallence_Build_container")
-    name = "Build Wallence container"
+    id("Wallence_Build_container")
+    name = "Build  container"
 
     vcs {
         root(vcsRoot)
