@@ -11,4 +11,5 @@ object Project : Project({
     subProject(DockerProjects.TeamcityAgent.Project)
     subProject(DockerProjects.Nextcloud.Project)
     subProject(DockerProjects.CiContainers.Project)
+    subProject(DockerProjects.Wallence.Project)
 })
