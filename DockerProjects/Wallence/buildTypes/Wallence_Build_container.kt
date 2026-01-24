@@ -34,5 +34,5 @@ object Wallence_Build_container : BuildType({
         }
     }
 
-    applyDockerBuildSteps("kvtodev/wallence:latest")
+    applyDockerBuildSteps("kvtodev/wallence:latest", "docker/Dockerfile")
 })
