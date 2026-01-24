@@ -8,7 +8,9 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 fun BuildType.applyDockerBuildSteps(
     imageName: String,
     dockerfilePath: String = "Dockerfile",
+    context: String = "",
     connection: String = "DOCKER_REGISTRY_CONNECTION",
+
 ) {
     features {
         perfmon {}
@@ -25,6 +27,7 @@ fun BuildType.applyDockerBuildSteps(
                 source = file {
                     path = dockerfilePath
                 }
+                contextDir = context
                 namesAndTags = imageName
                 commandArgs = "--progress=plain"
             }
