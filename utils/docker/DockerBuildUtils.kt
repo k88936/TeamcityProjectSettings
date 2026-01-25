@@ -10,7 +10,6 @@ fun BuildType.applyDockerBuildSteps(
     dockerfilePath: String = "Dockerfile",
     context: String = "",
     connection: String = "DOCKER_REGISTRY_CONNECTION",
-    proxy: String = "http://wallence.wallence.svc.cluster.local"
 
 ) {
     features {
@@ -22,8 +21,11 @@ fun BuildType.applyDockerBuildSteps(
         }
     }
 
+    val proxyHost = "wallence.wallence.svc.cluster.local"
+    val proxyPort = "80"
+    val proxyUrl = "http://$proxyHost:$proxyPort"
     val proxy_args = """
-        --build-arg NO_PROXY="localhost,127.0.0.1,::1,.local" HTTP_PROXY=$proxy HTTPS_PROXY=$proxy
+        --build-arg NO_PROXY="localhost,127.0.0.1,::1,$proxyHost,.local" HTTP_PROXY=$proxyUrl HTTPS_PROXY=$proxyUrl
     """.trimIndent()
     steps {
         dockerCommand {
