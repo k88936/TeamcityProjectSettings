@@ -27,6 +27,7 @@ fun BuildType.applyDockerBuildSteps(
     val proxy_args = """
         --build-arg 
         NO_PROXY="localhost,127.0.0.1,::1,$proxyHost,.local" 
+        no_proxy="localhost,127.0.0.1,::1,$proxyHost,.local" 
         HTTP_PROXY=$proxyUrl
         HTTPS_PROXY=$proxyUrl 
         http_proxy=$proxyUrl 
