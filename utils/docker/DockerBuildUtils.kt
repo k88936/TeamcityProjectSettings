@@ -22,7 +22,7 @@ fun BuildType.applyDockerBuildSteps(
     }
 
     val proxyHost = "wallence.wallence.svc.cluster.local"
-    val proxyPort = "80"
+    val proxyPort = "7890"
     val proxyUrl = "http://$proxyHost:$proxyPort"
     val proxy_args = """
         --build-arg NO_PROXY="localhost,127.0.0.1,::1,$proxyHost,.local" HTTP_PROXY=$proxyUrl HTTPS_PROXY=$proxyUrl

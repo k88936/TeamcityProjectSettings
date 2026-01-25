@@ -3,7 +3,7 @@ package utils.build_steps
 fun getDockerRunProxyParameters(
 ): String {
     val proxyHost = "wallence.wallence.svc.cluster.local"
-    val proxyPort = "80"
+    val proxyPort = "7890"
     val proxyUrl = "http://$proxyHost:$proxyPort"
     return """
         --env
