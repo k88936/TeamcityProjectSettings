@@ -26,6 +26,5 @@ fun BuildType.excludeUser(name: String) {
 }
 
 fun BuildType.excludeAI() {
-    excludeUser("Continue Dev")
     excludeUser("Teamcity")
 }

@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import utils.build_steps.getDockerRunProxyParameters
 
 object LocalRouter_Build : BuildType({
     id("LocalRouter_Build")
@@ -31,7 +32,7 @@ object LocalRouter_Build : BuildType({
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
             dockerRunParameters =
-                "--rm -v /cache/go:/go"
+                "--rm -v /cache/go:/go ${getDockerRunProxyParameters()}"
             dockerPull = true
         }
 
