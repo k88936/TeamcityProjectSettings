@@ -28,8 +28,8 @@ object Project : Project({
     subProject(ScoopBucket.Project)
 
     params {
-        password("KVTO_RUSTFS_ACCESS_KEY", "credentialsJSON:5fc336a3-cb50-4cf1-aabd-7b2e77165b02")
-        password("KVTO_RUSTFS_SECRET_KEY", "credentialsJSON:2363a321-c78d-4a04-ad69-40c1fec750d5")
+        password("KVTO_RUSTFS_ACCESS_KEY", "credentialsJSON:dbd9d18e-531c-4b59-8f18-85ee3dbf0757")
+        password("KVTO_RUSTFS_SECRET_KEY", "credentialsJSON:fe76ba66-ec2d-443d-bda6-ade2fa15191f")
         password("KVTO_GH_TOKEN", "credentialsJSON:04d96fb0-dbf8-457b-be29-2327ab11dd68")
     }
 
@@ -53,8 +53,8 @@ object Project : Project({
         }
         s3CompatibleStorage {
             id = "PROJECT_EXT_3"
-            accessKeyID = "PrunStQTawifpVN8A1Mc"
-            accessKey = "credentialsJSON:535a3e4e-5376-4808-8374-fc82c559bea5"
+            accessKeyID = "SHd9FvJ8Gcr1s3eh6bCU"
+            accessKey = "credentialsJSON:fe76ba66-ec2d-443d-bda6-ade2fa15191f"
             endpoint = "https://rustfs.k88936.top"
             bucketName = "teamcity-artifact"
             forceVirtualHostAddressing = true
