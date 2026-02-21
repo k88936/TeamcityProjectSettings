@@ -23,6 +23,12 @@ changeProject(DslContext.projectId) {
         update {
             password("KVTO_RUSTFS_ACCESS_KEY", "credentialsJSON:dbd9d18e-531c-4b59-8f18-85ee3dbf0757")
         }
+        expect {
+            password("KVTO_RUSTFS_SECRET_KEY", "credentialsJSON:2363a321-c78d-4a04-ad69-40c1fec750d5")
+        }
+        update {
+            password("KVTO_RUSTFS_SECRET_KEY", "credentialsJSON:fe76ba66-ec2d-443d-bda6-ade2fa15191f")
+        }
     }
 
     features {
