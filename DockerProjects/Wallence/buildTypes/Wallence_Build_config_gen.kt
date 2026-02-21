@@ -17,11 +17,6 @@ object Wallence_Build_config_gen : BuildType({
         build/=>build/
     """.trimIndent()
 
-    triggers {
-        vcs {
-        }
-    }
-
     steps {
         script {
             name = "Download Dependencies"
