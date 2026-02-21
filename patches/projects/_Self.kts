@@ -16,6 +16,15 @@ To apply the patch, change the root project
 accordingly, and delete the patch script.
 */
 changeProject(DslContext.projectId) {
+    params {
+        expect {
+            password("KVTO_RUSTFS_ACCESS_KEY", "credentialsJSON:5fc336a3-cb50-4cf1-aabd-7b2e77165b02")
+        }
+        update {
+            password("KVTO_RUSTFS_ACCESS_KEY", "credentialsJSON:dbd9d18e-531c-4b59-8f18-85ee3dbf0757")
+        }
+    }
+
     features {
         val feature1 = find<DockerRegistryConnection> {
             dockerRegistry {
