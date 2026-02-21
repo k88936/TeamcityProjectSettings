@@ -12,6 +12,6 @@ fun getDockerRunProxyParameters(
         --env http_proxy=$proxyUrl 
         --env HTTPS_PROXY=$proxyUrl
         --env https_proxy=$proxyUrl
-        --env GRADLE_OPTS="-Dhttp.proxyHost=$proxyHost -Dhttp.proxyPort=$proxyPort -Dhttps.proxyHost=$proxyHost -Dhttps.proxyPort=$proxyPort -Dhttp.nonProxyHosts='localhost|127.0.0.1|::1|$proxyHost|*.local' -Dhttps.protocols=TLSv1.2,TLSv1.3"
+        --env 'GRADLE_OPTS=-Dhttp.proxyHost=$proxyHost -Dhttp.proxyPort=$proxyPort -Dhttps.proxyHost=$proxyHost -Dhttps.proxyPort=$proxyPort -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|$proxyHost|*.local -Dhttps.protocols=TLSv1.2,TLSv1.3'
     """.trimIndent()
 }
