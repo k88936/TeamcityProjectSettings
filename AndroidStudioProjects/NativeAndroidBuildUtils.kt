@@ -18,7 +18,7 @@ fun BuildType.applyNativeAndroidBuild(
             scriptContent = script
             dockerRunParameters =
                 "--rm -v /cache/.m2:/root/.m2 -v /cache/.gradle:/root/.gradle/ -v /cache/android-sdk:/android-sdk ${getDockerRunProxyParameters()}"
-            dockerImage = "kvtodev/ci-containers:react-native"
+            dockerImage = "kvtodev/ci-containers:android"
             dockerPull = true
         }
     }
