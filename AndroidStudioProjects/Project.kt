@@ -6,5 +6,5 @@ object Project : Project({
     id("AndroidStudioProjects")
     name = "Android Studio Projects"
 
-    subProject(NextcloudTv.Project)
+    subProject(AndroidStudioProjects.NextcloudTV.Project)
 })
