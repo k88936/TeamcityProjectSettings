@@ -26,7 +26,6 @@ object LocalRouter_Build : BuildType({
         script {
             name = "Download Dependencies"
             scriptContent = """
-                source /etc/profile
                 go mod download
                 go mod verify
             """.trimIndent()
@@ -39,7 +38,6 @@ object LocalRouter_Build : BuildType({
         script {
             name = "Test"
             scriptContent = """
-                source /etc/profile
                 go test ./server
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
@@ -51,7 +49,6 @@ object LocalRouter_Build : BuildType({
         script {
             name = "Build"
             scriptContent = """
-                source /etc/profile
                 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o build/local-router.exe ./server 
                 go build -o build/local-router ./server
             """.trimIndent()

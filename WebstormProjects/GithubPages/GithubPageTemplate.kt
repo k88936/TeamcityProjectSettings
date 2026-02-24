@@ -52,7 +52,6 @@ class GithubPageTemplate() : Project() {
                 nodeJS {
                     shellScript =
                         """
-                        source /etc/profile
                         npm install
                         npm run build
                         """.trimIndent() + '\n' + extraBuildCommand.trimIndent()

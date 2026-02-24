@@ -24,7 +24,6 @@ object Gold_Build : BuildType({
         script {
             name = "Build"
             scriptContent = """
-                source /etc/profile
                 cargo build --release
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:rust"

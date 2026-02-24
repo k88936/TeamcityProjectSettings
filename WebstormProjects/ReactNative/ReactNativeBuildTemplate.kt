@@ -9,11 +9,7 @@ object ReactNativeBuildTemplate {
         dir: String = ".",
         script: String = """
                         cd $dir
-                        source /etc/profile
-                        set -e
-                        
                         npm install
-                        
                         cd android
                         sh ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
                     """.trimIndent()

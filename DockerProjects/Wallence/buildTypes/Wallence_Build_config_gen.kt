@@ -21,7 +21,6 @@ object Wallence_Build_config_gen : BuildType({
         script {
             name = "Download Dependencies"
             scriptContent = """
-                source /etc/profile
                 go mod download
                 go mod verify
             """.trimIndent()
@@ -34,7 +33,6 @@ object Wallence_Build_config_gen : BuildType({
 //        script {
 //            name = "Test"
 //            scriptContent = """
-//                source /etc/profile
 //                go test ./config-gen
 //            """.trimIndent()
 //            dockerImage = "kvtodev/ci-containers:go"
@@ -46,7 +44,6 @@ object Wallence_Build_config_gen : BuildType({
         script {
             name = "Build config-gen"
             scriptContent = """
-                source /etc/profile
                 go build -o build/config-gen ./config-gen
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
