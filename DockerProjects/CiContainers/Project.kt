@@ -15,6 +15,7 @@ object Project : Project({
     buildType(build("build/go/Dockerfile", "kvtodev/ci-containers:go"))
     buildType(build("build/js/Dockerfile", "kvtodev/ci-containers:js"))
     buildType(build("build/react-native/Dockerfile", "kvtodev/ci-containers:react-native"))
+    buildType(build("build/android/Dockerfile", "kvtodev/ci-containers:android"))
     buildType(build("ai/opencode/Dockerfile", "kvtodev/ci-containers:opencode"))
 
     vcsRoot(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
