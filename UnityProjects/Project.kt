@@ -6,5 +6,4 @@ object Project : Project({
     id("UnityProjects")
     name = "UnityProjects"
     subProject(UnityProjects.Bubble.Project)
-    subProject(UnityProjects.TDPixelGame.Project)
 })
