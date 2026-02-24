@@ -18,6 +18,7 @@ object Project : Project({
         }
     }
 
+    subProject(AndroidStudioProjects.Project)
     subProject(IdeaProjects.Project)
     subProject(ClionProjects.Project)
     subProject(UnityProjects.Project)
