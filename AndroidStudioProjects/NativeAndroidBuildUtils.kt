@@ -8,6 +8,7 @@ fun BuildType.applyNativeAndroidBuild(
     dir: String = ".",
     script: String = """
                         cd $dir
+                        yes | sdkmanager --licenses
                         sh ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
                     """.trimIndent()
 ) {

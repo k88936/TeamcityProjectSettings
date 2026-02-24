@@ -11,6 +11,7 @@ object ReactNativeBuildTemplate {
                         cd $dir
                         npm install
                         cd android
+                        yes | sdkmanager --licenses
                         sh ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
                     """.trimIndent()
     ): BuildType.() -> Unit {
