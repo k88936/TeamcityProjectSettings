@@ -8,7 +8,7 @@ fun BuildType.applyNativeAndroidBuild(
     dir: String = ".",
     script: String = """
                         cd $dir
-                        ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
+                        sh ./gradlew assembleRelease --no-daemon --parallel --warning-mode all
                     """.trimIndent()
 ) {
     steps {
