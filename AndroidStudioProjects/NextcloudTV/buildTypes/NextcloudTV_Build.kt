@@ -1,7 +1,7 @@
 package AndroidStudioProjects.NextcloudTV.buildTypes
 
-import AndroidStudioProjects.NativeAndroidBuildTemplate
 import AndroidStudioProjects.NextcloudTV.vcsRoots.NextcloudTv_GitGithubComK88936nextcloudTVGitRefsHeadsMain
+import AndroidStudioProjects.applyNativeAndroidBuild
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -17,7 +17,7 @@ object NextcloudTV_Build : BuildType({
         root(NextcloudTv_GitGithubComK88936nextcloudTVGitRefsHeadsMain)
     }
 
-    NativeAndroidBuildTemplate.createNativeAndroidBuild()
+    applyNativeAndroidBuild()
 
     triggers {
         vcs { }

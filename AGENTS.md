@@ -76,7 +76,7 @@ object BuildName : BuildType({
 
 ### Util Functions
 
-Use Kotlin's extension functions to create reusable DSL components:
+Use Kotlin's *extension* functions to create reusable DSL components:
 
 ```kotlin
 fun BuildType.applyGitPushStep(comment: String = "update") {
@@ -103,7 +103,7 @@ fun BuildType.applyGitPushStep(comment: String = "update") {
 
 ### Template Functions
 
-Template functions should return BuildType and be used for simple configurations:
+Template functions should return *BuildType* and be used for simple configurations:
 
 ```kotlin
 fun DockerBuildTemplate(
