@@ -5,7 +5,7 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
-import utils.build_steps.getDockerRunProxyParameters
+import utils.build_steps.getDockerRunParameters
 
 object Wallence_Build_config_gen : BuildType({
     id("Wallence_Build_config_gen")
@@ -25,8 +25,7 @@ object Wallence_Build_config_gen : BuildType({
                 go mod verify
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
-            dockerRunParameters =
-                "--rm -v /cache:/cache ${getDockerRunProxyParameters()}"
+            dockerRunParameters = getDockerRunParameters()
             dockerPull = true
         }
 
@@ -47,8 +46,7 @@ object Wallence_Build_config_gen : BuildType({
                 go build -o build/config-gen ./config-gen
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
-            dockerRunParameters =
-                "--rm -v /cache:/cache"
+            dockerRunParameters = getDockerRunParameters()
             dockerPull = true
         }
     }

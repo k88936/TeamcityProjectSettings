@@ -6,7 +6,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
-import utils.build_steps.getDockerRunProxyParameters
+import utils.build_steps.getDockerRunParameters
 import utils.trigger.excludeCI
 import utils.vcs.applyGitPushStep
 
@@ -56,7 +56,7 @@ class GithubPageTemplate() : Project() {
                         npm run build
                         """.trimIndent() + '\n' + extraBuildCommand.trimIndent()
                     dockerImage = "kvtodev/ci-containers:js"
-                    dockerRunParameters = "--rm ${getDockerRunProxyParameters()}"
+                    dockerRunParameters = getDockerRunParameters()
                     dockerPull = true
                 }
             }

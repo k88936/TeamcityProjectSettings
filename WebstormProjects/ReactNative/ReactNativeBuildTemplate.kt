@@ -2,7 +2,7 @@ package WebstormProjects.ReactNative
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
-import utils.build_steps.getDockerRunProxyParameters
+import utils.build_steps.getDockerRunParameters
 
 object ReactNativeBuildTemplate {
     fun createReactNativeAndroidBuild(
@@ -20,8 +20,7 @@ object ReactNativeBuildTemplate {
                 script {
                     id = "build apk"
                     scriptContent = script
-                    dockerRunParameters =
-                        "--rm -v /cache:/cache ${getDockerRunProxyParameters()}"
+                    dockerRunParameters = getDockerRunParameters()
                     dockerImage = "kvtodev/ci-containers:react-native"
                     dockerPull = true
                 }
