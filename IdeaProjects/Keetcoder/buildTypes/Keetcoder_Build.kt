@@ -1,6 +1,7 @@
 package IdeaProjects.Keetcoder.buildTypes
 
-import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.PublishMode
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -19,7 +20,7 @@ object Keetcoder_Build : BuildType({
         gradle {
             id = "gradle_runner"
             tasks = "buildPlugin"
-            jdkHome = "%env.JDK_21_0_x64%"
+            dockerImage = "kvtodev/ci-containers:java"
         }
     }
 
