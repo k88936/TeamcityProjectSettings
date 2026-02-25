@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import utils.build_steps.getDockerRunParameters
 
 object Fernflower_Build : BuildType({
     name = "Build"
@@ -19,6 +20,7 @@ object Fernflower_Build : BuildType({
             id = "gradle_runner"
             tasks = "clean build"
             dockerImage = "kvtodev/ci-containers:java"
+            dockerRunParameters = getDockerRunParameters()
         }
     }
 

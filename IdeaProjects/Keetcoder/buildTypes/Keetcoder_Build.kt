@@ -5,6 +5,7 @@ import jetbrains.buildServer.configs.kotlin.PublishMode
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import utils.build_steps.getDockerRunParameters
 
 object Keetcoder_Build : BuildType({
     name = "Build"
@@ -21,6 +22,7 @@ object Keetcoder_Build : BuildType({
             id = "gradle_runner"
             tasks = "buildPlugin"
             dockerImage = "kvtodev/ci-containers:java"
+            dockerRunParameters = getDockerRunParameters()
         }
     }
 
