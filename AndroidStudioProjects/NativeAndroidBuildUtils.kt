@@ -17,7 +17,7 @@ fun BuildType.applyNativeAndroidBuild(
             id = "build apk"
             scriptContent = script
             dockerRunParameters =
-                "--rm -v /cache/.m2:/root/.m2 -v /cache/.gradle:/root/.gradle/ -v /cache/android-sdk:/android-sdk ${getDockerRunProxyParameters()}"
+                "--rm -v /cache:/cache ${getDockerRunProxyParameters()}"
             dockerImage = "kvtodev/ci-containers:android"
             dockerPull = true
         }

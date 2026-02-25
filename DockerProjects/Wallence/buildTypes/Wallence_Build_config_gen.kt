@@ -26,7 +26,7 @@ object Wallence_Build_config_gen : BuildType({
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
             dockerRunParameters =
-                "--rm -v /cache/go:/go ${getDockerRunProxyParameters()}"
+                "--rm -v /cache:/cache ${getDockerRunProxyParameters()}"
             dockerPull = true
         }
 
@@ -37,7 +37,7 @@ object Wallence_Build_config_gen : BuildType({
 //            """.trimIndent()
 //            dockerImage = "kvtodev/ci-containers:go"
 //            dockerRunParameters =
-//                "--rm -v /cache/go:/go"
+//                "--rm -v /cache:/cache"
 //            dockerPull = true
 //        }
 
@@ -48,7 +48,7 @@ object Wallence_Build_config_gen : BuildType({
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
             dockerRunParameters =
-                "--rm -v /cache/go:/go"
+                "--rm -v /cache:/cache"
             dockerPull = true
         }
     }

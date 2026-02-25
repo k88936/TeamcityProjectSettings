@@ -31,7 +31,7 @@ object LocalRouter_Build : BuildType({
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
             dockerRunParameters =
-                "--rm -v /cache/go:/go ${getDockerRunProxyParameters()}"
+                "--rm -v /cache:/cache ${getDockerRunProxyParameters()}"
             dockerPull = true
         }
 
@@ -42,7 +42,7 @@ object LocalRouter_Build : BuildType({
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
             dockerRunParameters =
-                "--rm -v /cache/go:/go"
+                "--rm -v /cache:/cache"
             dockerPull = true
         }
 
@@ -54,7 +54,7 @@ object LocalRouter_Build : BuildType({
             """.trimIndent()
             dockerImage = "kvtodev/ci-containers:go"
             dockerRunParameters =
-                "--rm -v /cache/go:/go"
+                "--rm -v /cache:/cache"
             dockerPull = true
         }
     }
