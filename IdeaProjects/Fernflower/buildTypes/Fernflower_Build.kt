@@ -21,6 +21,7 @@ object Fernflower_Build : BuildType({
             tasks = "clean build"
             dockerImage = "kvtodev/ci-containers:java"
             dockerRunParameters = getDockerRunParameters()
+            dockerPull = true
         }
     }
 

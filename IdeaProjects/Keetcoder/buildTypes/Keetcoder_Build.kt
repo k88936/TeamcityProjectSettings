@@ -23,6 +23,7 @@ object Keetcoder_Build : BuildType({
             tasks = "buildPlugin"
             dockerImage = "kvtodev/ci-containers:java"
             dockerRunParameters = getDockerRunParameters()
+            dockerPull = true
         }
     }
 
