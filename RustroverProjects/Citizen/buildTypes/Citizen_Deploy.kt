@@ -4,6 +4,7 @@ import RustroverProjects.Citizen.vcsRoots.Citizen_GitGithubComK88936citizenGitRe
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.deploy.applyGithubReleaseDeployment
 import utils.deploy.applySourceOfDeployment
 
 object Citizen_Deploy : BuildType({
@@ -28,13 +29,10 @@ object Citizen_Deploy : BuildType({
             artifactRules = "*=>_deploy/"
         }
     }
-
-    applySourceOfDeployment(
-        name = "citizen",
-        tagPattern = "latest",
-        assets = "_deploy/citizen"
+    applySourceOfDeployment("ollama-proxy")
+    applyGithubReleaseDeployment(
+        assetsPath = "_deploy/*"
     )
-
     features {
         perfmon { }
     }
