@@ -11,6 +11,7 @@ object Project : Project({
 
     buildType(build("nextcloud/Dockerfile", "kvtodev/nextcloud"))
     buildType(build("teamcity-agent/Dockerfile", "kvtodev/teamcity-agent"))
+    buildType(build("test/Dockerfile", "kvtodev/test"))
 
     vcsRoot(Dockerfiles_GitGithubComK88936DockerfilessGitRefsHeadsMain)
 })
