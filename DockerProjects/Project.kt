@@ -8,8 +8,6 @@ object Project : Project({
     name = "Docker Projects"
     id("DockerProjects")
 
-    subProject(DockerProjects.TeamcityAgent.Project)
-    subProject(DockerProjects.Nextcloud.Project)
     subProject(DockerProjects.CiContainers.Project)
     subProject(DockerProjects.Wallence.Project)
     subProject(DockerProjects.Dockerfiles.Project)
