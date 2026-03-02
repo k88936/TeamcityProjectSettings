@@ -4,9 +4,7 @@
   <name>_Root Config DSL Script</name>
   <groupId>_Root</groupId>
   <artifactId>_Root_dsl</artifactId>
-  <version>1.0-SNAPSHOT</version>
-
-  <parent>
+    <parent>
     <groupId>org.jetbrains.teamcity</groupId>
     <artifactId>configs-dsl-kotlin-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
