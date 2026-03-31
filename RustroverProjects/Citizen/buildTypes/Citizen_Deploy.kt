@@ -29,7 +29,7 @@ object Citizen_Deploy : BuildType({
             artifactRules = "*=>_deploy/"
         }
     }
-    applySourceOfDeployment("ollama-proxy")
+    applySourceOfDeployment("citizen")
     applyGithubReleaseDeployment(
         assetsPath = "_deploy/*"
     )

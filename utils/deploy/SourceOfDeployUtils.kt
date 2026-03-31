@@ -9,6 +9,7 @@ fun BuildType.applySourceOfDeployment(
     tagPattern: String = "v${utils.Env.BUILD_NUMBER}",
     assets: String = "_deploy/*",
 ) {
+    val BUCKET_NAME = "software-release"
     steps {
         script {
             this.name = "Source of Release"
@@ -16,8 +17,7 @@ fun BuildType.applySourceOfDeployment(
                 """
                 set -e
                 
-                BUCKET_NAME="software-release"
-                S3_PATH="${'$'}{BUCKET_NAME}/${'$'}{name}/${'$'}{tagPattern}"
+                S3_PATH="${BUCKET_NAME}/${name}/${tagPattern}"
                 
                 for asset in $assets; do
                     if [ -f "${'$'}asset" ]; then
