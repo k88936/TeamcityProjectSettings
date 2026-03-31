@@ -1,6 +1,5 @@
 package RustroverProjects.Citizen.buildTypes
 
-import jdk.internal.jshell.debug.InternalDebugControl.release
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
