@@ -1,5 +1,6 @@
 package RustroverProjects.Citizen.buildTypes
 
+import jdk.internal.jshell.debug.InternalDebugControl.release
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
@@ -14,9 +15,9 @@ object Citizen_Build : BuildType({
         root(RustroverProjects.Citizen.vcsRoots.Citizen_GitGithubComK88936citizenGitRefsHeadsMain)
     }
 
+//    target/x86_64-pc-windows-gnu/release/citizen.exe
     artifactRules = """
         target/release/citizen
-        target/x86_64-pc-windows-gnu/release/citizen.exe
     """.trimIndent()
 
     triggers {
@@ -32,14 +33,14 @@ object Citizen_Build : BuildType({
             dockerImage = "docker.io/kvtodev/ci-containers:rust"
             dockerRunParameters = getDockerRunParameters()
         }
-        script {
-            name = "Build Windows"
-            scriptContent = """
-                cargo install cross && cross build --release --target x86_64-pc-windows-gnu
-            """.trimIndent()
-            dockerImage = "docker.io/kvtodev/ci-containers:rust"
-            dockerRunParameters = getDockerRunParameters()
-        }
+//        script {
+//            name = "Build Windows"
+//            scriptContent = """
+//                cargo install cross && cross build --release --target x86_64-pc-windows-gnu
+//            """.trimIndent()
+//            dockerImage = "docker.io/kvtodev/ci-containers:rust"
+//            dockerRunParameters = getDockerRunParameters()
+//        }
     }
 
     features {
