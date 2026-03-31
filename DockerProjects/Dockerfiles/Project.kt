@@ -9,7 +9,7 @@ object Project : Project({
     id("Dockerfiles")
     name = "dockerfiles"
 
-    buildType(build("docker.io/teamcity-agent/Dockerfile", "docker.io/kvtodev/teamcity-agent"))
+    buildType(build("teamcity-agent/Dockerfile", "docker.io/kvtodev/teamcity-agent"))
 
     vcsRoot(Dockerfiles_GitGithubComK88936DockerfilessGitRefsHeadsMain)
 })
