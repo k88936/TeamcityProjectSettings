@@ -9,14 +9,14 @@ object Project : Project({
     id("CiContainers")
     name = "ci-containers"
 
-    buildType(build("base/Dockerfile", "kvtodev/ci-containers:base"))
-    buildType(build("build/rust/Dockerfile", "kvtodev/ci-containers:rust"))
-    buildType(build("build/java/Dockerfile", "kvtodev/ci-containers:java"))
-    buildType(build("build/go/Dockerfile", "kvtodev/ci-containers:go"))
-    buildType(build("build/js/Dockerfile", "kvtodev/ci-containers:js"))
-    buildType(build("build/react-native/Dockerfile", "kvtodev/ci-containers:react-native"))
-    buildType(build("build/android/Dockerfile", "kvtodev/ci-containers:android"))
-    buildType(build("ai/opencode/Dockerfile", "kvtodev/ci-containers:opencode"))
+    buildType(build("base/Dockerfile", "docker.io/kvtodev/ci-containers:base"))
+    buildType(build("build/rust/Dockerfile", "docker.io/kvtodev/ci-containers:rust"))
+    buildType(build("build/java/Dockerfile", "docker.io/kvtodev/ci-containers:java"))
+    buildType(build("build/go/Dockerfile", "docker.io/kvtodev/ci-containers:go"))
+    buildType(build("build/js/Dockerfile", "docker.io/kvtodev/ci-containers:js"))
+    buildType(build("build/react-native/Dockerfile", "docker.io/kvtodev/ci-containers:react-native"))
+    buildType(build("build/android/Dockerfile", "docker.io/kvtodev/ci-containers:android"))
+    buildType(build("ai/opencode/Dockerfile", "docker.io/kvtodev/ci-containers:opencode"))
 
     vcsRoot(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
 })

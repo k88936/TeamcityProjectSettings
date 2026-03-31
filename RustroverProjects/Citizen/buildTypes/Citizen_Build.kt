@@ -26,7 +26,7 @@ object Citizen_Build : BuildType({
             scriptContent = """
                 cargo build --release
             """.trimIndent()
-            dockerImage = "kvtodev/ci-containers:rust"
+            dockerImage = "docker.io/kvtodev/ci-containers:rust"
             dockerRunParameters = getDockerRunParameters()
 
         }

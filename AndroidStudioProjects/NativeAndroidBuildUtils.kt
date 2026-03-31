@@ -17,7 +17,7 @@ fun BuildType.applyNativeAndroidBuild(
             id = "build apk"
             scriptContent = script
             dockerRunParameters = getDockerRunParameters()
-            dockerImage = "kvtodev/ci-containers:android"
+            dockerImage = "docker.io/kvtodev/ci-containers:android"
             dockerPull = true
         }
     }
