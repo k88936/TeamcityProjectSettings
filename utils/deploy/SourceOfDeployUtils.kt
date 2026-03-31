@@ -11,19 +11,18 @@ fun BuildType.applySourceOfDeployment(
 ) {
     val BUCKET_NAME = "software-release"
     val S3_PATH="${BUCKET_NAME}/${name}/${tagPattern}"
+    val S3_ENDPOINT="https://rustfs.k88936.top"
     steps {
         script {
             this.name = "Source of Release"
             this.scriptContent =
                 """
-                set -e
-                for asset in $assets; do
+                    set -e
+                    for asset in $assets; do
                     if [ -f "${'$'}asset" ]; then
-                        aws s3 cp "${'$'}asset" "s3://${S3_PATH}/${'$'}asset)" --endpoint-url "https://rustfs.k88936.top"
-                    else
-                        echo "Warning: ${'$'}asset does not exist, skipping"
+                        aws s3 cp "${'$'}asset" "s3://${S3_PATH}/$(basename "${'$'}asset")" --endpoint-url $S3_ENDPOINT
                     fi
-                done
+                    done
                 """.trimIndent()
         }
     }
