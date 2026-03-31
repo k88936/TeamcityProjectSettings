@@ -24,7 +24,7 @@ object Wallence_Build_config_gen : BuildType({
                 go mod download
                 go mod verify
             """.trimIndent()
-            dockerImage = "kvtodev/ci-containers:go"
+            dockerImage = "docker.io/kvtodev/ci-containers:go"
             dockerRunParameters = getDockerRunParameters()
             dockerPull = true
         }
@@ -45,7 +45,7 @@ object Wallence_Build_config_gen : BuildType({
             scriptContent = """
                 go build -o build/config-gen ./config-gen
             """.trimIndent()
-            dockerImage = "kvtodev/ci-containers:go"
+            dockerImage = "docker.io/kvtodev/ci-containers:go"
             dockerRunParameters = getDockerRunParameters()
             dockerPull = true
         }
