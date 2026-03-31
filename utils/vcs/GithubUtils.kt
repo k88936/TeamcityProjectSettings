@@ -69,9 +69,6 @@ fun BuildType.applyPRStep(
     params {
         password("env.GH_TOKEN", "%KVTO_GH_TOKEN%")
     }
-    requirements {
-        exists("env.GH_CLI")
-    }
     features {
         sshAgent {
             teamcitySshKey = "id_rsa"

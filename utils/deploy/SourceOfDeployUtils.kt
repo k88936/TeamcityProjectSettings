@@ -65,9 +65,6 @@ fun BuildType.applySourceOfDeployment(
         }
     }
 
-    requirements {
-        exists("env.PLATFORM_LINUX")
-    }
     params {
         password("env.S3_ACCESS_KEY", "%KVTO_RUSTFS_ACCESS_KEY%")
         password("env.S3_SECRET_KEY", "%KVTO_RUSTFS_SECRET_KEY%")

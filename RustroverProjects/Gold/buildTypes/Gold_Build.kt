@@ -14,7 +14,10 @@ object Gold_Build : BuildType({
         root(RustroverProjects.Gold.vcsRoots.Gold_GitGithubComK88936goldGitRefsHeadsMain)
     }
 
-    artifactRules = """target/release/gold"""
+    artifactRules = """
+        target/release/gold
+        target/x86_64-pc-windows-gnu/release/gold.exe
+    """.trimIndent()
 
     triggers {
         vcs {
@@ -22,16 +25,22 @@ object Gold_Build : BuildType({
     }
     steps {
         script {
-            name = "Build"
+            name = "Build Linux"
             scriptContent = """
                 cargo build --release
             """.trimIndent()
             dockerImage = "docker.io/kvtodev/ci-containers:rust"
             dockerRunParameters = getDockerRunParameters()
-
+        }
+        script {
+            name = "Build Windows"
+            scriptContent = """
+                cargo install cross && cross build --release --target x86_64-pc-windows-gnu
+            """.trimIndent()
+            dockerImage = "docker.io/kvtodev/ci-containers:rust"
+            dockerRunParameters = getDockerRunParameters()
         }
     }
-
 
     features {
         perfmon { }

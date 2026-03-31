@@ -14,7 +14,10 @@ object Citizen_Build : BuildType({
         root(RustroverProjects.Citizen.vcsRoots.Citizen_GitGithubComK88936citizenGitRefsHeadsMain)
     }
 
-    artifactRules = """target/release/citizen"""
+    artifactRules = """
+        target/release/citizen
+        target/x86_64-pc-windows-gnu/release/citizen.exe
+    """.trimIndent()
 
     triggers {
         vcs {
@@ -22,16 +25,22 @@ object Citizen_Build : BuildType({
     }
     steps {
         script {
-            name = "Build"
+            name = "Build Linux"
             scriptContent = """
                 cargo build --release
             """.trimIndent()
             dockerImage = "docker.io/kvtodev/ci-containers:rust"
             dockerRunParameters = getDockerRunParameters()
-
+        }
+        script {
+            name = "Build Windows"
+            scriptContent = """
+                cargo install cross && cross build --release --target x86_64-pc-windows-gnu
+            """.trimIndent()
+            dockerImage = "docker.io/kvtodev/ci-containers:rust"
+            dockerRunParameters = getDockerRunParameters()
         }
     }
-
 
     features {
         perfmon { }
