@@ -148,12 +148,6 @@ fun DockerBuildTemplate(
 - Use JDK version variables: `%env.JDK_21_0_x64%`
 - TeamCity system variables: `%build.number%`, `%teamcity.build.branch%`
 
-### VCS Integration
-
-- VCS roots follow strict naming: `{Project}_{Type}_{Url}_{Branch}`
-- Use `vcsRoot?.let { ... }` for optional VCS configuration
-- Import VCS roots in project files: `import ProjectName.vcsRoots.*`
-
 ### Build Steps
 
 - Always assign unique IDs: `id = "step_name"`

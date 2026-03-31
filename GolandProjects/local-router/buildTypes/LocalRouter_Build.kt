@@ -39,7 +39,7 @@ object LocalRouter_Build : BuildType({
             scriptContent = """
                 go test ./server
             """.trimIndent()
-            dockerImage = "kvtodev/ci-containers:go"
+            dockerImage = "docker.io/kvtodev/ci-containers:go"
             dockerRunParameters = getDockerRunParameters()
             dockerPull = true
         }
@@ -50,7 +50,7 @@ object LocalRouter_Build : BuildType({
                 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o build/local-router.exe ./server 
                 go build -o build/local-router ./server
             """.trimIndent()
-            dockerImage = "kvtodev/ci-containers:go"
+            dockerImage = "docker.io/kvtodev/ci-containers:go"
             dockerRunParameters = getDockerRunParameters()
             dockerPull = true
         }
