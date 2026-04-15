@@ -5,7 +5,6 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
-import utils.build_steps.getDockerRunParameters
 
 object Wallence_Build_config_gen : BuildType({
     id("Wallence_Build_config_gen")
@@ -24,9 +23,6 @@ object Wallence_Build_config_gen : BuildType({
                 go mod download
                 go mod verify
             """.trimIndent()
-            dockerImage = "docker.io/kvtodev/ci-containers:go"
-            dockerRunParameters = getDockerRunParameters()
-            dockerPull = true
         }
 
 //        script {
@@ -45,9 +41,6 @@ object Wallence_Build_config_gen : BuildType({
             scriptContent = """
                 go build -o build/config-gen ./config-gen
             """.trimIndent()
-            dockerImage = "docker.io/kvtodev/ci-containers:go"
-            dockerRunParameters = getDockerRunParameters()
-            dockerPull = true
         }
     }
 

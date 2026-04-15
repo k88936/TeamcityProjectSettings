@@ -2,7 +2,6 @@ package AndroidStudioProjects
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
-import utils.build_steps.getDockerRunParameters
 
 fun BuildType.applyNativeAndroidBuild(
     dir: String = ".",
@@ -16,9 +15,6 @@ fun BuildType.applyNativeAndroidBuild(
         script {
             id = "build apk"
             scriptContent = script
-            dockerRunParameters = getDockerRunParameters()
-            dockerImage = "docker.io/kvtodev/ci-containers:android"
-            dockerPull = true
         }
     }
 }

@@ -10,13 +10,7 @@ object Project : Project({
     name = "ci-containers"
 
     buildType(build("base/Dockerfile", "docker.io/kvtodev/ci-containers:base"))
-    buildType(build("build/rust/Dockerfile", "docker.io/kvtodev/ci-containers:rust"))
-    buildType(build("build/java/Dockerfile", "docker.io/kvtodev/ci-containers:java"))
-    buildType(build("build/go/Dockerfile", "docker.io/kvtodev/ci-containers:go"))
-    buildType(build("build/js/Dockerfile", "docker.io/kvtodev/ci-containers:js"))
-    buildType(build("build/react-native/Dockerfile", "docker.io/kvtodev/ci-containers:react-native"))
-    buildType(build("build/android/Dockerfile", "docker.io/kvtodev/ci-containers:android"))
-    buildType(build("ai/opencode/Dockerfile", "docker.io/kvtodev/ci-containers:opencode"))
+    buildType(build("teamcity-agent/Dockerfile", "docker.io/kvtodev/teamcity-agent"))
 
     vcsRoot(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
 })

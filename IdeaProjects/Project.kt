@@ -5,5 +5,4 @@ import jetbrains.buildServer.configs.kotlin.Project
 object Project : Project({
     id ("IdeaProjects")
     name = "Idea Projects"
-    subProject(IdeaProjects.Keetcoder.Project)
 })

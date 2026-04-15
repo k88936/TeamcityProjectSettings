@@ -6,7 +6,6 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
-import utils.build_steps.getDockerRunParameters
 import utils.trigger.excludeCI
 import utils.vcs.applyGitPushStep
 
@@ -55,9 +54,6 @@ class GithubPageTemplate() : Project() {
                         npm install
                         npm run build
                         """.trimIndent() + '\n' + extraBuildCommand.trimIndent()
-                    dockerImage = "docker.io/kvtodev/ci-containers:js"
-                    dockerRunParameters = getDockerRunParameters()
-                    dockerPull = true
                 }
             }
             applyGitPushStep("Teamcity build pages")
