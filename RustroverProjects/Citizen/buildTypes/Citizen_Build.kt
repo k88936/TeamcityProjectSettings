@@ -30,7 +30,7 @@ object Citizen_Build : BuildType({
         script {
             name = "Build Windows"
             scriptContent = """
-                cross build --release --target x86_64-pc-windows-msvc
+                cross build --release --target x86_64-pc-windows-gnu
             """.trimIndent()
         }
     }
