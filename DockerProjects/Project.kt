@@ -10,4 +10,11 @@ object Project : Project({
 
     subProject(DockerProjects.CiContainers.Project)
     subProject(DockerProjects.Wallence.Project)
+    subProject(
+        DockerProjectTemplate(
+            "git@github.com:k88936/teamcity-agent-container.git",
+            "teamcity-agent/Dockerfile",
+            "docker.io/kvtodev/teamcity-agent"
+        )
+    )
 })
