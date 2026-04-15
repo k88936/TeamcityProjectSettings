@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import utils.genRustArtifactRules
 
 object Trackit_Build : BuildType({
     id("Trackit_Build")
@@ -13,10 +14,7 @@ object Trackit_Build : BuildType({
         root(RustroverProjects.Trackit.vcsRoots.Trackit_GitGithubComK88936trackitGitRefsHeadsMain)
     }
 
-    artifactRules = """
-        target/release/trackit
-        target/x86_64-pc-windows-msvc/release/trackit.exe
-    """.trimIndent()
+    artifactRules = genRustArtifactRules("trackit")
 
     triggers {
         vcs {

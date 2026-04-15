@@ -7,4 +7,5 @@ object Project : Project({
     name = "Rustrover Projects"
     subProject(RustroverProjects.Citizen.Project)
     subProject(RustroverProjects.Trackit.Project)
+    subProject(RustroverProjects.Talkful.Project)
 })

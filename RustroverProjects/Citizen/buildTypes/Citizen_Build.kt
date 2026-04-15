@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import utils.genRustArtifactRules
 
 object Citizen_Build : BuildType({
     id("Citizen_Build")
@@ -13,10 +14,7 @@ object Citizen_Build : BuildType({
         root(RustroverProjects.Citizen.vcsRoots.Citizen_GitGithubComK88936citizenGitRefsHeadsMain)
     }
 
-    artifactRules = """
-        target/release/citizen
-        target/x86_64-pc-windows-msvc/release/citizen.exe
-    """.trimIndent()
+    artifactRules = genRustArtifactRules("citizen")
 
     triggers {
         vcs {
