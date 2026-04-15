@@ -2,6 +2,7 @@ package RustroverProjects.Talkful.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import utils.tauri.applyTauriBuildStep
 import utils.tauri.genTauriArtifactRules
@@ -18,6 +19,14 @@ object Talkful_Build : BuildType({
 
     triggers {
         vcs {
+        }
+    }
+    steps {
+        script {
+            name = "dep"
+            scriptContent = """
+                pacman -S alsa-lib
+            """.trimIndent()
         }
     }
 
