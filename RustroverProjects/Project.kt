@@ -6,4 +6,5 @@ object Project : Project({
     id("RustroverProjects")
     name = "Rustrover Projects"
     subProject(RustroverProjects.Citizen.Project)
+    subProject(RustroverProjects.Trackit.Project)
 })

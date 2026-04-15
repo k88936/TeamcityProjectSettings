@@ -6,7 +6,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 fun BuildType.applySourceOfDeployment(
     name: String,
-    tagPattern: String = "v${utils.Env.BUILD_NUMBER}",
+    tagPattern: String = "build-${utils.Env.BUILD_NUMBER}",
     assets: String = "_deploy/*",
 ) {
     val BUCKET_NAME = "software-release"
