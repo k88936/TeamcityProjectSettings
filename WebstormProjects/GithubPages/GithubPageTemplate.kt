@@ -3,7 +3,6 @@ package WebstormProjects.GithubPages
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 import utils.trigger.excludeCI
@@ -48,8 +47,9 @@ class GithubPageTemplate() : Project() {
                     name = "ensure workflow"
                     scriptContent = DEPLOY_WORKFLOW
                 }
-                nodeJS {
-                    shellScript =
+                script {
+                    name = "build"
+                    scriptContent =
                         """
                         npm install
                         npm run build
