@@ -10,7 +10,6 @@ object Project : Project({
     name = "ci-containers"
 
     buildType(build("base/Dockerfile", "docker.io/kvtodev/ci-containers:base"))
-    buildType(build("teamcity-agent/Dockerfile", "docker.io/kvtodev/teamcity-agent"))
 
     vcsRoot(CiContainers_GitGithubComK88936CiContainersGitRefsHeadsMain)
 })
