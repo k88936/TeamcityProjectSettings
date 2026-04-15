@@ -10,5 +10,4 @@ object Project : Project({
 
     subProject(DockerProjects.CiContainers.Project)
     subProject(DockerProjects.Wallence.Project)
-    subProject(DockerProjects.Dockerfiles.Project)
 })
