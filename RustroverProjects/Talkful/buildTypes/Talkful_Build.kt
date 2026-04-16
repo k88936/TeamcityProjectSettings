@@ -25,7 +25,7 @@ object Talkful_Build : BuildType({
         script {
             name = "dep"
             scriptContent = """
-                pacman -S alsa-lib --no-confirm
+                pacman -S alsa-lib --noconfirm
             """.trimIndent()
         }
     }
