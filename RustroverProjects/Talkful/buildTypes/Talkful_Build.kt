@@ -27,7 +27,7 @@ object Talkful_Build : BuildType({
             scriptContent = """
                  mkdir -p /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders
                  gdk-pixbuf-query-loaders > /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
-                pacman -S alsa-lib gtk3 webkit2gtk-4.1  openssl appmenu-gtk-module libappindicator-gtk3 librsvg xdotool -noconfirm
+                pacman -S alsa-lib gtk3 webkit2gtk-4.1  openssl appmenu-gtk-module libappindicator-gtk3 librsvg xdotool --noconfirm
             """.trimIndent()
         }
     }
