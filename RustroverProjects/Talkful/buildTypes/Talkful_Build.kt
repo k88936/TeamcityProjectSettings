@@ -25,7 +25,7 @@ object Talkful_Build : BuildType({
         script {
             name = "dep"
             scriptContent = """
-                pacman -S alsa-lib gtk3 --noconfirm
+                pacman -S alsa-lib gtk3 webkit2gtk-4.1  --noconfirm
             """.trimIndent()
         }
     }
