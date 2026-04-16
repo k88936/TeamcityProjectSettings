@@ -32,9 +32,10 @@ fun BuildType.applyTauriBuildStep() {
 fun genTauriArtifactRules(binary: String): String {
     return """
        src-tauri/target/release/${binary} 
-       src-tauri/target/release/bundle/deb/*.deb => ${binary}.deb
-       src-tauri/target/release/bundle/rpm/*.rpm => ${binary}.rpm
+       src-tauri/target/release/bundle/deb/*.deb
+       src-tauri/target/release/bundle/rpm/*.rpm
+       src-tauri/target/release/bundle/appimage/*.AppImage
        src-tauri/target/x86_64-pc-windows-msvc/release/${binary}.exe
-       src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis/*-setup.exe => ${binary}-setup.exe
+       src-tauri/target/x86_64-pc-windows-msvc/release/bundle/nsis/*-setup.exe
     """.trimIndent()
 }
