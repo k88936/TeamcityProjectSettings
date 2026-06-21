@@ -8,7 +8,6 @@ object Project : Project({
     name = "Docker Projects"
     id("DockerProjects")
 
-    subProject(DockerProjects.CiContainers.Project)
     subProject(DockerProjects.Wallence.Project)
     subProject(
         DockerProjectTemplate(
