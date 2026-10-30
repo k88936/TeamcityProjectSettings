@@ -1,5 +1,7 @@
 package Root
 
+import com.sun.beans.introspect.PropertyInfo
+import jdk.internal.util.StaticProperty.userName
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.projectFeatures.activeStorage
 import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
@@ -7,7 +9,7 @@ import jetbrains.buildServer.configs.kotlin.projectFeatures.githubAppConnection
 import jetbrains.buildServer.configs.kotlin.projectFeatures.s3CompatibleStorage
 
 object Project : Project({
-    description = "Contains all other projects"
+    PropertyInfo.Name.description = "Contains all other projects"
 
     features {
     }
@@ -54,7 +56,7 @@ object Project : Project({
             id = "PROJECT_EXT_3"
             accessKeyID = "SHd9FvJ8Gcr1s3eh6bCU"
             accessKey = "credentialsJSON:fe76ba66-ec2d-443d-bda6-ade2fa15191f"
-            endpoint = "https://rustfs.k88936.top"
+            endpoint = "https://storage0.k88936.top"
             bucketName = "teamcity-artifact"
             forceVirtualHostAddressing = true
             param("aws.region.name", "")
