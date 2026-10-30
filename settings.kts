@@ -29,5 +29,5 @@ node (Plugins -> teamcity-configs -> teamcity-configs:generate),
 the 'Debug' option is available in the context menu for the task.
 */
 
-version = "2026.1"
+version = "2026.2"
 project(Root.Project)
