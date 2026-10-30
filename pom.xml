@@ -24,7 +24,7 @@
     </repository>
     <repository>
       <id>teamcity-server</id>
-      <url>https://teamcity.k88936.top/app/dsl-plugins-repository</url>
+      <url>https://teamcity.k88936.top:8936/app/dsl-plugins-repository</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
