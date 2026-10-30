@@ -1,7 +1,5 @@
 package Root
 
-import com.sun.beans.introspect.PropertyInfo
-import jdk.internal.util.StaticProperty.userName
 import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.projectFeatures.activeStorage
 import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
@@ -9,7 +7,7 @@ import jetbrains.buildServer.configs.kotlin.projectFeatures.githubAppConnection
 import jetbrains.buildServer.configs.kotlin.projectFeatures.s3CompatibleStorage
 
 object Project : Project({
-    PropertyInfo.Name.description = "Contains all other projects"
+    description = "Contains all other projects"
 
     features {
     }
