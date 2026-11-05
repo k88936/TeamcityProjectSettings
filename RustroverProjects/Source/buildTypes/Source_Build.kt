@@ -40,12 +40,6 @@ object Source_Build : BuildType({
 
     steps {
         script {
-            name = "dep"
-            scriptContent = """
-                pacman -Syy --needed gtk3 webkit2gtk-4.1 appmenu-gtk-module libappindicator-gtk3 --noconfirm
-            """.trimIndent()
-        }
-        script {
             name = "android keystore"
             scriptContent = """
                 printf '%s' "${'$'}ANDROID_KEYSTORE_BASE64" | base64 -d > /tmp/source-release.jks

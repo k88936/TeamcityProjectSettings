@@ -2,7 +2,6 @@ package RustroverProjects.Talkful.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import utils.tauri.applyTauriBuildStep
 import utils.tauri.genTauriArtifactRules
@@ -19,16 +18,6 @@ object Talkful_Build : BuildType({
 
     triggers {
         vcs {
-        }
-    }
-    steps {
-        script {
-            name = "dep"
-            scriptContent = """
-                pacman -Syy alsa-lib gtk3 webkit2gtk-4.1  openssl appmenu-gtk-module libappindicator-gtk3 librsvg xdotool --noconfirm
-                mkdir -p /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders
-                gdk-pixbuf-query-loaders > /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
-            """.trimIndent()
         }
     }
 
