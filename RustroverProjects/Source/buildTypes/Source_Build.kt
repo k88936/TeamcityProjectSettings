@@ -3,6 +3,7 @@ package RustroverProjects.Source.buildTypes
 import RustroverProjects.Source.vcsRoots.Source_GitGithubComK88936sourceGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import utils.tauri.applyTauriAndroidBuildStep
@@ -48,6 +49,13 @@ object Source_Build : BuildType({
             """.trimIndent()
         }
         script {
+            name = "checkout cloudreve-sdk-rs"
+            scriptContent = """
+                rm -rf ../cloudreve-sdk-rs
+                git clone --depth 1 git@github.com:k88936/cloudreve-sdk-rs.git ../cloudreve-sdk-rs
+            """.trimIndent()
+        }
+        script {
             name = "android keystore"
             scriptContent = """
                 printf '%s' "${'$'}ANDROID_KEYSTORE_BASE64" | base64 -d > /tmp/source-release.jks
@@ -66,5 +74,8 @@ object Source_Build : BuildType({
 
     features {
         perfmon { }
+        sshAgent {
+            teamcitySshKey = "id_rsa"
+        }
     }
 })
