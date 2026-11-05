@@ -11,7 +11,7 @@ fun BuildType.applySourceOfDeployment(
 ) {
     val BUCKET_NAME = "software-release"
     val S3_PATH="${BUCKET_NAME}/${name}/${tagPattern}"
-    val S3_ENDPOINT="https://rustfs.k88936.top"
+    val S3_ENDPOINT="https://storage0.k88936.top:8936"
     steps {
         script {
             this.name = "Source of Release"
