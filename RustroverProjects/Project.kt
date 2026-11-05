@@ -6,4 +6,5 @@ object Project : Project({
     id("RustroverProjects")
     name = "Rustrover Projects"
     subProject(RustroverProjects.Talkful.Project)
+    subProject(RustroverProjects.Source.Project)
 })
