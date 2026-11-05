@@ -42,9 +42,7 @@ object Source_Build : BuildType({
         script {
             name = "dep"
             scriptContent = """
-                pacman -Syy alsa-lib gtk3 webkit2gtk-4.1 openssl appmenu-gtk-module libappindicator-gtk3 librsvg xdotool nsis --noconfirm
-                mkdir -p /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders
-                gdk-pixbuf-query-loaders > /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
+                pacman -Syy gtk3 webkit2gtk-4.1 appmenu-gtk-module libappindicator-gtk3 --noconfirm
             """.trimIndent()
         }
         script {
