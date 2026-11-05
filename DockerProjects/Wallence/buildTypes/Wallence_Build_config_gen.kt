@@ -13,33 +13,30 @@ object Wallence_Build_config_gen : BuildType({
         root(vcsRoot)
     }
     artifactRules = """
-        build/=>build/
+        build/config-gen
     """.trimIndent()
 
     steps {
         script {
             name = "Download Dependencies"
             scriptContent = """
-                go mod download
-                go mod verify
+                cargo fetch --locked
             """.trimIndent()
         }
 
-//        script {
-//            name = "Test"
-//            scriptContent = """
-//                go test ./config-gen
-//            """.trimIndent()
-//            dockerImage = "kvtodev/ci-containers:go"
-//            dockerRunParameters =
-//                "--rm -v /cache:/cache"
-//            dockerPull = true
-//        }
+        script {
+            name = "Test"
+            scriptContent = """
+                cargo test --locked
+            """.trimIndent()
+        }
 
         script {
             name = "Build config-gen"
             scriptContent = """
-                go build -o build/config-gen ./config-gen
+                cargo build --release --locked
+                mkdir -p build
+                cp target/release/config-gen build/config-gen
             """.trimIndent()
         }
     }

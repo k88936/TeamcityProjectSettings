@@ -25,14 +25,9 @@ object Wallence_Build_container : BuildType({
         perfmon { }
     }
 
-    dependencies {
-        artifacts(Wallence_Build_config_gen) {
-            buildRule = lastSuccessful()
-            artifactRules = """
-                build/config-gen=>docker/config-gen
-            """.trimIndent()
-        }
-    }
-
-    applyDockerBuildSteps("docker.io/kvtodev/wallence:latest", "docker/Dockerfile")
+    applyDockerBuildSteps(
+        imageName = "docker.io/kvtodev/wallence:latest",
+        dockerfilePath = "docker/Dockerfile",
+        context = ".",
+    )
 })
