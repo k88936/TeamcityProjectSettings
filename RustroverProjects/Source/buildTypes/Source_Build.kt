@@ -27,9 +27,9 @@ object Source_Build : BuildType({
     """.trimIndent()
 
     params {
-        password("env.ANDROID_KEYSTORE_BASE64", "")
-        password("env.ANDROID_KEYSTORE_PASSWORD", "")
-        password("env.ANDROID_KEY_PASSWORD", "")
+        password("env.ANDROID_KEYSTORE_BASE64", "credentialsJSON:7dcbfd11-bcae-4421-996f-ac72eb5eda83")
+        password("env.ANDROID_KEYSTORE_PASSWORD", "credentialsJSON:0795c0f1-4634-4d24-ae10-6609d570cd58")
+        password("env.ANDROID_KEY_PASSWORD", "credentialsJSON:0795c0f1-4634-4d24-ae10-6609d570cd58")
         text("env.ANDROID_KEY_ALIAS", "source")
     }
 
