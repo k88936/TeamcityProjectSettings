@@ -24,7 +24,7 @@ fun BuildType.applyTauriBuildStep() {
             id = "tauri build windows"
             scriptContent = """
                 ln -sf pathcch.lib ~/.cache/cargo-xwin/xwin/sdk/lib/um/x86_64/PathCch.lib
-                XWIN_ARCH=x86_64 pnpm tauri build --runner cargo-xwin --target x86_64-pc-windows-msvc --no-bundle
+                XWIN_ARCH=x86_64 pnpm tauri build --runner cargo-xwin --target x86_64-pc-windows-msvc
             """.trimIndent()
         }
     }

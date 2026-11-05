@@ -33,6 +33,7 @@ object Source_Deploy : BuildType({
                 +:target/release/bundle/rpm/*.rpm=>_deploy/
                 +:target/release/bundle/appimage/*.AppImage=>_deploy/
                 +:target/x86_64-pc-windows-msvc/release/source.exe=>_deploy/
+                +:target/x86_64-pc-windows-msvc/release/bundle/nsis/*-setup.exe=>_deploy/
                 +:src-tauri/gen/android/app/build/outputs/apk/universal/release/*.apk=>_deploy/
             """.trimIndent()
         }

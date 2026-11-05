@@ -22,6 +22,7 @@ object Source_Build : BuildType({
        target/release/bundle/rpm/*.rpm
        target/release/bundle/appimage/*.AppImage
        target/x86_64-pc-windows-msvc/release/source.exe
+       target/x86_64-pc-windows-msvc/release/bundle/nsis/*-setup.exe
        src-tauri/gen/android/app/build/outputs/apk/universal/release/*.apk
     """.trimIndent()
 
@@ -41,7 +42,7 @@ object Source_Build : BuildType({
         script {
             name = "dep"
             scriptContent = """
-                pacman -Syy alsa-lib gtk3 webkit2gtk-4.1 openssl appmenu-gtk-module libappindicator-gtk3 librsvg xdotool --noconfirm
+                pacman -Syy alsa-lib gtk3 webkit2gtk-4.1 openssl appmenu-gtk-module libappindicator-gtk3 librsvg xdotool nsis --noconfirm
                 mkdir -p /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders
                 gdk-pixbuf-query-loaders > /usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
             """.trimIndent()
