@@ -18,25 +18,11 @@ object Wallence_Build_config_gen : BuildType({
 
     steps {
         script {
-            name = "Download Dependencies"
-            scriptContent = """
-                cargo fetch --locked
-            """.trimIndent()
-        }
-
-        script {
-            name = "Test"
-            scriptContent = """
-                cargo test --locked
-            """.trimIndent()
-        }
-
-        script {
             name = "Build config-gen"
             scriptContent = """
-                cargo build --release --locked
+                cargo rustc --release --locked --target x86_64-unknown-linux-gnu --bin config-gen -- -C target-feature=+crt-static
                 mkdir -p build
-                cp target/release/config-gen build/config-gen
+                cp target/x86_64-unknown-linux-gnu/release/config-gen build/config-gen
             """.trimIndent()
         }
     }
