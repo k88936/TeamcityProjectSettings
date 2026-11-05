@@ -42,7 +42,7 @@ object Source_Build : BuildType({
         script {
             name = "dep"
             scriptContent = """
-                pacman -Syy gtk3 webkit2gtk-4.1 appmenu-gtk-module libappindicator-gtk3 --noconfirm
+                pacman -Syy --needed gtk3 webkit2gtk-4.1 appmenu-gtk-module libappindicator-gtk3 --noconfirm
             """.trimIndent()
         }
         script {
