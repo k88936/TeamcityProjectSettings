@@ -26,7 +26,7 @@ changeBuildType(RelativeId("Source_Build")) {
             password("env.ANDROID_KEY_PASSWORD", "")
         }
         update {
-            password("env.ANDROID_KEY_PASSWORD", "credentialsJSON:f29856ef-8c25-4c09-9514-4ab4baec1eab")
+            password("env.ANDROID_KEY_PASSWORD", "credentialsJSON:0795c0f1-4634-4d24-ae10-6609d570cd58")
         }
     }
 }
