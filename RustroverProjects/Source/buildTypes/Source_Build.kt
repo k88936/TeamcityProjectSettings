@@ -2,35 +2,18 @@ package RustroverProjects.Source.buildTypes
 
 import RustroverProjects.Source.vcsRoots.Source_GitGithubComK88936sourceGitRefsHeadsMain
 import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.FailureAction
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
-import utils.tauri.applyTauriAndroidBuildStep
-import utils.tauri.applyTauriBuildStep
 
 object Source_Build : BuildType({
     id("Source_Build")
     name = "Build"
+    type = Type.COMPOSITE
 
     vcs {
         root(Source_GitGithubComK88936sourceGitRefsHeadsMain)
-    }
-
-    artifactRules = """
-       target/release/source
-       target/release/bundle/deb/*.deb
-       target/release/bundle/rpm/*.rpm
-       target/release/bundle/appimage/*.AppImage
-       target/x86_64-pc-windows-msvc/release/source.exe
-       target/x86_64-pc-windows-msvc/release/bundle/nsis/*-setup.exe
-       src-tauri/gen/android/app/build/outputs/apk/universal/release/*.apk
-    """.trimIndent()
-
-    params {
-        password("env.ANDROID_KEYSTORE_BASE64", "credentialsJSON:7dcbfd11-bcae-4421-996f-ac72eb5eda83")
-        password("env.ANDROID_KEYSTORE_PASSWORD", "credentialsJSON:0795c0f1-4634-4d24-ae10-6609d570cd58")
-        password("env.ANDROID_KEY_PASSWORD", "credentialsJSON:0795c0f1-4634-4d24-ae10-6609d570cd58")
-        text("env.ANDROID_KEY_ALIAS", "source")
+        showDependenciesChanges = true
     }
 
     triggers {
@@ -38,23 +21,17 @@ object Source_Build : BuildType({
         }
     }
 
-    steps {
-        script {
-            name = "android keystore"
-            scriptContent = """
-                printf '%s' "${'$'}ANDROID_KEYSTORE_BASE64" | base64 -d > /tmp/source-release.jks
-                cat > src-tauri/gen/android/keystore.properties <<EOF
-                storeFile=/tmp/source-release.jks
-                storePassword=${'$'}ANDROID_KEYSTORE_PASSWORD
-                keyAlias=${'$'}ANDROID_KEY_ALIAS
-                keyPassword=${'$'}ANDROID_KEY_PASSWORD
-                EOF
-            """.trimIndent()
+    dependencies {
+        snapshot(Source_Build_Linux) {
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+        snapshot(Source_Build_Windows) {
+            onDependencyFailure = FailureAction.FAIL_TO_START
+        }
+        snapshot(Source_Build_Android) {
+            onDependencyFailure = FailureAction.FAIL_TO_START
         }
     }
-
-    applyTauriBuildStep()
-    applyTauriAndroidBuildStep()
 
     features {
         perfmon { }
