@@ -13,7 +13,7 @@ object Wallence_Build_config_gen : BuildType({
         root(vcsRoot)
     }
     artifactRules = """
-        build/config-gen
+        build/=>build/
     """.trimIndent()
 
     steps {
