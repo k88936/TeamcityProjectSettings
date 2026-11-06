@@ -5,7 +5,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 const val TAURI_ANDROID_NDK_VERSION = "29.0.13846066"
 
-fun BuildType.applyTauriInitStep() {
+fun BuildType.applyTauriBuildStep() {
     steps {
         script {
             id = "tauri init"
@@ -13,22 +13,12 @@ fun BuildType.applyTauriInitStep() {
                 pnpm i
             """.trimIndent()
         }
-    }
-}
-
-fun BuildType.applyTauriLinuxBuildStep() {
-    steps {
         script {
             id = "tauri build linux"
             scriptContent = """
                 NO_STRIP=true pnpm tauri build
             """.trimIndent()
         }
-    }
-}
-
-fun BuildType.applyTauriWindowsBuildStep() {
-    steps {
         script {
             id = "tauri build windows"
             scriptContent = """
@@ -39,19 +29,18 @@ fun BuildType.applyTauriWindowsBuildStep() {
     }
 }
 
-fun BuildType.applyTauriBuildStep() {
-    applyTauriInitStep()
-    applyTauriLinuxBuildStep()
-    applyTauriWindowsBuildStep()
-}
-
 fun BuildType.applyTauriAndroidBuildStep(
+    baseDir: String = ".",
     ndkVersion: String = TAURI_ANDROID_NDK_VERSION,
 ) {
+    val cd = baseDir.takeUnless { it.isBlank() || it == "." }
+        ?.let { "cd ${it.trimEnd('/')}\n" }
+        ?: ""
     steps {
         script {
             id = "tauri build android"
-            scriptContent = """
+            scriptContent = cd + """
+                pnpm i
                 yes | sdkmanager --sdk_root=${'$'}ANDROID_HOME --licenses > /dev/null
                 sdkmanager --sdk_root=${'$'}ANDROID_HOME --install "ndk;$ndkVersion"
                 pnpm tauri android build --apk
@@ -76,15 +65,15 @@ fun genTauriWindowsArtifactRules(binary: String): String {
     """.trimIndent()
 }
 
-fun genTauriAndroidArtifactRules(): String {
+fun genTauriAndroidArtifactRules(baseDir: String = "."): String {
+    val prefix = baseDir.takeUnless { it.isBlank() || it == "." }
+        ?.let { "${it.trimEnd('/')}/" }
+        ?: ""
     return """
-       src-tauri/gen/android/app/build/outputs/apk/universal/release/*.apk
+       ${prefix}src-tauri/gen/android/app/build/outputs/apk/universal/release/*.apk
     """.trimIndent()
 }
 
 fun genTauriArtifactRules(binary: String): String {
-    return listOf(
-        genTauriLinuxArtifactRules(binary),
-        genTauriWindowsArtifactRules(binary),
-    ).joinToString("\n")
+    return genTauriLinuxArtifactRules(binary) + "\n" + genTauriWindowsArtifactRules(binary)
 }

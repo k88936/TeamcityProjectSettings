@@ -20,38 +20,16 @@ object Source_Deploy : BuildType({
 
     triggers {
         finishBuildTrigger {
-            buildType = Source_Build.id?.value
+            buildType = Source_Build_Android.id?.value
             successfulOnly = true
         }
     }
 
     dependencies {
-        snapshot(Source_Build_Linux) {
-            onDependencyFailure = FailureAction.FAIL_TO_START
-        }
-        snapshot(Source_Build_Windows) {
-            onDependencyFailure = FailureAction.FAIL_TO_START
-        }
         snapshot(Source_Build_Android) {
             onDependencyFailure = FailureAction.FAIL_TO_START
         }
 
-        artifacts(Source_Build_Linux) {
-            buildRule = sameChainOrLastFinished()
-            artifactRules = """
-                +:target/release/source=>_deploy/
-                +:target/release/bundle/deb/*.deb=>_deploy/
-                +:target/release/bundle/rpm/*.rpm=>_deploy/
-                +:target/release/bundle/appimage/*.AppImage=>_deploy/
-            """.trimIndent()
-        }
-        artifacts(Source_Build_Windows) {
-            buildRule = sameChainOrLastFinished()
-            artifactRules = """
-                +:target/x86_64-pc-windows-msvc/release/source.exe=>_deploy/
-                +:target/x86_64-pc-windows-msvc/release/bundle/nsis/*-setup.exe=>_deploy/
-            """.trimIndent()
-        }
         artifacts(Source_Build_Android) {
             buildRule = sameChainOrLastFinished()
             artifactRules = """

@@ -4,8 +4,8 @@ import RustroverProjects.Source.vcsRoots.Source_GitGithubComK88936sourceGitRefsH
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import utils.tauri.applyTauriAndroidBuildStep
-import utils.tauri.applyTauriInitStep
 import utils.tauri.genTauriAndroidArtifactRules
 
 object Source_Build_Android : BuildType({
@@ -17,6 +17,11 @@ object Source_Build_Android : BuildType({
     }
 
     artifactRules = genTauriAndroidArtifactRules()
+
+    triggers {
+        vcs {
+        }
+    }
 
     params {
         password("env.ANDROID_KEYSTORE_BASE64", "credentialsJSON:7dcbfd11-bcae-4421-996f-ac72eb5eda83")
@@ -40,7 +45,6 @@ object Source_Build_Android : BuildType({
         }
     }
 
-    applyTauriInitStep()
     applyTauriAndroidBuildStep()
 
     features {
