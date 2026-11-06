@@ -33,7 +33,7 @@ object Source_Deploy : BuildType({
         artifacts(Source_Build_Android) {
             buildRule = sameChainOrLastFinished()
             artifactRules = """
-                +:src-tauri/gen/android/app/build/outputs/apk/universal/release/*.apk=>_deploy/
+                *=>_deploy/
             """.trimIndent()
         }
     }
