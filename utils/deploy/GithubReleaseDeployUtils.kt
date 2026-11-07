@@ -10,12 +10,12 @@ fun BuildType.applyGithubReleaseDeployment(
     assetsPath: String = "_deploy/*",
     prerelease: Boolean = false
 ) {
-    var extra_param = ""
+    var extraParam = ""
     if (prerelease) {
-        extra_param += "--prerelease"
+        extraParam += "--prerelease"
     }
     val scriptContent = buildString {
-        append("gh release create $extra_param --target ${Env.BUILD_BRANCH} $tagPattern")
+        append("gh release create $extraParam --target ${Env.BUILD_BRANCH} $tagPattern")
         if (notes != null) {
             append(" --notes \"$notes\"")
         } else {
@@ -24,7 +24,7 @@ fun BuildType.applyGithubReleaseDeployment(
         append(" $assetsPath")
     }
 
-    require(!this.vcs.entries.isEmpty())
+    require(this.vcs.entries.isNotEmpty())
     steps {
         script {
             this.name = "Create GitHub Release"
