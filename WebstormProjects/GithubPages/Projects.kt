@@ -53,7 +53,7 @@ private fun githubPagesProject(
 object Projects : Project({
     name = "GithubPages"
     id("GithubPages")
-    subProject(githubPagesProject("k88936/rss-reader", "npm install && npm run fetch-feeds && npm run build", "dist"))
+    subProject(githubPagesProject("k88936/rss-reader", "npm install && npm run build", "dist"))
     subProject(githubPagesProject("k88936/k88936.github.io", "pnpm install && pnpm build", "dist"))
     subProject(githubPagesProject("k88936/blogs", "npm install && npm run build", "dist"))
     subProject(
@@ -62,7 +62,7 @@ object Projects : Project({
                 password("env.S3_ACCESS_KEY", "%KVTO_RUSTFS_ACCESS_KEY%")
                 password("env.S3_SECRET_KEY", "%KVTO_RUSTFS_SECRET_KEY%")
                 param("env.S3_BUCKET_NAME", "software-release")
-                param("env.S3_ENDPOINT", "https://rustfs.k88936.top")
+                param("env.S3_ENDPOINT", "https://storage0.k88936.top:8936")
                 param("env.AWS_REGION", "us-east-1")
             }
         }
