@@ -4,6 +4,9 @@ import DockerProjects.Wallence.vcsRoot
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import utils.Env
+import utils.docker.PRIVATE_REGISTRY_CONNECTION
+import utils.docker.PRIVATE_REGISTRY_HOST
 import utils.docker.applyDockerBuildSteps
 
 object Wallence_Build_container : BuildType({
@@ -34,5 +37,5 @@ object Wallence_Build_container : BuildType({
         }
     }
 
-    applyDockerBuildSteps("docker.io/kvtodev/wallence:latest", "docker/Dockerfile")
+    applyDockerBuildSteps("$PRIVATE_REGISTRY_HOST/k88936/wallence:${Env.BUILD_NUMBER}", "docker/Dockerfile", connection = PRIVATE_REGISTRY_CONNECTION)
 })

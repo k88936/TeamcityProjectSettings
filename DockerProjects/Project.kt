@@ -1,6 +1,9 @@
 package DockerProjects
 
 import jetbrains.buildServer.configs.kotlin.Project
+import utils.Env
+import utils.docker.PRIVATE_REGISTRY_CONNECTION
+import utils.docker.PRIVATE_REGISTRY_HOST
 
 
 object Project : Project({
@@ -13,7 +16,9 @@ object Project : Project({
         DockerProjectTemplate(
             "git@github.com:k88936/teamcity-agent-container.git",
             "teamcity-agent/Dockerfile",
-            "docker.io/kvtodev/teamcity-agent"
+            "$PRIVATE_REGISTRY_HOST/k88936/teamcity-agent:${Env.BUILD_NUMBER}",
+            context = "",
+            connection = PRIVATE_REGISTRY_CONNECTION
         )
     )
 })

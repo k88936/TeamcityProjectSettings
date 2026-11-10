@@ -5,6 +5,8 @@ import jetbrains.buildServer.configs.kotlin.projectFeatures.activeStorage
 import jetbrains.buildServer.configs.kotlin.projectFeatures.dockerRegistry
 import jetbrains.buildServer.configs.kotlin.projectFeatures.githubAppConnection
 import jetbrains.buildServer.configs.kotlin.projectFeatures.s3CompatibleStorage
+import utils.docker.PRIVATE_REGISTRY_CONNECTION
+import utils.docker.PRIVATE_REGISTRY_HOST
 
 object Project : Project({
     description = "Contains all other projects"
@@ -37,6 +39,13 @@ object Project : Project({
             id = "DOCKER_REGISTRY_CONNECTION"
             name = "Docker Registry"
             userName = "kvtodev"
+            password = "credentialsJSON:a43b4956-2b9e-457c-bf3c-6e04db2adc38"
+        }
+        dockerRegistry {
+            id = PRIVATE_REGISTRY_CONNECTION
+            name = "Private Registry"
+            url = "https://$PRIVATE_REGISTRY_HOST"
+            userName = "kvtodev@outlook.com"
             password = "credentialsJSON:a43b4956-2b9e-457c-bf3c-6e04db2adc38"
         }
         githubAppConnection {

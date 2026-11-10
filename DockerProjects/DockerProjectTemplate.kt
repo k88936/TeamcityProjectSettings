@@ -7,6 +7,8 @@ fun DockerProjectTemplate(
     gitSshUrl: String,
     dockerfilePath: String,
     targetContainerTag: String,
+    context: String,
+    connection: String,
 ): Project {
     val repositoryName = extractRepositoryName(gitSshUrl)
     val inputFingerprint = stableFingerprint("$gitSshUrl|$dockerfilePath|$targetContainerTag")
@@ -18,6 +20,8 @@ fun DockerProjectTemplate(
         imageName = targetContainerTag,
         dockerfilePath = dockerfilePath,
         vcsRoot = vcsRoot,
+        context,
+        connection
     )
 
     return Project({

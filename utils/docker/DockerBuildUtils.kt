@@ -9,7 +9,7 @@ fun BuildType.applyDockerBuildSteps(
     imageName: String,
     dockerfilePath: String = "Dockerfile",
     context: String = "",
-    connection: String = "DOCKER_REGISTRY_CONNECTION",
+    connection: String = PRIVATE_REGISTRY_CONNECTION,
 ) {
     features {
         perfmon {}
@@ -60,3 +60,6 @@ fun BuildType.applyDockerBuildSteps(
     }
 }
 
+const val PRIVATE_REGISTRY_HOST = "gitea.k88936.top:8936"
+
+const val PRIVATE_REGISTRY_CONNECTION = "PRIVATE_REGISTRY_CONNECTION"
