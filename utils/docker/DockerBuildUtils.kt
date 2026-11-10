@@ -15,9 +15,6 @@ fun BuildType.applyDockerBuildSteps(
     require(tags.isNotEmpty()) { "At least one tag is required for $imageName" }
 
     val taggedImages = tags.distinct().map { tag -> "$imageName:$tag" }
-    val tagArguments = taggedImages.joinToString(separator = " \\\n                    ") { "-t $it" }
-    val contextArgument = if (context.isBlank()) "" else " \\\n                    $context"
-    val pushCommands = taggedImages.joinToString(separator = "\n                ") { "podman push $it" }
 
     features {
         perfmon {}
@@ -33,36 +30,40 @@ fun BuildType.applyDockerBuildSteps(
     val proxyUrl = "http://$proxyHost:$proxyPort"
     val noProxy = "localhost,127.0.0.1,::1,.local,.svc,.svc.cluster.local,teamcity.teamcity,teamcity.k88936.top"
     val jvmProxy = "-Dhttp.proxyHost=$proxyHost -Dhttp.proxyPort=$proxyPort " +
-        "-Dhttps.proxyHost=$proxyHost -Dhttps.proxyPort=$proxyPort " +
-        "-Dhttp.nonProxyHosts=localhost|127.0.0.1|*.local|*.svc|*.svc.cluster.local|teamcity.teamcity|teamcity.k88936.top"
+            "-Dhttps.proxyHost=$proxyHost -Dhttps.proxyPort=$proxyPort " +
+            "-Dhttp.nonProxyHosts=localhost|127.0.0.1|*.local|*.svc|*.svc.cluster.local|teamcity.teamcity|teamcity.k88936.top"
+
+    val buildArguments = buildList {
+        addAll(
+            listOf(
+                "--progress=plain",
+                "--build-arg NO_PROXY=\"$noProxy\"",
+                "--build-arg no_proxy=\"$noProxy\"",
+                "--build-arg HTTP_PROXY=$proxyUrl",
+                "--build-arg http_proxy=$proxyUrl",
+                "--build-arg HTTPS_PROXY=$proxyUrl",
+                "--build-arg https_proxy=$proxyUrl",
+                "--build-arg GRADLE_OPTS=\"$jvmProxy\"",
+                "--build-arg JAVA_TOOL_OPTIONS=\"$jvmProxy\"",
+                "-f $dockerfilePath",
+            )
+        )
+        taggedImages.mapTo(this) { "-t $it" }
+        addAll(listOfNotNull(context.takeIf { it.isNotBlank() }))
+    }
 
     steps {
         script {
             id = "build"
             name = "Build with Podman"
-            scriptContent = """
-                set -e
-                podman build \
-                    --progress=plain \
-                    --build-arg NO_PROXY="$noProxy" \
-                    --build-arg no_proxy="$noProxy" \
-                    --build-arg HTTP_PROXY=$proxyUrl \
-                    --build-arg http_proxy=$proxyUrl \
-                    --build-arg HTTPS_PROXY=$proxyUrl \
-                    --build-arg https_proxy=$proxyUrl \
-                    --build-arg GRADLE_OPTS="$jvmProxy" \
-                    --build-arg JAVA_TOOL_OPTIONS="$jvmProxy" \
-                    -f $dockerfilePath \
-                    $tagArguments$contextArgument
-            """.trimIndent()
+            scriptContent = "set -e\n" + (listOf("podman build") + buildArguments)
+                .joinToString(separator = " \\\n    ")
         }
         script {
             id = "push"
             name = "Push with Podman"
-            scriptContent = """
-                set -e
-                $pushCommands
-            """.trimIndent()
+            scriptContent = (listOf("set -e") + taggedImages.map { "podman push $it" })
+                .joinToString(separator = "\n")
         }
     }
 }
