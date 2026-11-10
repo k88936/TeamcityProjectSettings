@@ -11,7 +11,7 @@ fun DockerProjectTemplate(
     connection: String,
 ): Project {
     val repositoryName = extractRepositoryName(gitSshUrl)
-    val inputFingerprint = stableFingerprint("$gitSshUrl|$dockerfilePath|$imageName")
+    val inputFingerprint = stableFingerprint("$gitSshUrl|$dockerfilePath")
     val projectId = "DockerProject_${toTeamCityToken(repositoryName)}_$inputFingerprint"
     val buildTypeId = "${projectId}_Build"
     val vcsRoot = GitVcsRootTemplate(gitSshUrl)
