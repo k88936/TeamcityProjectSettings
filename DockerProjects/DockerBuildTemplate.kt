@@ -9,16 +9,21 @@ fun DockerBuildTemplate(
     id: String,
     name: String,
     imageName: String,
+    tags: List<String> = listOf("latest"),
     dockerfilePath: String = "Dockerfile",
     vcsRoot: GitVcsRoot,
-    context: String,
     connection: String,
 ): BuildType {
     return BuildType({
         id(id)
         this.name = name
 
-        applyDockerBuildSteps(imageName, dockerfilePath, context, connection)
+        applyDockerBuildSteps(
+            imageName = imageName,
+            tags = tags,
+            dockerfilePath = dockerfilePath,
+            connection = connection,
+        )
         vcs {
             root(vcsRoot)
         }

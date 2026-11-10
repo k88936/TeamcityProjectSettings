@@ -16,8 +16,8 @@ object Project : Project({
         DockerProjectTemplate(
             "git@github.com:k88936/teamcity-agent-container.git",
             "teamcity-agent/Dockerfile",
-            "$PRIVATE_REGISTRY_HOST/k88936/teamcity-agent:${Env.BUILD_NUMBER}",
-            context = "",
+            "$PRIVATE_REGISTRY_HOST/k88936/teamcity-agent",
+            tags = listOf(Env.BUILD_NUMBER, "latest"),
             connection = PRIVATE_REGISTRY_CONNECTION
         )
     )

@@ -37,5 +37,10 @@ object Wallence_Build_container : BuildType({
         }
     }
 
-    applyDockerBuildSteps("$PRIVATE_REGISTRY_HOST/k88936/wallence:${Env.BUILD_NUMBER}", "docker/Dockerfile", connection = PRIVATE_REGISTRY_CONNECTION)
+    applyDockerBuildSteps(
+        imageName = "$PRIVATE_REGISTRY_HOST/k88936/wallence",
+        tags = listOf(Env.BUILD_NUMBER, "latest"),
+        dockerfilePath = "docker/Dockerfile",
+        connection = PRIVATE_REGISTRY_CONNECTION,
+    )
 })

@@ -6,22 +6,22 @@ import utils.vcs.GitVcsRootTemplate
 fun DockerProjectTemplate(
     gitSshUrl: String,
     dockerfilePath: String,
-    targetContainerTag: String,
-    context: String,
+    imageName: String,
+    tags: List<String> = listOf("latest"),
     connection: String,
 ): Project {
     val repositoryName = extractRepositoryName(gitSshUrl)
-    val inputFingerprint = stableFingerprint("$gitSshUrl|$dockerfilePath|$targetContainerTag")
+    val inputFingerprint = stableFingerprint("$gitSshUrl|$dockerfilePath|$imageName")
     val projectId = "DockerProject_${toTeamCityToken(repositoryName)}_$inputFingerprint"
     val buildTypeId = "${projectId}_Build"
     val vcsRoot = GitVcsRootTemplate(gitSshUrl)
     val buildType = DockerBuildTemplate(
         id = buildTypeId,
         name = "Build Container",
-        imageName = targetContainerTag,
+        imageName = imageName,
+        tags = tags,
         dockerfilePath = dockerfilePath,
         vcsRoot = vcsRoot,
-        context,
         connection
     )
 

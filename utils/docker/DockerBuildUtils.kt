@@ -7,10 +7,18 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 fun BuildType.applyDockerBuildSteps(
     imageName: String,
+    tags: List<String> = listOf("latest"),
     dockerfilePath: String = "Dockerfile",
     context: String = "",
     connection: String = PRIVATE_REGISTRY_CONNECTION,
 ) {
+    require(tags.isNotEmpty()) { "At least one tag is required for $imageName" }
+
+    val taggedImages = tags.distinct().map { tag -> "$imageName:$tag" }
+    val tagArguments = taggedImages.joinToString(separator = " \\\n                    ") { "-t $it" }
+    val contextArgument = if (context.isBlank()) "" else " \\\n                    $context"
+    val pushCommands = taggedImages.joinToString(separator = "\n                ") { "podman push $it" }
+
     features {
         perfmon {}
         dockerRegistryConnections {
@@ -45,8 +53,7 @@ fun BuildType.applyDockerBuildSteps(
                     --build-arg GRADLE_OPTS="$jvmProxy" \
                     --build-arg JAVA_TOOL_OPTIONS="$jvmProxy" \
                     -f $dockerfilePath \
-                    -t $imageName \
-                    $context
+                    $tagArguments$contextArgument
             """.trimIndent()
         }
         script {
@@ -54,7 +61,7 @@ fun BuildType.applyDockerBuildSteps(
             name = "Push with Podman"
             scriptContent = """
                 set -e
-                podman push $imageName
+                $pushCommands
             """.trimIndent()
         }
     }
