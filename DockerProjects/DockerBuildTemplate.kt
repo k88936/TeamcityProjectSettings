@@ -6,6 +6,7 @@ import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 import utils.docker.applyDockerBuildSteps
 
 fun DockerBuildTemplate(
+    id: String,
     name: String,
     imageName: String,
     dockerfilePath: String = "Dockerfile",
@@ -14,7 +15,7 @@ fun DockerBuildTemplate(
     connection: String,
 ): BuildType {
     return BuildType({
-        id(name)
+        id(id)
         this.name = name
 
         applyDockerBuildSteps(imageName, dockerfilePath, context, connection)

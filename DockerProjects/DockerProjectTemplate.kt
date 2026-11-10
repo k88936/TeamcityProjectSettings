@@ -16,7 +16,8 @@ fun DockerProjectTemplate(
     val buildTypeId = "${projectId}_Build"
     val vcsRoot = GitVcsRootTemplate(gitSshUrl)
     val buildType = DockerBuildTemplate(
-        name = buildTypeId,
+        id = buildTypeId,
+        name = "Build Container",
         imageName = targetContainerTag,
         dockerfilePath = dockerfilePath,
         vcsRoot = vcsRoot,
@@ -26,7 +27,7 @@ fun DockerProjectTemplate(
 
     return Project({
         id(projectId)
-        name = "$repositoryName docker build"
+        name = repositoryName
 
         vcsRoot(vcsRoot)
         buildType(buildType)
