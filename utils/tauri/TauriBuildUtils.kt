@@ -54,7 +54,7 @@ fun BuildType.applyTauriAndroidBuildStep(
         script {
             id = "tauri build android"
             scriptContent = cd + """
-                pnpm tauri android build --apk
+                pnpm tauri android build --apk --target aarch64 --split-per-abi
             """.trimIndent()
         }
     }
@@ -81,7 +81,7 @@ fun genTauriAndroidArtifactRules(baseDir: String = "."): String {
         ?.let { "${it.trimEnd('/')}/" }
         ?: ""
     return """
-       ${prefix}src-tauri/gen/android/app/build/outputs/apk/universal/release/*.apk
+       ${prefix}src-tauri/gen/android/app/build/outputs/apk/arm64/release/*.apk
     """.trimIndent()
 }
 
