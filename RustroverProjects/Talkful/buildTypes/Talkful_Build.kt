@@ -3,7 +3,7 @@ package RustroverProjects.Talkful.buildTypes
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
-import utils.tauri.applyTauriBuildStep
+import utils.tauri.applyTauriDesktopBuildStep
 import utils.tauri.genTauriArtifactRules
 
 object Talkful_Build : BuildType({
@@ -21,7 +21,7 @@ object Talkful_Build : BuildType({
         }
     }
 
-    applyTauriBuildStep()
+    applyTauriDesktopBuildStep()
 
     features {
         perfmon { }

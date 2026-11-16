@@ -5,7 +5,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
 const val TAURI_ANDROID_NDK_VERSION = "29.0.13846066"
 
-fun BuildType.applyTauriBuildStep() {
+fun BuildType.applyTauriDesktopBuildStep() {
     steps {
         script {
             id = "tauri init"
@@ -38,11 +38,22 @@ fun BuildType.applyTauriAndroidBuildStep(
         ?: ""
     steps {
         script {
-            id = "tauri build android"
+            id = "tauri init"
             scriptContent = cd + """
                 pnpm i
+            """.trimIndent()
+        }
+        script {
+            id = "android setup"
+            scriptContent = """
+                set -eu
                 yes | sdkmanager --sdk_root=${'$'}ANDROID_HOME --licenses > /dev/null
                 sdkmanager --sdk_root=${'$'}ANDROID_HOME --install "ndk;$ndkVersion"
+            """.trimIndent()
+        }
+        script {
+            id = "tauri build android"
+            scriptContent = cd + """
                 pnpm tauri android build --apk
             """.trimIndent()
         }
