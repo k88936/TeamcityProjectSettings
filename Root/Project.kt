@@ -63,7 +63,7 @@ object Project : Project({
             id = "PROJECT_EXT_3"
             accessKeyID = "SHd9FvJ8Gcr1s3eh6bCU"
             accessKey = "credentialsJSON:fe76ba66-ec2d-443d-bda6-ade2fa15191f"
-            endpoint = "https://storage0.k88936.top"
+            endpoint = "https://storage0.k88936.top:8936"
             bucketName = "teamcity-artifact"
             forceVirtualHostAddressing = true
             param("aws.region.name", "")
