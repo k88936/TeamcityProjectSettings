@@ -56,6 +56,7 @@ object Projects : Project({
     subProject(githubPagesProject("k88936/rss-reader", "npm install && npm run build", "dist"))
     subProject(githubPagesProject("k88936/k88936.github.io", "pnpm install && pnpm build", "dist"))
     subProject(githubPagesProject("k88936/blogs", "npm install && npm run build", "dist"))
+    subProject(githubPagesProject("k88936/svelte-navigation", "pnpm install && pnpm build", "playground/dist"))
     subProject(
         githubPagesProject("k88936/source-of", "npm install && npm run build", "dist") {
             params {
