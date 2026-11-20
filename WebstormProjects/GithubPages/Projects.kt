@@ -69,15 +69,4 @@ object Projects : Project({
             "playground/dist",
         )
     )
-    subProject(
-        githubPagesProject("k88936/source-of", "npm install && npm run build", "dist") {
-            params {
-                password("env.S3_ACCESS_KEY", "%KVTO_RUSTFS_ACCESS_KEY%")
-                password("env.S3_SECRET_KEY", "%KVTO_RUSTFS_SECRET_KEY%")
-                param("env.S3_BUCKET_NAME", "software-release")
-                param("env.S3_ENDPOINT", "https://storage0.k88936.top:8936")
-                param("env.AWS_REGION", "us-east-1")
-            }
-        }
-    )
 })

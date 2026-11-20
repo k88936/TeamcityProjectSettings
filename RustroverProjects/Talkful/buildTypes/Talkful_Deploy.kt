@@ -5,7 +5,6 @@ import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import utils.deploy.applyGithubReleaseDeployment
-import utils.deploy.applySourceOfDeployment
 
 object Talkful_Deploy : BuildType({
     id("Talkful_Deploy")
@@ -29,7 +28,6 @@ object Talkful_Deploy : BuildType({
             artifactRules = "*=>_deploy/"
         }
     }
-    applySourceOfDeployment("talkful")
     applyGithubReleaseDeployment(
         assetsPath = "_deploy/*"
     )

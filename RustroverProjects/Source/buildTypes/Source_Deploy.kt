@@ -6,7 +6,6 @@ import jetbrains.buildServer.configs.kotlin.FailureAction
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import utils.deploy.applyGithubReleaseDeployment
-import utils.deploy.applySourceOfDeployment
 
 object Source_Deploy : BuildType({
     id("Source_Deploy")
@@ -38,7 +37,6 @@ object Source_Deploy : BuildType({
         }
     }
 
-    applySourceOfDeployment("source")
     applyGithubReleaseDeployment(
         assetsPath = "_deploy/*"
     )
